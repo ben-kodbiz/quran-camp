@@ -1477,6 +1477,91 @@
       color: var(--gold);
     }
 
+  
+    /* --- Commercial Purchase Modal & Gating Styles --- */
+    .purchase-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(3, 7, 18, 0.88);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2500;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      padding: 20px;
+    }
+    .purchase-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .purchase-modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 16px;
+      max-width: 580px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .pm-header {
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--border-card);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(21, 32, 53, 0.6) 0%, transparent 100%);
+    }
+    .pm-body {
+      padding: 24px;
+    }
+    .pm-pricing-banner {
+      background: rgba(212, 175, 89, 0.08);
+      border: 1px solid rgba(212, 175, 89, 0.3);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pm-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+    .pm-features-list li {
+      padding: 6px 0;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pm-features-list li span {
+      color: #10b981;
+      font-weight: bold;
+    }
+    .pm-guarantee-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.8rem;
+      color: #a7f3d0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
   </style>
 </head>
 <body>
@@ -1607,8 +1692,8 @@
               Hash: <code>ca0f5b1e...</code>
             </div>
             <div class="package-actions">
-              <a href="bundles/PACKAGE_02_JUZ_TABARAK_MASTER_EDITION.zip" download class="btn btn-gold btn-sm">Download Juz 29 ZIP</a>
-              <a href="bundles/VOLUME_06_JUZ_TABARAK_OMNIBUS.pdf" target="_blank" class="btn btn-outline btn-sm">Read Vol 6 PDF (112p)</a>
+              <button class="btn btn-gold btn-sm" onclick="openPurchaseModal('Juz Tabarak Master Suite (11 Surahs)', 'PACKAGE_02', 29.00)"><span>🔒</span> Unlock Juz 29 ZIP ($29.00)</button>
+              <button class="btn btn-outline btn-sm" onclick="openPurchaseModal('Volume 06: Juz Tabarak Master Omnibus (112p)', 'VOL_06_OMNIBUS', 14.00)"><span>🔒</span> Unlock Vol 6 PDF (112p)</button>
             </div>
           </div>
         </div>
@@ -1629,8 +1714,8 @@
               Hash: <code>87f306e9...</code>
             </div>
             <div class="package-actions">
-              <a href="bundles/PACKAGE_03_THEMATIC_COLLECTIONS.zip" download class="btn btn-gold btn-sm">Download Thematic ZIP</a>
-              <a href="bundles/VOLUME_04_HAWAMEEM_HEART_OMNIBUS.pdf" target="_blank" class="btn btn-outline btn-sm">Hawameem PDF (112p)</a>
+              <button class="btn btn-gold btn-sm" onclick="openPurchaseModal('Thematic Crown Jewels Collection', 'PACKAGE_03', 19.00)"><span>🔒</span> Unlock Thematic ZIP ($19.00)</button>
+              <button class="btn btn-outline btn-sm" onclick="openPurchaseModal('Volume 04: Hawameem & Heart Omnibus (112p)', 'VOL_04_OMNIBUS', 14.00)"><span>🔒</span> Unlock Hawameem PDF (112p)</button>
             </div>
           </div>
         </div>
@@ -1652,8 +1737,8 @@
               Hash: <code>verified</code>
             </div>
             <div class="package-actions">
-              <a href="bundles/PACKAGE_05_THEMATIC_ANTHOLOGY_SUITE.zip" download class="btn btn-gold btn-sm">Download Thematic ZIP</a>
-              <a href="bundles/VOLUME_07_THEMATIC_ANTHOLOGIES_OMNIBUS.pdf" target="_blank" class="btn btn-outline btn-sm">Read Vol 7 PDF (40p)</a>
+              <button class="btn btn-gold btn-sm" onclick="openPurchaseModal('Thematic Anthology 4-Volume Suite', 'PACKAGE_05', 39.00)"><span>🔒</span> Unlock Thematic Suite ($39.00)</button>
+              <button class="btn btn-outline btn-sm" onclick="openPurchaseModal('Volume 07: Thematic Anthologies Master Omnibus (40p)', 'VOL_07_OMNIBUS', 14.00)"><span>🔒</span> Unlock Vol 7 PDF (40p)</button>
             </div>
           </div>
         </div>
@@ -1674,7 +1759,7 @@
               Hash: <code>2aeb7ea4...</code>
             </div>
             <div class="package-actions">
-              <a href="bundles/PACKAGE_04_77_SURAHS_MASTER_VAULT.zip" download class="btn btn-gold btn-sm">Download Complete Vault</a>
+              <button class="btn btn-gold btn-sm" onclick="openPurchaseModal('77-Surah Master Digital Vault', 'PACKAGE_04', 67.00)"><span>🔒</span> Unlock Master Vault ($67.00)</button>
               <a href="./00_MASTER_PRODUCT_CATALOG.md" target="_blank" class="btn btn-outline btn-sm">View Full Catalog MD</a>
             </div>
           </div>
@@ -1688,29 +1773,29 @@
           <span style="font-size: 0.74rem; font-weight: 600; color: var(--text-muted);">820 TOTAL PAGES • 16:9 LANDSCAPE VECTOR</span>
         </div>
         <div class="omnibus-list">
-          <a href="bundles/VOLUME_01_AS_SAB_AT_TIWAL_OMNIBUS.pdf" target="_blank" class="omnibus-item">
+          <a href="javascript:void(0)" onclick="openPurchaseModal('Volume 01: As-Sab at-Tiwal Omnibus Compendium (72p)', 'VOL_01_OMNIBUS', 14.00)" class="omnibus-item">
             <span>Vol 1: As-Sab' at-Tiwal (01–07)</span>
-            <span class="omnibus-item-badge">72p</span>
+            <span class="omnibus-item-badge">🔒 72p ($14.00)</span>
           </a>
-          <a href="bundles/VOLUME_02_AL_MIOON_PART_1_OMNIBUS.pdf" target="_blank" class="omnibus-item">
+          <a href="javascript:void(0)" onclick="openPurchaseModal('Volume 02: Al-Mioon Part 1 Omnibus Compendium (112p)', 'VOL_02_OMNIBUS', 14.00)" class="omnibus-item">
             <span>Vol 2: Al-Mi'oon Part 1 (08–18)</span>
-            <span class="omnibus-item-badge">112p</span>
+            <span class="omnibus-item-badge">🔒 112p ($14.00)</span>
           </a>
-          <a href="bundles/VOLUME_03_MATHANI_LIGHT_OMNIBUS.pdf" target="_blank" class="omnibus-item">
+          <a href="javascript:void(0)" onclick="openPurchaseModal('Volume 03: Mathani & Light Omnibus Compendium (172p)', 'VOL_03_OMNIBUS', 14.00)" class="omnibus-item">
             <span>Vol 3: Mathani & Light (19–35)</span>
-            <span class="omnibus-item-badge">172p</span>
+            <span class="omnibus-item-badge">🔒 172p ($14.00)</span>
           </a>
-          <a href="bundles/VOLUME_04_HAWAMEEM_HEART_OMNIBUS.pdf" target="_blank" class="omnibus-item">
+          <a href="javascript:void(0)" onclick="openPurchaseModal('Volume 04: Hawameem & Heart Omnibus Compendium (112p)', 'VOL_04_OMNIBUS', 14.00)" class="omnibus-item">
             <span>Vol 4: Hawameem & Heart (36–46)</span>
-            <span class="omnibus-item-badge">112p</span>
+            <span class="omnibus-item-badge">🔒 112p ($14.00)</span>
           </a>
-          <a href="bundles/VOLUME_05_MEDINA_MUSABBIHAT_OMNIBUS.pdf" target="_blank" class="omnibus-item">
+          <a href="javascript:void(0)" onclick="openPurchaseModal('Volume 05: Medina & Musabbihat Omnibus Compendium (202p)', 'VOL_05_OMNIBUS', 14.00)" class="omnibus-item">
             <span>Vol 5: Medina & Musabbihat (47–66)</span>
-            <span class="omnibus-item-badge">202p</span>
+            <span class="omnibus-item-badge">🔒 202p ($14.00)</span>
           </a>
-          <a href="bundles/VOLUME_06_JUZ_TABARAK_OMNIBUS.pdf" target="_blank" class="omnibus-item">
+          <a href="javascript:void(0)" onclick="openPurchaseModal('Volume 06: Juz Tabarak Master Omnibus Compendium (112p)', 'VOL_06_OMNIBUS', 14.00)" class="omnibus-item">
             <span>Vol 6: Juz Tabarak (67–77)</span>
-            <span class="omnibus-item-badge">112p</span>
+            <span class="omnibus-item-badge">🔒 112p ($14.00)</span>
           </a>
         </div>
       </div>
@@ -1731,12 +1816,12 @@
           </p>
         </div>
         <div style="display: flex; gap: 0.8rem; align-items: center;">
-          <a href="bundles/VOLUME_07_THEMATIC_ANTHOLOGIES_OMNIBUS.pdf" target="_blank" class="btn btn-outline btn-sm" style="border-color: rgba(212, 175, 55, 0.5); color: var(--accent-gold);">
-            📖 Thematic Omnibus PDF (40p)
-          </a>
-          <a href="bundles/PACKAGE_05_THEMATIC_ANTHOLOGY_SUITE.zip" download class="btn btn-gold btn-sm">
-            📦 Download Suite ZIP (306 KB)
-          </a>
+          <button class="btn btn-outline btn-sm" style="border-color: rgba(212, 175, 55, 0.5); color: var(--accent-gold);" onclick="openPurchaseModal('Volume 07: Thematic Anthologies Master Omnibus (40p)', 'VOL_07_OMNIBUS', 14.00)">
+            <span>🔒</span> Thematic Omnibus PDF (40p • $14.00)
+          </button>
+          <button class="btn btn-gold btn-sm" onclick="openPurchaseModal('Thematic Anthology 4-Volume Suite', 'PACKAGE_05', 39.00)">
+            <span>🔒</span> Unlock Suite ($39.00)
+          </button>
         </div>
       </div>
 
@@ -2121,21 +2206,36 @@ python3 -m http.server 8181</pre>
                 </div>
 
                 <div class="card-actions-primary">
-                  <a href="${s.suite}" target="_blank" class="btn btn-gold btn-sm">
-                    <span>⚡</span> Open Suite
-                  </a>
-                  <button class="btn btn-outline btn-sm" onclick="openModal('${s.suite}', 'Surah ${s.name}', '${s.arabic}', 'Interactive Digital Suite')">
-                    <span>👁️</span> Preview Hub
-                  </button>
+                  ${s.price === 0 ? `
+                    <a href="${s.suite}" target="_blank" class="btn btn-gold btn-sm">
+                      <span>⚡</span> Free Suite
+                    </a>
+                    <a href="${s.compendium}" target="_blank" class="btn btn-outline btn-sm">
+                      <span>📄</span> Free PDF
+                    </a>
+                  ` : `
+                    <button class="btn btn-gold btn-sm" onclick="openPurchaseModal('${s.name}', ${s.num}, ${s.price})">
+                      <span>🔒</span> Unlock Suite ($${s.price.toFixed(2)})
+                    </button>
+                    <button class="btn btn-outline btn-sm" onclick="openModal('${s.suite}', 'Surah ${s.name}', '${s.arabic}', 'Sample Preview (Watermarked)')">
+                      <span>👁️</span> Preview Sample
+                    </button>
+                  `}
                 </div>
                 <button class="btn-pack-toggle ${selectedSurahIds.has(s.num) ? 'active' : ''}" onclick="toggleStudyPack(${s.num})">
                   ${selectedSurahIds.has(s.num) ? '✓ In Study Pack' : '+ Add to Study Pack'}
                 </button>
 
                 <div class="card-actions-secondary">
-                  <a href="${s.compendium}" target="_blank" class="btn btn-outline btn-sm" style="flex:1;">
-                    <span>📄</span> Compendium PDF
-                  </a>
+                  ${s.price === 0 ? `
+                    <a href="${s.compendium}" target="_blank" class="btn btn-outline btn-sm" style="flex:1;">
+                      <span>📄</span> Compendium PDF
+                    </a>
+                  ` : `
+                    <button class="btn btn-outline btn-sm" style="flex:1;" onclick="openPurchaseModal('${s.name} Compendium PDF', ${s.num}, ${s.price})">
+                      <span>🔒</span> Unlock PDF
+                    </button>
+                  `}
                   <a href="${s.mindmap_html}" target="_blank" class="btn btn-outline btn-sm" style="flex:1;">
                     <span>🗺️</span> Mindmap
                   </a>
@@ -2164,9 +2264,15 @@ python3 -m http.server 8181</pre>
                     <a href="${s.manifest}" target="_blank" class="drawer-link">
                       <span>📋</span> Product Manifest
                     </a>
-                    <a href="${s.mindmap_pdf}" target="_blank" class="drawer-link">
-                      <span>📐</span> Vector PDF
-                    </a>
+                    ${s.price === 0 ? `
+                      <a href="${s.mindmap_pdf}" target="_blank" class="drawer-link">
+                        <span>📐</span> Vector PDF
+                      </a>
+                    ` : `
+                      <a href="javascript:void(0)" onclick="openPurchaseModal('${s.name} Vector Mindmap PDF', ${s.num}, ${s.price})" class="drawer-link" style="color:var(--gold);">
+                        <span>🔒</span> Vector PDF (Locked)
+                      </a>
+                    `}
                   </div>
                 </div>
 
@@ -2379,6 +2485,198 @@ python3 -m http.server 8181</pre>
 
     // Initial Render
     renderSurahs();
+
+    // =========================================================================
+    // STUDY PACK BUILDER CLIENT LOGIC
+    // =========================================================================
+    let selectedSurahIds = new Set();
+
+    function toggleStudyPack(num) {
+      if (selectedSurahIds.has(num)) {
+        selectedSurahIds.delete(num);
+      } else {
+        selectedSurahIds.add(num);
+      }
+      updateStudyPackUI();
+      renderSurahs();
+    }
+
+    function calculateStudyPack() {
+      const selected = surahs.filter(s => selectedSurahIds.has(s.num));
+      const count = selected.length;
+      let regularTotal = 0;
+      selected.forEach(s => { regularTotal += s.price; });
+
+      let discountRate = 0;
+      let discountLabel = "Standard Rate";
+
+      if (count >= 25) {
+        discountRate = 0.50;
+        discountLabel = "50% OFF (Madrasah Tier)";
+      } else if (count >= 10) {
+        discountRate = 0.40;
+        discountLabel = "40% OFF (Scholar Circle)";
+      } else if (count >= 5) {
+        discountRate = 0.25;
+        discountLabel = "25% OFF (Student Circle)";
+      }
+
+      const savings = regularTotal * discountRate;
+      const finalPrice = regularTotal - savings;
+
+      let progressHint = "";
+      if (count === 0) {
+        progressHint = "Select Surahs to build your custom study bundle.";
+      } else if (count < 5) {
+        const remaining = 5 - count;
+        progressHint = `Add <strong>${remaining} more Surah${remaining > 1 ? 's' : ''}</strong> to unlock <strong>25% OFF</strong>!`;
+      } else if (count < 10) {
+        const remaining = 10 - count;
+        progressHint = `Add <strong>${remaining} more Surah${remaining > 1 ? 's' : ''}</strong> to unlock <strong>40% OFF Scholar Circle</strong>!`;
+      } else if (count < 25) {
+        const remaining = 25 - count;
+        progressHint = `🌟 <strong>40% OFF UNLOCKED!</strong> Add ${remaining} more for 50% Madrasah Tier.`;
+      } else {
+        progressHint = "🏆 <strong>MAXIMUM 50% MADRASAH DISCOUNT APPLIED!</strong>";
+      }
+
+      return {
+        selected,
+        count,
+        regularTotal,
+        discountRate,
+        discountLabel,
+        savings,
+        finalPrice,
+        progressHint
+      };
+    }
+
+    function updateStudyPackUI() {
+      const data = calculateStudyPack();
+      const dock = document.getElementById('studyPackDock');
+      if (!dock) return;
+
+      if (data.count > 0) {
+        dock.classList.add('visible');
+      } else {
+        dock.classList.remove('visible');
+      }
+
+      const dockCount = document.getElementById('dockPackCount');
+      if (dockCount) dockCount.textContent = data.count;
+      const dockOrig = document.getElementById('dockOrigPrice');
+      if (dockOrig) {
+        dockOrig.textContent = `$${data.regularTotal.toFixed(2)}`;
+        dockOrig.style.display = data.discountRate > 0 ? 'inline' : 'none';
+      }
+      const dockFinal = document.getElementById('dockFinalPrice');
+      if (dockFinal) dockFinal.textContent = `$${data.finalPrice.toFixed(2)}`;
+      const dockDisc = document.getElementById('dockDiscBadge');
+      if (dockDisc) dockDisc.textContent = data.discountLabel;
+      const dockProg = document.getElementById('dockProgressHint');
+      if (dockProg) dockProg.innerHTML = data.progressHint;
+    }
+
+    function applyPreset(type) {
+      if (type === 'juz29') {
+        for (let i = 67; i <= 77; i++) selectedSurahIds.add(i);
+      } else if (type === 'hawameem') {
+        for (let i = 40; i <= 46; i++) selectedSurahIds.add(i);
+      } else if (type === 'gateway') {
+        selectedSurahIds.add(1);
+        selectedSurahIds.add(18);
+        selectedSurahIds.add(67);
+      } else if (type === 'all') {
+        surahs.forEach(s => selectedSurahIds.add(s.num));
+      }
+      updateStudyPackUI();
+      renderSurahs();
+    }
+
+    function clearStudyPack() {
+      selectedSurahIds.clear();
+      updateStudyPackUI();
+      renderSurahs();
+    }
+
+    function openStudyPackModal() {
+      const data = calculateStudyPack();
+      const modal = document.getElementById('studyPackModal');
+      const listEl = document.getElementById('spModalItemsList');
+      if (!modal || !listEl) return;
+
+      listEl.innerHTML = data.selected.map(s => `
+        <div class="sp-item-row">
+          <div>
+            <strong>Surah ${s.name}</strong> (${s.arabic})
+            <span style="font-size:0.75rem; color:var(--text-muted); margin-left:8px;">${s.verses} Ayat • Tier ${s.tier}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-weight:600; color:var(--gold);">${s.price === 0 ? 'FREE' : '$' + s.price.toFixed(2)}</span>
+            <button class="preset-chip danger" style="padding:2px 6px;" onclick="toggleStudyPack(${s.num}); openStudyPackModal();">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('modalSummaryCount').textContent = `${data.count} Surahs`;
+      document.getElementById('modalSummaryRegular').textContent = `$${data.regularTotal.toFixed(2)}`;
+      document.getElementById('modalSummaryDiscLabel').textContent = `Volume Discount (${(data.discountRate * 100).toFixed(0)}%):`;
+      document.getElementById('modalSummarySavings').textContent = `-$${data.savings.toFixed(2)}`;
+      document.getElementById('modalSummaryTotal').textContent = `$${data.finalPrice.toFixed(2)}`;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeStudyPackModal() {
+      const modal = document.getElementById('studyPackModal');
+      if (modal) modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function checkoutStudyPack() {
+      const data = calculateStudyPack();
+      closeStudyPackModal();
+      openPurchaseModal(`Custom Study Pack (${data.count} Surahs • ${data.discountLabel})`, 'CUSTOM_STUDY_PACK', data.finalPrice);
+    }
+
+    // =========================================================================
+    // COMMERCIAL PURCHASE MODAL LOGIC
+    // =========================================================================
+    function openPurchaseModal(title, numOrSku, price) {
+      const modal = document.getElementById('purchaseModal');
+      if (!modal) return;
+
+      document.getElementById('pmTitle').textContent = typeof numOrSku === 'number' ? `Surah ${title} — Master Suite` : title;
+      document.getElementById('pmSubtitle').textContent = typeof numOrSku === 'number' ? `Surah ${String(numOrSku).padStart(2, '0')} • Complete 9-Layer Exegetical System` : 'Curated Master Compilation Archive';
+      document.getElementById('pmPriceDisplay').textContent = `$${parseFloat(price).toFixed(2)}`;
+
+      // Setup Gumroad checkout link
+      const checkoutBtn = document.getElementById('pmCheckoutBtn');
+      if (typeof numOrSku === 'number') {
+        checkoutBtn.href = `https://huurs.gumroad.com/l/surah-${String(numOrSku).padStart(2, '0')}`;
+      } else {
+        checkoutBtn.href = `https://huurs.gumroad.com/l/${String(numOrSku).toLowerCase().replace(/_/g, '-')}`;
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.addEventListener('click', function(e) {
+      const modal = document.getElementById('purchaseModal');
+      if (modal && modal.classList.contains('active') && e.target === modal) {
+        closePurchaseModal();
+      }
+    });
+
+    function closePurchaseModal() {
+      const modal = document.getElementById('purchaseModal');
+      if (modal) modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
   </script>
 
   <!-- Asbab an-Nuzul Hadith Dossier Modal -->
@@ -2531,15 +2829,78 @@ python3 -m http.server 8181</pre>
               Get all 77 Surahs, 7 Master Omnibuses (860p), and 4 Thematic Suites for only <strong>$67.00</strong> (Save 68%).
             </div>
           </div>
-          <a href="bundles/PACKAGE_04_77_SURAHS_MASTER_VAULT.zip" download class="btn btn-outline btn-sm" style="border-color: #38bdf8; color: #38bdf8; white-space: nowrap;">
-            Get Full Vault ($67)
-          </a>
+          <button class="btn btn-outline btn-sm" style="border-color: #38bdf8; color: #38bdf8; white-space: nowrap;" onclick="closeStudyPackModal(); openPurchaseModal('77-Surah Master Digital Vault', 'PACKAGE_04', 67.00);">
+            <span>🔒</span> Get Full Vault ($67)
+          </button>
         </div>
 
         <div style="display: flex; gap: 10px; justify-content: flex-end;">
           <button class="btn btn-outline btn-sm" onclick="closeStudyPackModal()">Continue Browsing</button>
           <button class="btn btn-gold btn-md" onclick="checkoutStudyPack()">
             <span>⚡ Proceed to Instant Checkout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Commercial Purchase & Unlock Modal -->
+  <div id="purchaseModal" class="purchase-modal">
+    <div class="purchase-modal-card">
+      <div class="pm-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.4rem;">🔒</span>
+          <div>
+            <h3 id="pmTitle" style="margin: 0; font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.2rem;">
+              Unlock Master Knowledge Suite
+            </h3>
+            <div id="pmSubtitle" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
+              Digital Offline Publication & Exegetical Suite
+            </div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closePurchaseModal()">✕</button>
+      </div>
+
+      <div class="pm-body">
+        <div class="pm-pricing-banner">
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">
+              One-Time Investment
+            </div>
+            <div id="pmPriceDisplay" style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 800; color: var(--gold);">
+              $2.49
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 0.72rem; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 4px 8px; border-radius: 6px; font-weight: 600;">
+              Lifetime Offline License
+            </span>
+          </div>
+        </div>
+
+        <ul class="pm-features-list">
+          <li><span>✓</span> Complete 10-Plate Master Compendium PDF (16:9 Vector Landscape)</li>
+          <li><span>✓</span> Self-Contained Offline Interactive Digital Suite (No Internet Needed)</li>
+          <li><span>✓</span> High-Resolution Vector Mindmap for Printing & Projection</li>
+          <li><span>✓</span> Classical Sunni Exegesis Monograph (Tabari, Ibn Kathir, Qurtubi)</li>
+          <li><span>✓</span> Structured Tadabbur Contemplation Guide</li>
+        </ul>
+
+        <div class="pm-guarantee-box">
+          <span style="font-size: 1.2rem;">🛡️</span>
+          <div>
+            <strong>100% Barakah Guarantee:</strong> Unconditional 30-day money-back guarantee. Zero DRM locks. Unlimited personal and family use.
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a id="pmCheckoutBtn" href="https://huurs.gumroad.com" target="_blank" class="btn btn-gold btn-md" style="text-align: center; font-size: 0.95rem; padding: 12px;">
+            <span>⚡ Proceed to Secure Checkout (Instant Download) ↗</span>
+          </a>
+          <button class="btn btn-outline btn-sm" onclick="closePurchaseModal()">
+            Continue Exploring Free Previews
           </button>
         </div>
       </div>
