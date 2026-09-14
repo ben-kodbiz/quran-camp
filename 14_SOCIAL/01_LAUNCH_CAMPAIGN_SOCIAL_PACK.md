@@ -118,7 +118,7 @@ Download the full cartographic exegesis for free in our bio.
 | **Day 08** | Instagram | Carousel 2 | Why Surah Al-Mulk Shields the Grave | Free Starter Suite Opt-in |
 | **Day 11** | X (Twitter) | Thread 2 | The Anatomy of Sabr: Ya'qub's White Eyes | Free Starter Suite Opt-in |
 | **Day 14** | YouTube Community | Post 1 | Reflection: How to Build a Family Quran Habit | Free Starter Suite Opt-in |
-| **Day 17** | Instagram & X | Single Card | Introducing the 10-Surah Custom Pass ($14.99) | 10-Surah Pass ($14.99) |
-| **Day 20** | YouTube / Reels | Short Video 2 | The Cosmic Signs of Ayat al-Kawn | 10-Surah Pass ($14.99) |
-| **Day 24** | Instagram | Carousel 3 | The 7 Hawameem: Crown Jewels of the Qur'an | Thematic Bundle ($19.00) |
-| **Day 28** | YouTube Community | Post 2 | The 77-Surah Master Vault Milestone | Complete Vault ($67.00) |
+| **Day 17** | Instagram & X | Single Card | Introducing the 10-Surah Custom Pass ($6.99) | 10-Surah Pass ($6.99) |
+| **Day 20** | YouTube / Reels | Short Video 2 | The Cosmic Signs of Ayat al-Kawn | 10-Surah Pass ($6.99) |
+| **Day 24** | Instagram | Carousel 3 | The 7 Hawameem: Crown Jewels of the Qur'an | Thematic Bundle ($5.00) |
+| **Day 28** | YouTube Community | Post 2 | The 77-Surah Master Vault Milestone | Complete Vault ($15.00) |

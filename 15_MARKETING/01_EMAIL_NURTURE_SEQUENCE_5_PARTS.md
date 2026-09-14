@@ -12,7 +12,7 @@ status: "PRODUCTION_READY"
 
 # Huurs Studio 5-Part Automated Email Nurture Sequence
 
-**Goal:** Welcome new subscribers who downloaded the Free 3-Surah Starter Suite, establish genuine spiritual trust, teach them how to use cartographic exegesis, and introduce them to the 10-Surah Custom Pass ($14.99) and Complete 77-Surah Master Vault ($67.00).  
+**Goal:** Welcome new subscribers who downloaded the Free 3-Surah Starter Suite, establish genuine spiritual trust, teach them how to use cartographic exegesis, and introduce them to the 10-Surah Custom Pass ($6.99) and Complete 77-Surah Master Vault ($15.00).  
 **Tone:** Serene, contemplative, scholarly, deeply respectful, zero fake hype, zero artificial timers.
 
 ---
@@ -170,7 +170,7 @@ Every believer walks through different seasons:
 
 To allow you to tailor your studies without having to purchase an entire institutional archive, we created the:
 
-👉 [10-Surah Custom Study Pass ($14.99 flat)]
+👉 [10-Surah Custom Study Pass ($6.99 flat)]
 (Automatic 40% Scholar Circle discount applied)
 
 With this pass, you choose ANY 10 Surahs from our 77-Surah Pre-Juz 'Amma collection (Juz 1 through 29):
@@ -190,11 +190,11 @@ EACH SURAH DELIVERS:
 • Sunni Tafsir & Tadabbur Monographs
 
 Regular individual value: ~$25.00 to $35.00.
-With the 10-Surah Custom Pass: just $14.99 (40% OFF).
+With the 10-Surah Custom Pass: just $6.99 (40% OFF).
 
 Protected by our 100% Barakah Guarantee: If this pass does not deepen your understanding and prayer within 30 days, we issue an immediate, cheerful 100% refund.
 
-👉 [Claim Your 10-Surah Custom Pass for $14.99]
+👉 [Claim Your 10-Surah Custom Pass for $6.99]
 
 With sincerity,
 Huurs Studio
@@ -229,11 +229,11 @@ WHAT IS INSIDE THE COMPLETE VAULT:
 
 THE PRICING REALITY:
 If purchased individually à la carte, the 77 Surahs total $206.76.
-The complete Master Vault is available for a one-time investment of $67.00 (over 68% off).
+The complete Master Vault is available for a one-time investment of $15.00 (over 68% off).
 
 Zero subscriptions. Zero DRM locks. 100% offline ownership forever.
 
-👉 [Explore the Complete 77-Surah Master Digital Vault ($67.00)]
+👉 [Explore the Complete 77-Surah Master Digital Vault ($15.00)]
 
 Whether you continue studying through our free open-access gateway, pick your favorite 10 Surahs, or enter the complete vault, we pray Allah makes His Book the spring of your heart.
 

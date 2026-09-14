@@ -28,15 +28,15 @@ graph TD
   SOC[Social Media Posts & Videos<br>Share beneficial reflections for free] --> GATE[The Front Door: Free 3-Surah Starter Suite<br>Al-Fatihah, Al-Kahf, Al-Mulk]
   GATE --> EMAIL[Automated 5-Part Email Nurture<br>Sends automatically without you typing daily]
   
-  EMAIL --> BUY1[Option A: 10-Surah Custom Pass - $14.99<br>User selects 10 Surahs with 40% discount]
-  EMAIL --> BUY2[Option B: Complete 77-Surah Vault - $67.00<br>Everything unlocked forever]
+  EMAIL --> BUY1[Option A: 10-Surah Custom Pass - $6.99<br>User selects 10 Surahs with 40% discount]
+  EMAIL --> BUY2[Option B: Complete 77-Surah Vault - $15.00<br>Everything unlocked forever]
   EMAIL --> FREE[Option C: Stay a Free Reader<br>Benefit from the Waqf forever]
 ```
 
 1. **Step 1 (The Invitation):** You post beneficial Quranic reflections on Instagram, X, YouTube, or TikTok.
 2. **Step 2 (The Gift):** You offer the **Free 3-Surah Starter Suite** (Al-Fatihah, Al-Kahf, Al-Mulk). When someone wants it, they enter their email.
 3. **Step 3 (The Relationship):** An automated system sends them 5 thoughtful emails over 10 days, teaching them how to reflect and pray with presence.
-4. **Step 4 (The Fair Offer):** Inside those emails, people learn about the **10-Surah Custom Pass ($14.99)** and the **Complete 77-Surah Vault ($67.00)**. Many will happily purchase to support the work and deepen their study.
+4. **Step 4 (The Fair Offer):** Inside those emails, people learn about the **10-Surah Custom Pass ($6.99)** and the **Complete 77-Surah Vault ($15.00)**. Many will happily purchase to support the work and deepen their study.
 
 ---
 
@@ -56,11 +56,11 @@ You only need **two free tools** to run this entire business:
      * Copy-paste the description from [`12_PRODUCTS/store/77_SURAHS_STORE_LISTINGS.md`](file:///mnt/AI/ag/Campaign/12_PRODUCTS/store/77_SURAHS_STORE_LISTINGS.md).
   4. **Product 2 (The 10-Surah Custom Pass):**
      * Name: `The Scholar's Choice: 10-Surah Custom Quranic Study Pass`
-     * Price: `$14.99`
+     * Price: `$6.99`
      * Copy-paste the description from `12_PRODUCTS/store/77_SURAHS_STORE_LISTINGS.md`.
   5. **Product 3 (The Complete 77-Surah Master Vault):**
      * Name: `The Grand Quranic Cartography: 77-Surah Master Digital Vault`
-     * Price: `$67.00`
+     * Price: `$15.00`
      * Upload File: `12_PRODUCTS/bundles/PACKAGE_04_77_SURAHS_MASTER_VAULT.zip`
 
 ### Tool B: ConvertKit / Kit or MailerLite (For Automated Emails)
@@ -76,7 +76,7 @@ You only need **two free tools** to run this entire business:
      * Email 4: Wait 3 days.
      * Email 5: Wait 3 days.
   5. In Email 1, replace the link placeholder with your Gumroad link for Product 1.
-  6. In Emails 4 and 5, replace the link placeholders with your Gumroad links for the $14.99 Pass and the $67 Vault.
+  6. In Emails 4 and 5, replace the link placeholders with your Gumroad links for the $6.99 Pass and the $67 Vault.
 
 *That's it! Your entire automated sales engine is now alive.*
 
@@ -88,7 +88,7 @@ You do not need to show your face or record your voice if you don't want to. Our
 `NATURE + KNOWLEDGE + REFLECTION + TRANQUILITY`
 
 ### The Golden Rule: "Teach, Don't Pitch"
-* If you post: *"Buy my $14.99 Quran study pack!"*, people will scroll past.
+* If you post: *"Buy my $6.99 Quran study pack!"*, people will scroll past.
 * If you post: *"Why did the Prophet ﷺ pause after every verse of Surah Al-Fatihah? Here is the Hadith Qudsi that changes your Salah..."*, thousands of Muslims will read, bookmark, share, and want to learn more.
 
 ### Choose Just TWO Platforms to Start:

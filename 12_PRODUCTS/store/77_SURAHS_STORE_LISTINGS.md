@@ -53,7 +53,7 @@ No credit card required. Download instantly and reconnect your heart to the Book
 
 - **Product Title:** *Juz Tabarak Master Edition: The Complete Cartography of Juz 29 (11 Surahs)*
 - **Product Slug / URL:** `huurs.gumroad.com/l/juz-tabarak-master-suite`
-- **Price:** **$29.00 (Launch Special) / $49.00 (Regular)**
+- **Price:** **$7.00 (Launch Special) / $49.00 (Regular)**
 - **Included Files:** `PACKAGE_02_JUZ_TABARAK_MASTER_EDITION.zip` (505 KB, 35 assets) & `VOLUME_06_JUZ_TABARAK_OMNIBUS.pdf` (112 pages)
 - **Target Audience:** Memorizers (Huffadh), students of tafsir, Islamic school teachers, and daily reciters.
 
@@ -83,10 +83,10 @@ SURAH COVERAGE:
 
 ## TIER 1B: The Custom Study Passes (Pick & Mix with 40% – 50% Off)
 
-### 1. The 10-Surah Custom Study Pass ($14.99 flat)
+### 1. The 10-Surah Custom Study Pass ($6.99 flat)
 - **Product Title:** *The Scholar's Choice: 10-Surah Custom Quranic Study Pass*
 - **Product Slug / URL:** `huurs.gumroad.com/l/10-surahs-custom-pass`
-- **Price:** **$14.99 (40% OFF Cumulative À La Carte Value)**
+- **Price:** **$6.99 (40% OFF Cumulative À La Carte Value)**
 - **Included Scope:** Choose any 10 Surahs from the 77-Surah Pre-Juz 'Amma library.
 - **Deliverables:** Instant download access to 10 Master Compendium PDFs, 10 Interactive Digital Suites, 10 Vector Mindmaps, and verified Sunni Tafsir monographs.
 
@@ -110,10 +110,10 @@ EACH SURAH DELIVERS:
 100% Barakah Guarantee. Zero DRM. Lifetime offline ownership.
 ```
 
-### 2. The 25-Surah Study Circle Pass ($29.99 flat)
+### 2. The 25-Surah Study Circle Pass ($12.99 flat)
 - **Product Title:** *The Madrasah Pass: 25-Surah Study Circle Pass (50% OFF)*
 - **Product Slug / URL:** `huurs.gumroad.com/l/25-surahs-study-pass`
-- **Price:** **$29.99 (50% OFF À La Carte Value)**
+- **Price:** **$12.99 (50% OFF À La Carte Value)**
 - **Target Audience:** Study circle leaders, Halaqah teachers, university student associations, and advanced learners.
 
 ---
@@ -122,7 +122,7 @@ EACH SURAH DELIVERS:
 
 - **Product Title:** *The Quranic Crown Jewels: The Seven Hawameem & The Musabbihat Anthology*
 - **Product Slug / URL:** `huurs.gumroad.com/l/hawameem-musabbihat-pack`
-- **Price:** **$19.00 (Single Collection) / $35.00 (Combo Pack)**
+- **Price:** **$5.00 (Single Collection) / $35.00 (Combo Pack)**
 - **Included Files:** `PACKAGE_03_THEMATIC_COLLECTIONS.zip` (638 KB, 28 assets)
 - **Scope:** Surahs 40–46 (The 7 Hawameem) and Surahs 57, 59, 61, 62, 64 (The Sovereign Musabbihat).
 
@@ -165,7 +165,7 @@ Lifetime updates. Zero DRM. 100% offline operable.
 
 - **Product Title:** *The Quranic Synthesis: 4 Master Thematic Anthologies Across 77 Surahs*
 - **Product Slug / URL:** `huurs.gumroad.com/l/thematic-anthologies-suite`
-- **Price:** **$39.00 (Single Collection) / $59.00 (Complete 4-Volume Bundle)**
+- **Price:** **$9.00 (Single Collection) / $59.00 (Complete 4-Volume Bundle)**
 - **Included Files:** `PACKAGE_05_THEMATIC_ANTHOLOGY_SUITE.zip` (306 KB, 41 assets) & `VOLUME_07_THEMATIC_ANTHOLOGIES_OMNIBUS.pdf` (40 plates)
 - **Scope:** 4 deep thematic syntheses traversing Prophetic Invocations, Cosmic Signs, Patient Resilience, and the Spiritual Heart across the entire pre-Juz 'Amma Qur'anic revelation.
 
