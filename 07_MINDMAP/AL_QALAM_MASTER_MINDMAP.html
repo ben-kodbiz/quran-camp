@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Al-Qalam: Master Mindmap Knowledge Architecture | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.15);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .portal-container { max-width: 1400px; width: 100%; }
+    .master-header {
+      background: var(--navy-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 24px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .header-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .header-subtitle { color: var(--gold-light); font-size: 1rem; font-weight: 500; margin-bottom: 12px; }
+    .header-meta {
+      display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.82rem; color: var(--text-muted);
+      border-top: 1px solid var(--border-muted); padding-top: 14px;
+    }
+    .meta-item strong { color: var(--white); }
+    .search-box-wrap { margin-bottom: 24px; }
+    .search-input {
+      width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold);
+      color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 0.95rem; outline: none;
+    }
+    .search-input:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+    .plate-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 10px 18px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.82rem;
+    }
+    .tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-view {
+      display: none; background: var(--navy-card); border: 1px solid var(--border-gold);
+      border-radius: 8px; padding: 30px; margin-bottom: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    }
+    .plate-view.active { display: block; }
+    .plate-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      border-bottom: 1px solid var(--border-muted); padding-bottom: 18px; margin-bottom: 24px;
+    }
+    .plate-title-box h2 { font-family: 'Cinzel', serif; font-size: 1.45rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-box p { color: var(--text-muted); font-size: 0.88rem; }
+    .plate-badge {
+      background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold);
+      padding: 6px 14px; border-radius: 4px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+    }
+    .pillars-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 900px) { .pillars-container { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-header { padding: 16px 20px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-header.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-header.purple { border-top: 3px solid var(--purple); }
+    .pillar-header.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-header.gold { border-top: 3px solid var(--gold); }
+    .pillar-header.rose { border-top: 3px solid var(--rose); }
+    .pillar-title { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .pillar-header.cyan .pillar-title { color: var(--cyan); }
+    .pillar-header.purple .pillar-title { color: var(--purple); }
+    .pillar-header.emerald .pillar-title { color: var(--emerald); }
+    .pillar-header.gold .pillar-title { color: var(--gold); }
+    .pillar-header.rose .pillar-title { color: var(--rose); }
+    .pillar-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .cards-list { padding: 18px 20px; display: flex; flex-direction: column; gap: 16px; }
+    .node-card { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 14px 16px; }
+    .node-card:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .node-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .node-badge { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .node-title { font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 600; color: var(--white); }
+    .node-bullets { list-style-type: none; }
+    .node-bullets li { position: relative; padding-left: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+    .node-bullets li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .master-footer { margin-top: 32px; text-align: center; border-top: 1px solid var(--border-muted); padding-top: 24px; color: var(--text-muted); font-size: 0.82rem; }
+    .footer-quote { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 2px; font-size: 0.92rem; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div class="portal-container">
+    <header class="master-header">
+      <div class="brand-tag"><span>HUURS STUDIO</span> • <span>THE DEEPER THOUGHT SERIES</span></div>
+      <h1 class="header-title">SURAH AL-QALAM: MASTER MINDMAP CARTOGRAPHY</h1>
+      <div class="header-subtitle">8 Landscape Plates • 16 Thematic Pillars • 64 Analytical Nodes</div>
+      <div class="header-meta">
+        <div class="meta-item"><strong>Classification:</strong> Makki Revelation (52 Verses)</div>
+        <div class="meta-item"><strong>Geometry:</strong> 16:9 Landscape High-Density Vector</div>
+        <div class="meta-item"><strong>Source Authority:</strong> Classical Sunni Exegesis (Tabari, Ibn Kathir, Qurtubi, Razi)</div>
+        <div class="meta-item"><strong>Verification:</strong> 100% Tier-1 Certified (Mutawatir & Consensus)</div>
+      </div>
+    </header>
+
+    <div class="search-box-wrap">
+      <input type="text" id="nodeSearch" class="search-input" placeholder="🔍 Search across all 64 analytical nodes..." onkeyup="filterNodes()">
+    </div>
+
+    <div class="plate-tabs">
+      <button class="tab-btn active" onclick="switchPlate(1)" id="tabBtn1">Plate 01: THE PRIMORDIAL PEN &...</button>
+      <button class="tab-btn " onclick="switchPlate(2)" id="tabBtn2">Plate 02: CORRUPT OLIGARCHS & ...</button>
+      <button class="tab-btn " onclick="switchPlate(3)" id="tabBtn3">Plate 03: THE PARABLE OF THE B...</button>
+      <button class="tab-btn " onclick="switchPlate(4)" id="tabBtn4">Plate 04: PENITENCE OF THE HEI...</button>
+      <button class="tab-btn " onclick="switchPlate(5)" id="tabBtn5">Plate 05: GRADUAL SEIZURE & TH...</button>
+      <button class="tab-btn " onclick="switchPlate(6)" id="tabBtn6">Plate 06: THE COMPANION OF THE...</button>
+      <button class="tab-btn " onclick="switchPlate(7)" id="tabBtn7">Plate 07: CLASSICAL SUNNI EXEG...</button>
+      <button class="tab-btn " onclick="switchPlate(8)" id="tabBtn8">Plate 08: TADABBUR PROTOCOLS &...</button>
+
+    </div>
+
+
+    <section class="plate-view active" id="plateView1">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 01: THE PRIMORDIAL PEN & SUBLIME MORAL CHARACTER</h2>
+          <p>Pillars 01 & 02: Noon and the Pen, Vindication from Madness & Infallible Prophetic Khuluq</p>
+        </div>
+        <div class="plate-badge">PLATE 01 : THE PEN & CHARACTER</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header cyan">
+            <div class="pillar-title">PILLAR 01: THE OATH OF THE COSMIC PEN</div>
+            <div class="pillar-sub">Noon wal-Qalam wa Ma Yasturoon & Inviolable Sanity</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="the mystery of the letter noon the celestial opening asserting transcendent divine authorship and commanding attentive reverence for revelation.">
+              <div class="node-title-row">
+                <span class="node-badge">01</span>
+                <span class="node-title">The Mystery of the Letter Noon</span>
+              </div>
+              <ul class="node-bullets">
+                <li>The celestial opening asserting transcendent divine authorship and commanding attentive reverence for revelation.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the oath by the cosmic pen wal-qalami wa ma yasturoon: swearing by the primordial pen and the sacred decrees recorded across creation.">
+              <div class="node-title-row">
+                <span class="node-badge">02</span>
+                <span class="node-title">The Oath by the Cosmic Pen</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Wal-Qalami wa ma yasturoon: swearing by the primordial pen and the sacred decrees recorded across creation.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="vindicated from false madness by the grace and favor of your lord, you o muhammad are never mad, insane, or possessed as slanderers allege.">
+              <div class="node-title-row">
+                <span class="node-badge">03</span>
+                <span class="node-title">Vindicated from False Madness</span>
+              </div>
+              <ul class="node-bullets">
+                <li>By the grace and favor of your Lord, you O Muhammad are never mad, insane, or possessed as slanderers allege.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="an uninterrupted eternal reward wa inna laka la-ajran ghayra mamnoon: reserved for you is an endless, unceasing recompense untouched by obligation.">
+              <div class="node-title-row">
+                <span class="node-badge">04</span>
+                <span class="node-title">An Uninterrupted Eternal Reward</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Wa inna laka la-ajran ghayra mamnoon: reserved for you is an endless, unceasing recompense untouched by obligation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header gold">
+            <div class="pillar-title">PILLAR 02: THE SUMMIT OF HUMAN NOBILITY</div>
+            <div class="pillar-sub">Wa Innaka la-'ala Khuluqin 'Azeem & Discovering Who is Stricken</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="the supreme character (khuluqin 'azeem) embodying the zenith of ethical majesty: 'a'ishah testified that his character was the living qur'an.">
+              <div class="node-title-row">
+                <span class="node-badge">05</span>
+                <span class="node-title">The Supreme Character (Khuluqin 'Azeem)</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Embodying the zenith of ethical majesty: 'A'ishah testified that his character was the living Qur'an.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the near vindication of sight fa-satubsiru wa yubsiroon: soon you will witness and your persecutors will behold the unmistakable truth.">
+              <div class="node-title-row">
+                <span class="node-badge">06</span>
+                <span class="node-title">The Near Vindication of Sight</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Fa-satubsiru wa yubsiroon: soon you will witness and your persecutors will behold the unmistakable truth.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="who among you is truly afflicted? bi-ayyikumu al-maftoon: revealing which party is truly demented, corrupted, and seduced by earthly folly.">
+              <div class="node-title-row">
+                <span class="node-badge">07</span>
+                <span class="node-title">Who Among You is Truly Afflicted?</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Bi-ayyikumu al-maftoon: revealing which party is truly demented, corrupted, and seduced by earthly folly.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the lord's knowledge of guidance your lord knows best who has wandered from his path, and he knows best who are rightly guided.">
+              <div class="node-title-row">
+                <span class="node-badge">08</span>
+                <span class="node-title">The Lord's Knowledge of Guidance</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Your Lord knows best who has wandered from His path, and He knows best who are rightly guided.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView2">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 02: CORRUPT OLIGARCHS & THE REFUSAL TO COMPROMISE</h2>
+          <p>Pillars 03 & 04: The Demand for Compromise, Nine Toxic Traits & Branding the Snout</p>
+        </div>
+        <div class="plate-badge">PLATE 02 : OLIGARCHIC ARROGANCE</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header purple">
+            <div class="pillar-title">PILLAR 03: REBUFFING THE COMPROMISE PROPOSAL</div>
+            <div class="pillar-sub">Waddoo Law Tudhinu fa-Yudhinoon & Preserving Creed</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="do not yield to deniers firm prohibition against bending to the political demands of pagan aristocrats who barter principle for ease.">
+              <div class="node-title-row">
+                <span class="node-badge">09</span>
+                <span class="node-title">Do Not Yield to Deniers</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Firm prohibition against bending to the political demands of pagan aristocrats who barter principle for ease.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the desire for mutual compromise waddoo law tudhinu fa-yudhinoon: they yearn that you soften your stance so that they too might feign flexibility.">
+              <div class="node-title-row">
+                <span class="node-badge">10</span>
+                <span class="node-title">The Desire for Mutual Compromise</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Waddoo law tudhinu fa-yudhinoon: they yearn that you soften your stance so that they too might feign flexibility.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the uncompromising integrity of truth prophetic mission cannot merge monotheism with polytheism; revelation does not engage in pragmatic appeasement.">
+              <div class="node-title-row">
+                <span class="node-badge">11</span>
+                <span class="node-title">The Uncompromising Integrity of Truth</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Prophetic mission cannot merge monotheism with polytheism; revelation does not engage in pragmatic appeasement.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="unshakable steadfastness in mecca refusing to compromise the foundational creed even when facing extreme economic boycott and isolation.">
+              <div class="node-title-row">
+                <span class="node-badge">12</span>
+                <span class="node-title">Unshakable Steadfastness in Mecca</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Refusing to compromise the foundational creed even when facing extreme economic boycott and isolation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header rose">
+            <div class="pillar-title">PILLAR 04: DECONSTRUCTING THE TOXIC ARISTOCRAT</div>
+            <div class="pillar-sub">Hallafin Maheen, Hammazin Mashsha'in bi-Nameem & Branding Snouts</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="nine marks of moral degeneracy exposing the despicable oath-swearer, slanderer, spreader of gossip, hinderer of good, and transgressor.">
+              <div class="node-title-row">
+                <span class="node-badge">13</span>
+                <span class="node-title">Nine Marks of Moral Degeneracy</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Exposing the despicable oath-swearer, slanderer, spreader of gossip, hinderer of good, and transgressor.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="cruel and coarse bastard ('utullin zaneem) unmasking walid ibn al-mughirah: arrogant, merciless, and claiming lineage to which he had no moral right.">
+              <div class="node-title-row">
+                <span class="node-badge">14</span>
+                <span class="node-title">Cruel and Coarse Bastard ('Utullin Zaneem)</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Unmasking Walid ibn al-Mughirah: arrogant, merciless, and claiming lineage to which he had no moral right.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="corrupted by wealth and children believing that material riches and numerous sons gave him license to dismiss divine verses as ancient fables.">
+              <div class="node-title-row">
+                <span class="node-badge">15</span>
+                <span class="node-title">Corrupted by Wealth and Children</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Believing that material riches and numerous sons gave him license to dismiss divine verses as ancient fables.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="branding upon the snout (al-khurtum) sa-nasimuhu 'ala al-khurtoom: marking his haughty nose with indelible public disgrace in this world and hell.">
+              <div class="node-title-row">
+                <span class="node-badge">16</span>
+                <span class="node-title">Branding Upon the Snout (Al-Khurtum)</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Sa-nasimuhu 'ala al-khurtoom: marking his haughty nose with indelible public disgrace in this world and Hell.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView3">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 03: THE PARABLE OF THE BLIGHTED ORCHARD</h2>
+          <p>Pillars 05 & 06: The Secret Dawn Harvest, Omitting Insha Allah, The Fire Storm & Morning Desolation</p>
+        </div>
+        <div class="plate-badge">PLATE 03 : THE BLIGHTED ORCHARD</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header cyan">
+            <div class="pillar-title">PILLAR 05: THE GREEDY NIGHT CONSPIRACY</div>
+            <div class="pillar-sub">Ashab al-Jannah, Swearing to Pluck Early & Omitting Allah</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="the trial of the heirs of the garden inna balawnahum kama balawna as-hab al-jannah: testing the meccans just as we tested the orchard owners.">
+              <div class="node-title-row">
+                <span class="node-badge">17</span>
+                <span class="node-title">The Trial of the Heirs of the Garden</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Inna balawnahum kama balawna as-hab al-jannah: testing the Meccans just as We tested the orchard owners.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="swearing to harvest at dawn they swore an arrogant oath to reap their abundant fruits at first light so no beggar could ask for a share.">
+              <div class="node-title-row">
+                <span class="node-badge">18</span>
+                <span class="node-title">Swearing to Harvest at Dawn</span>
+              </div>
+              <ul class="node-bullets">
+                <li>They swore an arrogant oath to reap their abundant fruits at first light so no beggar could ask for a share.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the omission of insha allah wa la yastathnoon: neglecting to say 'if allah wills', presuming total independent control over tomorrow's yield.">
+              <div class="node-title-row">
+                <span class="node-badge">19</span>
+                <span class="node-title">The Omission of Insha Allah</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Wa la yastathnoon: neglecting to say 'if Allah wills', presuming total independent control over tomorrow's yield.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="whispering through the shadows creeping toward the grove at dawn, murmuring in secrecy: 'let no poor person enter upon you today!'">
+              <div class="node-title-row">
+                <span class="node-badge">20</span>
+                <span class="node-title">Whispering Through the Shadows</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Creeping toward the grove at dawn, murmuring in secrecy: 'Let no poor person enter upon you today!'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header rose">
+            <div class="pillar-title">PILLAR 06: THE NOCTURNAL RETRIBUTIVE FIRE</div>
+            <div class="pillar-sub">Ta'ifun min Rabbika, Like Harvested Stubble & Mutual Blame</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="the sweeping celestial destruction while they slept in greedy anticipation, a fiery visitation from your lord encircled their orchards.">
+              <div class="node-title-row">
+                <span class="node-badge">21</span>
+                <span class="node-title">The Sweeping Celestial Destruction</span>
+              </div>
+              <ul class="node-bullets">
+                <li>While they slept in greedy anticipation, a fiery visitation from your Lord encircled their orchards.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="reduced to black ash (as-sareem) by morning, the lush green paradise of fruit trees was transformed into charred, pitch-black wasteland.">
+              <div class="node-title-row">
+                <span class="node-badge">22</span>
+                <span class="node-title">Reduced to Black Ash (As-Sareem)</span>
+              </div>
+              <ul class="node-bullets">
+                <li>By morning, the lush green paradise of fruit trees was transformed into charred, pitch-black wasteland.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the stunned arrival: we have lost our way! upon seeing the ruins, they gasped: 'we have surely lost our way! nay, we are entirely ruined and deprived!'">
+              <div class="node-title-row">
+                <span class="node-badge">23</span>
+                <span class="node-title">The Stunned Arrival: We Have Lost Our Way!</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Upon seeing the ruins, they gasped: 'We have surely lost our way! Nay, we are entirely ruined and deprived!'</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the moderate brother's admonition the best among them reminded: 'did i not tell you: why did you not glorify allah and praise his name?'">
+              <div class="node-title-row">
+                <span class="node-badge">24</span>
+                <span class="node-title">The Moderate Brother's Admonition</span>
+              </div>
+              <ul class="node-bullets">
+                <li>The best among them reminded: 'Did I not tell you: why did you not glorify Allah and praise His name?'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView4">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 04: PENITENCE OF THE HEIRS & THE SHIN UNVEILED</h2>
+          <p>Pillars 07 & 08: Subhana Rabbina Inna Kunna Dhalimeen, The Day the Shin is Bared & Paralysis of Knees</p>
+        </div>
+        <div class="plate-badge">PLATE 04 : PENITENCE & THE SHIN</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header emerald">
+            <div class="pillar-title">PILLAR 07: CONFESSION AND MUTUAL ACCUSATION</div>
+            <div class="pillar-sub">Inna Kunna Tagheen, Hope for Better & This is Worldly Torment</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="confession of transgression they cried: 'glory be to our lord! truly, we were unjust transgressors who wronged our own souls.'">
+              <div class="node-title-row">
+                <span class="node-badge">25</span>
+                <span class="node-title">Confession of Transgression</span>
+              </div>
+              <ul class="node-bullets">
+                <li>They cried: 'Glory be to our Lord! Truly, we were unjust transgressors who wronged our own souls.'</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="turning upon each other in blame turning in bitter recrimination, each blaming the other for proposing the greedy exclusion of the destitute.">
+              <div class="node-title-row">
+                <span class="node-badge">26</span>
+                <span class="node-title">Turning Upon Each Other in Blame</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Turning in bitter recrimination, each blaming the other for proposing the greedy exclusion of the destitute.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="hoping for a better replacement they prayed: 'perhaps our lord will substitute for us a garden better than it; truly, to our lord we turn in longing.'">
+              <div class="node-title-row">
+                <span class="node-badge">27</span>
+                <span class="node-title">Hoping for a Better Replacement</span>
+              </div>
+              <ul class="node-bullets">
+                <li>They prayed: 'Perhaps our Lord will substitute for us a garden better than it; truly, to our Lord we turn in longing.'</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="such is the worldly punishment kadhalika al-'adhab: such is earthly retribution, but the punishment of the hereafter is incomparably greater.">
+              <div class="node-title-row">
+                <span class="node-badge">28</span>
+                <span class="node-title">Such is the Worldly Punishment</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Kadhalika al-'adhab: such is earthly retribution, but the punishment of the Hereafter is incomparably greater.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header purple">
+            <div class="pillar-title">PILLAR 08: THE UNVEILED SHIN & PROSTRATION INABILITY</div>
+            <div class="pillar-sub">Yawma Yukshafu 'an Saq, Paralyzed Spines & Refusing in Health</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="the terrible day the shin is unveiled yawma yukshafu 'an saq: the day of judgment when cosmic horrors are laid bare and all secrets unveiled.">
+              <div class="node-title-row">
+                <span class="node-badge">29</span>
+                <span class="node-title">The Terrible Day the Shin is Unveiled</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Yawma yukshafu 'an saq: the Day of Judgment when cosmic horrors are laid bare and all secrets unveiled.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="called to bow but unable to prostrate they will be commanded to fall in prostration, but their hardened spines will freeze rigid as solid horn.">
+              <div class="node-title-row">
+                <span class="node-badge">30</span>
+                <span class="node-title">Called to Bow but Unable to Prostrate</span>
+              </div>
+              <ul class="node-bullets">
+                <li>They will be commanded to fall in prostration, but their hardened spines will freeze rigid as solid horn.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="cast-down eyes shrouded in humiliation khashi'atan absaruhum tarhaquhum dhillah: eyes lowered in terror, overwhelmed by catastrophic disgrace.">
+              <div class="node-title-row">
+                <span class="node-badge">31</span>
+                <span class="node-title">Cast-Down Eyes Shrouded in Humiliation</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Khashi'atan absaruhum tarhaquhum dhillah: eyes lowered in terror, overwhelmed by catastrophic disgrace.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="refusing prostration when healthy they were invited to bow in dunya while whole and sound (salimoon), but arrogance made them refuse.">
+              <div class="node-title-row">
+                <span class="node-badge">32</span>
+                <span class="node-title">Refusing Prostration When Healthy</span>
+              </div>
+              <ul class="node-bullets">
+                <li>They were invited to bow in Dunya while whole and sound (Salimoon), but arrogance made them refuse.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView5">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 05: GRADUAL SEIZURE & THE INJUSTICE OF EQUATING</h2>
+          <p>Pillars 09 & 10: Sanastadrijuhum, My Scheme is Firm, Asking No Fee & Equalizing Righteous with Wicked?</p>
+        </div>
+        <div class="plate-badge">PLATE 05 : STRATAGEM & REASON</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header gold">
+            <div class="pillar-title">PILLAR 09: THE DIVINE GRADUAL RESCISSION</div>
+            <div class="pillar-sub">Sanastadrijuhum min Haythu la Ya'lamoon, Kaydee Mateen & No Debt</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="leave me with those who deny fa-dharnee wa man yukadh-dhibu bi-hadha al-hadith: leave me to deal with those who mock this revelation.">
+              <div class="node-title-row">
+                <span class="node-badge">33</span>
+                <span class="node-title">Leave Me with Those Who Deny</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Fa-dharnee wa man yukadh-dhibu bi-hadha al-hadith: leave Me to deal with those who mock this revelation.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="gradual luring into destruction we will lead them step-by-step to ruin from ways they do not perceive, through health and unearned wealth.">
+              <div class="node-title-row">
+                <span class="node-badge">34</span>
+                <span class="node-title">Gradual Luring into Destruction</span>
+              </div>
+              <ul class="node-bullets">
+                <li>We will lead them step-by-step to ruin from ways they do not perceive, through health and unearned wealth.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="my stratagem is unbreakable (mateen) and i grant them respite; indeed, my plan is firm, unyielding, and impossible to escape.">
+              <div class="node-title-row">
+                <span class="node-badge">35</span>
+                <span class="node-title">My Stratagem is Unbreakable (Mateen)</span>
+              </div>
+              <ul class="node-bullets">
+                <li>And I grant them respite; indeed, My plan is firm, unyielding, and impossible to escape.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="asking no material compensation do you ask them for a financial fee so that they are weighed down by heavy debts? nay, they have no excuse.">
+              <div class="node-title-row">
+                <span class="node-badge">36</span>
+                <span class="node-title">Asking No Material Compensation</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Do you ask them for a financial fee so that they are weighed down by heavy debts? Nay, they have no excuse.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header cyan">
+            <div class="pillar-title">PILLAR 10: REFUTING THE MORAL EQUIVALENCY</div>
+            <div class="pillar-sub">Afa-Naj'alu al-Muslimeena kal-Mujrimeen, What is Your Judgment?</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="shall we equate muslims with criminals? afa-naj'alu al-muslimeena kal-mujrimeen: shall the faithful who submitted be treated like guilty rebels?">
+              <div class="node-title-row">
+                <span class="node-badge">37</span>
+                <span class="node-title">Shall We Equate Muslims with Criminals?</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Afa-naj'alu al-muslimeena kal-mujrimeen: shall the faithful who submitted be treated like guilty rebels?</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="what is wrong with your judgment? ma lakum kayfa tahkumoon: what is the matter with your intellects? how perversely do you assess justice?">
+              <div class="node-title-row">
+                <span class="node-badge">38</span>
+                <span class="node-title">What is Wrong with Your Judgment?</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Ma lakum kayfa tahkumoon: what is the matter with your intellects? How perversely do you assess justice?</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="do you possess an alternate scripture? or do you have an authoritative celestial book in which you read that you can have whatever you choose?">
+              <div class="node-title-row">
+                <span class="node-badge">39</span>
+                <span class="node-title">Do You Possess an Alternate Scripture?</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Or do you have an authoritative celestial book in which you read that you can have whatever you choose?</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="solemn covenants reaching resurrection or have you received binding oaths from us enduring till judgment day guaranteeing your desires?">
+              <div class="node-title-row">
+                <span class="node-badge">40</span>
+                <span class="node-title">Solemn Covenants Reaching Resurrection</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Or have you received binding oaths from Us enduring till Judgment Day guaranteeing your desires?</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView6">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 06: THE COMPANION OF THE WHALE & PROPHETIC PATIENCE</h2>
+          <p>Pillars 11 & 12: Sahib al-Hoot / Yunus, Swallowed in Grief, Divine Grace & Cast Upon the Barren Shore</p>
+        </div>
+        <div class="plate-badge">PLATE 06 : THE WHALE & GRACE</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header emerald">
+            <div class="pillar-title">PILLAR 11: PATIENCE WITH THE LORD'S DECREE</div>
+            <div class="pillar-sub">Fasbir li-Hukmi Rabbika, Wa la Takun ka-Sahib al-Hoot & Anguish</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="persevere for the command of your lord be patient with divine decree and do not emulate the impatient departure of the companion of the whale.">
+              <div class="node-title-row">
+                <span class="node-badge">41</span>
+                <span class="node-title">Persevere for the Command of Your Lord</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Be patient with divine decree and do not emulate the impatient departure of the Companion of the Whale.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="crying out in choking darkness idh nada wa huwa makdhoom: yunus cried out from the belly of the whale while choked with inward sorrow.">
+              <div class="node-title-row">
+                <span class="node-badge">42</span>
+                <span class="node-title">Crying Out in Choking Darkness</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Idh nada wa huwa makdhoom: Yunus cried out from the belly of the whale while choked with inward sorrow.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="rescued solely by divine favor lawla an tadarakahu ni'matun min rabbih: had not grace from his lord reached him, he would have been cast out disgraced.">
+              <div class="node-title-row">
+                <span class="node-badge">43</span>
+                <span class="node-title">Rescued Solely by Divine Favor</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Lawla an tadarakahu ni'matun min Rabbih: had not grace from his Lord reached him, he would have been cast out disgraced.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="gathered and made of the righteous his lord chose him and placed him among the highest ranks of the righteous (as-salihin).">
+              <div class="node-title-row">
+                <span class="node-badge">44</span>
+                <span class="node-title">Gathered and Made of the Righteous</span>
+              </div>
+              <ul class="node-bullets">
+                <li>His Lord chose him and placed him among the highest ranks of the righteous (As-Salihin).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header rose">
+            <div class="pillar-title">PILLAR 12: THE TOXIC GLANCES & THE UNIVERSAL DHIKR</div>
+            <div class="pillar-sub">Layuzliqoonaka bi-Absarihim, Huwa Majnoon & Dhikrun lil-'Alameen</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="piercing glances of envious hatred the disbelievers almost strike you down with their venomous stares when they hear the recitation.">
+              <div class="node-title-row">
+                <span class="node-badge">45</span>
+                <span class="node-title">Piercing Glances of Envious Hatred</span>
+              </div>
+              <ul class="node-bullets">
+                <li>The disbelievers almost strike you down with their venomous stares when they hear the recitation.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the slander of possession repeated they sneer in desperation: 'indeed, he is mad!'—unable to counter the divine eloquence with argument.">
+              <div class="node-title-row">
+                <span class="node-badge">46</span>
+                <span class="node-title">The Slander of Possession Repeated</span>
+              </div>
+              <ul class="node-bullets">
+                <li>They sneer in desperation: 'Indeed, he is mad!'—unable to counter the divine eloquence with argument.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="nothing less than a universal reminder wa ma huwa illa dhikrun lil-'alameen: this qur'an is nothing less than a universal admonition for all cosmos.">
+              <div class="node-title-row">
+                <span class="node-badge">47</span>
+                <span class="node-title">Nothing Less Than a Universal Reminder</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Wa ma huwa illa dhikrun lil-'alameen: this Qur'an is nothing less than a universal admonition for all cosmos.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the inviolable triumph of prophethood no evil eye, tribal coalition, or venomous gaze can extinguish the light of divine truth.">
+              <div class="node-title-row">
+                <span class="node-badge">48</span>
+                <span class="node-title">The Inviolable Triumph of Prophethood</span>
+              </div>
+              <ul class="node-bullets">
+                <li>No evil eye, tribal coalition, or venomous gaze can extinguish the light of divine truth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView7">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 07: CLASSICAL SUNNI EXEGESIS & SCHOLARLY COMMENTARY</h2>
+          <p>Pillars 13 & 14: Tabari, Ibn Kathir, Qurtubi & Razi on Khuluqin 'Azeem and the Intercepted Evil Eye</p>
+        </div>
+        <div class="plate-badge">PLATE 07 : SCHOLARLY SYNTHESIS</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header gold">
+            <div class="pillar-title">PILLAR 13: THE ANATOMY OF KHULUQIN 'AZEEM</div>
+            <div class="pillar-sub">Classical Exegesis of the Supreme Moral Station</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="ibn abbas on the high standard of islam interpreted khuluqin 'azeem as steadfast embodiment of the comprehensive religious law and values of islam.">
+              <div class="node-title-row">
+                <span class="node-badge">49</span>
+                <span class="node-title">Ibn Abbas on the High Standard of Islam</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Interpreted Khuluqin 'Azeem as steadfast embodiment of the comprehensive religious law and values of Islam.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="tabari on prophetic gentleness & discipline documented how the prophet met barbaric tribal insults with forbearance, patience, and profound wisdom.">
+              <div class="node-title-row">
+                <span class="node-badge">50</span>
+                <span class="node-title">Tabari on Prophetic Gentleness & Discipline</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Documented how the Prophet met barbaric tribal insults with forbearance, patience, and profound wisdom.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="qurtubi on the living embodiment of revelation whatever the qur'an praised, the prophet ﷺ enacted; whatever it prohibited, he shunned completely.">
+              <div class="node-title-row">
+                <span class="node-badge">51</span>
+                <span class="node-title">Qurtubi on the Living Embodiment of Revelation</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Whatever the Qur'an praised, the Prophet ﷺ enacted; whatever it prohibited, he shunned completely.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="razi on moral perfection surpassing creation fakhr al-din al-razi notes that moral perfection is the highest proof of apostolic authenticity.">
+              <div class="node-title-row">
+                <span class="node-badge">52</span>
+                <span class="node-title">Razi on Moral Perfection Surpassing Creation</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Fakhr al-Din al-Razi notes that moral perfection is the highest proof of apostolic authenticity.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header purple">
+            <div class="pillar-title">PILLAR 14: THE EVIL EYE & SANASTADRIJUHUM EXPOSITION</div>
+            <div class="pillar-sub">Ayat al-'Ayn Reality & Gradual Luring Into Punishment</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="authenticity of the evil eye in sunnah ibn kathir cites the authentic hadith: 'the evil eye is a reality (al-'aynu haqqun); had anything outrun qadar, it would be the eye.'">
+              <div class="node-title-row">
+                <span class="node-badge">53</span>
+                <span class="node-title">Authenticity of the Evil Eye in Sunnah</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Ibn Kathir cites the authentic hadith: 'The evil eye is a reality (Al-'Aynu haqqun); had anything outrun Qadar, it would be the eye.'</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="banu asad's starvation strategy pagan experts who starved themselves for three days to cast lethal glances were neutralized by ayahs 51-52.">
+              <div class="node-title-row">
+                <span class="node-badge">54</span>
+                <span class="node-title">Banu Asad's Starvation Strategy</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Pagan experts who starved themselves for three days to cast lethal glances were neutralized by Ayahs 51-52.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="istidraj: the peril of unchecked blessings tabari explains that when sinners receive continuous wealth and ease without gratitude, it is gradual entrapment.">
+              <div class="node-title-row">
+                <span class="node-badge">55</span>
+                <span class="node-title">Istidraj: The Peril of Unchecked Blessings</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Tabari explains that when sinners receive continuous wealth and ease without gratitude, it is gradual entrapment.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the moral responsibility of wealth wealth is never a sign of divine endorsement; its hoarding without charity leads to sudden blighting.">
+              <div class="node-title-row">
+                <span class="node-badge">56</span>
+                <span class="node-title">The Moral Responsibility of Wealth</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Wealth is never a sign of divine endorsement; its hoarding without charity leads to sudden blighting.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="plate-view " id="plateView8">
+      <div class="plate-header">
+        <div class="plate-title-box">
+          <h2>Plate 08: TADABBUR PROTOCOLS & MODERN APPLICATION</h2>
+          <p>Pillars 15 & 16: Ethics of the Pen, Avoiding the Greedy Heirs & Grounding the Soul in Insha Allah</p>
+        </div>
+        <div class="plate-badge">PLATE 08 : CONTEMPLATIVE PRACTICE</div>
+      </div>
+      <div class="pillars-container">
+        
+        <div class="pillar-box">
+          <div class="pillar-header cyan">
+            <div class="pillar-title">PILLAR 15: THE SANCTITY OF THE WRITTEN WORD</div>
+            <div class="pillar-sub">The Modern Pen: Digital Publishing, Integrity & Truth</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="the modern responsibility of writing every stroke of the keyboard and digital word is recorded under 'noon wal-qalam wa ma yasturoon'.">
+              <div class="node-title-row">
+                <span class="node-badge">57</span>
+                <span class="node-title">The Modern Responsibility of Writing</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Every stroke of the keyboard and digital word is recorded under 'Noon wal-Qalam wa ma yasturoon'.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="guarding against defamation and slander fleeing from the archetype of 'hammazin mashsha'in bi-nameem' in online discourse and journalism.">
+              <div class="node-title-row">
+                <span class="node-badge">58</span>
+                <span class="node-title">Guarding Against Defamation and Slander</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Fleeing from the archetype of 'Hammazin Mashsha'in bi-Nameem' in online discourse and journalism.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="refusing intellectual and ethical compromise resisting pressure to dilute timeless moral imperatives for corporate or political favor.">
+              <div class="node-title-row">
+                <span class="node-badge">59</span>
+                <span class="node-title">Refusing Intellectual and Ethical Compromise</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Resisting pressure to dilute timeless moral imperatives for corporate or political favor.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="the inviolability of moral character realizing that character (khuluq) is the ultimate credential and protection of the believer.">
+              <div class="node-title-row">
+                <span class="node-badge">60</span>
+                <span class="node-title">The Inviolability of Moral Character</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Realizing that character (Khuluq) is the ultimate credential and protection of the believer.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pillar-box">
+          <div class="pillar-header emerald">
+            <div class="pillar-title">PILLAR 16: EMBRACING INSHA ALLAH & PATIENT PERSEVERANCE</div>
+            <div class="pillar-sub">Overcoming the Greed of Ashab al-Jannah & Yunus's Lesson</div>
+          </div>
+          <div class="cards-list">
+            
+            <div class="node-card" data-search="subordinating all plans to divine will never scheduling tomorrow's harvest or financial gains without the sincere internal submission: insha allah.">
+              <div class="node-title-row">
+                <span class="node-badge">61</span>
+                <span class="node-title">Subordinating All Plans to Divine Will</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Never scheduling tomorrow's harvest or financial gains without the sincere internal submission: Insha Allah.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="generosity as the protector of wealth realizing that withholding the share of the destitute (haqq al-miskeen) invites the destructive ta'if.">
+              <div class="node-title-row">
+                <span class="node-badge">62</span>
+                <span class="node-title">Generosity as the Protector of Wealth</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Realizing that withholding the share of the destitute (Haqq al-Miskeen) invites the destructive Ta'if.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="patience in the face of slow results embracing 'fasbir li-hukmi rabbika' and avoiding the impatient frustration that seized yunus before his trial.">
+              <div class="node-title-row">
+                <span class="node-badge">63</span>
+                <span class="node-title">Patience in the Face of Slow Results</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Embracing 'Fasbir li-Hukmi Rabbika' and avoiding the impatient frustration that seized Yunus before his trial.</li>
+              </ul>
+            </div>
+            <div class="node-card" data-search="invoking divine shelter against malice reciting the closing verses with full conviction that the qur'an is an impenetrable spiritual shield.">
+              <div class="node-title-row">
+                <span class="node-badge">64</span>
+                <span class="node-title">Invoking Divine Shelter Against Malice</span>
+              </div>
+              <ul class="node-bullets">
+                <li>Reciting the closing verses with full conviction that the Qur'an is an impenetrable spiritual shield.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="master-footer">
+      <div class="footer-quote">READ. REFLECT. RETURN.</div>
+      <p>Huurs Knowledge Systems • Strict Sunni Islamic Source Discipline • All 64 Nodes Certified</p>
+    </footer>
+  </div>
+
+  <script>
+    function switchPlate(page) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-view').forEach(view => view.classList.remove('active'));
+      const tab = document.getElementById('tabBtn' + page);
+      const view = document.getElementById('plateView' + page);
+      if (tab) tab.classList.add('active');
+      if (view) view.classList.add('active');
+    }
+
+    function filterNodes() {
+      const q = document.getElementById('nodeSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.node-card');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>

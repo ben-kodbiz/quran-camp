@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Ar-Rahman: Interactive Knowledge Suite | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.2);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy-deep); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; padding-bottom: 60px; }
+    .hero-banner {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 89, 0.12) 0%, rgba(6, 10, 18, 0.95) 70%), var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold); padding: 48px 24px 36px 24px; text-align: center;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 2px; color: var(--gold); background: var(--navy-card); border: 1px solid var(--border-gold);
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+    .hero-subtitle { color: var(--gold-light); font-size: 1.1rem; font-weight: 500; max-width: 800px; margin: 0 auto 20px auto; }
+    .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stat-badge { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 8px; padding: 10px 18px; display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+    .main-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; }
+    .controls-bar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .search-box { width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold); color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-box:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    .nav-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+    .plate-tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.78rem;
+    }
+    .plate-tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .plate-tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-section { display: none; background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+    .plate-section.active { display: block; }
+    .plate-title-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-muted); padding-bottom: 16px; margin-bottom: 20px; }
+    .plate-title-bar h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-bar p { font-size: 0.85rem; color: var(--text-muted); }
+    .plate-badge-box { display: flex; gap: 8px; }
+    .badge-gold { background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); color: var(--emerald); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .pillars-layout { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-bar { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 { font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .cards-wrapper { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-item { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 12px 14px; }
+    .card-item:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .card-idx { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .card-title-row h4 { font-family: 'Cinzel', serif; font-size: 0.86rem; color: var(--white); }
+    .card-points { list-style-type: none; }
+    .card-points li { position: relative; padding-left: 14px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .card-points li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .modals-panel { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-top: 32px; }
+    .modal-triggers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .modal-btn { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; padding: 16px; text-align: left; cursor: pointer; color: var(--white); }
+    .modal-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .modal-btn h5 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 6px; }
+    .modal-btn p { font-size: 0.78rem; color: var(--text-muted); }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 10, 18, 0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-body { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+    .modal-body p { font-size: 0.9rem; color: var(--white); margin-bottom: 14px; line-height: 1.7; }
+    .modal-source { background: var(--navy-elevated); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="hero-banner">
+    <div class="brand-pill">HUURS STUDIO • THE DEEPER THOUGHT SERIES</div>
+    <h1 class="hero-title">SURAH AR-RAHMAN</h1>
+    <div class="hero-subtitle">Interactive Knowledge Suite: 8 Plates • 16 Pillars • 64 Structural Nodes</div>
+    <div class="stats-row">
+      <div class="stat-badge"><span class="stat-val">78</span><span class="stat-lbl">Verses</span></div>
+      <div class="stat-badge"><span class="stat-val">8</span><span class="stat-lbl">Plates</span></div>
+      <div class="stat-badge"><span class="stat-val">16</span><span class="stat-lbl">Pillars</span></div>
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Nodes</span></div>
+      <div class="stat-badge"><span class="stat-val">100%</span><span class="stat-lbl">Sunni Verified</span></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="controls-bar">
+      <input type="text" id="suiteSearch" class="search-box" placeholder="🔍 Live search across all 64 nodes..." onkeyup="filterSuite()">
+      <div class="nav-tabs-wrapper">
+        <button class="plate-tab-btn active" onclick="switchSuitePlate(1)" id="suiteTab1">Plate 01: AR-RAHMAN: TEACHER...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(2)" id="suiteTab2">Plate 02: THE SACRED BALANCE...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(3)" id="suiteTab3">Plate 03: DUAL GENESIS & THE...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(4)" id="suiteTab4">Plate 04: CONVERGING SEAS & ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(5)" id="suiteTab5">Plate 05: KULLU MAN 'ALAYHA ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(6)" id="suiteTab6">Plate 06: PENETRATING HEAVEN...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(7)" id="suiteTab7">Plate 07: THE TWIN HIGHER GA...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(8)" id="suiteTab8">Plate 08: THE TWO DESCENDING...</button>
+
+      </div>
+    </div>
+
+
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 01: AR-RAHMAN: TEACHER OF QUR'AN & SPEECH</h2>
+        <p>Pillars 01 & 02: Ar-Rahman Bestowing Bayan & Sun and Moon in Precise Orbits while Stars and Trees Prostrate</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : COSMIC TEACHER]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 01: AR-RAHMAN & THE BESTOWAL OF BAYAN</h3>
+          <p>Ar-Rahman, 'Allama al-Qur'an, Khalaqa al-Insan & 'Allamahu al-Bayan</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the sovereign inauguration of ar-rahman ar-rahman: the most merciful whose boundless compassion encompasses all creation and existence.">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>The Sovereign Inauguration of Ar-Rahman</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ar-Rahman: the Most Merciful whose boundless compassion encompasses all creation and existence.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="he taught the divine qur'an to humanity 'allama al-qur'an: he taught the qur'an as the supreme ontological guide preceding human creation.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>He Taught the Divine Qur'an to Humanity</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Allama al-Qur'an: He taught the Qur'an as the supreme ontological guide preceding human creation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="he created the human being in beauty khalaqa al-insan: he brought forth the human being endowed with consciousness, dignity, and capacity.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>He Created the Human Being in Beauty</h4>
+            </div>
+            <ul class="card-points">
+              <li>Khalaqa al-insan: He brought forth the human being endowed with consciousness, dignity, and capacity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="he taught him articulate speech (al-bayan) 'allamahu al-bayan: he equipped him with articulate speech, expressive language, and moral discernment.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>He Taught Him Articulate Speech (Al-Bayan)</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Allamahu al-bayan: He equipped him with articulate speech, expressive language, and moral discernment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 02: COSMIC ORBITS & CELESTIAL PROSTRATION</h3>
+          <p>Sun and Moon in Calculation (Husban) & Stars and Trees Prostrating</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="sun and moon moving in flawless calculation ash-shamsu wal-qamaru bi-husban: the sun and the moon traverse their orbits with mathematical precision.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>Sun and Moon Moving in Flawless Calculation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ash-shamsu wal-qamaru bi-husban: the sun and the moon traverse their orbits with mathematical precision.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="governing time, seasons, and life on earth calibrating day and night, planetary balance, and ecological cycles with unerring regularity.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>Governing Time, Seasons, and Life on Earth</h4>
+            </div>
+            <ul class="card-points">
+              <li>Calibrating day and night, planetary balance, and ecological cycles with unerring regularity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the stars and trees prostrate in total surrender wan-najmu wash-shajaru yasjudaan: the celestial stars and earthly vegetation bow in humble adoration.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>The Stars and Trees Prostrate in Total Surrender</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wan-najmu wash-shajaru yasjudaan: the celestial stars and earthly vegetation bow in humble adoration.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="universal cosmic liturgy of creation all nature participates in an unbroken symphony of monotheistic submission to the creator.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>Universal Cosmic Liturgy of Creation</h4>
+            </div>
+            <ul class="card-points">
+              <li>All nature participates in an unbroken symphony of monotheistic submission to the Creator.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 02: THE SACRED BALANCE & EARTH PROVISIONS</h2>
+        <p>Pillars 03 & 04: Raising the Sky and Establishing Mizan & Earth Spread Wide with Dates, Grain and Fragrant Herbs</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : THE SACRED BALANCE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 03: ELEVATION OF SKY & THE SACRED MIZAN</h3>
+          <p>Raised the Sky, Established the Balance & Transgress Not in the Scale</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="he raised the vaulted canopy of heaven was-sama'a rafa'aha: he elevated the vast cosmic heavens high above the terrestrial sphere.">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>He Raised the Vaulted Canopy of Heaven</h4>
+            </div>
+            <ul class="card-points">
+              <li>Was-sama'a rafa'aha: He elevated the vast cosmic heavens high above the terrestrial sphere.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="and he established the universal balance (mizan) wa wada'a al-mizan: and he established the sacred scale of justice, equilibrium, and physical law.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>And He Established the Universal Balance (Mizan)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa wada'a al-mizan: and He established the sacred scale of justice, equilibrium, and physical law.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="that you transgress not within the balance alla tatghaw feel-mizan: that you violate not the cosmic and moral balance through injustice or greed.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>That You Transgress Not Within the Balance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Alla tatghaw feel-mizan: that you violate not the cosmic and moral balance through injustice or greed.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="establish weight with equity and do not defraud wa aqeemoo al-wazna bil-qisti wa la tukhsiroo al-mizan: observe weights with justice and never cheat!">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>Establish Weight with Equity and Do Not Defraud</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa aqeemoo al-wazna bil-qisti wa la tukhsiroo al-mizan: observe weights with justice and never cheat!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 04: THE TERRESTRIAL CRADLE FOR LIVING SOULS</h3>
+          <p>Earth Spread for Creatures, Palms, Grain on Husks & The 1st Refrain</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the earth laid out as a cradle for living beings wal-arda wada'aha lil-anam: and the earth he laid down hospitably for all living creatures.">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>The Earth Laid Out as a Cradle for Living Beings</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wal-arda wada'aha lil-anam: and the earth He laid down hospitably for all living creatures.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="bearing diverse fruits and clustered date-palms feeha fakihatun wan-nakhlu dhatu al-akmam: therein are fruits and clustered date-palms with sheaths.">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>Bearing Diverse Fruits and Clustered Date-Palms</h4>
+            </div>
+            <ul class="card-points">
+              <li>Feeha fakihatun wan-nakhlu dhatu al-akmam: therein are fruits and clustered date-palms with sheaths.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="grain with its protective husks and sweet herbs wal-habbu dhu al-'asfi war-rayhan: and grain with husk for sustenance and fragrant, aromatic plants.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>Grain with Its Protective Husks and Sweet Herbs</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wal-habbu dhu al-'asfi war-rayhan: and grain with husk for sustenance and fragrant, aromatic plants.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the 1st doxological refrain of ar-rahman fa-bi'ayyi ala'i rabbikuma tukadhdhiban: so which of the limitless favors of your lord will you both deny?!">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>The 1st Doxological Refrain of Ar-Rahman</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-bi'ayyi ala'i Rabbikuma tukadhdhiban: so which of the limitless favors of your Lord will you both deny?!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 03: DUAL GENESIS & THE LORD OF TWO EASTS</h2>
+        <p>Pillars 05 & 06: Creation of Man from Clay and Jinn from Smokeless Fire & Rabbu al-Mashriqayn wal-Maghribayn</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : DUAL GENESIS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 05: MAN FROM CLAY & JINN FROM FIRE</h3>
+          <p>Man from Potter's Clay (Fakhkhar) & Jinn from Smokeless Flame (Marij)</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="created the human being from dried potter's clay khalaqa al-insana min salsalin kal-fakhkhar: he created mortal man from dried resonant clay like pottery.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>Created the Human Being from Dried Potter's Clay</h4>
+            </div>
+            <ul class="card-points">
+              <li>Khalaqa al-insana min salsalin kal-fakhkhar: He created mortal man from dried resonant clay like pottery.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="created the jinn from a pure smokeless flame wa khalaqa al-janna min marijin min nar: and he created jinnkind from a smokeless blaze of intense fire.">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>Created the Jinn from a Pure Smokeless Flame</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa khalaqa al-janna min marijin min nar: and He created jinnkind from a smokeless blaze of intense fire.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="dual complements of accountable consciousness pairing the physical, earthen mortal with the ethereal, fiery entity under divine moral law.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>Dual Complements of Accountable Consciousness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Pairing the physical, earthen mortal with the ethereal, fiery entity under divine moral law.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="so which of the favors of your lord will you deny? fa-bi'ayyi ala'i rabbikuma tukadhdhiban: confronting both jinn and men with their origins.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>So Which of the Favors of Your Lord Will You Deny?</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-bi'ayyi ala'i Rabbikuma tukadhdhiban: confronting both jinn and men with their origins.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 06: LORD OF THE TWO EASTS & TWO WESTS</h3>
+          <p>Rabbu al-Mashriqayn, Rabbu al-Maghribayn & Cosmic Solstices</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="lord of the two celestial easts (mashriqayn) rabbu al-mashriqayni: the sovereign lord who governs the dual extremes of sunrise across summer and winter.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>Lord of the Two Celestial Easts (Mashriqayn)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Rabbu al-mashriqayni: the Sovereign Lord who governs the dual extremes of sunrise across summer and winter.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="lord of the two celestial wests (maghribayn) wa rabbu al-maghribayn: and lord of the dual seasonal settings of the sun across planetary time.">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>Lord of the Two Celestial Wests (Maghribayn)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa Rabbu al-maghribayn: and Lord of the dual seasonal settings of the sun across planetary time.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="governing the inclination and orbit of the earth maintaining seasonal life, agricultural cycles, and planetary warmth with unswerving precision.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>Governing the Inclination and Orbit of the Earth</h4>
+            </div>
+            <ul class="card-points">
+              <li>Maintaining seasonal life, agricultural cycles, and planetary warmth with unswerving precision.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="so which of the favors of your lord will you deny? fa-bi'ayyi ala'i rabbikuma tukadhdhiban: celebrating planetary mechanics as signs of divine grace.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>So Which of the Favors of Your Lord Will You Deny?</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-bi'ayyi ala'i Rabbikuma tukadhdhiban: celebrating planetary mechanics as signs of divine grace.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 04: CONVERGING SEAS & SHIPS LIKE MOUNTAINS</h2>
+        <p>Pillars 07 & 08: The Barrier Between the Two Seas (Barzakh), Pearls and Coral & Ships Moving Like Mountains</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : THE CONVERGING SEAS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 07: THE UNSEEN BARRIER BETWEEN SEAS</h3>
+          <p>Maraja al-Bahrayni Yaltaqiyaan, Baynahuma Barzakhun La Yabghiyaan & Marine Balance</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="he released the two vast seas meeting together maraja al-bahrayni yaltaqiyaan: he set free the two bodies of water, flowing and meeting in contact.">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>He Released the Two Vast Seas Meeting Together</h4>
+            </div>
+            <ul class="card-points">
+              <li>Maraja al-bahrayni yaltaqiyaan: He set free the two bodies of water, flowing and meeting in contact.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="between them is an unseen barrier (barzakh) baynahuma barzakhun la yabghiyaan: between them stands an invisible physical barrier they transgress not!">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>Between Them is an Unseen Barrier (Barzakh)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Baynahuma barzakhun la yabghiyaan: between them stands an invisible physical barrier they transgress not!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="preserving the salinity and marine integrity fresh and saline aquatic bodies coexisting side by side without overwhelming each other's ecosystems.">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Preserving the Salinity and Marine Integrity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fresh and saline aquatic bodies coexisting side by side without overwhelming each other's ecosystems.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="so which of the favors of your lord will you deny? fa-bi'ayyi ala'i rabbikuma tukadhdhiban: prompting human wonder at hydrological design.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>So Which of the Favors of Your Lord Will You Deny?</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-bi'ayyi ala'i Rabbikuma tukadhdhiban: prompting human wonder at hydrological design.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 08: PEARLS, CORAL & SHIPS LIKE MOUNTAINS</h3>
+          <p>Lu'lu' and Marjan, Ships Gliding Like Mountains (Kal-A'lam) & Ocean Wealth</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="from them both emerge pearls and vibrant coral yakhruju minhuma al-lu'lu'u wal-marjan: from them come forth lustrous pearls and radiant precious coral.">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>From Them Both Emerge Pearls and Vibrant Coral</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yakhruju minhuma al-lu'lu'u wal-marjan: from them come forth lustrous pearls and radiant precious coral.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="subjugating the ocean for human enterprise bestowing jewelry, maritime resources, and aesthetic beauty from the deep ocean floor.">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>Subjugating the Ocean for Human Enterprise</h4>
+            </div>
+            <ul class="card-points">
+              <li>Bestowing jewelry, maritime resources, and aesthetic beauty from the deep ocean floor.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="his are the mighty ships rising like mountains wa lahu al-jawari al-munsha'atu feel-bahri kal-a'lam: unto him belong the great vessels elevated like landmarks.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>His Are the Mighty Ships Rising Like Mountains</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa lahu al-jawari al-munsha'atu feel-bahri kal-a'lam: unto Him belong the great vessels elevated like landmarks.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="floating by the divine law of buoyancy carrying human commerce and civilizations across vast stormy oceans in complete security.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>Floating by the Divine Law of Buoyancy</h4>
+            </div>
+            <ul class="card-points">
+              <li>Carrying human commerce and civilizations across vast stormy oceans in complete security.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 05: KULLU MAN 'ALAYHA FAN: ALL SHALL PASS</h2>
+        <p>Pillars 09 & 10: All on Earth Shall Perish, The Eternal Countenance of Majesty & Every Day in a New Affair</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : TRANSCENDENT ETERNITY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 09: THE MORTAL EXTINCTION OF ALL LIFE</h3>
+          <p>Kullu Man 'Alayha Fan, Finite Extinction of Creation & Ceasing of All Worldly Power</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="every single being upon earth will perish! kullu man 'alayha fan: all that lives, breathes, and dwells upon the terrestrial plane shall vanish!">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Every Single Being Upon Earth Will Perish!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Kullu man 'alayha fan: all that lives, breathes, and dwells upon the terrestrial plane shall vanish!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the irreversible mortality of all created life kings, tyrants, wealthy oligarchs, animals, and jinn—all will succumb to inevitable dissolution.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>The Irreversible Mortality of All Created Life</h4>
+            </div>
+            <ul class="card-points">
+              <li>Kings, tyrants, wealthy oligarchs, animals, and jinn—all will succumb to inevitable dissolution.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the vanishing of worldly empire and hubris all mortal arrogance, borders, and monuments reduced to silent dust before the sovereign creator.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>The Vanishing of Worldly Empire and Hubris</h4>
+            </div>
+            <ul class="card-points">
+              <li>All mortal arrogance, borders, and monuments reduced to silent dust before the sovereign Creator.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="so which of the favors of your lord will you deny? fa-bi'ayyi ala'i rabbikuma tukadhdhiban: reminding humanity that mortality is the door to justice.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>So Which of the Favors of Your Lord Will You Deny?</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-bi'ayyi ala'i Rabbikuma tukadhdhiban: reminding humanity that mortality is the door to justice.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 10: ONLY THE COUNTENANCE OF MAJESTY REMAINS</h3>
+          <p>Yabqa Wajhu Rabbika Dhu'l-Jalali wal-Ikram & Kulla Yawmin Huwa fee Sha'n</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="there remains forever the face of your lord wa yabqa wajhu rabbika: and there endures eternally the glorious countenance of your lord!">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>There Remains Forever the Face of Your Lord</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa yabqa wajhu Rabbika: and there endures eternally the glorious Countenance of your Lord!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="possessor of unrivaled majesty and honor (dhu'l-jalal) dhu'l-jalali wal-ikram: the sole owner of supreme, terrifying majesty and boundless generosity.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Possessor of Unrivaled Majesty and Honor (Dhu'l-Jalal)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Dhu'l-jalali wal-ikram: the Sole Owner of supreme, terrifying majesty and boundless generosity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="all in heavens and earth beseech him for need yas'aluhu man fees-samawati wal-ard: all creatures in the cosmos implore him constantly for life and aid.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>All in Heavens and Earth Beseech Him for Need</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yas'aluhu man fees-samawati wal-ard: all creatures in the cosmos implore Him constantly for life and aid.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="every single day he is executing a new affair kulla yawmin huwa fee sha'n: every day he is bringing forth a new decree, forgiving, elevating, and guiding.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>Every Single Day He is Executing a New Affair</h4>
+            </div>
+            <ul class="card-points">
+              <li>Kulla yawmin huwa fee sha'n: every day He is bringing forth a new decree, forgiving, elevating, and guiding.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 06: PENETRATING HEAVENS & SCORCHING FLAMES</h2>
+        <p>Pillars 11 & 12: Penetrating the Diameters of Heavens, Flaming Sulfur & Sinners Marked by Their Faces</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : THE CHALLENGE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 11: THE CHALLENGE TO JINN AND MANKIND</h3>
+          <p>Ya Ma'shara al-Jinni wal-Ins, Penetrate the Diameters & You Cannot Save with Sultan</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="o assembly of jinn and men: pass beyond if you can! ya ma'shara al-jinni wal-insi inistata'tum an tanfudhoo: if you have power to penetrate the cosmic zones!">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>O Assembly of Jinn and Men: Pass Beyond If You Can!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ma'shara al-jinni wal-insi inistata'tum an tanfudhoo: if you have power to penetrate the cosmic zones!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="penetrate the boundaries of heavens and earth! escape from the confines and jurisdictions of the heavens and earth if you dare!">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Penetrate the Boundaries of Heavens and Earth!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Escape from the confines and jurisdictions of the heavens and earth if you dare!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="you can never escape except by sovereign power la tanfudhoona illa bi-sultan: you shall never escape except by granted sovereign authority from god!">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>You Can Never Escape Except by Sovereign Power</h4>
+            </div>
+            <ul class="card-points">
+              <li>La tanfudhoona illa bi-sultan: you shall never escape except by granted sovereign authority from God!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the absolute impossibility of fleeing divine reach confronting cosmic pride with the inescapable jurisdiction of the creator's sovereignty.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>The Absolute Impossibility of Fleeing Divine Reach</h4>
+            </div>
+            <ul class="card-points">
+              <li>Confronting cosmic pride with the inescapable jurisdiction of the Creator's sovereignty.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 12: UNLEASHED FLARES OF SMOKELESS FIRE</h3>
+          <p>Shuwazun min Nar, Molten Brass & The Rosy Sky Like Melted Leather (Wardatan)</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="unleashing blazing flares of fire and brass yursalu 'alaykuma shuwazun min narin wa nuhasun: sent against you are flames of fire and molten brass!">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>Unleashing Blazing Flares of Fire and Brass</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yursalu 'alaykuma shuwazun min narin wa nuhasun: sent against you are flames of fire and molten brass!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="you will find zero defense or refuge fala tantasiraan: and you will find no victory, shield, or allies to defend your rebellious souls.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>You Will Find Zero Defense or Refuge</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fala tantasiraan: and you will find no victory, shield, or allies to defend your rebellious souls.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="when the sky rifts open like red rosy leather fa-idha inshaqqati as-sama'u fa-kanat wardatan kad-dihan: when heaven fractures into crimson leather!">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>When the Sky Rifts Open Like Red Rosy Leather</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-idha inshaqqati as-sama'u fa-kanat wardatan kad-dihan: when heaven fractures into crimson leather!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="sinners known instantly by their dark marks yu'rafu al-mujrimoona bi-seemahum: criminals recognized by their faces and seized by forelocks and feet!">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>Sinners Known Instantly by Their Dark Marks</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yu'rafu al-mujrimoona bi-seemahum: criminals recognized by their faces and seized by forelocks and feet!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 07: THE TWIN HIGHER GARDENS (JANNATAN)</h2>
+        <p>Pillars 13 & 14: For Him Who Feared Standing Before His Lord (Two Gardens) & Reclining on Brocade with Modest Companions</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : THE TWIN HIGHER GARDENS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 13: FOR THE GOD-FEARING: TWO HIGHER GARDENS</h3>
+          <p>Wa Li-Man Khafa Maqama Rabbihi Jannatan, Dhawatay Afnan & Twin Flowing Springs</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="for he who feared standing before his lord: two gardens! wa li-man khafa maqama rabbihi jannatan: for whoever reverently feared standing before his lord: two gardens!">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>For He Who Feared Standing Before His Lord: Two Gardens!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa li-man khafa maqama Rabbihi jannatan: for whoever reverently feared standing before his Lord: two Gardens!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="possessing spreading, lush branches (dhawatay afnan) endowed with rich, sprawling, fruit-laden canopies shading celestial pathways with emerald beauty.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Possessing Spreading, Lush Branches (Dhawatay Afnan)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Endowed with rich, sprawling, fruit-laden canopies shading celestial pathways with emerald beauty.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="two fresh springs gushing with sweet waters feehima 'aynani tajriyaan: within both gardens are two living springs flowing without cessation.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>Two Fresh Springs Gushing with Sweet Waters</h4>
+            </div>
+            <ul class="card-points">
+              <li>Feehima 'aynani tajriyaan: within both Gardens are two living springs flowing without cessation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="pairs of every splendid delicious fruit feehima min kulli fakihatin zawjaan: within both are two pairs of every variety of luscious fruit.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>Pairs of Every Splendid Delicious Fruit</h4>
+            </div>
+            <ul class="card-points">
+              <li>Feehima min kulli fakihatin zawjaan: within both are two pairs of every variety of luscious fruit.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 14: BROCADE THRONES & RADIANT COMPANIONS</h3>
+          <p>Reclining on Silk Brocade, Modest Companions Like Rubies & Hal Jaza'u al-Ihsan</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="reclining on couches lined with rich silk brocade muttaki'eena 'ala furushin bata'inuha min istabraq: resting on couches lined with pure heavy brocade.">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>Reclining on Couches Lined with Rich Silk Brocade</h4>
+            </div>
+            <ul class="card-points">
+              <li>Muttaki'eena 'ala furushin bata'inuha min istabraq: resting on couches lined with pure heavy brocade.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="harvests of both gardens hanging within arm's reach wa jana al-jannatayni dan: the luscious ripe fruits of both gardens bending down intimately near.">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Harvests of Both Gardens Hanging Within Arm's Reach</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa jana al-jannatayni dan: the luscious ripe fruits of both Gardens bending down intimately near.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="companions of modest glances radiant as rubies therein companions of restrained gaze, untouched, luminous with the beauty of rubies and coral.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>Companions of Modest Glances Radiant as Rubies</h4>
+            </div>
+            <ul class="card-points">
+              <li>Therein companions of restrained gaze, untouched, luminous with the beauty of rubies and coral.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="is the reward for excellence anything but excellence?! hal jaza'u al-ihsani illa al-ihsan: is the recompense for moral excellence anything other than divine excellence?!">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>Is the Reward for Excellence Anything But Excellence?!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Hal jaza'u al-ihsani illa al-ihsan: is the recompense for moral excellence anything other than divine excellence?!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 08: THE TWO DESCENDING GARDENS & DOXOLOGY</h2>
+        <p>Pillars 15 & 16: Two Further Verdant Gardens (Mudhammatan), Pavilions & Tabaraka Ismu Rabbik Dhee al-Jalali wal-Ikram</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : THE FINAL DOXOLOGY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 15: TWO FURTHER VERDANT GARDENS</h3>
+          <p>Wa Min Doonihima Jannatan, Mudhammatan Deep Dark Green & Springs of Abundance</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="and beside those two are two further gardens wa min doonihima jannatan: and besides those elevated two are two further magnificent gardens.">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>And Beside Those Two Are Two Further Gardens</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa min doonihima jannatan: and besides those elevated two are two further magnificent Gardens.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="deep, saturated dark green in moisture (mudhammatan) mudhammatan: glowing with intense, lush dark-green verdure from perpetual abundance of water.">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>Deep, Saturated Dark Green in Moisture (Mudhammatan)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Mudhammatan: glowing with intense, lush dark-green verdure from perpetual abundance of water.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="two springs gushing forth with living water feehima 'aynani naddakhataan: within both are two fountains bubbling forth with pure refreshing drink.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>Two Springs Gushing Forth with Living Water</h4>
+            </div>
+            <ul class="card-points">
+              <li>Feehima 'aynani naddakhataan: within both are two fountains bubbling forth with pure refreshing drink.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="abundance of date-palms and pomegranates feehima fakihatun wa nakhlu wa rumman: abundant with dates, pomegranates, and divine delights.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>Abundance of Date-Palms and Pomegranates</h4>
+            </div>
+            <ul class="card-points">
+              <li>Feehima fakihatun wa nakhlu wa rumman: abundant with dates, pomegranates, and divine delights.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 16: BLESSED IS THE NAME OF YOUR LORD!</h3>
+          <p>Companions in Pavilions, Reclining on Silk & Tabaraka Ismu Rabbik Dhu'l-Jalal</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="pure companions sheltered within sacred pavilions hoorun maqsooratun feel-khiyam: fair companions sheltered in privacy within luminous pavilions.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>Pure Companions Sheltered Within Sacred Pavilions</h4>
+            </div>
+            <ul class="card-points">
+              <li>Hoorun maqsooratun feel-khiyam: fair companions sheltered in privacy within luminous pavilions.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="reclining on emerald cushions and rare carpets muttaki'eena 'ala rafrafin khudrin wa 'abqariyyin hisan: resting upon green cushions and rich tapestries.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>Reclining on Emerald Cushions and Rare Carpets</h4>
+            </div>
+            <ul class="card-points">
+              <li>Muttaki'eena 'ala rafrafin khudrin wa 'abqariyyin hisan: resting upon green cushions and rich tapestries.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="so which of the favors of your lord will you deny? fa-bi'ayyi ala'i rabbikuma tukadhdhiban: concluding the 31-fold symphony of divine gratitude.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>So Which of the Favors of Your Lord Will You Deny?</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-bi'ayyi ala'i Rabbikuma tukadhdhiban: concluding the 31-fold symphony of divine gratitude.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="blessed is the name of your lord, owner of majesty! tabaraka ismu rabbika dhee al-jalali wal-ikram: blessed and exalted is the name of your lord, owner of majesty and honor!">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>Blessed is the Name of Your Lord, Owner of Majesty!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Tabaraka ismu Rabbika dhee al-jalali wal-ikram: blessed and exalted is the Name of your Lord, Owner of Majesty and Honor!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="modals-panel">
+      <div class="section-heading" style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);"><span>✦</span> DEEP EXEGETICAL FOCUS MONOGRAPHS</div>
+      <div class="modal-triggers-grid">
+
+        <div class="modal-btn" onclick="openModal('m1')">
+          <h5>1. The Recitation to the Jinn Council & The 31 Refrains</h5>
+          <p>When the jinn showed greater gratitude than humanity upon hearing Surah Ar-Rahman.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m2')">
+          <h5>2. Kullu Man 'Alayha Fan: The Universal Dissolution of Creation (55:26–27)</h5>
+          <p>The stark reminder that all mortal glory vanishes, leaving only the Sovereign Countenance.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m3')">
+          <h5>3. The Two Tiers of Paradise: The Upper and Lower Jannatan (55:46, 62)</h5>
+          <p>Four distinct Gardens tailored to the spiritual ranks of the believers.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m4')">
+          <h5>4. Hal Jaza'u al-Ihsani Illa al-Ihsan? (55:60)</h5>
+          <p>The supreme theological equation of Islamic virtue and divine recompense.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal-backdrop" id="modal-m1">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m1')">&times;</button>
+      <h3>The Recitation to the Jinn Council & The 31 Refrains</h3>
+      <p>In Jami' at-Tirmidhi (3291) and Al-Mustadrak lil-Hakim (2/473, Sahih), Jabir ibn Abdillah (RA) narrated: 'The Messenger of Allah ﷺ went out to his companions and recited Surah Ar-Rahman from beginning to end, but they remained quiet in solemn reflection. The Prophet ﷺ said: *'I recited it to the jinn on the Night of the Jinn, and they were better in response than you! Every time I recited: 'So which of the favors of your Lord will you both deny?', they replied: 'There is nothing of Your favors, our Lord, that we deny; and unto You belongs all praise!'*'</p><p>The refrain occurs exactly 31 times: 8 following worldly creation and origins, 7 following punishment and cosmic reckoning, and 16 following the twin tiers of Paradise.</p>
+      <div class="modal-source">Authorities: Jami' at-Tirmidhi 3291 • Al-Mustadrak lil-Hakim 2/473 • Tafsir Ibn Kathir (7/490) • Al-Baghawi</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m2">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m2')">&times;</button>
+      <h3>Kullu Man 'Alayha Fan: The Universal Dissolution of Creation (55:26–27)</h3>
+      <p>This pair of verses forms the sublime fulcrum of Surah Ar-Rahman: 'Everyone upon the earth will perish, and there will remain the Face of your Lord, Owner of Majesty and Honor (*Dhu'l-Jalali wal-Ikram*).'</p><p>The Prophet ﷺ frequently supplicated with this name, saying in Jami' at-Tirmidhi (3525): 'Cling persistently to *Ya Dhal-Jalali wal-Ikram*!' It balances holy reverence (Jalal) with intimate divine generosity (Ikram), reminding finite mortals that true permanence is found only in devotion to the Living God.</p>
+      <div class="modal-source">Authorities: Jami' at-Tirmidhi 3525 • Sahih Muslim • Tafsir al-Tabari (22/306) • Tafsir Ibn Kathir (7/497)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m3">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m3')">&times;</button>
+      <h3>The Two Tiers of Paradise: The Upper and Lower Jannatan (55:46, 62)</h3>
+      <p>Surah Ar-Rahman provides an architectural breakdown of Paradise into two distinct tiers: The first pair of Gardens (Ayah 46) is for the foremost believers who lived in deep awe (*Al-Muqarraboon*), featuring spreading branches (Afnan), flowing springs, and couches lined with heavy silk brocade (Istabraq).</p><p>The second pair of Gardens (Ayah 62: *Wa min doonihima jannatan*) is for the general righteous believers (*Ashab al-Yameen*), featuring dark green foliage (Mudhammatan), gushing springs, and green cushions (Rafraf). As the Prophet explained in Sahih al-Bukhari (4878): 'Two gardens of silver, their vessels and all within them; and two gardens of gold, their vessels and all within them.'</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari 4878 • Sahih Muslim 180 • Tafsir al-Qurtubi (17/175) • Madarij as-Salikin</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m4">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m4')">&times;</button>
+      <h3>Hal Jaza'u al-Ihsani Illa al-Ihsan? (55:60)</h3>
+      <p>Surah Ar-Rahman articulates the universal golden rule of divine-human reciprocity: 'Is the reward for excellence (*Ihsan*) anything other than excellence?!'</p><p>Ibn Abbas explained: 'Whoever says *La ilaha illallah* in this world and acts with righteousness, his recompense from Allah is nothing less than entry into the Gardens of Paradise.' It affirms that every tear of sincere worship, every act of charitable kindness, and every breath of patience is met with infinite, multiplying divine generosity.</p>
+      <div class="modal-source">Authorities: Tafsir al-Tabari (22/318) • Tafsir Ibn Kathir (7/505) • Al-Bahr al-Muheet</div>
+    </div>
+  </div>
+
+  <script>
+    function switchSuitePlate(page) {
+      document.querySelectorAll('.plate-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      const tab = document.getElementById('suiteTab' + page);
+      const sec = document.getElementById('plateSection' + page);
+      if (tab) tab.classList.add('active');
+      if (sec) sec.classList.add('active');
+    }
+
+    function filterSuite() {
+      const q = document.getElementById('suiteSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.card-item');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+
+    function openModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.remove('open');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>

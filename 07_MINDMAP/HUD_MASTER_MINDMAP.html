@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Hud — Master Mindmap Cartography | Huurs Studio</title>
+  <style>
+    :root {
+      --navy-deep: #060a12;
+      --navy-card: #0d1422;
+      --navy-elevated: #141e32;
+      --gold: #d4af59;
+      --gold-light: #e8d194;
+      --cyan: #38bdf8;
+      --purple: #a855f7;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --white: #f8fafc;
+      --text-muted: #adc0d4;
+      --border-muted: #29384f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy-deep);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .wrapper { max-width: 1400px; margin: 0 auto; }
+    header.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-top: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 24px;
+    }
+    .header h1 { font-size: 1.25rem; color: var(--gold); letter-spacing: 0.05em; }
+    .header span { color: var(--text-muted); font-size: 0.85rem; margin-left: 12px; }
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    .tab-btn {
+      background: var(--navy-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border-muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { border-color: var(--gold); color: var(--white); }
+    .tab-btn.active {
+      background: var(--navy-elevated);
+      color: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 89, 0.2);
+    }
+    .page-container { display: none; }
+    .page-container.active { display: block; }
+    .page-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin-bottom: 20px;
+    }
+    .page-meta h2 { font-size: 1.2rem; color: var(--gold-light); margin-bottom: 4px; }
+    .page-meta p.desc { font-size: 0.85rem; color: var(--text-muted); }
+    .badge-tag {
+      background: rgba(212, 175, 89, 0.12);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 960px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+    .pillar-col {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pillar-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .pillar-header.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-header.purple { border-top: 3px solid var(--purple); }
+    .pillar-header.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-header.gold { border-top: 3px solid var(--gold); }
+    .pillar-header.rose { border-top: 3px solid var(--rose); }
+    .pillar-header h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 2px; }
+    .pillar-header p { font-size: 0.8rem; color: var(--text-muted); }
+    .cards-list {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card {
+      background: var(--navy-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 12px 16px;
+      transition: all 0.2s;
+    }
+    .card:hover { border-color: var(--gold); transform: translateY(-1px); }
+    .card-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+    .card-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .card-head h4 { font-size: 0.88rem; font-weight: 700; color: var(--white); }
+    .card ul { list-style-type: none; padding-left: 0; }
+    .card li {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 14px;
+    }
+    .card li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+    footer.footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--border-muted);
+      padding: 20px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div>
+        <h1>HUURS STUDIO</h1>
+        <span>Surah Hud Master Landscape Mindmap Cartography</span>
+      </div>
+      <div style="font-size:0.8rem; color:var(--gold);">
+        8 Master Plates &bull; 16 Thematic Pillars &bull; 64 Cards
+      </div>
+    </header>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="showPage(1)">Plate 01</button>
+<button class="tab-btn " onclick="showPage(2)">Plate 02</button>
+<button class="tab-btn " onclick="showPage(3)">Plate 03</button>
+<button class="tab-btn " onclick="showPage(4)">Plate 04</button>
+<button class="tab-btn " onclick="showPage(5)">Plate 05</button>
+<button class="tab-btn " onclick="showPage(6)">Plate 06</button>
+<button class="tab-btn " onclick="showPage(7)">Plate 07</button>
+<button class="tab-btn " onclick="showPage(8)">Plate 08</button>
+
+    </div>
+
+    <main>
+      
+    <div class="page-container active" id="page-1">
+      <div class="page-meta">
+        <div>
+          <h2>THE PERFECTED BOOK, DIVINE SUSTENANCE & THE PRIMORDIAL WATER</h2>
+          <p class="desc">Pillars 1 & 2: Perfection of Scripture, Istighfar, Sustenance of Creatures & The Throne Upon Water</p>
+        </div>
+        <div class="badge-tag">[PLATE 01 : CREATION & SUSTENANCE]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 1: PERFECTION OF SCRIPTURE & THE ECONOMY OF ISTIGHFAR</h3>
+            <p>Uhkimat thumma Fussilat, Noble Provision & Omniscience Behind Garments</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">1</span>
+                <h4>The Perfected & Detailed Scripture</h4>
+              </div>
+              <ul>
+                <li>Opening with Alif-Lam-Ra: Fortified against flaw or human corruption (Uhkimat).</li><li>Expounded in legal, creedal, and historical detail from One All-Wise (Fussilat).</li><li>Demanding devotion solely to Allah as a warner and bearer of glad tidings.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">2</span>
+                <h4>The Economy of Istighfar & Noble Provision</h4>
+              </div>
+              <ul>
+                <li>Direct linkage between seeking forgiveness (Istighfar) and repentance (Tawbah).</li><li>Guarantees dignified, fruitful earthly life (Mata'an Hasanan) without privation.</li><li>Awards every possessor of merit and spiritual virtue their deserved bounty (Fadl).</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">3</span>
+                <h4>The Folly of Concealing the Chest</h4>
+              </div>
+              <ul>
+                <li>Evasion of the deniers: physically bending and folding their chests inward.</li><li>The childish delusion that bodily contortions can hide thoughts from the Creator.</li><li>Exposing the vanity of attempting secrecy in a universe flooded with divine light.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">4</span>
+                <h4>Omniscience Behind the Veil of Garments</h4>
+              </div>
+              <ul>
+                <li>Even when humans wrap themselves tightly in cloaks in darkened rooms, Allah sees.</li><li>Absolute knowledge of what they keep hidden and what they openly manifest.</li><li>Fully Cognizant of the innermost secrets of the breasts ('Aleemun bi-Dhati as-Sudoor).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header purple">
+            <h3>PILLAR 2: SUSTENANCE OF ALL CREATURES & THE THRONE UPON WATER</h3>
+            <p>Guaranteed Rizq, Audited Habitats & The Cosmic Purpose of Conduct</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">5</span>
+                <h4>Guaranteed Sustenance of Every Moving Creature</h4>
+              </div>
+              <ul>
+                <li>Ontological promise: The provision of every crawling creature rests upon Allah.</li><li>Liberating the heart from scarcity anxiety; nourishment is divinely distributed.</li><li>Combining diligent pursuit of worldly means with absolute reliance upon the Provider.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">6</span>
+                <h4>Knowledge of the Resting Place & Repository</h4>
+              </div>
+              <ul>
+                <li>Divine oversight encompasses every creature's nest/grave and foraging grounds.</li><li>Mustaqarr (permanent abode) and Mustawda' (temporary transit station) recorded.</li><li>Everything audited in an explicit, manifest celestial ledger (Kitabin Mubeen).</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">7</span>
+                <h4>The Primordial Water & The Divine Throne</h4>
+              </div>
+              <ul>
+                <li>Before the creation of heavens and earth in six epochs, His Throne was over Water.</li><li>Authenticated in Sahih al-Bukhari: Allah existed before all temporal creation.</li><li>Water establishes the fundamental biological and physical cradle of all life.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">8</span>
+                <h4>Existential Examination of Conduct</h4>
+              </div>
+              <ul>
+                <li>Cosmic purpose: Testing which of humanity is finest in conduct (Ahsanu 'Amala).</li><li>Fudayl ibn 'Iyad: Defined as most sincere (Akhlasuh) and most Sunnah-compliant (Aswabuh).</li><li>Rejection of quantitative pride; moral excellence is the sole divine currency.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-2">
+      <div class="page-meta">
+        <div>
+          <h2>PSYCHOLOGICAL VOLATILITY, PROPHETIC BURDEN & THE TEN SURAHS</h2>
+          <p class="desc">Pillars 3 & 4: Despair vs. Boasting, Prophetic Empathy, Inimitable Ten Surahs & The Two Parables</p>
+        </div>
+        <div class="badge-tag">[PLATE 02 : PSYCHOLOGY & CHALLENGE]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 3: THE POLARIZED HUMAN SOUL: DESPAIR VS. BOASTING</h3>
+            <p>Ya'oosun Kafoor, Farihun Fakhoor & The Anchor of Righteous Patience</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">9</span>
+                <h4>The Volatile Swings: Despairing Ungratefulness</h4>
+              </div>
+              <ul>
+                <li>When divine bounty is withdrawn, secular man plunges into bitter despair.</li><li>Amnesia regarding years of prior ease; adopting a petulant, ungrateful posture.</li><li>Showing how absent faith, suffering inevitably breeds cynicism and nihilism.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">10</span>
+                <h4>The Delusion of Prosperity: Boastful Pride</h4>
+              </div>
+              <ul>
+                <li>When relief arrives, man proclaims: 'Hardship has departed from me!'</li><li>Intoxicated with boastful swagger (Farihun Fakhoor), attributing success to himself.</li><li>The cycle of human instability: manic arrogance in wealth, depression in trial.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">11</span>
+                <h4>The Anchored Soul: Patience & Righteous Deeds</h4>
+              </div>
+              <ul>
+                <li>The sole exception: Those who ground themselves in Sabr and righteous action.</li><li>Patience cushions the impact of loss; righteous deeds humble during abundance.</li><li>Their eternal destiny: divine pardon (Maghfirah) and a tremendous reward (Ajrun Kabeer).</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">12</span>
+                <h4>Constriction of the Prophetic Breast & Reassurance</h4>
+              </div>
+              <ul>
+                <li>Divine empathy for the Prophet's constricted chest facing insults and mockery.</li><li>The Prophet's sorrow stemmed from compassionate agony for blind rejectors.</li><li>Establishing boundaries: 'You are only a warner; Allah is Trustee over all things.'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header gold">
+            <h3>PILLAR 4: DEMANDS FOR SIGNS & THE INIMITABLE CHALLENGE</h3>
+            <p>Rejection of Sensationalism, Ten Fabricated Surahs & Spiritual Senses</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">13</span>
+                <h4>Demands for Golden Treasures & Physical Angels</h4>
+              </div>
+              <ul>
+                <li>Skeptics demanding sensational spectacle: chests of gold or visible angelic bodyguards.</li><li>Exposing materialistic prejudice: confusing moral truth with vulgar displays of wealth.</li><li>Spiritual transformation requires moral awakening, not coercive physical theater.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">14</span>
+                <h4>The Challenge of Ten Fabricated Surahs</h4>
+              </div>
+              <ul>
+                <li>Accused of inventing the Qur'an; the counter-challenge: produce ten chapters like it.</li><li>Permission granted to fabricate content (Muftarayat), yet human capability failed.</li><li>Open invitation to summon all poets, scholars, and earthly deities to assist.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">15</span>
+                <h4>Revealed by the Supreme Omniscience of Allah</h4>
+              </div>
+              <ul>
+                <li>Conclusive proof: 'Know that it was revealed solely with the knowledge of Allah.'</li><li>Surpassing human literary and metaphysical boundaries across all generations.</li><li>The rational outcome: 'And that there is no deity except Him—will you submit?'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">16</span>
+                <h4>Parable of the Blind/Deaf vs. Seeing/Hearing</h4>
+              </div>
+              <ul>
+                <li>Metaphorical contrast of human faculties: The spiritually blind and deaf.</li><li>Juxtaposed against the believer possessing keen spiritual sight and attentive hearing.</li><li>The rhetorical inquiry: 'Are the two equal in likeness? Will you not remember?'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-3">
+      <div class="page-meta">
+        <div>
+          <h2>THE EPIC OF PROPHET NUH: OLIGARCHIC SNEERS & BUILDING THE ARK</h2>
+          <p class="desc">Pillars 5 & 6: Arrogance of Chieftains, Equality of Believers, The Desert Shipyard & Holy Composure</p>
+        </div>
+        <div class="badge-tag">[PLATE 03 : NUH & THE ARISTOCRACY]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header rose">
+            <h3>PILLAR 5: CONFRONTING ARISTOCRATIC ARROGANCE</h3>
+            <p>Aradhiluna Baadiya ar-Ra'y, Safeguarding the Poor & Prophetic Altruism</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">17</span>
+                <h4>Nuh's Manifest Warning & Monotheistic Proclamation</h4>
+              </div>
+              <ul>
+                <li>Nuh steps forward as a clear warner: 'Worship none except Allah alone.'</li><li>Expressing profound concern: 'Indeed, I fear for you the punishment of a painful day.'</li><li>Decades of selfless calling conducted without seeking political power or office.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">18</span>
+                <h4>The Chieftains' Classist Contempt</h4>
+              </div>
+              <ul>
+                <li>The ruling oligarchy (Al-Mala') sneered: 'We see you as a mere human like us.'</li><li>Attacked his followers as the lowest social class (Aradhiluna) of naive intellect.</li><li>Claiming systemic social superiority; using wealth as a weapon to reject truth.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">19</span>
+                <h4>Rejecting Aristocratic Bias & Guarding Believers</h4>
+              </div>
+              <ul>
+                <li>Nuh refused to expel humble followers: 'I will not drive away those who believe.'</li><li>Declaring their eternal dignity: 'Indeed, they are to meet their Lord in honor.'</li><li>Warning the elites: 'Who would protect me from Allah if I drove them away?'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">20</span>
+                <h4>Independence of Prophetic Integrity: Zero Worldly Wage</h4>
+              </div>
+              <ul>
+                <li>Disclaiming occult powers: 'I do not say I hold Allah's treasuries or unseen.'</li><li>Refusing to flatter aristocracy or judge hearts: 'Allah knows what is in souls.'</li><li>Total financial independence: 'My reward is not but from Allah alone.'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 6: THE CRAFTING OF THE ARK UNDER DIVINE WATCH</h3>
+            <p>Bi-A'yunina wa Wahyina, Desert Shipyard & Sarcasm Returned</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">21</span>
+                <h4>The Divine Blueprint: Building the Ark Under Our Eyes</h4>
+              </div>
+              <ul>
+                <li>Command to construct the colossal vessel in arid desert: Bi-A'yunina wa Wahyina.</li><li>Executed under immediate divine surveillance and revealed engineering design.</li><li>Absolute boundary: 'Do not speak to Me regarding the wrongdoers; they are drowned.'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">22</span>
+                <h4>The Mockery of the Passing Chieftains</h4>
+              </div>
+              <ul>
+                <li>Chieftains walking past erupted into derisive mockery at the dry-land shipyard.</li><li>Cynical insults: 'Yesterday you claimed prophethood, today you become a carpenter!'</li><li>Judging strictly by empirical surfaces, oblivious to the metaphysical tempest brewing.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">23</span>
+                <h4>Prophetic Composure: Sarcasm Turned Upon Sarcastic</h4>
+              </div>
+              <ul>
+                <li>Nuh responds with serene equanimity: 'If you ridicule us, we will ridicule you.'</li><li>Psychological supremacy rooted in divine certainty over secular arrogance.</li><li>The tables of history will inevitably turn when cosmic reality shatters delusion.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">24</span>
+                <h4>Absolute Certainty in the Imminent Humiliation</h4>
+              </div>
+              <ul>
+                <li>Announcing the impending cataclysm: 'You will soon know who receives doom.'</li><li>A punishment that humiliates them in time and an abiding doom across eternity.</li><li>Prophetic patience is restrained strength awaiting the divine court's execution.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-4">
+      <div class="page-meta">
+        <div>
+          <h2>THE COSMIC DELUGE, THE DROWNED SON & RESTING ON MOUNT JUDI</h2>
+          <p class="desc">Pillars 7 & 8: Eruption of the Tannoor, The Mountain Sanctuary Fallacy, Calming of the Deep & Severed Bloodlines</p>
+        </div>
+        <div class="badge-tag">[PLATE 04 : DELUGE & MOUNT JUDI]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header purple">
+            <h3>PILLAR 7: THE BOILING TANNOOR, DELUGE & THE WAYWARD SON</h3>
+            <p>Farat-Tannoor, Bismillahi Majreeha & The Drowning of Nuh's Son</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">25</span>
+                <h4>Eruption of the Oven as the Cosmic Flood Trigger</h4>
+              </div>
+              <ul>
+                <li>The prearranged signal arrives: The domestic clay baking oven gushes water (Farat-Tannoor).</li><li>Total cosmic inversion: Subterranean abyss bursts where fire once burned.</li><li>Command to board pairs of every creature (Zawjayni Ithnayn) and believing household.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">26</span>
+                <h4>The Sacred Embarkation: Bismillahi Majreeha wa Mursaaha</h4>
+              </div>
+              <ul>
+                <li>Boarding formula: 'In the name of Allah is its sailing and its anchorage.'</li><li>The vessel had no sails or oars; steered solely by the Divine Name.</li><li>Foundational Islamic Sunnah: Invoking Allah at the start of any voyage or endeavor.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">27</span>
+                <h4>Waves Towering Like Mountains & The Tragic Appeal</h4>
+              </div>
+              <ul>
+                <li>The Ark navigating mountainous waves surging like alpine peaks (Mawjin kal-Jibal).</li><li>Nuh calls his son standing apart: 'Ya bunayya-rkab ma'ana wa la takun ma'al-kafireen!'</li><li>Agonizing collision between tender parental love and divine sovereign reality.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">28</span>
+                <h4>The Fallacy of the Mountain Sanctuary & Cleaving Wave</h4>
+              </div>
+              <ul>
+                <li>Rebellious son relies on topography: 'I will seek refuge on a high mountain.'</li><li>Nuh's truth: 'There is no protector today from Allah's decree except whom He mercies.'</li><li>A towering wave cleft them apart; the son was swallowed by the dark depths.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 8: CALMING OF THE WATERS & SEVERANCE OF BLOODLINES</h3>
+            <p>Ya Ardu-bla'ee, Mount Judi Landing & Faith Superseding Biological Kinship</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">29</span>
+                <h4>The Cosmic Royal Decree: Ya Ardu-bla'ee Maa'aki</h4>
+              </div>
+              <ul>
+                <li>Pinnacle of Arabic eloquence: 'O earth, swallow your water! O sky, withhold!'</li><li>Two divine imperative words calm the planetary catastrophe and subside the ocean.</li><li>The solemn historical verdict: 'Away with the wrongdoing, unjust people!'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">30</span>
+                <h4>Resting of the Ark upon Mount Judi</h4>
+              </div>
+              <ul>
+                <li>The Ark comes to rest upon Mount Judi (Al-Joodiyy) in peace and divine security.</li><li>Preserving the pure seed of monotheism reborn from the ruins of corrupt civilization.</li><li>A physical geological monument enduring across millennia witnessing faith's triumph.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">31</span>
+                <h4>The Agonized Paternal Plea: Rabbi Inna-bni min Ahli</h4>
+              </div>
+              <ul>
+                <li>Nuh calls his Lord in raw grief: 'My Lord, my son is of my family; Your promise is true.'</li><li>Seeking to reconcile initial promise of family salvation with fatherly heartbreak.</li><li>Showing prophets are fully human, feeling intense grief while remaining submissive.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">32</span>
+                <h4>Divine Correction: Spiritual Alignment Supersedes Blood</h4>
+              </div>
+              <ul>
+                <li>Supreme decree: 'O Nuh, indeed he is not of your family; his conduct is unrighteous.'</li><li>Spiritual kinship in Tawhid completely obliterates biological pedigree.</li><li>Nuh immediately repents, seeking refuge in Allah from asking without knowledge.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-5">
+      <div class="page-meta">
+        <div>
+          <h2>PROPHETIC PERSISTENCE: HUD TO 'AD & SALIH TO THAMUD</h2>
+          <p class="desc">Pillars 9 & 10: Defiance Against 'Ad, Forelock Metaphysics, Earthly Stewardship & The Sonic Blast</p>
+        </div>
+        <div class="badge-tag">[PLATE 05 : HUD & SALIH]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header gold">
+            <h3>PILLAR 9: HUD'S DEFIANCE AGAINST 'AD & RELIANCE ON THE FORELOCK</h3>
+            <p>Midrara Rain, Rebutting Idol Madness & Sovereignty Over Every Forelock</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">33</span>
+                <h4>The Call to 'Ad: Purity of Worship & Spiritual Rain</h4>
+              </div>
+              <ul>
+                <li>Hud sent to towering empire of 'Ad: 'Worship Allah; you have no other god.'</li><li>Linking sincere repentance directly to abundant rain (Midrara) and physical strength.</li><li>The Islamic worldview: Spiritual rectitude brings environmental and economic blessing.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">34</span>
+                <h4>Rebutting Accusations of Madness by Lifeless Idols</h4>
+              </div>
+              <ul>
+                <li>'Ad claimed their stone gods had seized Hud with madness and brain damage.</li><li>Attributing supernatural power to inanimate idols to excuse their moral rebellion.</li><li>Hud counters: 'I call Allah as witness, and bear witness that I am free from your idols!'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">35</span>
+                <h4>The Fearless Challenge: Plot Against Me Without Respite!</h4>
+              </div>
+              <ul>
+                <li>Solitary prophet challenging an empire of weaponized giants: 'Plot against me all together!'</li><li>Demanding no respite; demonstrating total fearlessness in the face of brute force.</li><li>No empire can harm a hair on the believer's head without divine permission.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">36</span>
+                <h4>Supreme Tawakkul: Holding Every Beast by Its Forelock</h4>
+              </div>
+              <ul>
+                <li>Metaphysical formula: 'Not a moving creature but He holds it by its forelock (Nasiyah).'</li><li>The forelock symbolizes complete subjugation, humiliation, and control before God.</li><li>Absolute confidence: 'Indeed, my Lord is on a straight path (Siratin Mustaqeem).'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 10: SALIH TO THAMUD: EARTHLY STEWARDSHIP & THE SHE-CAMEL</h3>
+            <p>Ista'marakum Feeha, Shared Water Rights & The Cataclysmic Sonic Blast</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">37</span>
+                <h4>Stewards of the Soil: Settled to Cultivate the Earth</h4>
+              </div>
+              <ul>
+                <li>Salih reminds Thamud: 'He brought you from earth and settled you to cultivate it.'</li><li>Human purpose includes ecological stewardship and ethical resource development.</li><li>Calling them to repent to an intimate, attentive Lord: 'Inna Rabbi Qareebun Mujeeb.'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">38</span>
+                <h4>The Miraculous She-Camel of Allah as Public Test</h4>
+              </div>
+              <ul>
+                <li>Granted a living miraculous sign: Naqatullah (The She-Camel of Allah).</li><li>Communal test of sharing water: She drinks on one day, the tribe drinks on the next.</li><li>Testing a society's willingness to restrain greed and share public commons.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">39</span>
+                <h4>Treacherous Hamstringing & The Three-Day Respite</h4>
+              </div>
+              <ul>
+                <li>Corrupt chieftains conspired and slaughtered the She-Camel in open rebellion.</li><li>Salih delivers chilling countdown: 'Enjoy in your homes three days; an unlying promise.'</li><li>Three days of respite unheeded; cruelty to creation triggers civilizational collapse.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">40</span>
+                <h4>The Sonic Blast: As Though They Had Never Dwelt There</h4>
+              </div>
+              <ul>
+                <li>On the fourth dawn, the terrifying sonic Blast (As-Sayhah) tore through Thamud.</li><li>Pulverizing internal organs, leaving them lifeless in their sophisticated stone palaces.</li><li>Haunting epitaph: 'As though they had never dwelt there (Ka-an lam yaghnaw feeha).'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-6">
+      <div class="page-meta">
+        <div>
+          <h2>ANGELIC EMISSARIES TO IBRAHIM & THE DOOM OF SODOM</h2>
+          <p class="desc">Pillars 11 & 12: Roasted Calf, Sarah's Wonder, Lut's Agony, The Unshakeable Support & Rain of Sijjeel</p>
+        </div>
+        <div class="badge-tag">[PLATE 06 : IBRAHIM & SODOM]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header rose">
+            <h3>PILLAR 11: ABRAHAMIC HOSPITALITY & SARAH'S ASTONISHED JOY</h3>
+            <p>'Ijlun Haneed, Glad Tidings of Isaac and Jacob & Ibrahim's Empathy</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">41</span>
+                <h4>Angelic Emissaries & Abrahamic Hospitality</h4>
+              </div>
+              <ul>
+                <li>Celestial emissaries in human guise arrive greeting Ibrahim with peace (Salam).</li><li>Without delay, Ibrahim serves elite hospitality: a roasted, fattened calf ('Ijlun Haneed).</li><li>Timeless standard of prophetic generosity: honoring strangers with the finest food.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">42</span>
+                <h4>Untouched Roasted Meat & Dissipated Foreboding</h4>
+              </div>
+              <ul>
+                <li>Observing their hands not touching the meat, Ibrahim felt inward apprehension.</li><li>Ancient custom: Refusing to eat signaled hostility; angels consume no mortal food.</li><li>Angels dissipate fear: 'Do not fear; we have been sent to the people of Lut.'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">43</span>
+                <h4>Sarah's Astonished Laughter & The Promised Heirs</h4>
+              </div>
+              <ul>
+                <li>Sarah laughed in astonishment (Dahikat); angels announce Isaac and Jacob.</li><li>Wondering at the biological paradox: 'Shall I bear while an old woman and my husband aged?'</li><li>The angelic response: 'Do you wonder at Allah's decree? Mercy and blessings upon you!'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">44</span>
+                <h4>Compassion of Ibrahim: Pleading on Behalf of Sodom</h4>
+              </div>
+              <ul>
+                <li>Once fear passed, Ibrahim pleaded with angels on behalf of Sodom (Yujadiluna).</li><li>Praised by God: 'Indeed, Ibrahim was forbearing, tender-hearted, ever-turning (Muneeb).'</li><li>Divine closure: 'Turn away from this; your Lord's command has come; doom is irreversible.'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header purple">
+            <h3>PILLAR 12: LUT'S ANGUISH, SEEKING THE PILLAR & RAIN OF SIJJEEL</h3>
+            <p>Yawmun 'Aseeb, Storming Mob, The Cry for Ruknin Shadeed & Sijjeel Mandood</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">45</span>
+                <h4>Lut's Agony: Hadha Yawmun 'Aseeb (A Harrowing Day)</h4>
+              </div>
+              <ul>
+                <li>Angels arrive at Sodom as handsome youths; Lut is filled with suffocating distress.</li><li>Recognizing the uncontrollable predatory depravity of his town: 'This is a harrowing day!'</li><li>The moral agony of a righteous prophet surrounded by utter societal degeneration.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">46</span>
+                <h4>The Degenerate Mob Storming the Threshold</h4>
+              </div>
+              <ul>
+                <li>Corrupt men rush frantically to Lut's door; Lut appeals to lawful marriage structures.</li><li>Pleading desperately: 'Do not disgrace me before my guests! Is there no right-minded man?'</li><li>Illustrating the total extinction of reason in a populace surrendered to hedonism.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">47</span>
+                <h4>The Cry for Unshakeable Support: Seeking Ruknin Shadeed</h4>
+              </div>
+              <ul>
+                <li>Helpless cry: 'Would that I had power against you or could retreat to a strong support!'</li><li>Prophet Muhammad ﷺ: 'May Allah mercy Lut; he was seeking refuge in Allah Himself!'</li><li>Angels reveal identity: 'O Lut, we are emissaries of your Lord; they will never reach you!'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">48</span>
+                <h4>The City Overturned & Rain of Layered Baked Clay</h4>
+              </div>
+              <ul>
+                <li>Lut departs at night; at dawn: 'We turned the city upside down (Ja'alna 'aaliyaha safilaha).'</li><li>Torrential rain of layered baked clay stones (Sijjeel Mandood), specifically marked.</li><li>Universal warning to all corrupt nations: 'And it is not far from the wrongdoers.'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-7">
+      <div class="page-meta">
+        <div>
+          <h2>ECONOMIC JUSTICE: SHU'AYB & THE RUINS OF TYRANNY</h2>
+          <p class="desc">Pillars 13 & 14: Market Ethics, Baqiyyatullah, The Reformer's Creed & Pharaoh Leading Host to Fire</p>
+        </div>
+        <div class="badge-tag">[PLATE 07 : ECONOMIC JUSTICE]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 13: SHU'AYB'S FINANCIAL MANIFESTO & THE DIVINE REMAINDER</h3>
+            <p>Forbidding Market Fraud, Baqiyyatullah & In Ureedu Illal-Islah</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">49</span>
+                <h4>Commercial Integrity: Forbidding Fraud in the Scale</h4>
+              </div>
+              <ul>
+                <li>Shu'ayb sent to Madyan: 'Worship Allah... and do not decrease the measure and scale.'</li><li>Linking monotheism directly to market justice and honest commercial weights.</li><li>Condemning predatory short-changing, fraud, and systematic financial exploitation.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">50</span>
+                <h4>The Divine Remainder (Baqiyyatullah): Sacred Contentment</h4>
+              </div>
+              <ul>
+                <li>Principle of ethical wealth: 'The remainder left by Allah (Baqiyyatullah) is best for you.'</li><li>Modest halal profit blessed by God surpasses vast fortunes acquired through deception.</li><li>True wealth lies in spiritual Barakah and inner peace, not fraudulent accumulation.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">51</span>
+                <h4>The Secular Sneer: Does Your Prayer Dictate Our Wealth?</h4>
+              </div>
+              <ul>
+                <li>Merchants sneered: 'Does your prayer command that we stop doing what we will with money?'</li><li>The archetypal secular capitalist defense: demanding total autonomy from sacred ethics.</li><li>Sarcastic mock: 'Indeed, you are the forbearing, discerning!' using virtue as an insult.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">52</span>
+                <h4>The Prophetic Reformer: In Ureedu Illal-Islaha Ma-stata'tu</h4>
+              </div>
+              <ul>
+                <li>Eternal reformer's motto: 'I only desire reform to the best of my ability.'</li><li>Total humility: 'And my success is not but through Allah; upon Him I rely.'</li><li>Genuine reformers commit to continuous ethical striving without self-righteousness.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header gold">
+            <h3>PILLAR 14: THE BLAST OF MADYAN & PHARAOH LEADING HOST TO FIRE</h3>
+            <p>Extinction of Madyan, Blind Bureaucracy & Historical Ruins (Qaa'im wa Haseed)</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">53</span>
+                <h4>The Shaking Blast of Madyan: Parallel Doom to Thamud</h4>
+              </div>
+              <ul>
+                <li>Rejection of commercial ethics brought the Blast (As-Sayhah); fallen lifeless in homes.</li><li>Extinguished commercial hubs: 'As though they had never dwelt there.'</li><li>The historical refrain: 'Away with Madyan just as Thamud was done away with!'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">54</span>
+                <h4>Musa's Manifest Authority vs. Pharaoh's Bureaucracy</h4>
+              </div>
+              <ul>
+                <li>Musa sent with clear signs and manifest authority to Pharaoh and his council.</li><li>Egyptian officials blindly followed Pharaoh, though 'his command was not discerning.'</li><li>Exposing the complicity of bureaucrats who execute tyrannical orders without conscience.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">55</span>
+                <h4>Pharaoh Leading His Host Down to the Fire Like Cattle</h4>
+              </div>
+              <ul>
+                <li>On the Day of Standing, Pharaoh marches ahead, leading his people into the Fire.</li><li>Driven like a thirsty herd to water (Awrada-humun-Nar); wretched is the destination.</li><li>Cursed in this worldly life and cursed on the Day of Resurrection.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">56</span>
+                <h4>The Ruins of History: Cities Standing and Mown Down</h4>
+              </div>
+              <ul>
+                <li>Lessons of past cities: Some remaining standing (Qaa'im), others mown down (Haseed).</li><li>Absolute justice: 'We did not wrong them, but they wronged their own souls.'</li><li>False gods and secular systems availed nothing when the sovereign decree arrived.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-container " id="page-8">
+      <div class="page-meta">
+        <div>
+          <h2>THE GRAYING MANDATE: ISTIQAMAH & THE COSMIC RETURN</h2>
+          <p class="desc">Pillars 15 & 16: The Severity of Fastaqim, Ban on Incline to Tyrants, Active Reformers & Sovereignty Over Unseen</p>
+        </div>
+        <div class="badge-tag">[PLATE 08 : ISTIQAMAH & THE RETURN]</div>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar-col">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 15: THE COMMAND TO STAND UPRIGHT & BAN ON INCLINE TO TYRANTS</h3>
+            <p>Fastaqim Kama Umirta, Wa La Tarkanoo & Prayers Erasing Minor Evils</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">57</span>
+                <h4>The Verse that Grayed the Prophet: Fastaqim Kama Umirta</h4>
+              </div>
+              <ul>
+                <li>The supreme imperative: 'Stand firm and upright as commanded, and do not transgress!'</li><li>Ibn 'Abbas: No verse across the Qur'an was revealed more severe than this command.</li><li>Forbidding both compromise (Tafreet) and extremism (Tughyan); razor-sharp rectitude.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">58</span>
+                <h4>The Prohibition of Inward Incline to Oppressors</h4>
+              </div>
+              <ul>
+                <li>Strict moral boundary: 'And do not incline toward those who do wrong (Wa La Tarkanoo)!'</li><li>Even slight sympathy, flattery, or justification of tyranny invites the Fire.</li><li>Severance of aid: 'You will have no protectors besides Allah, then not be helped.'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">59</span>
+                <h4>Cadence of Prayer: Good Deeds Erasing Minor Sins</h4>
+              </div>
+              <ul>
+                <li>Daily spiritual rhythm: Establish prayer at ends of day and approaches of night.</li><li>Restorative power of worship: 'Indeed, good deeds erase and eradicate bad deeds.'</li><li>Confirmed in Sahih al-Bukhari: The five prayers cleanse hearts of unintentional slips.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">60</span>
+                <h4>Law of Civilizational Preservation: Presence of Reformers</h4>
+              </div>
+              <ul>
+                <li>Sociological law: 'Your Lord would never destroy cities while people are reformers.'</li><li>Muslihoon (active reformers) provide immunity; passive piety (Salihun) does not.</li><li>The civilizational duty: An active vanguard confronting corruption on earth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-col">
+          <div class="pillar-header rose">
+            <h3>PILLAR 16: DIVINE CADENCE OF PRAYER, REFORMERS & THE FINAL TRUST</h3>
+            <p>Purpose of Human Variance, Prophetic History as Heart Anchor & Total Tawakkul</p>
+          </div>
+          <div class="cards-list">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">61</span>
+                <h4>Purpose of Human Variance & The Exceptions of Mercy</h4>
+              </div>
+              <ul>
+                <li>Divine wisdom in human diversity: 'Had your Lord willed, He would have made man one.'</li><li>Divergent paths and choices are inherent to the existential examination of free will.</li><li>The singular eternal exception: 'Except those upon whom your Lord has granted mercy.'</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">62</span>
+                <h4>Prophetic Histories as Unshakeable Anchors for Heart</h4>
+              </div>
+              <ul>
+                <li>Sacred history as medicine: 'All We narrate to you is to make firm your heart.'</li><li>Infusing the soul with verifiable truth (Al-Haqq), admonition, and spiritual strength.</li><li>Blueprints of steadfastness: Every previous struggle culminated in divine dawn.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">63</span>
+                <h4>The Unseen Belongs Exclusively to the Master of Heavens</h4>
+              </div>
+              <ul>
+                <li>Cosmic sovereignty: 'To Allah belongs the unseen of the heavens and the earth.'</li><li>Every hidden motive and outcome is known: 'And to Him all matters return.'</li><li>Earthly power struggles and tyrannies are subordinate to the ultimate Divine Court.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">64</span>
+                <h4>The Final Commission: Worship Him, Rely Upon Him & Return</h4>
+              </div>
+              <ul>
+                <li>Final commission: 'Worship Him and rely upon Him (Fa'budhu wa Tawakkal 'Alayh).'</li><li>The twin pillars: Rigorous devotional obedience paired with unshakeable inner peace.</li><li>Parting reassurance: 'And your Lord is not unaware of what you do.'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+    <footer class="footer">
+      <p><b>HUURS STUDIO</b> &bull; READ. REFLECT. RETURN. &bull; Sunni Islamic Source Discipline</p>
+      <p style="font-size:0.75rem; margin-top:4px;">Imam at-Tabari &bull; Imam ar-Razi &bull; Imam al-Qurtubi &bull; Imam Ibn Kathir &bull; Imam al-Baghawi</p>
+    </footer>
+  </div>
+
+  <script>
+    function showPage(pnum) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.page-container').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.tab-btn')[pnum - 1].classList.add('active');
+      document.getElementById('page-' + pnum).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

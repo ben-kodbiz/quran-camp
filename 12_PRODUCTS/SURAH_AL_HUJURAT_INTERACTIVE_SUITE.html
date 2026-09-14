@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Al-Hujurat: Interactive Knowledge Suite | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.2);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy-deep); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; padding-bottom: 60px; }
+    .hero-banner {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 89, 0.12) 0%, rgba(6, 10, 18, 0.95) 70%), var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold); padding: 48px 24px 36px 24px; text-align: center;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 2px; color: var(--gold); background: var(--navy-card); border: 1px solid var(--border-gold);
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+    .hero-subtitle { color: var(--gold-light); font-size: 1.1rem; font-weight: 500; max-width: 800px; margin: 0 auto 20px auto; }
+    .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stat-badge { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 8px; padding: 10px 18px; display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+    .main-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; }
+    .controls-bar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .search-box { width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold); color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-box:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    .nav-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+    .plate-tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.78rem;
+    }
+    .plate-tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .plate-tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-section { display: none; background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+    .plate-section.active { display: block; }
+    .plate-title-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-muted); padding-bottom: 16px; margin-bottom: 20px; }
+    .plate-title-bar h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-bar p { font-size: 0.85rem; color: var(--text-muted); }
+    .plate-badge-box { display: flex; gap: 8px; }
+    .badge-gold { background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); color: var(--emerald); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .pillars-layout { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-bar { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 { font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .cards-wrapper { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-item { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 12px 14px; }
+    .card-item:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .card-idx { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .card-title-row h4 { font-family: 'Cinzel', serif; font-size: 0.86rem; color: var(--white); }
+    .card-points { list-style-type: none; }
+    .card-points li { position: relative; padding-left: 14px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .card-points li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .modals-panel { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-top: 32px; }
+    .modal-triggers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .modal-btn { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; padding: 16px; text-align: left; cursor: pointer; color: var(--white); }
+    .modal-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .modal-btn h5 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 6px; }
+    .modal-btn p { font-size: 0.78rem; color: var(--text-muted); }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 10, 18, 0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-body { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+    .modal-body p { font-size: 0.9rem; color: var(--white); margin-bottom: 14px; line-height: 1.7; }
+    .modal-source { background: var(--navy-elevated); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="hero-banner">
+    <div class="brand-pill">HUURS STUDIO • THE DEEPER THOUGHT SERIES</div>
+    <h1 class="hero-title">SURAH AL-HUJURAT</h1>
+    <div class="hero-subtitle">Interactive Knowledge Suite: 8 Plates • 16 Pillars • 64 Structural Nodes</div>
+    <div class="stats-row">
+      <div class="stat-badge"><span class="stat-val">18</span><span class="stat-lbl">Verses</span></div>
+      <div class="stat-badge"><span class="stat-val">8</span><span class="stat-lbl">Plates</span></div>
+      <div class="stat-badge"><span class="stat-val">16</span><span class="stat-lbl">Pillars</span></div>
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Nodes</span></div>
+      <div class="stat-badge"><span class="stat-val">100%</span><span class="stat-lbl">Sunni Verified</span></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="controls-bar">
+      <input type="text" id="suiteSearch" class="search-box" placeholder="🔍 Live search across all 64 nodes..." onkeyup="filterSuite()">
+      <div class="nav-tabs-wrapper">
+        <button class="plate-tab-btn active" onclick="switchSuitePlate(1)" id="suiteTab1">Plate 01: SACRED PROTOCOLS B...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(2)" id="suiteTab2">Plate 02: CIVILIZATIONAL DEC...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(3)" id="suiteTab3">Plate 03: DIVINE FAVOR & PUR...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(4)" id="suiteTab4">Plate 04: ARBITRATION & COMM...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(5)" id="suiteTab5">Plate 05: PROHIBITION OF RID...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(6)" id="suiteTab6">Plate 06: BANNING UNFOUNDED ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(7)" id="suiteTab7">Plate 07: THE UNIVERSAL CHAR...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(8)" id="suiteTab8">Plate 08: TRUE FAITH VS VERB...</button>
+
+      </div>
+    </div>
+
+
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 01: SACRED PROTOCOLS BEFORE THE PROPHET ﷺ</h2>
+        <p>Pillars 01 & 02: Do Not Precede Allah and His Messenger & Lowering Voices Before the Prophet</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : PROPHETIC PROTOCOLS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 01: DO NOT PRECEDE ALLAH AND HIS MESSENGER</h3>
+          <p>La Tuqaddimoo, Humility in Judgment & Subordinating Opinion to Revelation</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="do not precede allah and his messenger la tuqaddimoo bayna yaday allah wa rasoolih: do not advance your opinions or judgments before divine law.">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>Do Not Precede Allah and His Messenger</h4>
+            </div>
+            <ul class="card-points">
+              <li>La tuqaddimoo bayna yaday Allah wa Rasoolih: do not advance your opinions or judgments before divine law.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="conscious reverence of the all-hearing wattaqoo allah: be mindful of allah, for he hears every whispered counsel and knows the secrets of hearts.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>Conscious Reverence of the All-Hearing</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wattaqoo Allah: be mindful of Allah, for He hears every whispered counsel and knows the secrets of hearts.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="subordinating mortal intellect to revelation true faith requires deferring personal intellect, tribal customs, and passions to prophetic guidance.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>Subordinating Mortal Intellect to Revelation</h4>
+            </div>
+            <ul class="card-points">
+              <li>True faith requires deferring personal intellect, tribal customs, and passions to prophetic guidance.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the foundation of islamic jurisprudence classical jurists derived the legal principle: no human legislation can supersede an authentic text of revelation.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>The Foundation of Islamic Jurisprudence</h4>
+            </div>
+            <ul class="card-points">
+              <li>Classical jurists derived the legal principle: no human legislation can supersede an authentic text of revelation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 02: LOWERING VOICES BEFORE THE MESSENGER</h3>
+          <p>Do Not Raise Voices, Lest Deeds Be Struck Void & Hearts Tested for Taqwa</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="do not raise your voices above the prophet's o you who believe, do not elevate your vocal tone above the voice of the messenger in speech.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>Do Not Raise Your Voices Above the Prophet's</h4>
+            </div>
+            <ul class="card-points">
+              <li>O you who believe, do not elevate your vocal tone above the voice of the Messenger in speech.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="do not shout at him as you shout at each other do not address the prophet with harsh casual familiarity as you shout across streets to your peers.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>Do Not Shout at Him as You Shout at Each Other</h4>
+            </div>
+            <ul class="card-points">
+              <li>Do not address the Prophet with harsh casual familiarity as you shout across streets to your peers.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="lest your good deeds be rendered void an tahbata a'malukum wa antum la tash'uroon: lest your righteous works be erased without you realizing.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>Lest Your Good Deeds Be Rendered Void</h4>
+            </div>
+            <ul class="card-points">
+              <li>An tahbata a'malukum wa antum la tash'uroon: lest your righteous works be erased without you realizing.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="hearts tested and purified for taqwa those who lower their voices in his presence: allah has refined and tested their hearts for true piety.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>Hearts Tested and Purified for Taqwa</h4>
+            </div>
+            <ul class="card-points">
+              <li>Those who lower their voices in his presence: Allah has refined and tested their hearts for true piety.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 02: CIVILIZATIONAL DECENCY & VERIFYING INFORMATION</h2>
+        <p>Pillars 03 & 04: Calling Behind Chambers (Hujurat) & The Supreme Epistemic Charter: Fatabayyanoo!</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : VERIFICATION CHARTER]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 03: CALLING OUT FROM BEHIND APARTMENTS</h3>
+          <p>Shouting from Behind Hujurat, Lack of Decency & Waiting Patiently</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="those shouting from behind private rooms those desert tribesmen who holler rudely from outside your domestic apartments (al-hujurat).">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>Those Shouting from Behind Private Rooms</h4>
+            </div>
+            <ul class="card-points">
+              <li>Those desert tribesmen who holler rudely from outside your domestic apartments (Al-Hujurat).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="most of them lack discernment and decency aktharuhum la ya'qiloon: the majority of them lack civilizational refinement, empathy, and intellect.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>Most of Them Lack Discernment and Decency</h4>
+            </div>
+            <ul class="card-points">
+              <li>Aktharuhum la ya'qiloon: the majority of them lack civilizational refinement, empathy, and intellect.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="far better had they waited patiently had they shown patient etiquette until you emerged to meet them, it would have been far better for them.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>Far Better Had They Waited Patiently</h4>
+            </div>
+            <ul class="card-points">
+              <li>Had they shown patient etiquette until you emerged to meet them, it would have been far better for them.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="allah is immensely forgiving and merciful wallahu ghafoorun raheem: allah overlooks past uncouth ignorance when people embrace proper decorum.">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>Allah is Immensely Forgiving and Merciful</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wallahu Ghafoorun Raheem: Allah overlooks past uncouth ignorance when people embrace proper decorum.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 04: THE EPISTEMIC CHARTER: FATABAYYANOO!</h3>
+          <p>When a Fasiq Brings News, Investigating Truth & Averting Tragic Remorse</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="when an iniquitous person brings news if a corrupt, untrustworthy person (*fasiq*) brings you information, never react or publish in haste!">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>When an Iniquitous Person Brings News</h4>
+            </div>
+            <ul class="card-points">
+              <li>If a corrupt, untrustworthy person (*Fasiq*) brings you information, never react or publish in haste!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the command to verify and investigate (fatabayyanoo) fatabayyanoo / fatathabbatoo: verify the facts, cross-examine sources, and investigate thoroughly!">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>The Command to Verify and Investigate (Fatabayyanoo)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fatabayyanoo / Fatathabbatoo: verify the facts, cross-examine sources, and investigate thoroughly!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="lest you harm innocent people in ignorance lest you strike an innocent community in unverified anger, inflicting grave injustice and harm.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>Lest You Harm Innocent People in Ignorance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Lest you strike an innocent community in unverified anger, inflicting grave injustice and harm.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="becoming stricken with bitter remorse fa-tusbihoo 'ala ma fa'altum nadimeen: and become stricken with agonizing, irreparable regret.">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>Becoming Stricken with Bitter Remorse</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-tusbihoo 'ala ma fa'altum nadimeen: and become stricken with agonizing, irreparable regret.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 03: DIVINE FAVOR & PURITY OF HEARTS</h2>
+        <p>Pillars 05 & 06: The Prophet Among You & Faith Made Beloved while Iniquity Made Detestable</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : SPIRITUAL BEAUTY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 05: THE MESSENGER OF ALLAH AMONG YOU</h3>
+          <p>Prophet in Your Midst, Disastrous Consequence of Blind Compliance & Divine Wisdom</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="know that the messenger of allah is among you recognize the profound blessing and weight that the prophet of god resides and walks in your presence.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>Know That the Messenger of Allah is Among You</h4>
+            </div>
+            <ul class="card-points">
+              <li>Recognize the profound blessing and weight that the Prophet of God resides and walks in your presence.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="if he obeyed you in most matters you would suffer were he to obey your emotional demands and rumors in many affairs, you would surely fall into disaster.">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>If He Obeyed You in Most Matters You Would Suffer</h4>
+            </div>
+            <ul class="card-points">
+              <li>Were he to obey your emotional demands and rumors in many affairs, you would surely fall into disaster.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="divine protection from chaos and conflict prophetic leadership anchors the community in transcendent wisdom rather than reactive hysteria.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>Divine Protection from Chaos and Conflict</h4>
+            </div>
+            <ul class="card-points">
+              <li>Prophetic leadership anchors the community in transcendent wisdom rather than reactive hysteria.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="humility before apostolic leadership believers find safety by aligning their loyalties with verified guidance rather than mob impulses.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>Humility Before Apostolic Leadership</h4>
+            </div>
+            <ul class="card-points">
+              <li>Believers find safety by aligning their loyalties with verified guidance rather than mob impulses.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 06: FAITH MADE BELOVED & ADORNED IN HEARTS</h3>
+          <p>Habbaba Ilaykumu al-Iman, Sins Made Repulsive & The Truly Rightly Guided</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="allah endeared faith to your inner souls walakinna allaha habbaba ilaykumu al-imana: he made faith beloved and exquisitely adorned inside hearts.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>Allah Endeared Faith to Your Inner Souls</h4>
+            </div>
+            <ul class="card-points">
+              <li>Walakinna Allaha habbaba ilaykumu al-imana: He made faith beloved and exquisitely adorned inside hearts.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="disbelief, iniquity and rebellion made hateful and he made disbelief, corruption, and moral defiance naturally repulsive and detestable to your nature.">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>Disbelief, Iniquity and Rebellion Made Hateful</h4>
+            </div>
+            <ul class="card-points">
+              <li>And He made disbelief, corruption, and moral defiance naturally repulsive and detestable to your nature.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="those are the truly rightly guided (rashidoon) ula'ika humu ar-rashidoon: those gifted with this pure spiritual aesthetic are the truly mature and guided.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>Those Are the Truly Rightly Guided (Rashidoon)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ula'ika humu ar-rashidoon: those gifted with this pure spiritual aesthetic are the truly mature and guided.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="a grace and sovereign bounty from allah fadlan mina allahi wa ni'mah: a purely unearned bounty from allah, who is all-knowing, all-wise.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>A Grace and Sovereign Bounty from Allah</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fadlan mina Allahi wa ni'mah: a purely unearned bounty from Allah, who is All-Knowing, All-Wise.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 04: ARBITRATION & COMMUNAL RECONCILIATION</h2>
+        <p>Pillars 07 & 08: When Believers Fight, Quelling Aggression & Innamal-Mu'minoona Ikhwah (Believers Are Brethren)</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : SACRED JUSTICE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 07: ARBITRATION BETWEEN FIGHTING BELIEVERS</h3>
+          <p>Two Factions at War, Reconciling Fairly & Striking the Transgressor</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="when two groups of believers fall into conflict if two factions among the faithful clash in armed conflict, intervene immediately to make peace.">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>When Two Groups of Believers Fall into Conflict</h4>
+            </div>
+            <ul class="card-points">
+              <li>If two factions among the faithful clash in armed conflict, intervene immediately to make peace.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="reconciling between them with impartial justice facilitate swift arbitration based on truth, restorative justice, and genuine reconciliation.">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>Reconciling Between Them with Impartial Justice</h4>
+            </div>
+            <ul class="card-points">
+              <li>Facilitate swift arbitration based on truth, restorative justice, and genuine reconciliation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="combating the obstinate aggressor (tabghee) if one faction defies arbitration and continues violent transgression, fight the oppressor collectively!">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Combating the Obstinate Aggressor (Tabghee)</h4>
+            </div>
+            <ul class="card-points">
+              <li>If one faction defies arbitration and continues violent transgression, fight the oppressor collectively!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="until it returns to the command of allah hatta tafee'a ila amrillahi: until the rogue faction yields and submits back to the divine decree of justice.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>Until It Returns to the Command of Allah</h4>
+            </div>
+            <ul class="card-points">
+              <li>Hatta tafee'a ila amrillahi: until the rogue faction yields and submits back to the divine decree of justice.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 08: THE CHARTER OF UNIVERSAL BROTHERHOOD</h3>
+          <p>Innamal-Mu'minoona Ikhwah, Absolute Equity (Aqsitoo) & Receiving Mercy</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="reconciling with absolute equity (aqsitoo) when the aggressor complies, make peace between them with fairness and be meticulously just!">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>Reconciling with Absolute Equity (Aqsitoo)</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the aggressor complies, make peace between them with fairness and be meticulously just!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="allah loves the meticulously just (muqsiteen) innallaha yuhibbu al-muqsiteen: allah deeply loves those who establish uncompromising equity.">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>Allah Loves the Meticulously Just (Muqsiteen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Innallaha yuhibbu al-muqsiteen: Allah deeply loves those who establish uncompromising equity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sovereign declaration: believers are brethren! innama al-mu'minoona ikhwatun: believers are nothing less than an indivisible spiritual family and brotherhood!">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>The Sovereign Declaration: Believers Are Brethren!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Innama al-mu'minoona ikhwatun: believers are nothing less than an indivisible spiritual family and brotherhood!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="reconcile between your two brothers to find mercy so reconcile between your brothers and maintain taqwa so that you may receive divine mercy.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>Reconcile Between Your Two Brothers to Find Mercy</h4>
+            </div>
+            <ul class="card-points">
+              <li>So reconcile between your brothers and maintain Taqwa so that you may receive divine mercy.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 05: PROHIBITION OF RIDICULE & DEROGATORY LABELS</h2>
+        <p>Pillars 09 & 10: Ban on Social Mockery, Preserving Honor & Prohibition of Sarcastic Nicknames (Tanabuz)</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : PRESERVING DIGNITY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 09: NO GROUP RIDICULING ANOTHER GROUP</h3>
+          <p>La Yaskhar Qawmun min Qawm, The Mocked May Be Better & Ban on Condescension</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="let no community ridicule another community o you who believe, let not one group mock or demean another group in arrogant superiority.">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Let No Community Ridicule Another Community</h4>
+            </div>
+            <ul class="card-points">
+              <li>O you who believe, let not one group mock or demean another group in arrogant superiority.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="perhaps the mocked are far better before god it may well be that the mocked are vastly superior in character, devotion, and divine honor.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>Perhaps the Mocked Are Far Better Before God</h4>
+            </div>
+            <ul class="card-points">
+              <li>It may well be that the mocked are vastly superior in character, devotion, and divine honor.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="nor shall women ridicule other women nor should women scoff at or demean other women: divine prohibition against all social snobbery.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>Nor Shall Women Ridicule Other Women</h4>
+            </div>
+            <ul class="card-points">
+              <li>Nor should women scoff at or demean other women: divine prohibition against all social snobbery.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="eradicating toxic elitism and social sarcasm surah al-hujurat tears down the haughty habits of tribal, class, and aesthetic condescension.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>Eradicating Toxic Elitism and Social Sarcasm</h4>
+            </div>
+            <ul class="card-points">
+              <li>Surah Al-Hujurat tears down the haughty habits of tribal, class, and aesthetic condescension.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 10: BAN ON DEFAMATION & OFFENSIVE NICKNAMES</h3>
+          <p>Wa La Talmizoo Anfusakum, No Tanabuz bil-Alqab & Unrepentant Are Wrongdoers</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="do not defame or slander yourselves wa la talmizoo anfusakum: do not insult, taunt, or defame one another, for believers are one soul.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>Do Not Defame or Slander Yourselves</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa la talmizoo anfusakum: do not insult, taunt, or defame one another, for believers are one soul.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="do not revile each other with sarcastic nicknames wa la tanabazoo bil-alqab: do not brand each other with derogatory, hurtful, or sarcastic labels.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Do Not Revile Each Other with Sarcastic Nicknames</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa la tanabazoo bil-alqab: do not brand each other with derogatory, hurtful, or sarcastic labels.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="wretched is the title of iniquity after faith bi'sa al-ismu al-fusooqu ba'dal-iman: how foul to label someone with sin after they entered faith!">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Wretched is the Title of Iniquity After Faith</h4>
+            </div>
+            <ul class="card-points">
+              <li>Bi'sa al-ismu al-fusooqu ba'dal-iman: how foul to label someone with sin after they entered faith!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="those who do not repent are the real transgressors and whoever does not desist and repent: those are the persistent, arrogant wrongdoers (zalimoon).">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>Those Who Do Not Repent Are the Real Transgressors</h4>
+            </div>
+            <ul class="card-points">
+              <li>And whoever does not desist and repent: those are the persistent, arrogant wrongdoers (Zalimoon).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 06: BANNING UNFOUNDED SUSPICION, SPYING & GHEEBAH</h2>
+        <p>Pillars 11 & 12: Avoid Much Conjecture, Wa La Tajassasoo (Do Not Spy) & The Repulsive Parable of Backbiting</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : INNER PURITY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 11: AVOIDING MUCH UNFOUNDED CONJECTURE (ZANN)</h3>
+          <p>Ijtaniboo Katheeran minaz-Zann, Some Suspicion is Sin & Protecting Minds</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="avoid much groundless suspicion (zann) ijtaniboo katheeran minaz-zann: steer far clear of entertaining unwarranted suspicions and cynical paranoia.">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>Avoid Much Groundless Suspicion (Zann)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ijtaniboo katheeran minaz-zann: steer far clear of entertaining unwarranted suspicions and cynical paranoia.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="indeed, some suspicion is an outright sin inna ba'da az-zanni ithm: harbor no malicious assumptions, for unverified suspicion corrupts hearts.">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Indeed, Some Suspicion is an Outright Sin</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna ba'da az-zanni ithm: harbor no malicious assumptions, for unverified suspicion corrupts hearts.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="preserving the sanctity of good conjectures believers must grant fellow brethren the benefit of the doubt and assume virtuous intent by default.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>Preserving the Sanctity of Good Conjectures</h4>
+            </div>
+            <ul class="card-points">
+              <li>Believers must grant fellow brethren the benefit of the doubt and assume virtuous intent by default.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the psychological shield of communal trust protecting the social fabric from rotting under secret distrust, jealousy, and imagined slights.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>The Psychological Shield of Communal Trust</h4>
+            </div>
+            <ul class="card-points">
+              <li>Protecting the social fabric from rotting under secret distrust, jealousy, and imagined slights.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 12: DO NOT SPY & CONSUMING A DEAD BROTHER'S FLESH</h3>
+          <p>Wa La Tajassasoo, Wa La Yaghtab & The Horrific Parable of Necrophagy</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="do not spy into private faults (wa la tajassasoo) do not pry, snoop, wiretap, or investigate the private shortcomings and hidden flaws of people.">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>Do Not Spy into Private Faults (Wa La Tajassasoo)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Do not pry, snoop, wiretap, or investigate the private shortcomings and hidden flaws of people.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="do not backbite one another (wa la yaghtab) do not speak of your brother behind his back in a manner that he would dislike or find offensive.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>Do Not Backbite One Another (Wa La Yaghtab)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Do not speak of your brother behind his back in a manner that he would dislike or find offensive.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="would you love to eat the flesh of your dead brother? a-yuhibbu ahadukum an ya'kula lahma akheehi maytan: would any of you relish eating dead rotting flesh?!">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>Would You Love to Eat the Flesh of Your Dead Brother?</h4>
+            </div>
+            <ul class="card-points">
+              <li>A-yuhibbu ahadukum an ya'kula lahma akheehi maytan: would any of you relish eating dead rotting flesh?!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="you loathe it! so fear allah who accepts repentance fakarihtumooh: you abhor it instinctively! so fear allah; indeed, allah is ever accepter of repentance.">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>You Loathe It! So Fear Allah Who Accepts Repentance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fakarihtumooh: you abhor it instinctively! So fear Allah; indeed, Allah is ever Accepter of Repentance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 07: THE UNIVERSAL CHARTER OF HUMAN EQUALITY</h2>
+        <p>Pillars 13 & 14: Created from Male and Female, Nations and Tribes (Li-Ta'arafoo) & True Nobility is Taqwa</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : HUMAN BROTHERHOOD]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 13: THE COMMON GENESIS OF ALL HUMANITY</h3>
+          <p>Ya Ayyuhan-Nas, Single Male and Female & Universal Human Dignity</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="universal address to the entire human race ya ayyuhan-nas: o mankind! a global declaration directed beyond tribal or sectarian boundaries.">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>Universal Address to the Entire Human Race</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ayyuhan-nas: O mankind! A global declaration directed beyond tribal or sectarian boundaries.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="created from a single male and female inna khalaqnakum min dhakarin wa untha: all human beings originate from the same mother and father.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Created from a Single Male and Female</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna khalaqnakum min dhakarin wa untha: all human beings originate from the same mother and father.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="total demolition of racial and blood superiority eradicating all notions of racial supremacy, ethnic chosenness, genetic pride, or caste dominance.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>Total Demolition of Racial and Blood Superiority</h4>
+            </div>
+            <ul class="card-points">
+              <li>Eradicating all notions of racial supremacy, ethnic chosenness, genetic pride, or caste dominance.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="inherent sacred dignity bestowed on every soul establishing universal biological kinship connecting all races across geography and historical eras.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>Inherent Sacred Dignity Bestowed on Every Soul</h4>
+            </div>
+            <ul class="card-points">
+              <li>Establishing universal biological kinship connecting all races across geography and historical eras.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 14: DIVERSITY FOR MUTUAL RECOGNITION (LI-TA'ARAFOO)</h3>
+          <p>Nations and Tribes to Know, Inna Akramakum 'Indallahi Atqakum & Complete Knowledge</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="made into diverse nations and lineages wa ja'alnakum shu'ooban wa qaba'ila: we fashioned you into diverse cultural nations and tribes.">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>Made into Diverse Nations and Lineages</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa ja'alnakum shu'ooban wa qaba'ila: We fashioned you into diverse cultural nations and tribes.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="for mutual recognition, not hegemony (li-ta'arafoo) li-ta'arafoo: so that you may enrich, understand, and know one another, not despise or subjugate!">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>For Mutual Recognition, Not Hegemony (Li-Ta'arafoo)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Li-ta'arafoo: so that you may enrich, understand, and know one another, not despise or subjugate!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="true nobility rests only in god-consciousness inna akramakum 'indallahi atqakum: the most noble of you in the sight of allah is the most pious!">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>True Nobility Rests Only in God-Consciousness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna akramakum 'indallahi atqakum: the most noble of you in the sight of Allah is the most pious!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="allah is omniscient and fully acquainted innallaha 'aleemun khabeer: allah is fully cognizant of genuine inner virtue, free from mortal biases.">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>Allah is Omniscient and Fully Acquainted</h4>
+            </div>
+            <ul class="card-points">
+              <li>Innallaha 'Aleemun Khabeer: Allah is fully cognizant of genuine inner virtue, free from mortal biases.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 08: TRUE FAITH VS VERBAL BEDOUIN ASLAMNA</h2>
+        <p>Pillars 15 & 16: Verbal Submission vs Inner Faith & The True Believers Who Never Harbor Skeptical Doubt</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : TRUE IMAN]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 15: THE BEDOUINS PROCLAIMING ASLAMNA</h3>
+          <p>Qalati al-A'rabu Amanna, Say You Submitted & Iman Has Not Entered Hearts</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the desert nomads claim: we have believed! qalatil-a'rabu amanna: the bedouins boastful proclamation: we have attained complete faith!">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>The Desert Nomads Claim: We Have Believed!</h4>
+            </div>
+            <ul class="card-points">
+              <li>Qalatil-a'rabu amanna: the Bedouins boastful proclamation: We have attained complete faith!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="say: you have not yet attained true faith qul lam tu'minoo: declare firmly that you have not yet reached the spiritual threshold of true iman.">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>Say: You Have Not Yet Attained True Faith</h4>
+            </div>
+            <ul class="card-points">
+              <li>Qul lam tu'minoo: declare firmly that you have not yet reached the spiritual threshold of true Iman.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="rather say: we have outwardly submitted (aslamna) walakin qooloo aslamna: rather acknowledge that you have surrendered to the political covenant of islam.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>Rather Say: We Have Outwardly Submitted (Aslamna)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Walakin qooloo aslamna: rather acknowledge that you have surrendered to the political covenant of Islam.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="until faith truly permeates and softens hearts wa lamma yadkhulil-imanu fee quloobikum: for true faith has not yet entered and blossomed within your chests.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>Until Faith Truly Permeates and Softens Hearts</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa lamma yadkhulil-imanu fee quloobikum: for true faith has not yet entered and blossomed within your chests.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 16: THE SINCERE BELIEVERS STRIVING UNWAVERINGLY</h3>
+          <p>Those Who Believe and Doubt Not, Striving with Wealth and Lives & Sadiqoon</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the authentic definition of true believers innamal-mu'minoon: true believers are exclusively those who had complete conviction in allah and messenger.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>The Authentic Definition of True Believers</h4>
+            </div>
+            <ul class="card-points">
+              <li>Innamal-mu'minoon: true believers are exclusively those who had complete conviction in Allah and Messenger.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="then never harbor any lingering doubt (lam yartaboo) thumma lam yartaboo: their faith remains pristine, never shaken by skeptical cynicism or hypocrisy.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>Then Never Harbor Any Lingering Doubt (Lam Yartaboo)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Thumma lam yartaboo: their faith remains pristine, never shaken by skeptical cynicism or hypocrisy.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="striving with their wealth and lives in allah's way wa jahadoo bi-amwalihim wa anfusihim fee sabeelillah: sacrificing fortune and life for truth.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>Striving with Their Wealth and Lives in Allah's Way</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa jahadoo bi-amwalihim wa anfusihim fee sabeelillah: sacrificing fortune and life for truth.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="those are the uncompromisingly sincere (sadiqoon) ula'ika humu as-sadiqoon: those are the ones whose deeds authenticate their words with truth!">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>Those Are the Uncompromisingly Sincere (Sadiqoon)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ula'ika humu as-sadiqoon: those are the ones whose deeds authenticate their words with truth!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="modals-panel">
+      <div class="section-heading" style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);"><span>✦</span> DEEP EXEGETICAL FOCUS MONOGRAPHS</div>
+      <div class="modal-triggers-grid">
+
+        <div class="modal-btn" onclick="openModal('m1')">
+          <h5>1. The Verification Mandate: In Ja'akum Fasiq (49:6)</h5>
+          <p>The foundational epistemological pillar of Islamic information ethics and fact-checking.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m2')">
+          <h5>2. The Universal Human Equality Charter (49:13)</h5>
+          <p>Inna akramakum 'indallahi atqakum: tearing down all racial, tribal, and national supremacy.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m3')">
+          <h5>3. The Psychological Parable of Backbiting: Gheebah (49:12)</h5>
+          <p>Would any of you relish consuming the dead flesh of his own brother?</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m4')">
+          <h5>4. Social Decorum & Calling Behind Apartments (49:2–5)</h5>
+          <p>Civilizational etiquette, lowering voices, and preserving personal boundaries.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal-backdrop" id="modal-m1">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m1')">&times;</button>
+      <h3>The Verification Mandate: In Ja'akum Fasiq (49:6)</h3>
+      <p>In classical Hadith literature and Tafsir Ibn Kathir, this verse was revealed concerning Al-Walid ibn 'Uqbah, who was sent by the Prophet ﷺ to collect Zakat from Banu al-Mustaliq. Hearing rumors of hostility, he returned claiming they had apostatized and mobilized for war.</p><p>Before ordering a retaliatory detachment, the Prophet ﷺ investigated through Khalid ibn al-Walid, discovering Banu al-Mustaliq were actively praying and eagerly awaiting to pay Zakat. Allah revealed: 'O you who believe! If a corrupt person brings you news, verify it thoroughly (Fatabayyanoo), lest you harm people in ignorance and become stricken with remorse!'</p>
+      <div class="modal-source">Authorities: Musnad Ahmad • Tafsir Ibn Kathir (7/370) • Asbab an-Nuzul (Al-Wahidi p. 280) • Al-Tabari</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m2">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m2')">&times;</button>
+      <h3>The Universal Human Equality Charter (49:13)</h3>
+      <p>At the Conquest of Makkah, when Bilal ibn Rabah (the formerly enslaved Abyssinian) ascended the roof of the Ka'bah to proclaim the Adhan, several pagan aristocrats sneered with racist remarks.</p><p>In response, Allah revealed this historic declaration addressed to all humanity: 'O mankind! We created you from a single male and female, and made you into nations and tribes that you may know one another (Li-Ta'arafoo). Indeed, the most noble of you in the sight of Allah is the most God-conscious!' In his Farewell Sermon, the Prophet ﷺ immortalized this: 'No Arab has superiority over a non-Arab, nor a white person over a black person, except by Taqwa.'</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari • Sunan al-Bayhaqi • Musnad Ahmad • Tafsir Ibn Kathir (7/385)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m3">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m3')">&times;</button>
+      <h3>The Psychological Parable of Backbiting: Gheebah (49:12)</h3>
+      <p>Surah Al-Hujurat constructs the most terrifying and visceral psychological deterrent against character assassination: equating backbiting (Gheebah) with necrophagy—eating the raw, decaying corpse of one's own dead brother.</p><p>The Prophet ﷺ defined Gheebah in Sahih Muslim: 'Mentioning your brother with that which he would dislike.' When asked, 'What if what I say is true?' he replied: 'If it is true, you have backbitten him; and if it is false, you have slandered him (Buhtan).' It forbids all forms of malicious gossip, digital doxxing, and secret fault-hunting.</p>
+      <div class="modal-source">Authorities: Sahih Muslim 2589 • Jami' at-Tirmidhi 1934 • Tafsir al-Qurtubi (16/335)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m4">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m4')">&times;</button>
+      <h3>Social Decorum & Calling Behind Apartments (49:2–5)</h3>
+      <p>Revealed regarding a delegation from Banu Tamim who arrived in Medina at midday during the Prophet's resting hour, shouting loudly from outside his private rooms: 'O Muhammad, come out to us!'</p><p>The verses codified refined social manners: respecting privacy, not shouting over others, and avoiding disruptive entitlement. In Sahih al-Bukhari (4846), Thabit ibn Qays (who naturally had a loud voice) wept in fear that his deeds were destroyed, until the Prophet comforted him with glad tidings of Paradise.</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari 4845, 4846 • Sahih Muslim • Tafsir al-Tabari (22/195)</div>
+    </div>
+  </div>
+
+  <script>
+    function switchSuitePlate(page) {
+      document.querySelectorAll('.plate-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      const tab = document.getElementById('suiteTab' + page);
+      const sec = document.getElementById('plateSection' + page);
+      if (tab) tab.classList.add('active');
+      if (sec) sec.classList.add('active');
+    }
+
+    function filterSuite() {
+      const q = document.getElementById('suiteSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.card-item');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+
+    function openModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.remove('open');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>

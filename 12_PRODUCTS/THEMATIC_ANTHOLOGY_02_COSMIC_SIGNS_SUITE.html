@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Ayat al-Kawn: Interactive Knowledge Suite | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.2);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy-deep); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; padding-bottom: 60px; }
+    .hero-banner {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 89, 0.12) 0%, rgba(6, 10, 18, 0.95) 70%), var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold); padding: 48px 24px 36px 24px; text-align: center;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 2px; color: var(--gold); background: var(--navy-card); border: 1px solid var(--border-gold);
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+    .hero-subtitle { color: var(--gold-light); font-size: 1.1rem; font-weight: 500; max-width: 800px; margin: 0 auto 20px auto; }
+    .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stat-badge { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 8px; padding: 10px 18px; display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+    .main-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; }
+    .controls-bar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .search-box { width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold); color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-box:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    .nav-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+    .plate-tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.78rem;
+    }
+    .plate-tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .plate-tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-section { display: none; background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+    .plate-section.active { display: block; }
+    .plate-title-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-muted); padding-bottom: 16px; margin-bottom: 20px; }
+    .plate-title-bar h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-bar p { font-size: 0.85rem; color: var(--text-muted); }
+    .plate-badge-box { display: flex; gap: 8px; }
+    .badge-gold { background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); color: var(--emerald); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .pillars-layout { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-bar { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 { font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .cards-wrapper { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-item { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 12px 14px; }
+    .card-item:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .card-idx { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .card-title-row h4 { font-family: 'Cinzel', serif; font-size: 0.86rem; color: var(--white); }
+    .card-points { list-style-type: none; }
+    .card-points li { position: relative; padding-left: 14px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .card-points li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .modals-panel { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-top: 32px; }
+    .modal-triggers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .modal-btn { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; padding: 16px; text-align: left; cursor: pointer; color: var(--white); }
+    .modal-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .modal-btn h5 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 6px; }
+    .modal-btn p { font-size: 0.78rem; color: var(--text-muted); }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 10, 18, 0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-body { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+    .modal-body p { font-size: 0.9rem; color: var(--white); margin-bottom: 14px; line-height: 1.7; }
+    .modal-source { background: var(--navy-elevated); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="hero-banner">
+    <div class="brand-pill">HUURS STUDIO • THE DEEPER THOUGHT SERIES</div>
+    <h1 class="hero-title">SURAH AYAT AL-KAWN</h1>
+    <div class="hero-subtitle">Interactive Knowledge Suite: 8 Plates • 16 Pillars • 64 Structural Nodes</div>
+    <div class="stats-row">
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Verses</span></div>
+      <div class="stat-badge"><span class="stat-val">8</span><span class="stat-lbl">Plates</span></div>
+      <div class="stat-badge"><span class="stat-val">16</span><span class="stat-lbl">Pillars</span></div>
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Nodes</span></div>
+      <div class="stat-badge"><span class="stat-val">100%</span><span class="stat-lbl">Sunni Verified</span></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="controls-bar">
+      <input type="text" id="suiteSearch" class="search-box" placeholder="🔍 Live search across all 64 nodes..." onkeyup="filterSuite()">
+      <div class="nav-tabs-wrapper">
+        <button class="plate-tab-btn active" onclick="switchSuitePlate(1)" id="suiteTab1">Plate 01: THE OCEANIC ABYSS ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(2)" id="suiteTab2">Plate 02: METEOROLOGICAL CYC...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(3)" id="suiteTab3">Plate 03: TECTONIC PEGS & MO...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(4)" id="suiteTab4">Plate 04: THE CELESTIAL CLOC...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(5)" id="suiteTab5">Plate 05: AERODYNAMICS & FAU...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(6)" id="suiteTab6">Plate 06: BOTANICAL MATRICES...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(7)" id="suiteTab7">Plate 07: BIOLOGICAL GENESIS...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(8)" id="suiteTab8">Plate 08: SENSORY TRUST & CO...</button>
+
+      </div>
+    </div>
+
+
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 01: THE OCEANIC ABYSS & THE TWO SEAS</h2>
+        <p>Pillars 01 & 02: The Estuarine Barzakh & The Subsurface Waves of Abyssal Darkness</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : THE OCEANS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 01: THE IMPENETRABLE BARRIER</h3>
+          <p>Marajal-Bahrayni Yaltaqiyan & Baynahuma Barzakhun La Yabghiyan</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the confluence of two water masses releasing the two bodies of water to meet side-by-side, yet maintaining distinct chemical integrity.">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>The Confluence of Two Water Masses</h4>
+            </div>
+            <ul class="card-points">
+              <li>Releasing the two bodies of water to meet side-by-side, yet maintaining distinct chemical integrity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the invisible halocline boundary baynahuma barzakhun la yabghiyan: between them is an impassable barrier which neither transgresses.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>The Invisible Halocline Boundary</h4>
+            </div>
+            <ul class="card-points">
+              <li>Baynahuma barzakhun la yabghiyan: Between them is an impassable barrier which neither transgresses.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sweet freshwater vs. salty bitter sea one palatable and sweet, quenching thirst, while the other is salt and bitter, supporting unique ecosystems.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>The Sweet Freshwater vs. Salty Bitter Sea</h4>
+            </div>
+            <ul class="card-points">
+              <li>One palatable and sweet, quenching thirst, while the other is salt and bitter, supporting unique ecosystems.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="ecological separation without walls demonstrating divine precision where differing densities, temperatures, and salinities preserve balance.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>Ecological Separation without Walls</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demonstrating divine precision where differing densities, temperatures, and salinities preserve balance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 02: THE ABYSSAL INTERNAL WAVES</h3>
+          <p>Fi Bahrin Lujjiyyin & Waves Upon Waves Beneath Dark Skies</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the abyssal ocean depths (bahr lujjiyy) the vast, deep oceanic trenches where natural sunlight cannot penetrate and darkness reigns.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>The Abyssal Ocean Depths (Bahr Lujjiyy)</h4>
+            </div>
+            <ul class="card-points">
+              <li>The vast, deep oceanic trenches where natural sunlight cannot penetrate and darkness reigns.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the physics of subsurface waves engulfed by waves, above which are internal deep waves, above which are surface wind waves.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>The Physics of Subsurface Waves</h4>
+            </div>
+            <ul class="card-points">
+              <li>Engulfed by waves, above which are internal deep waves, above which are surface wind waves.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="layers of concentrated darkness zulumatun ba'duha fawqa ba'd: layers of darkness stacked upon one another in the ocean depths.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>Layers of Concentrated Darkness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Zulumatun ba'duha fawqa ba'd: Layers of darkness stacked upon one another in the ocean depths.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the hand rendered invisible when a hand is stretched forth into the abyss, it can scarcely be seen; true guidance belongs to allah.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>The Hand Rendered Invisible</h4>
+            </div>
+            <ul class="card-points">
+              <li>When a hand is stretched forth into the abyss, it can scarcely be seen; true guidance belongs to Allah.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 02: METEOROLOGICAL CYCLES & CLOUDBURSTS</h2>
+        <p>Pillars 03 & 04: The Fertilizing Winds, Cumulus Towers & Reviving Desiccated Soil</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : RAIN & CLOUDS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 03: THE FERTILIZING CLOUD WINDS</h3>
+          <p>Arsalnar-Riyaha Lawaqiha & Driving Massive Rain Clouds</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="winds as fertilizers and pollinators wa arsalnar-riyaha lawaqiha: sending forth the winds as fertilizing agents for clouds and vegetation.">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>Winds as Fertilizers and Pollinators</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa arsalnar-riyaha lawaqiha: Sending forth the winds as fertilizing agents for clouds and vegetation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="lifting immense atmospheric moisture carrying heavy rain clouds across hundreds of miles to parched, desperate landscapes.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>Lifting Immense Atmospheric Moisture</h4>
+            </div>
+            <ul class="card-points">
+              <li>Carrying heavy rain clouds across hundreds of miles to parched, desperate landscapes.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the controlled dispersion of droplets pouring down fresh rainwater measured precisely to hydrate without devastating destruction.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>The Controlled Dispersion of Droplets</h4>
+            </div>
+            <ul class="card-points">
+              <li>Pouring down fresh rainwater measured precisely to hydrate without devastating destruction.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the reservoir held in heavenly cisterns storing sweet water in the soil and aquifers which humanity could neither manufacture nor preserve.">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>The Reservoir Held in Heavenly Cisterns</h4>
+            </div>
+            <ul class="card-points">
+              <li>Storing sweet water in the soil and aquifers which humanity could neither manufacture nor preserve.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 04: REVIVING THE DEAD TERRAIN</h3>
+          <p>Fa-Ahya Bihil-Arda Ba'da Mawtiha & Proof of Resurrection</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the bleak slumber of desiccation contemplating the barren, lifeless earth cracked by scorching drought without sign of green.">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>The Bleak Slumber of Desiccation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Contemplating the barren, lifeless earth cracked by scorching drought without sign of green.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the tremor of botanical awakening when the rain descends upon it, it stirs, swells, and brings forth magnificent pairs of flora.">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>The Tremor of Botanical Awakening</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the rain descends upon it, it stirs, swells, and brings forth magnificent pairs of flora.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the botanical analogy of resurrection kadhalikan-nushoor: even so will be the physical resurrection of buried human bodies on the last day.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>The Botanical Analogy of Resurrection</h4>
+            </div>
+            <ul class="card-points">
+              <li>Kadhalikan-nushoor: Even so will be the physical resurrection of buried human bodies on the Last Day.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the infallible power of the originator the lord who awakens dead soil possesses effortless capability to restore sentient consciousness.">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>The Infallible Power of the Originator</h4>
+            </div>
+            <ul class="card-points">
+              <li>The Lord who awakens dead soil possesses effortless capability to restore sentient consciousness.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 03: TECTONIC PEGS & MOUNTAIN ANCHORS</h2>
+        <p>Pillars 05 & 06: Mountains as Stabilizing Anchors (Rawasiya) & High Snowpack Water Systems</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : MOUNTAIN ARCHITECTURE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 05: CRUSTAL PEGS & STABILIZATION</h3>
+          <p>Alqa fil-Ardi Rawasiya an Tameeda Bikum</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the phenomenon of deep mountain roots deep subterranean crustal roots anchoring titanic granite blocks deep into the mantle.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>The Phenomenon of Deep Mountain Roots</h4>
+            </div>
+            <ul class="card-points">
+              <li>Deep subterranean crustal roots anchoring titanic granite blocks deep into the mantle.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="preventing violent crustal shaking an tameeda bikum: anchored firmly lest the continental crust convulse and shake with living inhabitants.">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>Preventing Violent Crustal Shaking</h4>
+            </div>
+            <ul class="card-points">
+              <li>An tameeda bikum: Anchored firmly lest the continental crust convulse and shake with living inhabitants.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the dynamic stability of the planet equilibrating planetary mass and tectonic drift to provide stable continents for civilization.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>The Dynamic Stability of the Planet</h4>
+            </div>
+            <ul class="card-points">
+              <li>Equilibrating planetary mass and tectonic drift to provide stable continents for civilization.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the grandeur of natural topography towering ranges standing as silent monotheistic cathedrals declaring the strength of the maker.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>The Grandeur of Natural Topography</h4>
+            </div>
+            <ul class="card-points">
+              <li>Towering ranges standing as silent monotheistic cathedrals declaring the strength of the Maker.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 06: LOFTY PEAKS & SWEET RESERVOIRS</h3>
+          <p>Rawasiya Shamikhatin wa Asqaynakum Ma'an Furata</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="towering heights touching clouds rawasiya shamikhat: lofty, towering peaks intercepting moisture-laden atmospheric winds.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>Towering Heights Touching Clouds</h4>
+            </div>
+            <ul class="card-points">
+              <li>Rawasiya shamikhat: Lofty, towering peaks intercepting moisture-laden atmospheric winds.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="glacial reservoirs and flowing springs preserving precipitation as high-altitude snow and ice, gradually melting into life-giving streams.">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>Glacial Reservoirs and Flowing Springs</h4>
+            </div>
+            <ul class="card-points">
+              <li>Preserving precipitation as high-altitude snow and ice, gradually melting into life-giving streams.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="quenching sweet water (ma'an furata) filtering through strata of mineral rocks to emerge as sweet, cool, refreshing drinking water.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>Quenching Sweet Water (Ma'an Furata)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Filtering through strata of mineral rocks to emerge as sweet, cool, refreshing drinking water.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the geological design for human thirst a self-regulating hydraulic network operating without human maintenance or electric pumps.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>The Geological Design for Human Thirst</h4>
+            </div>
+            <ul class="card-points">
+              <li>A self-regulating hydraulic network operating without human maintenance or electric pumps.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 04: THE CELESTIAL CLOCKWORK & ORBITAL DYNAMICS</h2>
+        <p>Pillars 07 & 08: The Sun's Appointed Terminus & The Precise Mathematical Orbit of the Moon</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : CELESTIAL MECHANICS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 07: THE RUNNING SOLAR VESSEL</h3>
+          <p>Wash-Shamsu Tajree li-Mustaqarrin Laha & The Cosmic Lantern</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the non-static solar trajectory wash-shamsu tajree: the sun is not static; it travels in its appointed trajectory through the galactic core.">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>The Non-Static Solar Trajectory</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wash-shamsu tajree: The sun is not static; it travels in its appointed trajectory through the galactic core.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the ordained resting terminus li-mustaqarrin laha: traveling toward its final designated terminus under the decree of the all-mighty.">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>The Ordained Resting Terminus</h4>
+            </div>
+            <ul class="card-points">
+              <li>Li-mustaqarrin laha: Traveling toward its final designated terminus under the decree of the All-Mighty.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the solar engine of global life providing heat, photosynthesis, photoperiodic rhythms, and illumination across the biosphere.">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>The Solar Engine of Global Life</h4>
+            </div>
+            <ul class="card-points">
+              <li>Providing heat, photosynthesis, photoperiodic rhythms, and illumination across the biosphere.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the absolute impossibility of collision neither can the sun overtake the moon, nor can the night outstrip the day; all swim in orbits.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>The Absolute Impossibility of Collision</h4>
+            </div>
+            <ul class="card-points">
+              <li>Neither can the sun overtake the moon, nor can the night outstrip the day; all swim in orbits.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 08: LUNAR STATIONS & TIME MEASUREMENT</h3>
+          <p>Wal-Qamara Qaddarnahu Manazila & The Dried Date-Stalk</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the appointed orbital mansions wal-qamara qaddarnahu manazila: measuring exact lunar phases to determine the count of years and time.">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>The Appointed Orbital Mansions</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wal-qamara qaddarnahu manazila: Measuring exact lunar phases to determine the count of years and time.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the return to the withered date-stalk waning until it returns thin and crescented like an ancient curved date-stalk ('urjoon al-qadeem).">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>The Return to the Withered Date-Stalk</h4>
+            </div>
+            <ul class="card-points">
+              <li>Waning until it returns thin and crescented like an ancient curved date-stalk ('urjoon al-qadeem).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the cool reflective luster (noor) bestowed with gentle reflected light that illuminates the night without scorching sensitive life.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>The Cool Reflective Luster (Noor)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Bestowed with gentle reflected light that illuminates the night without scorching sensitive life.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="universal celestial navigation guiding maritime travelers and nocturnal desert caravans across featureless terrestrial wildernesses.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>Universal Celestial Navigation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Guiding maritime travelers and nocturnal desert caravans across featureless terrestrial wildernesses.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 05: AERODYNAMICS & FAUNAL INSTINCT</h2>
+        <p>Pillars 09 & 10: Thermal Lift of Suspended Birds & The Hexagonal Architecture of the Honeybee</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : FAUNAL DESIGN]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 09: BIRDS SUSPENDED IN MID-HEAVEN</h3>
+          <p>Alam Yaraw ilat-Tayri Musakhkharatin fee Jawwis-Sama'</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="subjugated in the midst of the sky gliding effortlessly through the atmosphere, expanding and folding their wings in flight.">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Subjugated in the Midst of the Sky</h4>
+            </div>
+            <ul class="card-points">
+              <li>Gliding effortlessly through the atmosphere, expanding and folding their wings in flight.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="held up exclusively by the merciful ma yumsikuhunna illar-rahman: nothing sustains their suspended flight except the laws of the merciful.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>Held Up Exclusively by the Merciful</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ma yumsikuhunna illar-Rahman: Nothing sustains their suspended flight except the laws of the Merciful.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="hollow bones & aerodynamic precision engineered with feather lightweight structures, airfoil curves, and acute visual acuity.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>Hollow Bones & Aerodynamic Precision</h4>
+            </div>
+            <ul class="card-points">
+              <li>Engineered with feather lightweight structures, airfoil curves, and acute visual acuity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="migratory navigation across continents navigating thousands of miles across oceans without maps, guided by innate geomagnetism.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>Migratory Navigation Across Continents</h4>
+            </div>
+            <ul class="card-points">
+              <li>Navigating thousands of miles across oceans without maps, guided by innate geomagnetism.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 10: THE INSPIRATION OF THE HONEYBEE</h3>
+          <p>Wa Awha Rabbuka ilan-Nahl & The Healing Multifaceted Drink</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="direct divine inspiration to the bee wa awha rabbuka ilan-nahl: inspiring the insect mind to construct dwellings in mountains and trees.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>Direct Divine Inspiration to the Bee</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa awha rabbuka ilan-nahl: Inspiring the insect mind to construct dwellings in mountains and trees.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="mathematical precision of the comb erecting hexagonal storage cells with mathematical optimality, using minimal wax for maximum honey.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Mathematical Precision of the Comb</h4>
+            </div>
+            <ul class="card-points">
+              <li>Erecting hexagonal storage cells with mathematical optimality, using minimal wax for maximum honey.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="consuming the essence of every fruit grazing upon nectar across vast distances and returning along smoothed pathways of the lord.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Consuming the Essence of Every Fruit</h4>
+            </div>
+            <ul class="card-points">
+              <li>Grazing upon nectar across vast distances and returning along smoothed pathways of the Lord.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="healing for humanity (feehi shifa') yielding a syrup of diverse radiant hues containing potent antimicrobial and nutritional healing.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>Healing for Humanity (Feehi Shifa')</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yielding a syrup of diverse radiant hues containing potent antimicrobial and nutritional healing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 06: BOTANICAL MATRICES & DIVERSE PROVISIONS</h2>
+        <p>Pillars 11 & 12: Diverse Flavors from Identical Water & The Sacred Parable of the Olive Tree</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : BOTANICAL DESIGN]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 11: ONE WATER, MULTIFACETED FLAVORS</h3>
+          <p>Yusqa bi-Ma'in Wahidin wa Nufaddilu Ba'daha 'ala Ba'd</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="adjacent soil plots with diverse properties pieces of land lying close together, yet harboring vastly distinct biochemical capacities.">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>Adjacent Soil Plots with Diverse Properties</h4>
+            </div>
+            <ul class="card-points">
+              <li>Pieces of land lying close together, yet harboring vastly distinct biochemical capacities.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="watered with identical raindrops irrigated with the exact same chemical substance of water (h2o) from the heavens.">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Watered with Identical Raindrops</h4>
+            </div>
+            <ul class="card-points">
+              <li>Irrigated with the exact same chemical substance of water (H2O) from the heavens.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="radical divergence in taste and nutrition yet we make some excel over others in taste: sweet grapes, pungent herbs, bitter medicinal roots.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>Radical Divergence in Taste and Nutrition</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yet We make some excel over others in taste: sweet grapes, pungent herbs, bitter medicinal roots.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="refuting materialist randomness if nature were mindless matter, identical inputs in identical soils would yield identical products.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>Refuting Materialist Randomness</h4>
+            </div>
+            <ul class="card-points">
+              <li>If nature were mindless matter, identical inputs in identical soils would yield identical products.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 12: THE BLESSED PARABLE OF THE OLIVE</h3>
+          <p>Shajaratin Mubarakatin Zaytoonah & Light Upon Light</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the blessed evergreen longevity the olive tree enduring centuries in rocky terrain, yielding oil from minimal water.">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>The Blessed Evergreen Longevity</h4>
+            </div>
+            <ul class="card-points">
+              <li>The olive tree enduring centuries in rocky terrain, yielding oil from minimal water.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="neither eastern nor western la sharqiyyatin wa la gharbiyyah: positioned upon open elevations receiving sun from dawn to dusk.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>Neither Eastern Nor Western</h4>
+            </div>
+            <ul class="card-points">
+              <li>La sharqiyyatin wa la gharbiyyah: Positioned upon open elevations receiving sun from dawn to dusk.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="luminous oil radiating without flame its refined oil glows with pure crystalline brilliance as if it would ignite without touching fire.">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>Luminous Oil Radiating Without Flame</h4>
+            </div>
+            <ul class="card-points">
+              <li>Its refined oil glows with pure crystalline brilliance as if it would ignite without touching fire.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the supreme cosmic parable of light nur 'ala nur: light upon light! allah guides to his transcendent light whomever seeks truth.">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>The Supreme Cosmic Parable of Light</h4>
+            </div>
+            <ul class="card-points">
+              <li>Nur 'ala nur: Light upon light! Allah guides to His transcendent light whomever seeks truth.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 07: BIOLOGICAL GENESIS & BIOMETRIC PROOFS</h2>
+        <p>Pillars 13 & 14: The Mingled Fluid Droplet & The Unique Reconstruction of Fingertips</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : EMBRYOLOGY & BIOMETRICS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 13: THE SEED OF MINGLED STAGES</h3>
+          <p>Nutfatin Amshaj, Alaqah & The Measured Human Inception</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the epoch of non-existence hal ata 'alal-insani heenun minad-dahr: a span of time passed when man was not even mentioned.">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>The Epoch of Non-Existence</h4>
+            </div>
+            <ul class="card-points">
+              <li>Hal ata 'alal-insani heenun minad-dahr: A span of time passed when man was not even mentioned.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="creation from mingled drops (amshaj) created from intricate mingled fluids containing chromosomes and genetic blueprints for trial.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Creation from Mingled Drops (Amshaj)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Created from intricate mingled fluids containing chromosomes and genetic blueprints for trial.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the clinging form & chewed substance transitioning through alaqah and mudghah within the three veils of darkness in the maternal womb.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>The Clinging Form & Chewed Substance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Transitioning through alaqah and mudghah within the three veils of darkness in the maternal womb.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="endowment of hearing and sight endowed with acute cognitive perception to examine moral choices and recognize the creator.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>Endowment of Hearing and Sight</h4>
+            </div>
+            <ul class="card-points">
+              <li>Endowed with acute cognitive perception to examine moral choices and recognize the Creator.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 14: BIOMETRIC RECONSTRUCTION</h3>
+          <p>Bala Qadireena 'ala an Nusawwiya Bananah & Unique Identity</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the skeptic's denial of rotten bones does man think we cannot assemble his disintegrated skeletal remains from the earth?">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>The Skeptic's Denial of Rotten Bones</h4>
+            </div>
+            <ul class="card-points">
+              <li>Does man think We cannot assemble his disintegrated skeletal remains from the earth?</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="rebuilding the unique fingertips (bananah) bala qadireena: yes indeed! we are able even to reconstruct the delicate ridges of his fingertips!">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Rebuilding the Unique Fingertips (Bananah)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Bala qadireena: Yes indeed! We are able even to reconstruct the delicate ridges of his fingertips!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="individual dermatoglyphic identity each human possessing an individualized fingerprint pattern distinct from all other billions.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>Individual Dermatoglyphic Identity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Each human possessing an individualized fingerprint pattern distinct from all other billions.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the supreme ease of bodily resurrection the god who calibrated microscopic biometric uniqueness will recreate the entire person effortlessly.">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>The Supreme Ease of Bodily Resurrection</h4>
+            </div>
+            <ul class="card-points">
+              <li>The God who calibrated microscopic biometric uniqueness will recreate the entire person effortlessly.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 08: SENSORY TRUST & COSMIC DISSOLUTION</h2>
+        <p>Pillars 15 & 16: Hearing, Sight & Cognition Audited & The Final Rending of the Firmament</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : STEWARDSHIP & FINALE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 15: THE SACRED SENSORY FACULTIES</h3>
+          <p>As-Sam'a wal-Absara wal-Af'idata Qaleelan Ma Tashkuroon</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="emergence from wombs in ignorance brought forth from maternal wombs possessing zero knowledge, then gifted with faculties.">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>Emergence from Wombs in Ignorance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Brought forth from maternal wombs possessing zero knowledge, then gifted with faculties.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the triad of moral perception endowed with auditory perception, visual acuity, and conscious reflective hearts (af'idah).">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>The Triad of Moral Perception</h4>
+            </div>
+            <ul class="card-points">
+              <li>Endowed with auditory perception, visual acuity, and conscious reflective hearts (af'idah).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the tragic paucity of human thanksgiving qaleelan ma tashkuroon: little is the active gratitude and contemplation rendered back to the maker.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>The Tragic Paucity of Human Thanksgiving</h4>
+            </div>
+            <ul class="card-points">
+              <li>Qaleelan ma tashkuroon: Little is the active gratitude and contemplation rendered back to the Maker.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the inevitable audit of faculties truly, the hearing, the sight, and the heart—all of these will be questioned on the day of judgment.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>The Inevitable Audit of Faculties</h4>
+            </div>
+            <ul class="card-points">
+              <li>Truly, the hearing, the sight, and the heart—all of these will be questioned on the Day of Judgment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 16: THE FINAL COSMIC DISSOLUTION</h3>
+          <p>Idhas-Sama'un-Fatarat, Nujoomun-Kadarat & Earth Returning</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the cleaving of the vaulted heavens when the colossal firmament fractures and is rent wide apart, revealing its temporary nature.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>The Cleaving of the Vaulted Heavens</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the colossal firmament fractures and is rent wide apart, revealing its temporary nature.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the extinguishing of the stars when the nuclear furnaces of the stars lose their brilliant radiance and are dispersed into void.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>The Extinguishing of the Stars</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the nuclear furnaces of the stars lose their brilliant radiance and are dispersed into void.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the oceans boiling and exploding when the subterranean depths ignite and the oceans boil forth, dissolving ecological barriers.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>The Oceans Boiling and Exploding</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the subterranean depths ignite and the oceans boil forth, dissolving ecological barriers.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the soul confronting what it prepared every individual human soul realizing precisely what it put forward and what it left behind.">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>The Soul Confronting What It Prepared</h4>
+            </div>
+            <ul class="card-points">
+              <li>Every individual human soul realizing precisely what it put forward and what it left behind.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="modals-panel">
+      <div class="section-heading" style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);"><span>✦</span> DEEP EXEGETICAL FOCUS MONOGRAPHS</div>
+      <div class="modal-triggers-grid">
+
+        <div class="modal-btn" onclick="openModal('m_kawn_1')">
+          <h5>1. The Barrier Between the Two Seas: Classical Exegesis and Oceanography</h5>
+          <p>The Hydrodynamics of Estuarine Haloclines and Barzakh</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m_kawn_2')">
+          <h5>2. The Deep Sea Internal Waves & Abyssal Darkness</h5>
+          <p>Exegetical Analysis of 'Mawjun min Fawqihi Mawj' (An-Nur 24:40)</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m_kawn_3')">
+          <h5>3. The Tectonic Anchor (Rawasiya) & Crustal Equilibrium</h5>
+          <p>The Meaning of Rawasiya as Stabilizing Pegs</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m_kawn_4')">
+          <h5>4. The Biometric Precision of the Fingertip (Bananah)</h5>
+          <p>Classical Exegesis of 75:4 & Biometric Uniqueness</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal-backdrop" id="modal-m_kawn_1">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_kawn_1')">&times;</button>
+      <h3>The Barrier Between the Two Seas: Classical Exegesis and Oceanography</h3>
+      <p>In Surah Al-Furqan (25:53) and Surah Ar-Rahman (55:19-20), the Qur'an describes two adjacent water masses: 'Marajal-bahrayni yaltaqiyan, baynahuma barzakhun la yabghiyan' (He released the two seas meeting, between them is a barrier which neither transgresses). In classical Arabic, 'maraja' signifies allowing two entities to flow together and intermingle while 'barzakh' denotes an invisible partition.</p><p>Classical Sunni exegetes such as Imam at-Tabari and Al-Qurtubi recognized that this refers both to the junction where rivers meet seas (estuaries) and where two marine bodies of different salinities converge (such as the Mediterranean and the Atlantic at Gibraltar, or the Red Sea and the Gulf of Aden).</p><p>Modern physical oceanography confirms that waters of differing salinities and temperatures possess different surface tensions and densities, creating an authentic frontal boundary ('barzakh') where waters mix gradually without one immediately overriding or destroying the unique ecology and marine fauna of the other.</p>
+      <div class="modal-source">Authorities: Tafsir al-Qurtubi 25:53, Jami' al-Bayan (Tabari), Principles of Oceanography</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m_kawn_2">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_kawn_2')">&times;</button>
+      <h3>The Deep Sea Internal Waves & Abyssal Darkness</h3>
+      <p>Verse 40 of Surah An-Nur presents one of the most astonishing visual metaphors in scripture: comparing the state of the denier to 'darkness in a vast, deep sea (bahr lujjiyy), engulfed by a wave, above which is another wave, above which is a cloud.'</p><p>Imam Ibn Kathir notes that 'bahr lujjiyy' designates the deep open ocean far from shore where sunlight fails to penetrate. More remarkably, the verse specifies two distinct tiers of waves: 'mawjun min fawqihi mawj' (a wave topped by another wave).</p><p>In 20th-century oceanography, scientists discovered the phenomenon of 'internal waves' which occur at the density boundaries between deep water layers. These internal waves are completely invisible from the surface, yet they undulate with colossal energy hundreds of meters beneath the surface waves, exactly mirroring the dual-wave layering described in the Quranic verse.</p>
+      <div class="modal-source">Authorities: Tafsir Ibn Kathir 24:40, Mafatih al-Ghayb (Razi), Al-Mufradat (Raghib)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m_kawn_3">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_kawn_3')">&times;</button>
+      <h3>The Tectonic Anchor (Rawasiya) & Crustal Equilibrium</h3>
+      <p>The term 'rawasiya' occurs repeatedly across the 77 Surahs (e.g. An-Nahl 16:15, Al-Anbiya 21:31, Luqman 31:10, Al-Mursalat 77:27) accompanied by the explanatory clause: 'an tameeda bikum' (lest the earth shake or convulse with you). In Arabic lexicography, 'rasa' means to be firmly anchored and deeply planted, like an anchor securing a ship in storm.</p><p>Imam at-Tabari and Al-Baghawi explain that when the earth was created as a thin continental crust over molten layers, it was prone to violent destabilization; therefore, Allah drove deep-seated mountain pegs through it to secure geological balance for living creatures.</p><p>Geophysical science now affirms the principle of isostasy: mountains possess deep crustal roots extending 30 to 70 kilometers into the Earth's mantle, acting as titanic counterweights that prevent continental plates from tilting and convulsing, providing stable terrestrial platforms for human history.</p>
+      <div class="modal-source">Authorities: Lisan al-'Arab, Tafsir at-Tabari 16:15, Geology of Mountain Roots</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m_kawn_4">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_kawn_4')">&times;</button>
+      <h3>The Biometric Precision of the Fingertip (Bananah)</h3>
+      <p>In Surah Al-Qiyamah (75:3-4), the denier mockingly questions whether Allah can reassemble the rotten, pulverized skeleton of man. The divine response is decisive: 'Bala qadireena 'ala an nusawwiya bananah' (Yes indeed! We are able even to restore his fingertips).</p><p>Classical commentators like Imam Al-Baghawi and Al-Qurtubi noted that the 'bananah' refers to the delicate distal extremities of the fingers, noting that reconstructing such tiny, finely jointed bones requires far greater precision than recreating massive thigh bones or skulls.</p><p>In the modern era, the specific selection of the fingertip has revealed breathtaking biological depth: it is precisely upon the distal phalanges that the unique dermal ridges (fingerprints) are formed during the 13th week of gestation. No two human beings in history, including identical twins, share the exact same dermatoglyphic whorls, demonstrating that resurrection restores the exact, individualized identity of every soul.</p>
+      <div class="modal-source">Authorities: Tafsir al-Baghawi 75:4, Tafsir al-Qurtubi, Fath al-Bari</div>
+    </div>
+  </div>
+
+  <script>
+    function switchSuitePlate(page) {
+      document.querySelectorAll('.plate-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      const tab = document.getElementById('suiteTab' + page);
+      const sec = document.getElementById('plateSection' + page);
+      if (tab) tab.classList.add('active');
+      if (sec) sec.classList.add('active');
+    }
+
+    function filterSuite() {
+      const q = document.getElementById('suiteSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.card-item');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+
+    function openModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.remove('open');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>
