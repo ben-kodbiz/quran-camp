@@ -63,6 +63,29 @@ You only need **two free tools** to run this entire business:
      * Price: `$15.00`
      * Upload File: `12_PRODUCTS/bundles/PACKAGE_04_77_SURAHS_MASTER_VAULT.zip`
 
+### Official 1st Launch Pricing Reference (Strict Max $15.00 Standard)
+
+For this first launch, every item in your store is strictly capped at or below **$15.00 USD** to eliminate barrier-to-entry, build deep communal trust, and drive rapid organic adoption:
+
+| SKU / Product Tier | Scope & Contents | Launch Price | Where Found / Notes |
+|---|---|:---:|---|
+| **Package 01: Free Starter Suite** | 3 Surahs (Al-Fatihah, Al-Kahf, Al-Mulk) | **$0.00** | Free Lead Magnet (`PACKAGE_01_FREE_STARTER_SUITE.zip`) |
+| **Tier 1: Short Surahs (15 Surahs)** | 10–40 Verses (e.g., Al-Jumu'ah, Al-Insan, Nuh) | **$0.89 / Surah** | À la carte study |
+| **Tier 2: Medium Surahs (35 Surahs)** | 40–90 Verses (e.g., Ya-Sin, Maryam, Ar-Rahman) | **$1.29 / Surah** | À la carte study |
+| **Tier 3: Major Surahs (15 Surahs)** | 90–160 Verses (e.g., Yusuf, Al-Isra, Ta-Ha) | **$1.69 / Surah** | À la carte study |
+| **Tier 4: Tiwal Surahs (9 Surahs)** | 165–286 Verses (e.g., Al-Baqarah, Ali 'Imran) | **$1.99 / Surah** | Monumental masterworks |
+| **Curated Master Omnibuses** | Single Deluxe PDFs (e.g., Al-Munjiyat, Juz Amma) | **$2.99 / Volume** | Standalone reading compendiums |
+| **Package 03: Thematic Crown Jewels** | 12 Heart Surahs (`PACKAGE_03...zip`) | **$5.00** | Curated spiritual foundation |
+| **The Scholar's Choice (10-Surah Pass)** | Choose any 10 Surahs with ~40% bundle discount | **$6.99** | **Primary Mid-Tier Offer** |
+| **Package 02: Juz Tabarak Master Suite** | All 11 Surahs of Juz 29 (`PACKAGE_02...zip`) | **$7.00** | Complete Juz 29 student package |
+| **Package 05: Thematic Anthology Suite** | 4-Volume Cross-Surah Suite (`PACKAGE_05...zip`) | **$9.00** | Du'as, Cosmos, Sabr & Heart |
+| **25-Surah Study Pass** | Choose any 25 Surahs with 50%+ discount | **$11.99** | Study group / halaqah pass |
+| **Package 04: Complete 77-Surah Vault** | **All 77 Surahs + All Omnibuses + All Anthologies** | **$15.00** | **Ultimate Hero Offer (Hard Cap)** |
+
+> [!TIP]
+> **Why the Max $15.00 Launch Ceiling Works:**
+> As a beginner doing your first launch, pricing between **$0.89 and $15.00** removes hesitation. When someone sees that the entire 77-Surah Master Digital Vault with 810+ vector plates is only **$15.00**, it becomes an irresistible "no-brainer" investment in their Quranic journey.
+
 ### Tool B: ConvertKit / Kit or MailerLite (For Automated Emails)
 * **Cost:** Free for up to 1,000 subscribers.
 * **What to do:**
@@ -75,8 +98,8 @@ You only need **two free tools** to run this entire business:
      * Email 3: Wait 2 days.
      * Email 4: Wait 3 days.
      * Email 5: Wait 3 days.
-  5. In Email 1, replace the link placeholder with your Gumroad link for Product 1.
-  6. In Emails 4 and 5, replace the link placeholders with your Gumroad links for the $6.99 Pass and the $67 Vault.
+  5. In Email 1, replace the link placeholder with your Gumroad link for Product 1 (Free Starter Suite).
+  6. In Emails 4 and 5, replace the link placeholders with your Gumroad links for the $6.99 Custom Pass and the $15.00 Master Vault.
 
 *That's it! Your entire automated sales engine is now alive.*
 

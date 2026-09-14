@@ -76,7 +76,7 @@ To provide accessible study options while eliminating micro-transaction payment 
 | Study Pass SKU | Scope & Deliverables | Regular À La Carte Value | Pass Price | Effective Savings |
 |---|---|:---:|:---:|:---:|
 | **`PASS_10_STUDY_CIRCLE`** | Any 10 Surahs of Choice (10 Compendiums + 10 Suites + 10 Mindmaps) | ~$25.00 – $35.00 | **$6.99** | **40% – 57% OFF** |
-| **`PASS_25_STUDY_CIRCLE`** | Any 25 Surahs of Choice (Full Regional Study) | ~$65.00 – $85.00 | **$29.99** | **50% – 65% OFF** |
+| **`PASS_25_STUDY_CIRCLE`** | Any 25 Surahs of Choice (Full Regional Study) | ~$30.00 – $45.00 | **$11.99** | **50% – 65% OFF** |
 | **`PASS_77_MASTER_VAULT`** | Complete 77-Surah Vault + 7 Master Omnibuses + 4 Thematic Suites | $100.26 | **$15.00** | **53% – 68% OFF** |
 
 ## 4. Curated Master Omnibus Volumes (Compendium Anthologies)
