@@ -443,15 +443,12 @@ Exterior/interior architecture, dawn/dusk, empty peaceful prayer spaces.
 ### Nature
 Leaves moving, rain, clouds, mountains, rivers.
 
-### Human presence
+### Human presence (Prohibited)
 
-When people are used:
-
-- natural
-- modest
-- non-glamorized
-- emotionally subtle
-- avoid turning the person into the visual focus unless required
+Strict Zero-Human Rule:
+- No people, faces, silhouettes, or hands are permitted in any visual assets.
+- Visual storytelling is conveyed exclusively through nature, sacred architecture, objects, and permissible fauna.
+- Refer to `00_BRAND/PERMANENT_QURANIC_THEMES.md`.
 
 ---
 
@@ -525,7 +522,7 @@ Preferred atmosphere:
 - birds
 - subtle environmental ambience
 
-Never allow background music or sound design to undermine the intended Islamic positioning.
+Strict Zero-Music Mandate: Absolutely no musical instruments, melodies, background chords, or synth beats. Audio consists solely of spoken word narration, acoustic room warmth, and halal organic foley (wind, rain, stream, birdsong). Never allow sound design to undermine the intended Islamic positioning.
 
 ---
 

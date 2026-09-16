@@ -1,85 +1,112 @@
 ---
 artifact:
   artifact_id: QURAN-COMEBACK-SCRIPT-018
-  artifact_type: script_youtube_longform
-  artifact_version: 1.0.0
+  artifact_type: script_longform
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN-SEASON-2
-  title: "Episode 18: The Four Traps of the Modern World"
-  description: "Flagship 5-8 minute contemplative video script exploring Surah Al-Kahf 18:10, 28, 46, 65–82 with classical tafsir and unhurried reflections."
-  topic: "The four existential trials: Faith (The Cave), Wealth (Two Gardens), Knowledge (Musa & Khidr), Power (Dhul-Qarnayn)."
+  title: "Episode 18 Flagship Script: When You Feel Out of Place in the Modern World"
+  description: "Production script for Season 2 Episode 18, exploring Surah Al-Kahf 18:10, 46, the spiritual sanctuary of the cave, and the enduring currency of righteous deeds."
+  topic: "Modern Alienation, Spiritual Sanctuary & Surah Al-Kahf"
   language: en-US
-  target_duration_minutes: 6.5
+  target_duration_minutes: 4.0
 lifecycle:
   status: approved
   created_by: AGENT-07
   created_at: 2026-09-07T15:01:01Z
+  updated_at: 2026-09-11T10:26:00Z
 verification:
   verification_status: verified
   verified_by: AGENT-03
   qa_status: passed
   human_review_status: approved_gate_02
+storage:
+  repository: huurs-studio
+  path: 08_SCRIPTS/
+  filename: QURAN-COMEBACK-SCRIPT-018.md
 ---
 
-# Episode 18: The Four Traps of the Modern World
-### *Come Back to the Qur'an — Season 2 (Surah Al-Kahf)*
+# Episode 18 Flagship Script (`QURAN-COMEBACK-SCRIPT-018`)
 
-**Ayah Reference:** Surah Al-Kahf 18:10, 28, 46, 65–82  
+**Campaign:** Come Back to the Qur'an  
+**Title:** *"When You Feel Out of Place in the Modern World"*  
+**Ayah Reference:** Surah Al-Kahf 18:10, 46  
+**Duration:** ~3.8 minutes (approx. 495 spoken words)  
 **Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Pacing:** 110–125 words per minute (intentional breathing space between ideas)  
+**Visual Living Creation Directive:** 100% Living nature and sacred sanctuary. Pine forest mist with sunbeams, snow-capped mountain peaks piercing clouds, ancient rooted olive tree, flock of white birds soaring over waterfall, and Masjid an-Nabawi minarets at twilight. Absolute Zero-Human Mandate. Zero burned-in subtitles.
 
 ---
 
-## 1. The Hook (00:00 – 00:45)
-*(Atmospheric natural dawn audio. Visual of Shot G (Cave opening to green valley). Slow push-in.)*
+## PRODUCTION SCRIPT & DIALOGUE
 
-Every Friday, millions of Muslims read Surah Al-Kahf. But do we know why this specific Surah is the only shield powerful enough to protect humanity from the ultimate deception?
+### 00:00 – 00:45 | SECTION 1: THE MODERN EXILE
+**[VISUAL]**  
+*Cinematic tracking shot through an ancient, mist-laden pine forest. Soft sunbeams filter through towering dark trunks and evergreen canopy, illuminating drifting woodland fog. Quiet solitude, deep stillness, sanctuary.*
 
-We run from podcast to podcast, from book to book, seeking a cure for the restlessness in our chests. But we forget that the One who created this heart sent down a specific manual for its healing.
+**(VOICEOVER):**  
+"Do you ever look at modern culture—with its relentless digital noise, its worship of materialism, and its endless pressure to compromise your values—and feel like a complete stranger?
 
----
+You sit in conversations where gossip and superficiality are celebrated. You scroll through social feeds where worldly status is the only metric of success. And deep in your chest, a quiet voice whispers: I do not belong here.
 
-## 2. The Ayah (00:45 – 02:00)
-*(Recitation in clear, unadorned Tartil. Text appears on screen with reverence.)*
-
-Allah says in Surah Al-Kahf 18:10, 28, 46, 65–82:
-
-> **إِذْ أَوَى الْفِتْيَةُ إِلَى الْكَهْفِ فَقَالُوا رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا**  
-> *"[Mention] when the youths retreated to the cave and said, 'Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.'"*
-
-Listen to how personal these words are. Allah is not addressing an abstract crowd—He is speaking directly into your private reality right now.
+If you feel this loneliness, you are not broken. You are walking in the exact footsteps of the Young Men of the Cave."
 
 ---
 
-## 3. What Classical Tafsir Explains (02:00 – 04:00)
-*(Transition to Shot D (Mountain pass). Soft sunlight illuminating natural wood and parchment.)*
+### 00:45 – 01:40 | SECTION 2: THE SANCTUARY OF MERCY
+**[VISUAL]**  
+*Aerial cinematic view of towering snow-capped mountain peaks piercing through a massive sea of rolling white cloud inversion under a crystal blue sky. Majestic height, untouchable purity, cosmic sanctuary.*
 
-When the great commentators of Islam examined this verse, they uncovered profound wisdom:
+**(VOICEOVER):**  
+"Fourteen centuries before modern burnout, Allah preserved the story of young people who retreated from a corrupt society to preserve their faith:
 
-Ibn Kathir analyzes how each of the four stories diagnoses a materialist illusion. The modern world tempts us to compromise faith for safety, obsess over capital, claim absolute knowledge, and abuse power. The cave is the spiritual fortress of sincere youth.
+'When the youths retreated to the cave and said: Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.'
 
-As the Prophet ﷺ affirmed in authentic tradition:
-*Hakim (Sahih) & Bayhaqi: 'Whoever recites Surah Al-Kahf on Friday, a light will shine for him between the two Fridays.'*
+Notice what they asked for first. They did not ask for victory, wealth, or revenge against the tyrant. Their very first plea was *Rahmah*—divine mercy.
 
----
-
-## 4. The Tadabbur Shift (04:00 – 05:30)
-*(Visual of Shot B (Confluence of two seas). Gentle camera motion, zero digital rush.)*
-
-Take a deep breath and reflect on your own life:
-* The four existential trials: Faith (The Cave), Wealth (Two Gardens), Knowledge (Musa & Khidr), Power (Dhul-Qarnayn).
-* What would change if you stopped trying to carry this burden entirely on your own shoulders?
-* What happens when you hand the outcome back to Allah?
+When the outside world feels toxic and overwhelming, you do not need to fight every cultural current. You need to seek the cave of Allah's presence, where His mercy wraps around your soul like a shield."
 
 ---
 
-## 5. The Living Action (05:30 – 06:45)
-*(Visual of Shot E (Book in morning light). Calm horizon closing shot.)*
+### 01:40 – 02:40 | SECTION 3: THE TRANSIENCE OF GLITTER
+**[VISUAL]**  
+*Cinematic medium tracking shot of an ancient gnarled olive tree. Massive roots cling deeply to the earth while silver-green leaves gently rustle in golden morning light. Timeless grounded stability.*
 
-Do not leave this video as mere entertainment. Islam is knowledge accompanied by action:
+**(VOICEOVER):**  
+"In this same surah, Allah shatters the illusions that consume human ambition:
 
-**Friday Kahf Contemplation: Do not merely recite Al-Kahf for speed this Friday. Read the story of Musa and Khidr slowly and remember that what looks like a tragedy in your life right now is merely a ship being scuttled to save it from a king.**
+'Wealth and children are but an adornment of the worldly life. But the enduring good deeds are better to your Lord for reward and better for hope.'
 
-Turn off your phone tonight. Open your Mushaf to Surah Al-Kahf. Sit for five unhurried minutes with your Lord.
+Look around you. The towers we build will crumble. The cars we desire will rust. The accounts we stress over will be divided among heirs who forget our names.
 
-*Read it. Reflect upon it. Return to Him.*
+Classical scholars taught that this world is like a shadow: if you chase it, you will never catch it; but if you turn your back to it and walk toward Allah, the shadow follows you."
+
+---
+
+### 02:40 – 03:30 | SECTION 4: THE UNBURDENED FLIGHT
+**[VISUAL]**  
+*A flock of pure white birds soaring freely and effortlessly over a majestic turquoise mountain waterfall beneath open twilight skies. Absolute liberation, effortless trust, soaring spiritual elevation.*
+
+**(VOICEOVER):**  
+"Look at the white birds gliding above the waterfall. They do not store grain for forty years. They do not burn out from anxiety over next year's weather. They take flight with empty wings, trusting the air and the currents provided by their Lord.
+
+When you withdraw into the spiritual cave—whether in solitary prayer, in the pages of the Qur'an, or in quiet Dhikr—you release the exhausting weight of trying to impress a world that will never be satisfied with you.
+
+In the cave of faith, your worth is not defined by what you produce. It is defined by Whom you worship."
+
+---
+
+### 03:30 – 04:15 | SECTION 5: THE FRIDAY ANCHOR
+**[VISUAL]**  
+*The green dome and towering minarets of the Prophet's sanctuary in Medina silhouetted softly against a rich violet and twilight sky. Lanterns glow peacefully; pure sanctuary and timeless tranquility.*
+
+**(VOICEOVER):**  
+"Here is your practical anchor for today: The Friday Cave Reflection.
+
+The Prophet Muhammad ﷺ said that whoever recites Surah Al-Kahf on Friday will have a divine light illuminating him between the two Fridays.
+
+Do not merely rush through the verses for speed. When you read of the cave, the gardens, and the ship of Khidr, remember: what looks like a setback in your life is often Allah's mercy shielding you from an unseen storm.
+
+Turn off the noise tonight. Open Surah Al-Kahf. Sit for five unhurried minutes with your Lord.
+
+Read it. Reflect upon it. Return to Him."
+

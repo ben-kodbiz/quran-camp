@@ -48,7 +48,7 @@ storage:
 
 ### 00:00 – 00:35 | SECTION 1: THE HOOK
 **[VISUAL]**  
-*Close-up of an hourglass on a wooden desk. Fine grains of sand falling slowly, one by one. In the soft background, an open Quran sits illuminated by a single warm oil lamp in a quiet room at night.*
+*Close-up of an antique hourglass on a dark wooden desk. Fine pale grains of sand falling slowly, one by one. In the soft background, warm beeswax candlelight glows quietly in a still room at night.*
 
 **(VOICEOVER):**  
 "We live in a world obsessed with speed.  
@@ -68,7 +68,7 @@ And then we wonder why we closed the Book feeling as empty as when we opened it.
 
 ### 00:35 – 01:45 | SECTION 2: THE COMMAND IN THE NIGHT
 **[VISUAL]**  
-*The camera slowly drifts across the open calligraphy of Surah Al-Muzzammil. Soft night air gently moving a linen curtain near an open window overlooking a starry sky.*
+*Luminous full moon suspended in deep midnight indigo sky filled with natural stars, casting soft silvery light across silent undulating desert sand dunes.*
 
 **(VOICEOVER):**  
 "In the earliest days of revelation, when the Prophet Muhammad ﷺ was overwhelmed by the crushing burden of the message, Allah called him in the dead of night.
@@ -90,7 +90,7 @@ It means unhurried speech. Pronouncing every letter. Pausing after every verse. 
 
 ### 01:45 – 02:55 | SECTION 3: THE WARNING OF IBN MAS'UD
 **[VISUAL]**  
-*Macro shot of a hand turning a single textured cream page of the Qur'an with profound care. The rustle of paper in the quiet room.*
+*A magnificent noble dark Arabian horse grazing peacefully in a lush desert oasis meadow at early dawn, moving with calm, unhurried dignity.*
 
 **(VOICEOVER):**  
 "The great companion Abdullah ibn Mas'ud—one of the four men from whom the Prophet ﷺ commanded the companions to learn the Qur'an—saw people beginning to rush their recitation.  
@@ -136,7 +136,7 @@ A flash flood simply washes the topsoil away."
 
 ### 04:00 – 05:00 | SECTION 5: PRACTICAL ACTION & TONIGHT'S EXPERIMENT
 **[VISUAL]**  
-*The warm oil lamp softly illuminating a verse. A closed phone placed in a drawer. The atmosphere is quiet, serene, and grounded.*
+*Majestic architectural telephoto shot of the white marble colonnade and umbrellas of Masjid an-Nabawi at quiet dawn, soft golden sunrise light sweeping across polished limestone courtyard flags.*
 
 **(VOICEOVER):**  
 "Tonight, I invite you to try a simple experiment.

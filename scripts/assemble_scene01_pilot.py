@@ -70,6 +70,8 @@ def assemble():
 
     start_time = time.time()
 
+    trademark_pilot = "drawtext=text='HUURS STUDIO':font='IBM Plex Serif':fontsize=16:fontcolor=white@0.22:x=w-tw-40:y=h-th-30"
+
     filter_complex = (
         # Split video into fwd and rev for seamless ping-pong
         "[0:v]split=2[fwd][rev_src];"
@@ -77,11 +79,11 @@ def assemble():
         "[fwd][rev]concat=n=2:v=1:a=0[pingpong1];"
         "[pingpong1]split=2[p1][p2];"
         "[p1][p2]concat=n=2:v=1:a=0[extended];"
-        # Subtle vignette, grain, subtitles, and fades
+        # Subtle vignette, grain, watermark, and fades
         "[extended]trim=duration=38.5,"
         "vignette=PI/6,"
         "noise=c0s=1.5:allf=t,"
-        f"subtitles={SUBTITLE_FILE},"
+        f"{trademark_pilot},"
         "fade=t=in:st=0:d=0.8,"
         "fade=t=out:st=37.5:d=1.0,"
         "format=yuv420p[v_out];"
@@ -103,16 +105,10 @@ def assemble():
         "-map", "[v_out]",
         "-map", "[a_out]",
         "-t", "38.5",
-        "-c:v", "h264_nvenc",
-        "-preset", "p7",
-        "-tune", "hq",
-        "-rc", "vbr",
-        "-cq", "17",
-        "-spatial-aq", "1",
-        "-temporal-aq", "1",
-        "-b:v", "6M",
-        "-maxrate", "9M",
-        "-bufsize", "12M",
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "18",
+        "-pix_fmt", "yuv420p",
         "-profile:v", "high",
         "-c:a", "aac",
         "-b:a", "256k",

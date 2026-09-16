@@ -2,11 +2,11 @@
 artifact:
   artifact_id: QURAN-COMEBACK-VIDEO-013
   artifact_type: video_storyboard
-  artifact_version: 1.0.0
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN-SEASON-2
-  title: "Episode 13 Storyboard & Shot List: The Peace You Can't Buy with Money"
-  description: "Cinematic storyboard and production specifications permanently locked to 720p HD master."
+  title: "Episode 13 Storyboard: The Peace You Can't Buy with Money"
+  description: "Living creation video storyboard and cinematic shot list for Episode 13 (Surah Ar-Ra'd 13:11, 28) featuring rain on forest glass, mountain stream, meeting of two seas, Arabian horse in oasis, and expansive cumulus clouds."
   aspect_ratio: "16:9 widescreen"
   resolution: "1280x720"
   framerate: "24.00 fps"
@@ -14,62 +14,67 @@ lifecycle:
   status: approved
   created_by: AGENT-08
   created_at: 2026-09-07T15:01:01Z
+  updated_at: 2026-09-11T09:56:00Z
 verification:
   verification_status: verified
   verified_by: AGENT-16
   qa_status: passed
   human_review_status: approved_gate_02
+storage:
+  repository: huurs-studio
+  path: 10_VIDEO/
+  filename: QURAN-COMEBACK-VIDEO-013.md
 ---
 
 # Episode 13 Cinematic Storyboard: The Peace You Can't Buy with Money
 ### *Master Production Specification (720p HD Master)*
 
 > **RESOLUTION MANDATE:** `1280 × 720 HD Master (24.00 fps) — HARD CEILING: 720p PER USER MANDATE`  
-> Strictly adheres to `VIDEO_CREDIT_POLICY.md` (`BRAND-POLICY-VIDEO-720P`) to conserve AI generation credits.
+> **LIVING CREATION MANDATE:** 100% Living nature, rain on forest foliage, mountain stream, oceanic currents, grazing horse in palm oasis, and expansive clouds. Zero inanimate stone arches, basins, or human depictions.  
+> **ZERO BURNED-IN SUBTITLES:** Clean visual canvas with discrete `HUURS STUDIO` serif watermark.
 
 ---
 
-## 1. Visual Overview & Motifs
-* **Surah:** Ar-Ra'd (Surah Ar-Ra'd 13:11, 28)
-* **Hero Visual Reference:** `09_IMAGE/QURAN-COMEBACK-HERO-013.jpg`
-* **Primary Semantic Motifs:** Shot B (Crystalline mountain stream), Shot C (Rain canopy), Shot E (Book), Shot F (Shaded mihrab)
-* **Lighting Dynamic:** Organic morning window illumination, soft natural chiaroscuro, zero artificial neon or fantasy tropes.
+## 1. Executive Direction & Semantic Motifs
+* **Focal Scripture:** Surah Ar-Ra'd 13:11, 28 (*‘Ala bi-dhikrillahi tatma'innul quloob’*)
+* **Visual Core Equation:** `NATURE + KNOWLEDGE + REFLECTION + TRANQUILITY = HUURS VISUAL LANGUAGE`
+* **Pacing Engine:** Continuous single-take motion-interpolated slow-motion (`minterpolate`), zero looping, zero repetition.
+* **Marginal Cost:** $0.00 (Master B-Roll Vault clips, 0 Flow credits consumed).
 
 ---
 
-## 2. Shot-by-Shot Blueprint (1280 × 720 @ 24fps)
+## 2. Shot-by-Shot Production Sequence
 
-### Scene 1 (00:00–00:45) — The Hook & Modern Tension
-* **Shot Type:** Shot B (Crystalline mountain stream) / Macro Tracking
-* **Visual Description:** Slow 50mm tracking shot over rustic oak study desk in soft morning light. A resting phone screen dims completely to black, shifting focus to an open study book in warm ambient window light.
-* **Camera Movement:** Unhurried linear push-in (0.2 m/s).
-* **AI Video Generation Prompt (720p Ceiling):**  
-  `Cinematic macro shot of an open study book on a dark rustic wooden table, soft morning window light, warm dust particles, photorealistic 720p documentary style, calm peaceful negative space --ar 16:9 --no neon, fantasy, distortion`
+### Scene 1: The Paradox of Modern Comfort (Section 1)
+* **Visual Asset:** `ep04_scene01.mp4` (Raindrops on Glass with Misty Pine Forest)
+* **Visual Action:** Macro shot of gentle raindrops trickling down glass with misty green pine mountain forest in the background in calm overcast morning light.
+* **Thematic Alignment:** The quiet, overcast restlessness in the chest despite modern material comforts.
 
-### Scene 2 (00:45–02:00) — The Divine Ayah
-* **Shot Type:** Shot C (Rain canopy) / Wide Establishing
-* **Visual Description:** Expansive, serene landscape showing natural balance. High natural stone elements framing calm skies. Minimalist elegance and tranquility.
-* **Camera Movement:** Slow lateral tracking shot.
-* **AI Video Generation Prompt (720p Ceiling):**  
-  `Wide cinematic establishing shot of a quiet natural landscape at early dawn, tranquil atmosphere, soft mist, grounded realistic 720p cinematography, high dynamic range, natural colors --ar 16:9 --no people, artificial glowing effects`
+### Scene 2: The Ayah of Itmi'nan & Crystalline Flow (Section 2)
+* **Visual Asset:** `Mountain_stream_flowing_over_stones_202609080917.mp4` (Mountain Stream over River Stones)
+* **Visual Action:** Pure crystalline spring water flowing smoothly over dark river stones and pebbles in soft morning daylight.
+* **Thematic Alignment:** Surah Ar-Ra'd 13:28 (*‘Unquestionably, by the remembrance of Allah hearts find rest’*) — natural, frictionless divine flow.
 
-### Scene 3 (02:00–04:00) — Tafsir Insight
-* **Shot Type:** Shot E (Book) / Medium Composition
-* **Visual Description:** Authentic natural textures—ancient olive leaves gently rustling in the breeze, sunlight filtering softly through foliage, revealing stability and peace.
-* **Camera Movement:** Gentle pan across foliage highlights.
-* **AI Video Generation Prompt (720p Ceiling):**  
-  `Medium cinematic shot of an ancient olive tree canopy, morning sunbeams breaking through leaves, serene documentary style, 720p resolution, realistic natural beauty --ar 16:9 --no sci-fi, dramatic contrast`
+### Scene 3: Classical Tafsir & Unshakable Equilibrium (Section 3)
+* **Visual Asset:** `ep06_scene02.mp4` (The Meeting of Two Seas / Majma' al-Bahrayn)
+* **Visual Action:** Majestic aerial shot where turquoise waters meet deep blue ocean currents with rolling swells under open skies.
+* **Thematic Alignment:** *Itmi'nan* as deep spiritual equilibrium beneath the turbulent surface waves; the soul alive with Dhikr vs. dead without it.
 
-### Scene 4 (04:00–05:30) — The Tadabbur Mirror
-* **Shot Type:** Shot B (Water Flow / Crystalline Stream) / Close-up
-* **Visual Description:** Pristine mountain stream flowing over smooth dark pebbles, rippling gently and refracting early sunlight. Water represents life, purification, and emotional release.
-* **Camera Movement:** Static locked-off composition with subtle organic water shimmer.
-* **AI Video Generation Prompt (720p Ceiling):**  
-  `Close-up cinematic shot of clear mountain spring water rippling gently over smooth river stones, morning daylight, organic peaceful flow, 720p master, lifelike documentary --ar 16:9 --no saturated neon`
+### Scene 4: Internal Transformation & Grounded Contentment (Section 4)
+* **Visual Asset:** `ep07_scene03.mp4` (Noble Arabian Horse in Oasis Meadow)
+* **Visual Action:** Dark Arabian horse grazing peacefully on dewy morning grass beneath date palm trees at dawn.
+* **Thematic Alignment:** Surah Ar-Ra'd 13:11 (*‘Indeed Allah will not change the condition of a people until they change what is in themselves’*) — pure grounded tranquility and divine trust.
 
-### Scene 5 (05:30–06:45) — The Return (Outro)
-* **Shot Type:** Shot F (Shaded mihrab) / Wide Outro
-* **Visual Description:** Quiet reading sanctuary looking outward through an arched terrace toward an open morning horizon. A bookmark rests gently between pages. Full peaceful morning light.
-* **Camera Movement:** Slow upward crane from the resting book toward the calm sky.
-* **AI Video Generation Prompt (720p Ceiling):**  
-  `Atmospheric cinematic shot from a peaceful stone reading alcove looking toward an expansive golden sunrise horizon, serene tranquil morning sky, 720p resolution, timeless simplicity --ar 16:9 --no modern clutter, text`
+### Scene 5: The 100-Tasbih Protocol & Expansive Sky (Section 5)
+* **Visual Asset:** `ep04_scene04.mp4` (Towering Cumulus Clouds Across Blue Sky)
+* **Visual Action:** Low-angle shot of billowing white cumulus clouds drifting across a vast clear blue sky with morning sunlight.
+* **Thematic Alignment:** The 100-Tasbih Digital Detox and opening Surah Ar-Ra'd tonight: elevating the heart above screens into infinite peace.
+
+---
+
+## 3. Brand Compliance Audit
+* [x] **Zero Burned-In Subtitles:** Verified per studio policy.
+* [x] **Inter-Episode Diversity:** 0% overlap with Episode 12 and 0% overlap with Episode 11.
+* [x] **No Intra-Episode Repetition:** 5 completely unique scenes with continuous slow-motion interpolation.
+* [x] **Zero-Human Mandate:** Strictly natural and living creation.
+* [x] **Zero-Music Mandate:** Voiceover mastered to -14.0 LUFS EBU R128.

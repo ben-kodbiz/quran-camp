@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Luqman Master Mindmap • Huurs Studio</title>
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #26354D;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy-deep);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+    }
+    .wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--border-muted);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    header.header h1 {
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    header.header span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .tabs-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      border-color: var(--gold);
+      color: var(--white);
+    }
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--navy-deep);
+      border-color: var(--gold);
+    }
+    .page-container {
+      display: none;
+    }
+    .page-container.active {
+      display: block;
+    }
+    .plate-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .plate-title-bar h2 {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .plate-title-bar p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .plate-badge {
+      background: var(--navy-elevated);
+      color: var(--gold);
+      border: 1px solid var(--border-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+    .pillar {
+      background: var(--navy-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .pillar-header {
+      border-bottom: 1px solid var(--border-muted);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .pillar-header h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .pillar-header.cyan h3 { color: var(--cyan); }
+    .pillar-header.purple h3 { color: var(--purple); }
+    .pillar-header.emerald h3 { color: var(--emerald); }
+    .pillar-header.gold h3 { color: var(--gold); }
+    .pillar-header.rose h3 { color: var(--rose); }
+    .pillar-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .pillar-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 12px 14px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--navy-elevated);
+      color: var(--gold);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-muted);
+    }
+    .card-head h4 {
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+    .card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card li {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    footer.footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h1>HUURS STUDIO</h1>
+      <span>Surah Luqman Master Mindmap (8 Plates • 16 Pillars • 64 Cards)</span>
+    </header>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="showPage(1)">Plate 01: THE WISE BOOK</button>
+<button class="tab-btn " onclick="showPage(2)">Plate 02: NATURE OF WISDOM</button>
+<button class="tab-btn " onclick="showPage(3)">Plate 03: FILIAL ETHICS</button>
+<button class="tab-btn " onclick="showPage(4)">Plate 04: INTERNAL CONSCIENCE</button>
+<button class="tab-btn " onclick="showPage(5)">Plate 05: CIVIC REFORM</button>
+<button class="tab-btn " onclick="showPage(6)">Plate 06: SOMATIC DECORUM</button>
+<button class="tab-btn " onclick="showPage(7)">Plate 07: COSMIC MAJESTY</button>
+<button class="tab-btn " onclick="showPage(8)">Plate 08: THE FINAL HORIZON</button>
+
+    </div>
+
+    <main>
+      
+    <div id="page-1" class="page-container active">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE BOOK OF WISDOM & THE DISTRACTION TRAP</h2>
+          <p>Pillars 1 & 2: Ayatu al-Kitabi al-Hakeem, Lahw al-Hadith & The Pillars of the Heavens</p>
+        </div>
+        <span class="plate-badge">PLATE 01 : THE WISE BOOK</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 01: MANUFACTURED DISTRACTIONS</h3>
+            <p>Ayatu al-Kitabi al-Hakeem, Lahw al-Hadith & Spiritual Deafness</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">01</span>
+                <h4>The Book of Transcendent Wisdom</h4>
+              </div>
+              <ul><li>Alif-Lam-Meem. Signs of the Wise Book conferring guidance and mercy upon the Muhsineen who establish prayer and believe with certainty.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">02</span>
+                <h4>The Commercialization of Lahw al-Hadith</h4>
+              </div>
+              <ul><li>Nadr ibn al-Harith purchasing singing girls and Persian epics to divert seekers from the Qur'an; modern triviality monetizing attention.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">03</span>
+                <h4>Ridicule and Humiliating Torment</h4>
+              </div>
+              <ul><li>Purchasing empty distraction to mislead from Allah's path without knowledge and mocking sacred truth; met with 'Adhab Muheen.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">04</span>
+                <h4>The Haughty Turning of the Arrogant</h4>
+              </div>
+              <ul><li>Turning away in aloof self-importance when divine verses are recited, as if possessing heaviness in the ears; spiritually deadened.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 02: COSMIC ARCHITECTURE & STABILITY</h3>
+            <p>Unseen Pillars, Rawasiya Anchors & The Flourishing of Pairs</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">05</span>
+                <h4>Heavens Without Visible Pillars</h4>
+              </div>
+              <ul><li>Created celestial galaxies and orbital expanses without pillars that you see, suspended and sustained by sovereign divine power.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">06</span>
+                <h4>Mountain Pegs (Rawasiya) of Earth</h4>
+              </div>
+              <ul><li>Casting deep subterranean mountain roots into the terrestrial crust lest the tectonic plates shift and convulse beneath humanity.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">07</span>
+                <h4>Biological Pairs Flourished by Rain</h4>
+              </div>
+              <ul><li>Scattering every variety of moving creature across the earth and descending celestial water to sprout noble plant pairs in balance.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">08</span>
+                <h4>The Challenge to False Deities</h4>
+              </div>
+              <ul><li>This is the consummate creation of Allah; challenge the idolaters to show what those invoked besides Him have ever created.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-2" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE ESSENCE OF WISDOM & MONOTHEISTIC REORIENTATION</h2>
+          <p>Pillars 3 & 4: Inna Ash-Shirka La-Zulmun 'Azeem, Gratitude to Allah & Consensual Sagehood</p>
+        </div>
+        <span class="plate-badge">PLATE 02 : NATURE OF WISDOM</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header purple">
+            <h3>PILLAR 03: SAGEHOOD & GRATITUDE OF LUQMAN</h3>
+            <p>The Core of Hikmah, Wali Status & Divine Self-Sufficiency</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">09</span>
+                <h4>The Endowment of Divine Hikmah</h4>
+              </div>
+              <ul><li>We granted Luqman wisdom: 'Be grateful to Allah.' Wisdom is not philosophical jargon but acknowledging divine grace through worship.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">10</span>
+                <h4>Gratitude Enriches the Human Soul</h4>
+              </div>
+              <ul><li>Whoever shows gratitude benefits their own soul; thankful alignment brings internal tranquility and elevates human character.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">11</span>
+                <h4>Consensus on Sagehood (Wali wa Hakim)</h4>
+              </div>
+              <ul><li>Ahl al-Sunnah consensus confirms Luqman was an exceptionally wise saint and sage of Nubian heritage, renowned for silence and reflection.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">12</span>
+                <h4>The Self-Sufficient & Praiseworthy</h4>
+              </div>
+              <ul><li>And whoever disbelieves, Allah is Al-Ghaniyy (Free of need) and Al-Hameed (Intrinsically Praiseworthy); creation cannot diminish Him.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 04: THE SUPREME INJUSTICE (ZULM 'AZEEM)</h3>
+            <p>Ya Bunayya Tenderness, Shirk as Injustice & Prophetic Clarification</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">13</span>
+                <h4>Pedagogical Tenderness: Ya Bunayya</h4>
+              </div>
+              <ul><li>Addressing his son with an Arabic diminutive of intense love and compassion, creating a receptive emotional vessel for mentorship.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">14</span>
+                <h4>The Foundational Prohibition</h4>
+              </div>
+              <ul><li>Directing his very first instruction to the preservation of Tawheed: 'O my dear son, do not associate any partners with Allah.'</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">15</span>
+                <h4>Polytheism as Tremendous Injustice</h4>
+              </div>
+              <ul><li>Inna ash-shirka la-zulmun 'azeem. Zulm is placing a thing outside its rightful place; equating mortal dust to the Eternal Creator.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">16</span>
+                <h4>Prophetic Comfort to the Sahabah</h4>
+              </div>
+              <ul><li>When the Companions feared self-wrongdoing, the Prophet ﷺ cited Luqman's verse, reassuring them that supreme Zulm signifies Shirk.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-3" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE SACRED DEBT OF MOTHERHOOD & ETHICAL LIMITS</h2>
+          <p>Pillars 5 & 6: Wahnan 'ala Wahn, The Conjoined Gratitude & Worldly Accompaniment</p>
+        </div>
+        <span class="plate-badge">PLATE 03 : FILIAL ETHICS</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 05: THE SACRIFICE OF MOTHERHOOD</h3>
+            <p>Wahnan 'ala Wahn, Two Years Weaning & The Paired Mandate</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">17</span>
+                <h4>The Divine Enjoining of Filial Care</h4>
+              </div>
+              <ul><li>We strictly commanded man devotion to his parents, grounding human societal ethics in intergenerational gratitude and compassion.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">18</span>
+                <h4>Weakness Compounding Weakness</h4>
+              </div>
+              <ul><li>Hamalat-hu ummuhu wahnan 'ala wahn: the bodily toll of gestation, carrying increasing weight through sickness and labor pains.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">19</span>
+                <h4>Two Full Years of Weaning (Fisal)</h4>
+              </div>
+              <ul><li>Fisaluhu fee 'amayn: around-the-clock nourishment and maternal selflessness depleting physical reserves to build infant vitality.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">20</span>
+                <h4>The Conjoined Command of Gratitude</h4>
+              </div>
+              <ul><li>An-ishkur lee wa li-walidayk. Gratitude to God is paired directly with gratitude to parents; neglecting mothers voids claimed piety.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 06: BOUNDARIES OF OBEDIENCE & COMPASSION</h3>
+            <p>The Limits of Submission, Dunya Accompaniment & Penitent Path</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">21</span>
+                <h4>The Red Line of Monotheism</h4>
+              </div>
+              <ul><li>If parents exert fierce pressure to compel polytheism or sin: 'Fa-la tuti'huma' (do not obey them); obedience belongs to Allah first.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">22</span>
+                <h4>Worldly Accompaniment with Honor</h4>
+              </div>
+              <ul><li>Wa sahibhuma fid-dunya ma'roofa: accompany them with kindness, gentle speech, financial support, and warm filial presence.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">23</span>
+                <h4>Walking the Path of the Penitent</h4>
+              </div>
+              <ul><li>Follow the spiritual path of those who turn back to Allah in sincere repentance (Inabah), seeking righteous scholarly companions.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">24</span>
+                <h4>The Final Return and Accounting</h4>
+              </div>
+              <ul><li>To Me is your ultimate destination, and I will inform you of the exact reality of everything you used to do in mortal life.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-4" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE MUSTARD SEED OF OMNISCIENCE & LIVING MURAQABAH</h2>
+          <p>Pillars 7 & 8: Habbah min Khardal, Triple Concealment & The Incorruptible Conscience</p>
+        </div>
+        <span class="plate-badge">PLATE 04 : INTERNAL CONSCIENCE</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 07: THE MUSTARD SEED IN THE BOULDER</h3>
+            <p>Microscopic Units, Triple Concealment & Effortless Summons</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">25</span>
+                <h4>The Microscopic Mustard Seed</h4>
+              </div>
+              <ul><li>Mithqala habbatin min khardal: using an ancient unit of microscopic weight—weightless, minuscule, and easily blown by wind.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">26</span>
+                <h4>Concealment in a Solid Boulder</h4>
+              </div>
+              <ul><li>Fa-takun fee sakhratin: imagine this speck encased inside an opaque, impenetrable boulder, shielded from all external observation.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">27</span>
+                <h4>Adrift in Space or Earth Depths</h4>
+              </div>
+              <ul><li>Aw fis-samawati aw fil-ard: drifting in the boundless cosmic void or buried in deep tectonic subterranean strata.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">28</span>
+                <h4>The Effortless Summons: Ya'ti biha Allah</h4>
+              </div>
+              <ul><li>No satellite or sensor could detect it, yet Allah's omniscience encompasses it and brings it forth to the scales of judgment.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 08: SUBTLE PENETRATION & MURAQABAH</h3>
+            <p>Lateefun Khabeer, Conscience Awakening & The Hidden Deed</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">29</span>
+                <h4>Al-Lateef: Penetrating Subtle Depths</h4>
+              </div>
+              <ul><li>He whose perception penetrates the most microscopic, invisible layers of reality without resistance or obstruction.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">30</span>
+                <h4>Al-Khabeer: Knower of Internal Intent</h4>
+              </div>
+              <ul><li>Intimately acquainted with secret motivations, fleeting glances, internal compromises, and unspoken thoughts of the heart.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">31</span>
+                <h4>Awakening Internal Muraqabah</h4>
+              </div>
+              <ul><li>Training an incorruptible moral compass that remains upright in solitude, when external human surveillance is absent.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">32</span>
+                <h4>Preserving Microscopic Virtues</h4>
+              </div>
+              <ul><li>Reassuring the believer that a hidden tear in the night, a quiet charity, or a restrained impulse of anger is never forgotten.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-5" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE QUADRUPLE PILLAR OF SOCIAL REFORM & SABR</h2>
+          <p>Pillars 9 & 10: Aqimi as-Salah, Amr bil-Ma'roof, Nahy 'an al-Munkar & 'Azm al-Umoor</p>
+        </div>
+        <span class="plate-badge">PLATE 05 : CIVIC REFORM</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header rose">
+            <h3>PILLAR 09: VERTICAL ANCHOR & CIVIC ACTION</h3>
+            <p>Prayer Alignment, Encouraging Good & Confronting Wrong</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">33</span>
+                <h4>The Vertical Anchor: Aqimi as-Salah</h4>
+              </div>
+              <ul><li>Establish prayer: anchor personal devotion before public engagement; spiritual discipline is the fuel of societal reform.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">34</span>
+                <h4>Promoting Societal Virtue (Al-Ma'roof)</h4>
+              </div>
+              <ul><li>Wa'mur bil-ma'roof: active civic participation encouraging honesty, compassion, economic justice, and communal welfare.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">35</span>
+                <h4>Confronting Corruption (Al-Munkar)</h4>
+              </div>
+              <ul><li>Wanha 'ani al-munkar: moral courage to oppose tyranny, exploitation, indecency, and ethical decay in the public sphere.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">36</span>
+                <h4>The Inevitability of Backlash</h4>
+              </div>
+              <ul><li>Moving from passive ritual piety to active reform inevitably triggers resistance, slander, and hostility from entrenched interests.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 10: THE FURNACE OF PATIENT RESILIENCE</h3>
+            <p>Wasbir 'ala ma Asabak, 'Azm al-Umoor & Spiritual Spine</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">37</span>
+                <h4>Patient Fortitude (Wasbir)</h4>
+              </div>
+              <ul><li>Wasbir 'ala ma asabak: bear with dignified resilience whatever trials and personal attacks befall you on the path of truth.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">38</span>
+                <h4>Matters of Firm Resolve ('Azm al-Umoor)</h4>
+              </div>
+              <ul><li>Inna dhalika min 'azmi al-umoor: this demanding triad requires true spiritual spine, moral stamina, and unwavering determination.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">39</span>
+                <h4>Transition to Communal Leadership</h4>
+              </div>
+              <ul><li>Transforming a private worshiper into an unshakeable leader who uplifts society without being swayed by popular applause.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">40</span>
+                <h4>Armor Against Cynicism and Burnout</h4>
+              </div>
+              <ul><li>Sabr protects the heart from burning out in bitterness or resorting to unethical shortcuts when facing stubborn resistance.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-6" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE SOMATIC ARCHITECTURE OF CHARACTER</h2>
+          <p>Pillars 11 & 12: La Tusa''ir Khaddak, Moderation of Pace & Vocal Decorum</p>
+        </div>
+        <span class="plate-badge">PLATE 06 : SOMATIC DECORUM</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header purple">
+            <h3>PILLAR 11: ERADICATING SNOBBERY & THE PROUD GAIT</h3>
+            <p>The Metaphor of Sa'ar, Full Attention & The Pompous Strut</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">41</span>
+                <h4>The Warning of Sa'ar (Cheek Contempt)</h4>
+              </div>
+              <ul><li>La tusa''ir khaddaka lin-nas: Sa'ar was a disease twisting a camel's neck; do not twist your face away with haughty elitism.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">42</span>
+                <h4>Full Eye Contact and Humble Warmth</h4>
+              </div>
+              <ul><li>Greet all people—especially the impoverished and vulnerable—with full eye contact, generous presence, and sincere humility.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">43</span>
+                <h4>The Pompous Strut (La Tamshi Maraha)</h4>
+              </div>
+              <ul><li>Do not walk the earth with ostentatious strutting, seeking to impress spectators with clothing, wealth, or physical posturing.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">44</span>
+                <h4>Disdain for the Boastful Delusion</h4>
+              </div>
+              <ul><li>Allah loves not the Mukhtal (intoxicated with self-delusion) or the Fakhoor (loud, boastful braggart celebrating mortal vanity).</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 12: INTENTIONAL PACING & VOCAL DECORUM</h3>
+            <p>Iqsid fee Mashyik, Waghdud min Sawtik & The Donkey Metaphor</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">45</span>
+                <h4>Purposeful Poise (Iqsid fee Mashyik)</h4>
+              </div>
+              <ul><li>Walk with moderation and purposeful dignity: neither dragging feet in lazy slouching nor rushing with aggressive arrogance.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">46</span>
+                <h4>Vocal Modulation (Waghdud min Sawtik)</h4>
+              </div>
+              <ul><li>Lower your voice: shouting and aggressive volume do not signal conviction; true authority speaks with calm, articulate clarity.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">47</span>
+                <h4>The Braying Donkey Metaphor</h4>
+              </div>
+              <ul><li>The most disagreeable sound is the braying of donkeys: shrill, jarring, and devoid of intellect; uncontrolled shouting mirrors this.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">48</span>
+                <h4>Somatic Discipline of the Nafs</h4>
+              </div>
+              <ul><li>External body language and speech volume are physical instruments that tame internal ego and cultivate holistic reverence.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-7" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE SEVEN OCEANS OF INK & EFFORTLESS RESURRECTION</h2>
+          <p>Pillars 13 & 14: Kalimatu Allah, Infinite Knowledge & Ka-nafsin Wahidah</p>
+        </div>
+        <span class="plate-badge">PLATE 07 : COSMIC MAJESTY</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 13: THE LIMITLESS WORDS OF ALLAH</h3>
+            <p>Forests Turned to Pens, Eight Oceans of Ink & Divine Majesty</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">49</span>
+                <h4>All Earthly Trees as Pens</h4>
+              </div>
+              <ul><li>If every tree across all continents were felled and sharpened into pens, and the global ocean turned into liquid writing ink...</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">50</span>
+                <h4>Replenished by Seven Oceans</h4>
+              </div>
+              <ul><li>Wal-bahru yamudduhu min ba'dihi sab'atu abhur: replenished by seven more oceans of ink to write the knowledge and decrees of Allah...</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">51</span>
+                <h4>Exhaustion of Creation vs Infinite Words</h4>
+              </div>
+              <ul><li>All pens would snap and all eight oceans would evaporate completely, yet the words and wisdom of Allah would remain unexhausted.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">52</span>
+                <h4>The Microscopic Droplet of Human Science</h4>
+              </div>
+              <ul><li>All human universities, supercomputers, and scientific libraries across all ages represent less than a drop from a boundless ocean.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 14: EFFORTLESS CREATION & COSMIC RHYTHMS</h3>
+            <p>Ka-nafsin Wahidah, Merging Day and Night & Maritime Ships</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">53</span>
+                <h4>Resurrection as a Single Soul</h4>
+              </div>
+              <ul><li>Ma khalqukum wa la ba'thukum illa ka-nafsin wahidah: creating and resurrecting billions requires no more effort than a single soul.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">54</span>
+                <h4>Merging Night into Day</h4>
+              </div>
+              <ul><li>Yooliju al-layla fin-nahar: smoothly alternating dark night and radiant daylight through precise planetary rotation.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">55</span>
+                <h4>Subjugation of Sun and Moon</h4>
+              </div>
+              <ul><li>Each celestial orb gliding in its mathematically governed trajectory for an appointed cosmic term known to the Creator.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">56</span>
+                <h4>Ships Cleaving Oceanic Depths</h4>
+              </div>
+              <ul><li>Vessels gliding through massive waves by Allah's favor, carrying sustenance and commerce as signs for every patient, grateful soul.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-8" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE DISSOLUTION OF KINSHIP & THE FIVE KEYS OF THE UNSEEN</h2>
+          <p>Pillars 15 & 16: Radical Accountability, Mafatih al-Ghayb & The Eternal Sovereign</p>
+        </div>
+        <span class="plate-badge">PLATE 08 : THE FINAL HORIZON</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 15: RADICAL INDIVIDUAL ACCOUNTABILITY</h3>
+            <p>Dissolution of Blood Pacts, Dunya Illusion & Inviolable Truth</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">57</span>
+                <h4>Universal Summons to God-Consciousness</h4>
+              </div>
+              <ul><li>Ya ayyuha an-nasu-ttaqoo rabbakum: a solemn universal call commanding reverence and preparation for the Day of Standing.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">58</span>
+                <h4>Dissolution of Biological Pacts</h4>
+              </div>
+              <ul><li>A Day when no father will avail his son in the least, nor will any child avail his father; biological loyalties dissolve before justice.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">59</span>
+                <h4>The Deception of Dunya and the Deceiver</h4>
+              </div>
+              <ul><li>Let not the fleeting glitter of mortal life delude you, and let not the arch-deceiver (Shaytan) lure you into false security.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">60</span>
+                <h4>The Inviolable Divine Promise</h4>
+              </div>
+              <ul><li>Inna wa'da Allahi haqqun: Allah's promise of resurrection, recompense, and eternal reality is absolute, undeniable truth.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 16: THE FIVE KEYS OF THE UNSEEN</h3>
+            <p>Mafatih al-Ghayb, Tomorrow's Earnings & Final Plot of Soil</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">61</span>
+                <h4>The Timing of the Final Hour ('Ilm as-Sa'ah)</h4>
+              </div>
+              <ul><li>Allah alone holds the exact timing of cosmic dissolution and the Day of Judgment; hidden from angels and prophets alike.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">62</span>
+                <h4>The Descent of Rain & Womb Realities</h4>
+              </div>
+              <ul><li>Directing the droplet-by-droplet descent of rain, and knowing the ultimate spiritual destiny, lifespan, and rizq of the unborn.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">63</span>
+                <h4>Tomorrow's Earnings & The Final Coordinate</h4>
+              </div>
+              <ul><li>No soul knows what deeds or wealth it will earn tomorrow, and no soul knows in what land its death and grave are decreed.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">64</span>
+                <h4>The Omniscient and Acquainted Sovereign</h4>
+              </div>
+              <ul><li>Inna Allaha 'Aleemun Khabeer: Allah is All-Knowing in cosmic totality and Intimately Acquainted with every single heartbeat.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+    <footer class="footer">
+      <p>Huurs Knowledge Systems • Sunni Source Discipline • Read. Reflect. Return.</p>
+    </footer>
+  </div>
+
+  <script>
+    function showPage(num) {
+      document.querySelectorAll('.page-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById('page-' + num);
+      if (target) target.classList.add('active');
+      
+      const btns = document.querySelectorAll('.tab-btn');
+      if (btns[num - 1]) btns[num - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

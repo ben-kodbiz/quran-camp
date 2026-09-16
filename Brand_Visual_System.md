@@ -131,7 +131,7 @@ Every major visual should attempt to contain at least three of the following:
 5. Knowledge
 6. Journey
 7. Islamic architectural context
-8. Human-scale contemplation
+8. Sacred scale & quiet contemplation
 9. Quiet movement
 10. Visual symbolism
 
@@ -179,7 +179,7 @@ Each recurring visual motif has a defined semantic role.
 
 * calm sea
 * horizon
-* solitary figure viewed from distance
+* solitary wooden boat or distant coastline (unpopulated)
 * book near water
 * light reflected across water
 * waves moving slowly
@@ -290,7 +290,7 @@ Each recurring visual motif has a defined semantic role.
 * sunrise over mountains
 * solitary pathway
 * mist-covered mountain
-* human figure at small scale
+* solitary winding stone trail (unpopulated)
 
 ### Avoid
 
@@ -955,69 +955,42 @@ Any hadith quotation must be verified against its source before publication.
 
 ---
 
-# 33. Human Presence
+# 33. Absolute Zero-Human Mandate
 
-Human subjects may be used, but they should generally function as:
+In strict accordance with traditional Sunni Islamic orthodoxy and the foundational Huurs visual philosophy, **all visual media (images, videos, illustrations, and animations) are 100% human-free**.
 
-> people experiencing reflection
+> **NO HUMANS. NO FACES. NO SILHOUETTES. NO HANDS. NO HUMAN BODIES.**
 
-rather than:
+Contemplation (*Tadabbur*) and reverence are conveyed exclusively through:
+* **The Ayat of Creation:** Landscapes, celestial phenomena, oceans, mountains, forests, skies, and weather.
+* **Sacred Signifiers:** The Holy Qur'an manuscript (*Mushaf*), wooden book stands (*rihal*), inkwells, and parchment.
+* **Sacred Architecture:** Stone archways, courtyards, marble basins, fountains, and tranquil prayer halls.
+* **Permissible Fauna:** Bees, birds in flight, ants, camels, and marine life observed naturally in their habitats.
 
-> models advertising spirituality.
-
-Preferred:
-
-* back-facing figure
-* distant figure
-* person reading
-* person walking
-* silhouette
-* environmental portrait
-* hands interacting naturally
-
-Avoid:
-
-* exaggerated emotional poses
-* fake crying
-* stereotypical “religious influencer” imagery
-* artificial smiles
-* staged spiritual poses
-* overuse of faces
-
-The environment often matters more than the person.
+This ensures complete theological safety, zero risk of idolatrous or immodest representation, and preserves the contemplative, timeless dignity of Huurs visuals.
 
 ---
 
-# 34. Gender & Modesty
+# 34. Strict Zero-Music Mandate
 
-When people are depicted:
-
-* clothing must be modest
-* poses should be natural
-* avoid sexualization
-* avoid glamour-focused photography
-* avoid stereotypes
-* avoid unnecessary emphasis on physical appearance
-
-The visual purpose is reflection, not appearance.
+In compliance with traditional Sunni fiqh:
+* **Zero Musical Instruments:** Absolutely no strings, winds, synthesizers, pianos, modern beats, or melodic background tracks.
+* **Permissible Audio Only:** 
+  1. Clean, contemplative spoken word narration.
+  2. Pure acoustic room resonance and subtle natural warmth.
+  3. Organic halal foley: rainfall, gentle stream water, wind through trees, distant birdsong, and ocean surf.
+* Audio mastering must strictly adhere to EBU R128 (`-14.5 LUFS` dialogue target) with zero musical accompaniment.
 
 ---
 
-# 35. Facial Representation
+# 35. Permanent Quranic Themes & Sunni Orthodoxy
 
-Faces are optional.
+All campaigns draw exclusively from the approved Quranic thematic catalog defined in [`00_BRAND/PERMANENT_QURANIC_THEMES.md`](file:///mnt/AI/ag/Campaign/00_BRAND/PERMANENT_QURANIC_THEMES.md).
 
-Preferred hierarchy:
-
-```text
-Environment
-    >
-Human presence
-    >
-Face
-```
-
-This also supports the brand's faceless content strategy.
+Prohibited in all visuals and audio:
+* **No Depiction of the Unseen:** Absolutely no visual depiction of Allah ﷻ, the Angels, Jinn, Prophets (including Prophet Muhammad ﷺ), or the Sahabah.
+* **No AI Fantasy / Sci-Fi Tropes:** No glowing neon laser auras, floating sci-fi particles, distorted pseudo-Arabic glyphs, or surreal impossible physics.
+* **No Shirk or Bid'ah:** No talismans, amulets, astrology/zodiac signs, or syncretic spiritual motifs.
 
 ---
 

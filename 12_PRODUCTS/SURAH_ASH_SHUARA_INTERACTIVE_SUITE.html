@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Ash-Shu'ara — Master Cartography & Interactive Digital Suite | Huurs Studio</title>
+  <style>
+    :root {
+      --bg-deep: #060A12;
+      --bg-card: #0D1422;
+      --bg-elevated: #141E32;
+      --border-muted: #26354D;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.25);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-deep);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-muted);
+      padding: 18px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand-left {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .brand-left h1 {
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-weight: 800;
+    }
+    .brand-left span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+    .header-badges {
+      display: flex;
+      gap: 10px;
+    }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border-muted);
+    }
+    .badge-gold { background: var(--bg-elevated); color: var(--gold); border-color: var(--gold); }
+    .badge-cyan { background: var(--bg-elevated); color: var(--cyan); border-color: var(--cyan); }
+    .badge-emerald { background: var(--bg-elevated); color: var(--emerald); border-color: var(--emerald); }
+
+    .main-container {
+      max-width: 1560px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 32px;
+      flex: 1;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+      border: 1px solid var(--border-muted);
+      border-radius: 12px;
+      padding: 28px 36px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::after {
+      content: "الشعراء";
+      position: absolute;
+      right: 20px;
+      top: -15px;
+      font-size: 8rem;
+      color: rgba(212, 175, 89, 0.04);
+      font-family: serif;
+      pointer-events: none;
+    }
+    .hero-text h2 {
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .hero-text p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 820px;
+      line-height: 1.5;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      text-align: right;
+    }
+    .stat-box .val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .stat-box .lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .search-filter-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .search-input-box {
+      flex: 1;
+      position: relative;
+    }
+    .search-input-box input {
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 10px 14px 10px 38px;
+      color: var(--white);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input-box input:focus {
+      border-color: var(--gold);
+    }
+    .search-input-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .quick-modals-bar {
+      display: flex;
+      gap: 8px;
+    }
+    .modal-trigger-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-muted);
+      color: var(--gold-light);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .modal-trigger-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--bg-card);
+    }
+
+    .navigation-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .tab-chip:hover {
+      color: var(--white);
+      border-color: var(--gold);
+    }
+    .tab-chip.active {
+      background: var(--bg-elevated);
+      color: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .plate-section { display: none; }
+    .plate-section.active { display: block; }
+
+    .plate-title-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .plate-title-bar h2 {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .plate-title-bar p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .plate-badge-box {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pillars-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .pillar-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pillar-bar {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar h3 {
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+    .pillar-bar p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .cards-wrapper {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 14px 16px;
+      transition: all 0.2s;
+    }
+    .card-item:hover {
+      border-color: rgba(212, 175, 89, 0.4);
+      transform: translateY(-2px);
+    }
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .card-idx {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--bg-elevated);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-muted);
+    }
+    .card-title-row h4 {
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .card-points {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card-points li {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .movements-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 10px;
+      padding: 22px 28px;
+      margin-top: 36px;
+    }
+    .movements-section h3 {
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .movement-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .movement-row {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .movement-row:hover {
+      border-color: var(--gold);
+      transform: translateX(4px);
+    }
+    .movement-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .movement-num {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gold);
+      background: var(--bg-card);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-muted);
+    }
+    .movement-title {
+      font-size: 0.88rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+    .movement-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+    .movement-tag {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--cyan);
+      background: var(--bg-card);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border-muted);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(6, 10, 18, 0.88);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 12px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px;
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      color: var(--white);
+      border-color: var(--rose);
+      background: var(--rose);
+    }
+    .modal-header h3 {
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .modal-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .modal-body {
+      color: var(--white);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+    .modal-body h4 {
+      color: var(--cyan);
+      margin: 18px 0 8px;
+      font-size: 1rem;
+    }
+    .modal-body p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .modal-body ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+    .modal-body li {
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    footer.site-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-muted);
+      padding: 24px 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    footer.site-footer p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    footer.site-footer span {
+      font-size: 0.74rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-header">
+    <div class="brand-left">
+      <h1>HUURS STUDIO</h1>
+      <span>SURAH ASH-SHU'ARA (26) • MASTER CARTOGRAPHY</span>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-gold">8 PLATES</span>
+      <span class="badge badge-cyan">16 PILLARS</span>
+      <span class="badge badge-emerald">64 ANALYTICAL CARDS</span>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <section class="hero-banner">
+      <div class="hero-text">
+        <h2>Surah Ash-Shu'ara: The Prophetic Litany</h2>
+        <p>The definitive visual cartography of Surah 26: from Musa's declaration of certainty at the Red Sea and Ibrahim's sublime doxology of healing to the downfall of ancient tyrannies, the descent of the Trustworthy Spirit, and the redemption of art through faith.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="val">227</div>
+          <div class="lbl">Verses</div>
+        </div>
+        <div class="stat-box">
+          <div class="val">4</div>
+          <div class="lbl">Movements</div>
+        </div>
+        <div class="stat-box">
+          <div class="val">64</div>
+          <div class="lbl">Cards</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-filter-panel">
+      <div class="search-input-box">
+        <input type="text" id="searchInput" placeholder="Live search across all 64 cards (e.g., 'Musa', 'Red Sea', 'Qalbin Saleem', 'Thamud', 'Poets')..." onkeyup="filterCards()">
+      </div>
+      <div class="quick-modals-bar">
+        <button class="modal-trigger-btn" onclick="openModal('modalMusa')">The Red Sea</button>
+        <button class="modal-trigger-btn" onclick="openModal('modalIbrahim')">The Sound Heart</button>
+        <button class="modal-trigger-btn" onclick="openModal('modalNations')">Ancient Nations</button>
+        <button class="modal-trigger-btn" onclick="openModal('modalPoets')">The Poets & Art</button>
+      </div>
+    </section>
+
+    <div class="search-results-stats" id="searchStats" style="display:none; margin-bottom:16px; font-size:0.85rem; color:var(--gold);"></div>
+
+    <nav class="navigation-tabs" id="tabsBar">
+      <button class="tab-chip active" onclick="selectPlate(1)">Plate 01: THE COMMISSION</button>
+<button class="tab-chip " onclick="selectPlate(2)">Plate 02: THE DELIVERANCE</button>
+<button class="tab-chip " onclick="selectPlate(3)">Plate 03: THE SOUND HEART</button>
+<button class="tab-chip " onclick="selectPlate(4)">Plate 04: NUH & HUD</button>
+<button class="tab-chip " onclick="selectPlate(5)">Plate 05: THAMUD & LUT</button>
+<button class="tab-chip " onclick="selectPlate(6)">Plate 06: ECONOMIC JUSTICE</button>
+<button class="tab-chip " onclick="selectPlate(7)">Plate 07: THE REVELATION</button>
+<button class="tab-chip " onclick="selectPlate(8)">Plate 08: THE POETS</button>
+
+    </nav>
+
+    <div class="plates-container" id="platesContainer">
+      
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>PROPHETIC GRIEF & THE COMMISSION OF MUSA</h2>
+        <p>Pillars 1 & 2: Bakhi'un Nafsaka, The Call to Tuwa, Human Fears & Confronting Pharaoh's Palace</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : THE COMMISSION]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 01: THE COMPASSIONATE MESSENGER</h3>
+          <p>Ta-Seen-Meem, Overwhelming Grief, The Descent of Signs & Celestial Power</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the sovereign prelude (ta-seen-meem) inimitable qur'anic opening letters confirming the divine, uncreated origin and linguistic supremacy of the revelation.">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>The Sovereign Prelude (Ta-Seen-Meem)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inimitable Qur'anic opening letters confirming the divine, uncreated origin and linguistic supremacy of the revelation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="consuming prophetic grief (bakhi') exhausting oneself with grief over their disbelief—reflecting the prophet's supreme mercy and pastoral care for humanity.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>Consuming Prophetic Grief (Bakhi')</h4>
+            </div>
+            <ul class="card-points">
+              <li>Exhausting oneself with grief over their disbelief—reflecting the Prophet's supreme mercy and pastoral care for humanity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sovereign sign from heaven if allah willed, he could send a sign compelling all necks to bow in humiliation, but faith requires voluntary submission.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>The Sovereign Sign from Heaven</h4>
+            </div>
+            <ul class="card-points">
+              <li>If Allah willed, He could send a sign compelling all necks to bow in humiliation, but faith requires voluntary submission.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the cycle of arrogant mockery no fresh reminder comes from the all-merciful except that the heedless turn away, mocking the truth until consequences strike.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>The Cycle of Arrogant Mockery</h4>
+            </div>
+            <ul class="card-points">
+              <li>No fresh reminder comes from the All-Merciful except that the heedless turn away, mocking the truth until consequences strike.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 02: THE DISPATCH TO PHARAOH'S REALM</h3>
+          <p>The Sacred Commission, Human Vulnerability, Harun's Support & Gaslighting</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the call to the wrongdoing nation commanding musa to confront pharaoh's imperial tyranny, demanding freedom and dignity for the enslaved israelites.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>The Call to the Wrongdoing Nation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Commanding Musa to confront Pharaoh's imperial tyranny, demanding freedom and dignity for the enslaved Israelites.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="musa's honest human apprehensions expressing mortal vulnerability: tightness of chest, impediment in speech, fear of rejection, and the blood-claim against him.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>Musa's Honest Human Apprehensions</h4>
+            </div>
+            <ul class="card-points">
+              <li>Expressing mortal vulnerability: tightness of chest, impediment in speech, fear of rejection, and the blood-claim against him.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="divine accompaniment & harun's aid allah reassures: 'nay, go both of you with our signs; indeed we are with you, listening'—granting ministerial strength.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>Divine Accompaniment & Harun's Aid</h4>
+            </div>
+            <ul class="card-points">
+              <li>Allah reassures: 'Nay, go both of you with Our signs; indeed We are with you, listening'—granting ministerial strength.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="deconstructing imperial gaslighting pharaoh invokes musa's fosterage and past deeds; musa reframes his 'favor' as the direct result of enslaving an entire people.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>Deconstructing Imperial Gaslighting</h4>
+            </div>
+            <ul class="card-points">
+              <li>Pharaoh invokes Musa's fosterage and past deeds; Musa reframes his 'favor' as the direct result of enslaving an entire people.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE TRIUMPH OF TRUTH & THE PARTING OF THE SEA</h2>
+        <p>Pillars 3 & 4: Staff Consuming Illusions, Magicians' Sujood, Trapped at the Shore & Towering Waves</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : THE DELIVERANCE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 03: THE COLLAPSE OF IMPERIAL ILLUSION</h3>
+          <p>The Grand Assembly, The Living Serpent, Spontaneous Sujood & Defying Terror</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the festival of sorcery assembling the empire's master illusionists under imperial patronage, seeking prestige, silver, and proximity to power.">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>The Festival of Sorcery</h4>
+            </div>
+            <ul class="card-points">
+              <li>Assembling the empire's master illusionists under imperial patronage, seeking prestige, silver, and proximity to power.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the devouring staff (talqafu) musa casts his staff, which becomes a living reality consuming their false illusions, proving the ontological supremacy of truth.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>The Devouring Staff (Talqafu)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Musa casts his staff, which becomes a living reality consuming their false illusions, proving the ontological supremacy of truth.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the instant prostration of the sorcerers recognizing divine power beyond all human illusion, the sorcerers fall in total sujood, surrendering to the lord of harun and musa.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>The Instant Prostration of the Sorcerers</h4>
+            </div>
+            <ul class="card-points">
+              <li>Recognizing divine power beyond all human illusion, the sorcerers fall in total Sujood, surrendering to the Lord of Harun and Musa.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="defying amputation and crucifixion pharaoh threatens crucifixion on palm trunks; the newly faithful proclaim: 'no harm! indeed to our lord we will return!'">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>Defying Amputation and Crucifixion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Pharaoh threatens crucifixion on palm trunks; the newly faithful proclaim: 'No harm! Indeed to our Lord we will return!'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 04: THE MIRACLE AT THE RED SEA</h3>
+          <p>The Midnight March, Cries of Despair, Inna Ma'iya Rabbi & The Drowning Host</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the midnight exodus leading the enslaved israelites by night under divine command, pursued by pharaoh's mobilizing army at sunrise.">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>The Midnight Exodus</h4>
+            </div>
+            <ul class="card-points">
+              <li>Leading the enslaved Israelites by night under divine command, pursued by Pharaoh's mobilizing army at sunrise.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="trapped between army and ocean with the raging waters ahead and iron chariots behind, the israelites despair: 'indeed, we are surely overtaken!'">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>Trapped Between Army and Ocean</h4>
+            </div>
+            <ul class="card-points">
+              <li>With the raging waters ahead and iron chariots behind, the Israelites despair: 'Indeed, we are surely overtaken!'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the unshakable cry of yaqeen musa roars: 'kalla! inna ma'iya rabbi sa-yahdeen' (nay! indeed with me is my lord; he will guide me!), banishing doubt.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>The Unshakable Cry of Yaqeen</h4>
+            </div>
+            <ul class="card-points">
+              <li>Musa roars: 'Kalla! Inna ma'iya rabbi sa-yahdeen' (Nay! Indeed with me is my Lord; He will guide me!), banishing doubt.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the cleaving waters (kal-tawd) striking the sea, cleaving it into twelve dry paths between mountain-high water walls, drowning pharaoh and delivering the faithful.">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>The Cleaving Waters (Kal-Tawd)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Striking the sea, cleaving it into twelve dry paths between mountain-high water walls, drowning Pharaoh and delivering the faithful.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>IBRAHIM'S MONOTHEISM & THE SOUND HEART</h2>
+        <p>Pillars 5 & 6: Socratic Deconstruction of Idols, The Manifest Doxology, Qalbin Saleem & The Judgment</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : THE SOUND HEART]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 05: THE RATIONAL DECONSTRUCTION OF IDOLS</h3>
+          <p>Interrogating Stone Deities, The Blindness of Tradition & Ibrahim's Declaration</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="interrogating inanimate deities ibrahim asks his people: 'do they hear you when you call? or do they benefit you or harm?' exposing their zero agency.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>Interrogating Inanimate Deities</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ibrahim asks his people: 'Do they hear you when you call? Or do they benefit you or harm?' exposing their zero agency.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the confession of blind imitation (taqlid) their sole defense is intellectual surrender: 'nay, we found our fathers doing so,' clinging to inherited cultural myths.">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>The Confession of Blind Imitation (Taqlid)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Their sole defense is intellectual surrender: 'Nay, we found our fathers doing so,' clinging to inherited cultural myths.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="enemies except the lord of the worlds ibrahim disassociates from their pantheon: all false deities are enemies to the soul except the creator and sustainer.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>Enemies Except the Lord of the Worlds</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ibrahim disassociates from their pantheon: all false deities are enemies to the soul except the Creator and Sustainer.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="creation, sustenance & guidance proclaiming: 'he who created me, and he guides me; and he who feeds me and gives me drink,' establishing absolute reliance.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>Creation, Sustenance & Guidance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Proclaiming: 'He who created me, and He guides me; and He who feeds me and gives me drink,' establishing absolute reliance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 06: THE ETERNAL CURRENCY: QALBIN SALEEM</h3>
+          <p>Spiritual Healing, Prayer for Legacy, Sound Heart & Proximity of Paradise</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="spiritual adab in healing (yashfeen) attributing illness to human frailty (*idha maridtu*) and ultimate cure solely to allah (*fa-huwa yashfeen*), modeling sublime adab.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>Spiritual Adab in Healing (Yashfeen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Attributing illness to human frailty (*Idha maridtu*) and ultimate cure solely to Allah (*Fa-huwa yashfeen*), modeling sublime adab.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the du'a for an honorable legacy seeking wisdom (*hukman*), joining the righteous, and asking for *lisan sidqin fil-akhireen*—honorable mention across future ages.">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>The Du'a for an Honorable Legacy</h4>
+            </div>
+            <ul class="card-points">
+              <li>Seeking wisdom (*Hukman*), joining the righteous, and asking for *Lisan Sidqin fil-Akhireen*—honorable mention across future ages.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sound heart (qalbin saleem) on that day, neither wealth nor sons avail, except one who meets allah with a heart sound from shirk, doubt, malice, and pride.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>The Sound Heart (Qalbin Saleem)</h4>
+            </div>
+            <ul class="card-points">
+              <li>On that Day, neither wealth nor sons avail, except one who meets Allah with a heart sound from shirk, doubt, malice, and pride.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="eschatological unveiling: jannah & jahim paradise brought near to the god-conscious, while hellfire is exposed to the astray, stripping away worldly illusions.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>Eschatological Unveiling: Jannah & Jahim</h4>
+            </div>
+            <ul class="card-points">
+              <li>Paradise brought near to the God-conscious, while Hellfire is exposed to the astray, stripping away worldly illusions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>PROPHETIC MISSIONS: NUH & HUD ('AD)</h2>
+        <p>Pillars 7 & 8: Sincerity in Dawah, Aristocratic Snobbery, Vain Monuments on High Ridges & Tyranny</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : NUH & HUD]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 07: NUH & THE DEFENSE OF THE HUMBLE</h3>
+          <p>Taqwa, Infallible Sincerity, Defending Poor Believers & The Ark of Deliverance</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the trustworthy messenger (rasulun ameen) nuh calls his people to fear allah and obey, declaring that his message is pure guidance untainted by personal ambition.">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>The Trustworthy Messenger (Rasulun Ameen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Nuh calls his people to fear Allah and obey, declaring that his message is pure guidance untainted by personal ambition.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sincerity formula (in ajriya) proclaiming: 'i ask of you no reward; my reward is only upon the lord of the worlds,' dismantling cynical suspicions.">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>The Sincerity Formula (In Ajriya)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Proclaiming: 'I ask of you no reward; my reward is only upon the Lord of the worlds,' dismantling cynical suspicions.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="rejecting aristocratic elitism oligarchs objected that only the lowest social class followed him; nuh refused to drive away believers whose hearts belong to god.">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Rejecting Aristocratic Elitism</h4>
+            </div>
+            <ul class="card-points">
+              <li>Oligarchs objected that only the lowest social class followed him; Nuh refused to drive away believers whose hearts belong to God.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="deliverance in the full ark when rejection hardened, allah delivered nuh and the faithful in the laden ship (*al-fulk al-mashhoon*), drowning the deniers.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>Deliverance in the Full Ark</h4>
+            </div>
+            <ul class="card-points">
+              <li>When rejection hardened, Allah delivered Nuh and the faithful in the laden ship (*Al-Fulk al-Mashhoon*), drowning the deniers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 08: HUD & THE MATERIAL ARROGANCE OF 'AD</h3>
+          <p>Monuments on Ridges, Tyrannical Striking, Illusions of Immortality & Annihilation</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="vain monuments on high ridges (ree') indicting 'ad for building colossal architectural towers on mountain ridges purely for vanity, sport, and ostentatious display.">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>Vain Monuments on High Ridges (Ree')</h4>
+            </div>
+            <ul class="card-points">
+              <li>Indicting 'Ad for building colossal architectural towers on mountain ridges purely for vanity, sport, and ostentatious display.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the illusion of earthly permanence constructing palatial fortresses (*masani'*) as though they would live forever, ignoring their inevitable mortal end.">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>The Illusion of Earthly Permanence</h4>
+            </div>
+            <ul class="card-points">
+              <li>Constructing palatial fortresses (*Masani'*) as though they would live forever, ignoring their inevitable mortal end.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="tyrannical violence (batash-tum jabbarin) governing through unchecked brute force, cruelty, and militaristic oppression, intoxicating themselves with physical strength.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>Tyrannical Violence (Batash-tum Jabbarin)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Governing through unchecked brute force, cruelty, and militaristic oppression, intoxicating themselves with physical strength.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the devastating wind & extinction warning them of divine blessings in livestock, springs, and gardens; their rejection brought the shattering gale of annihilation.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>The Devastating Wind & Extinction</h4>
+            </div>
+            <ul class="card-points">
+              <li>Warning them of divine blessings in livestock, springs, and gardens; their rejection brought the shattering gale of annihilation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>SALIH (THAMUD) & LUT (THE PERVERTED CITIES)</h2>
+        <p>Pillars 9 & 10: Mountain Mansions, The She-Camel's Water Right, Moral Inversion & Stone Rain</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : THAMUD & LUT]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 09: SALIH & THE SACRED SHE-CAMEL</h3>
+          <p>Hewing Mountains, Shared Water Covenants, Fatal Hamstringing & Morning Regret</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="hewing mansions out of living rock thamud carved elaborate palaces out of mountain cliffs (*fariheen*), priding themselves on geotechnical invulnerability.">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Hewing Mansions Out of Living Rock</h4>
+            </div>
+            <ul class="card-points">
+              <li>Thamud carved elaborate palaces out of mountain cliffs (*Fariheen*), priding themselves on geotechnical invulnerability.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the living miracle: naqatullah a miraculous she-camel granted as a test sign, requiring an inviolable shared water schedule: a day for her and a day for the city.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>The Living Miracle: Naqatullah</h4>
+            </div>
+            <ul class="card-points">
+              <li>A miraculous she-camel granted as a test sign, requiring an inviolable shared water schedule: a day for her and a day for the city.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the fatal hamstringing ('aqaruha) rebellious oligarchs conspired and hamstrung the camel, defying the covenant and daring the divine punishment to strike.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>The Fatal Hamstringing ('Aqaruha)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Rebellious oligarchs conspired and hamstrung the camel, defying the covenant and daring the divine punishment to strike.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the morning regret (fa-asbahu nadimeen) a thunderous seismic blast shattered their rock sanctuaries at dawn, leaving them motionless corpses filled with useless regret.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>The Morning Regret (Fa-asbahu Nadimeen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>A thunderous seismic blast shattered their rock sanctuaries at dawn, leaving them motionless corpses filled with useless regret.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 10: LUT & THE TRANSGRESSION OF CREATION</h3>
+          <p>Defying Natural Order, Threats of Expulsion, The Rescued Family & Stone Rain</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="confronting moral inversion lut confronted his society for inverting natural desires and violating travelers, establishing the inviolability of divine order.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>Confronting Moral Inversion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Lut confronted his society for inverting natural desires and violating travelers, establishing the inviolability of divine order.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="tyrannical threats of expulsion the corrupt citizens threatened: 'if you do not desist, o lut, you will surely be expelled,' attempting to outlaw moral purity.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Tyrannical Threats of Expulsion</h4>
+            </div>
+            <ul class="card-points">
+              <li>The corrupt citizens threatened: 'If you do not desist, O Lut, you will surely be expelled,' attempting to outlaw moral purity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="deliverance of the righteous family allah delivered lut and his household, except his treacherous wife who aligned with the corrupt culture and remained behind.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Deliverance of the Righteous Family</h4>
+            </div>
+            <ul class="card-points">
+              <li>Allah delivered Lut and his household, except his treacherous wife who aligned with the corrupt culture and remained behind.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the cataclysmic rain of clay stones raining upon the inverted cities an evil shower of baked brimstone (*mataran fa-sa'a mataru al-mundhareen*), obliterating them.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>The Cataclysmic Rain of Clay Stones</h4>
+            </div>
+            <ul class="card-points">
+              <li>Raining upon the inverted cities an evil shower of baked brimstone (*Mataran fa-sa'a mataru al-mundhareen*), obliterating them.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>SHU'AYB & THE GOSPEL OF ECONOMIC JUSTICE</h2>
+        <p>Pillars 11 & 12: People of the Thicket, Honest Scales, Commercial Ethics & The Day of the Dark Cloud</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : ECONOMIC JUSTICE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 11: SHU'AYB & HONEST WEIGHTS</h3>
+          <p>Ashab al-Aykah, Full Measure, The Upright Balance & Forbidding Corruption</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the mission to the forest dwellers shu'ayb sent to the commercial hub of ashab al-aykah (the companions of the thicket), calling them to taqwa and obedience.">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>The Mission to the Forest Dwellers</h4>
+            </div>
+            <ul class="card-points">
+              <li>Shu'ayb sent to the commercial hub of Ashab al-Aykah (The Companions of the Thicket), calling them to Taqwa and obedience.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the mandate of full measure (awfu) commanding: 'give full measure and do not be of those who cause loss'—elevating fair trade into a direct spiritual obligation.">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>The Mandate of Full Measure (Awfu)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Commanding: 'Give full measure and do not be of those who cause loss'—elevating fair trade into a direct spiritual obligation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the upright balance (al-qistas) weighing with honest, unrigged scales, forbidding economic exploitation, monopolistic price-gouging, and market deceit.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>The Upright Balance (Al-Qistas)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Weighing with honest, unrigged scales, forbidding economic exploitation, monopolistic price-gouging, and market deceit.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="do not spread corruption upon earth warning that systematic commercial cheating destroys communal trust, dissolves social solidarity, and invites civil ruin.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>Do Not Spread Corruption Upon Earth</h4>
+            </div>
+            <ul class="card-points">
+              <li>Warning that systematic commercial cheating destroys communal trust, dissolves social solidarity, and invites civil ruin.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 12: THE DAY OF THE SHADOW (AZ-ZULLAH)</h3>
+          <p>Accusations of Sorcery, The Daring of Heaven, The Suffocating Cloud & The Refrain</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="dismissing the prophet as bewitched the merchants mocked shu'ayb: 'you are only of those affected by magic; you are merely a human being like us, and a liar!'">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>Dismissing the Prophet as Bewitched</h4>
+            </div>
+            <ul class="card-points">
+              <li>The merchants mocked Shu'ayb: 'You are only of those affected by magic; you are merely a human being like us, and a liar!'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="daring the sky to fall arrogantly challenging: 'make fragments of the sky fall upon us if you are truthful!'—daring divine retribution to strike.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>Daring the Sky to Fall</h4>
+            </div>
+            <ul class="card-points">
+              <li>Arrogantly challenging: 'Make fragments of the sky fall upon us if you are truthful!'—daring divine retribution to strike.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the agony of the dark cloud (yawm az-zullah) a scorching heat drove them outdoors; when a dark cloud offered shade, they gathered beneath it, only to be consumed by flame.">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>The Agony of the Dark Cloud (Yawm az-Zullah)</h4>
+            </div>
+            <ul class="card-points">
+              <li>A scorching heat drove them outdoors; when a dark cloud offered shade, they gathered beneath it, only to be consumed by flame.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the eighth liturgical refrain concluding the historical cycle with the majestic cadence: 'indeed your lord—he is the exalted in might, the merciful.'">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>The Eighth Liturgical Refrain</h4>
+            </div>
+            <ul class="card-points">
+              <li>Concluding the historical cycle with the majestic cadence: 'Indeed your Lord—He is the Exalted in Might, the Merciful.'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE TRUSTWORTHY SPIRIT & THE CLEAR REVELATION</h2>
+        <p>Pillars 13 & 14: Tanzil Rabbi al-'Alameen, Ar-Ruh al-Ameen, The Pure Heart & Demonic Impotence</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : THE REVELATION]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 13: THE CELESTIAL CHAIN OF TRANSMISSION</h3>
+          <p>Tanzil, The Trustworthy Spirit (Jibril), Inscribed Upon the Heart & Arabic Tongue</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="descent from the lord of the worlds confirming that the qur'an is not human poetry or philosophical musing, but direct revelation (*tanzil*) from the creator.">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>Descent from the Lord of the Worlds</h4>
+            </div>
+            <ul class="card-points">
+              <li>Confirming that the Qur'an is not human poetry or philosophical musing, but direct revelation (*Tanzil*) from the Creator.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the trustworthy emissary (ar-ruh al-ameen) delivered by archangel jibril, possessing absolute trustworthiness, immunity from alteration, and majestic celestial authority.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>The Trustworthy Emissary (Ar-Ruh al-Ameen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Delivered by Archangel Jibril, possessing absolute trustworthiness, immunity from alteration, and majestic celestial authority.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="inscribed upon the prophet's heart deposited directly upon the pure heart (*qalb*) of the prophet muhammad ﷺ, transforming internal consciousness into guidance.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>Inscribed Upon the Prophet's Heart</h4>
+            </div>
+            <ul class="card-points">
+              <li>Deposited directly upon the pure heart (*Qalb*) of the Prophet Muhammad ﷺ, transforming internal consciousness into guidance.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the lucid arabic medium (lisan 'arabi) revealed in crystal-clear, unadulterated arabic (*bi-lisanin 'arabiyyin mubeen*), providing unsurpassed eloquence and clarity.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>The Lucid Arabic Medium (Lisan 'Arabi)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Revealed in crystal-clear, unadulterated Arabic (*Bi-lisanin 'arabiyyin mubeen*), providing unsurpassed eloquence and clarity.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 14: THE IMPOTENCE OF DEMONIC FORCES</h3>
+          <p>Ancient Scriptures, Refuting Soothsaying, Demonic Exclusion & Piercing Flame</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="foretokened in former scriptures (zubur) the coming of the prophet and the final book was inscribed in the primordial scriptures of the ancient prophets.">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>Foretokened in Former Scriptures (Zubur)</h4>
+            </div>
+            <ul class="card-points">
+              <li>The coming of the Prophet and the final book was inscribed in the primordial scriptures of the ancient prophets.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="testimony of the scholars of israel the learned rabbis and scholars recognized the prophetic descriptions, serving as an empirical historical proof for mecca.">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Testimony of the Scholars of Israel</h4>
+            </div>
+            <ul class="card-points">
+              <li>The learned rabbis and scholars recognized the prophetic descriptions, serving as an empirical historical proof for Mecca.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="devils cannot transmit revelation refuting pagan slanders: devils have neither the moral character, spiritual capacity, nor divine permission to carry revelation.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>Devils Cannot Transmit Revelation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Refuting pagan slanders: devils have neither the moral character, spiritual capacity, nor divine permission to carry revelation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="expulsion from celestial hearkening demonic forces are permanently barred from overhearing heavenly councils, repelled by burning celestial meteors.">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>Expulsion from Celestial Hearkening</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demonic forces are permanently barred from overhearing heavenly councils, repelled by burning celestial meteors.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>PASTORAL ETHICS, THE POETS & ETERNAL REVERSAL</h2>
+        <p>Pillars 15 & 16: Warning Close Kin, Lowering the Wing, Wandering Poets vs. Believing Artists & The Final Reversal</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : THE POETS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 15: PROPHETIC PASTORAL DECORUM</h3>
+          <p>Warning Immediate Kin, Lowering the Wing to Believers & Absolute Tawakkul</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="warning immediate kin (andhir 'asheerataka) commanded to begin public dawah with closest family, proclaiming on mount safa that personal faith alone secures salvation.">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>Warning Immediate Kin (Andhir 'Asheerataka)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Commanded to begin public dawah with closest family, proclaiming on Mount Safa that personal faith alone secures salvation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="lowering the wing to the believers embodying profound tenderness, humility, and protective care (*wakhfid janahaka*) toward all who embrace the path of truth.">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>Lowering the Wing to the Believers</h4>
+            </div>
+            <ul class="card-points">
+              <li>Embodying profound tenderness, humility, and protective care (*Wakhfid janahaka*) toward all who embrace the path of truth.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="disavowal of transgression (inni baree') declaring innocence from sinful rebellion while maintaining gentle compassion, balancing moral clarity with pastoral warmth.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>Disavowal of Transgression (Inni Baree')</h4>
+            </div>
+            <ul class="card-points">
+              <li>Declaring innocence from sinful rebellion while maintaining gentle compassion, balancing moral clarity with pastoral warmth.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="reliance upon al-'azeez ar-raheem placing total reliance (*tawakkul*) upon the mighty, the merciful, who witnesses the prophet's standing and movements in sujood.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>Reliance Upon Al-'Azeez Ar-Raheem</h4>
+            </div>
+            <ul class="card-points">
+              <li>Placing total reliance (*Tawakkul*) upon the Mighty, the Merciful, who witnesses the Prophet's standing and movements in Sujood.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 16: THE ETHICS OF ART & THE FINAL REVERSAL</h3>
+          <p>Wandering in Every Valley, Hypocrisy of Speech, Believing Poets & The Final Turning</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="wandering in every valley (yaheemoon) dissecting unanchored artists who roam aimlessly through shifting emotional valleys, praising or defaming based on impulse.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>Wandering in Every Valley (Yaheemoon)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Dissecting unanchored artists who roam aimlessly through shifting emotional valleys, praising or defaming based on impulse.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the gap between word and action exposing moral hypocrisy: proclaiming grand ideals of chivalry and sacrifice while living in cowardice, indulgence, and conceit.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>The Gap Between Word and Action</h4>
+            </div>
+            <ul class="card-points">
+              <li>Exposing moral hypocrisy: proclaiming grand ideals of chivalry and sacrifice while living in cowardice, indulgence, and conceit.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the redemption of art through faith honoring believing writers and artists who do good works, remember allah abundantly, and employ their eloquence to defend justice.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>The Redemption of Art Through Faith</h4>
+            </div>
+            <ul class="card-points">
+              <li>Honoring believing writers and artists who do good works, remember Allah abundantly, and employ their eloquence to defend justice.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the reversal of destinies (ayya munqalab) a thunderous closing decree: the oppressors and cynics will soon know to what catastrophic reversal their souls will return.">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>The Reversal of Destinies (Ayya Munqalab)</h4>
+            </div>
+            <ul class="card-points">
+              <li>A thunderous closing decree: the oppressors and cynics will soon know to what catastrophic reversal their souls will return.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <section class="movements-section">
+      <h3>
+        <span>EXEGETICAL THEMATIC MOVEMENTS ROADMAP</span>
+        <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">Click any movement to jump to its corresponding plate</span>
+      </h3>
+      <div class="movement-grid">
+        
+    <div class="movement-row" onclick="filterByMovement('Movement 1')">
+      <div class="movement-meta-left">
+        <span class="movement-num">01</span>
+        <div>
+          <div class="movement-title">The Prophetic Grief, Musa's Commission & The Cleaving Sea</div>
+          <div class="movement-sub">Movement 1 • Plates 01–02</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 2')">
+      <div class="movement-meta-left">
+        <span class="movement-num">02</span>
+        <div>
+          <div class="movement-title">Ibrahim's Monotheism, Divine Healing & The Sound Heart</div>
+          <div class="movement-sub">Movement 2 • Plate 03</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 3')">
+      <div class="movement-meta-left">
+        <span class="movement-num">03</span>
+        <div>
+          <div class="movement-title">The Ancient Nations: Nuh, 'Ad, Thamud, Lut & Shu'ayb</div>
+          <div class="movement-sub">Movement 3 • Plates 04–06</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 4')">
+      <div class="movement-meta-left">
+        <span class="movement-num">04</span>
+        <div>
+          <div class="movement-title">The Trustworthy Spirit, Pastoral Care & The Believing Poets</div>
+          <div class="movement-sub">Movement 4 • Plates 07–08</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Deep Exegetical Modals -->
+  <div class="modal-overlay" id="modalMusa">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModals()">&times;</button>
+      <div class="modal-header">
+        <h3>Musa's Certainty & The Parting of the Red Sea</h3>
+        <p>The Archetype of Deliverance Against Imperial Tyranny (Verses 10–68)</p>
+      </div>
+      <div class="modal-body">
+        <h4>1. Mortal Apprehensions & Divine Support</h4>
+        <p>Musa acknowledged his natural mortal fears: a constricted chest, unfluent tongue, and the fear of execution for the slain Egyptian. Allah met his human vulnerability with the supreme reassurance: <i>'Kalla! Inna ma'akum mustami'oon'</i> (Nay! Indeed We are with you, listening).</p>
+        <h4>2. The Collapse of Imperial Sorcery</h4>
+        <p>The state-sponsored sorcerers expected honor and wealth from Pharaoh. When Musa's staff devoured their optical illusions, they instantly perceived the reality of divine creation, collapsing in spontaneous prostration and defying Pharaoh's threats of crucifixion.</p>
+        <h4>3. The Cry of Yaqeen at the Shore</h4>
+        <p>When the Israelites cried <i>'Inna la-mudrakoon'</i> (We are overtaken!), Musa proclaimed: <i>'Kalla! Inna ma'iya rabbi sa-yahdeen'</i> (Nay! Indeed with me is my Lord; He will guide me!). The waters parted like towering mountains (*Kal-tawdi al-'adheem*), preserving the faithful and drowning Pharaoh's host.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalIbrahim">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModals()">&times;</button>
+      <div class="modal-header">
+        <h3>Qalbin Saleem: The Anatomy of the Sound Heart</h3>
+        <p>Ibrahim's Doxology of Monotheism and Eschatology (Verses 69–89)</p>
+      </div>
+      <div class="modal-body">
+        <h4>1. Deconstruction of Ancestral Tradition</h4>
+        <p>Ibrahim challenged his people's silent idols: do they hear, benefit, or harm? Their sole answer was blind imitation (*Taqlid*). Ibrahim broke free from cultural inertia, anchoring his soul solely in the Lord of the Worlds.</p>
+        <h4>2. The Doxology of Healing & Adab</h4>
+        <p>Ibrahim formulated the golden rule of spiritual etiquette: <i>'Wa idha maridtu fa-huwa yashfeen'</i> (And when I am ill, it is He who cures me). He attributed the illness to human frailty, reserving ultimate healing exclusively for Allah.</p>
+        <h4>3. The Sound Heart (Qalbin Saleem)</h4>
+        <p>On the Day of Standing, wealth and children provide zero benefit: the only acceptable currency is a sound heart (*Qalbin Saleem*), defined by Ibn al-Qayyim as a heart free from polytheism, heresy, toxic rancor, malice, and base desires.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalNations">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModals()">&times;</button>
+      <div class="modal-header">
+        <h3>The Ancient Nations & The Eight-Fold Refrain</h3>
+        <p>Sociological Laws of Communal Annihilation (Verses 105–191)</p>
+      </div>
+      <div class="modal-body">
+        <h4>1. The Sins of the Nations</h4>
+        <ul>
+          <li><b>Nuh:</b> Confronted aristocratic snobbery against the impoverished believers.</li>
+          <li><b>'Ad:</b> Indicted for vanity towers on ridges (*Ree'*) and tyrannical brutality (*Jabbarin*).</li>
+          <li><b>Thamud:</b> Carved mountain fortresses in false security, hamstrung the She-Camel, and awoke in morning regret.</li>
+          <li><b>Lut:</b> Challenged the unnatural inversion of desires and highway robbery.</li>
+          <li><b>Shu'ayb:</b> Condemned commercial cheating in weights and scales in the financial hub of Madyan.</li>
+        </ul>
+        <h4>2. The Eight-Fold Unifying Cadence</h4>
+        <p><i>'Inna fee dhalika la-ayah, wa ma kana aktharuhum mu'mineen, wa inna rabbaka la-huwal-'azeezul-raheem'</i>. Repeated eight times, balancing Allah's irresistible might (*Al-'Azeez*) against tyrants with His infinite mercy (*Ar-Raheem*) toward the faithful.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalPoets">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModals()">&times;</button>
+      <div class="modal-header">
+        <h3>Ar-Ruh al-Ameen & The Ethical Redemption of Art</h3>
+        <p>Revelation, Wandering Poets, and Creative Responsibility (Verses 192–227)</p>
+      </div>
+      <div class="modal-body">
+        <h4>1. The Descent Through the Trustworthy Spirit</h4>
+        <p>The Qur'an descended from the Lord of the Worlds via *Ar-Ruh al-Ameen* (Jibril) directly into the Prophet's heart in lucid, uncorrupted Arabic, completely inaccessible to demonic tampering.</p>
+        <h4>2. The Psychology of Wandering Poets</h4>
+        <p>The surah dissects ungrounded artists who roam through every emotional valley (*Fee kulli wadin yaheemoon*), flattering for silver and slandering in rage, living in hypocrisy by proclaiming virtues they never practice.</p>
+        <h4>3. The Redemption of Eloquence</h4>
+        <p>The magnificent exception: poets and creative artists who believe, do righteous deeds, remember Allah much, and deploy their eloquence to defend justice. Poetry and art, when anchored in truth, become instruments of sacred service.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Huurs Knowledge Systems • Strict Sunni Islamic Source Discipline • 100% Tier-1 Certified</p>
+    <span>READ. REFLECT. RETURN.</span>
+  </footer>
+
+  <script>
+    function selectPlate(num) {
+      document.querySelectorAll('.plate-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-chip').forEach(el => el.classList.remove('active'));
+
+      const target = document.getElementById('plateSection' + num);
+      if (target) target.classList.add('active');
+
+      const tabs = document.querySelectorAll('.tab-chip');
+      if (tabs[num - 1]) tabs[num - 1].classList.add('active');
+      window.scrollTo({ top: 320, behavior: 'smooth' });
+    }
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add('open');
+    }
+
+    function closeModals() {
+      document.querySelectorAll('.modal-overlay').forEach(el => el.classList.remove('open'));
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        closeModals();
+      }
+    }
+
+    function filterCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.card-item');
+      const statsBadge = document.getElementById('searchStats');
+
+      if (!query) {
+        cards.forEach(c => c.style.display = 'block');
+        statsBadge.style.display = 'none';
+        return;
+      }
+
+      let matchedCount = 0;
+      cards.forEach(card => {
+        const text = card.getAttribute('data-search') || '';
+        if (text.includes(query)) {
+          card.style.display = 'block';
+          matchedCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      statsBadge.style.display = 'block';
+      statsBadge.innerHTML = 'Found <b>' + matchedCount + ' Matches</b> for "' + query + '"';
+    }
+
+    function filterByMovement(movName) {
+      const mapping = {
+        "Movement 1": 1,
+        "Movement 2": 3,
+        "Movement 3": 4,
+        "Movement 4": 7
+      };
+      const targetPlate = mapping[movName] || 1;
+      selectPlate(targetPlate);
+    }
+  </script>
+</body>
+</html>

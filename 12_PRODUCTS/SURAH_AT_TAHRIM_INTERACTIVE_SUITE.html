@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah At-Tahrim: Interactive Knowledge Suite | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.2);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy-deep); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; padding-bottom: 60px; }
+    .hero-banner {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 89, 0.12) 0%, rgba(6, 10, 18, 0.95) 70%), var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold); padding: 48px 24px 36px 24px; text-align: center;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 2px; color: var(--gold); background: var(--navy-card); border: 1px solid var(--border-gold);
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+    .hero-subtitle { color: var(--gold-light); font-size: 1.1rem; font-weight: 500; max-width: 800px; margin: 0 auto 20px auto; }
+    .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stat-badge { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 8px; padding: 10px 18px; display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+    .main-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; }
+    .controls-bar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .search-box { width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold); color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-box:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    .nav-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+    .plate-tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.78rem;
+    }
+    .plate-tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .plate-tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-section { display: none; background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+    .plate-section.active { display: block; }
+    .plate-title-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-muted); padding-bottom: 16px; margin-bottom: 20px; }
+    .plate-title-bar h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-bar p { font-size: 0.85rem; color: var(--text-muted); }
+    .plate-badge-box { display: flex; gap: 8px; }
+    .badge-gold { background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); color: var(--emerald); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .pillars-layout { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-bar { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 { font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .cards-wrapper { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-item { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 12px 14px; }
+    .card-item:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .card-idx { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .card-title-row h4 { font-family: 'Cinzel', serif; font-size: 0.86rem; color: var(--white); }
+    .card-points { list-style-type: none; }
+    .card-points li { position: relative; padding-left: 14px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .card-points li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .modals-panel { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-top: 32px; }
+    .modal-triggers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .modal-btn { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; padding: 16px; text-align: left; cursor: pointer; color: var(--white); }
+    .modal-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .modal-btn h5 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 6px; }
+    .modal-btn p { font-size: 0.78rem; color: var(--text-muted); }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 10, 18, 0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-body { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+    .modal-body p { font-size: 0.9rem; color: var(--white); margin-bottom: 14px; line-height: 1.7; }
+    .modal-source { background: var(--navy-elevated); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="hero-banner">
+    <div class="brand-pill">HUURS STUDIO • THE DEEPER THOUGHT SERIES</div>
+    <h1 class="hero-title">SURAH AT-TAHRIM</h1>
+    <div class="hero-subtitle">Interactive Knowledge Suite: 8 Plates • 16 Pillars • 64 Structural Nodes</div>
+    <div class="stats-row">
+      <div class="stat-badge"><span class="stat-val">12</span><span class="stat-lbl">Verses</span></div>
+      <div class="stat-badge"><span class="stat-val">8</span><span class="stat-lbl">Plates</span></div>
+      <div class="stat-badge"><span class="stat-val">16</span><span class="stat-lbl">Pillars</span></div>
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Nodes</span></div>
+      <div class="stat-badge"><span class="stat-val">100%</span><span class="stat-lbl">Sunni Verified</span></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="controls-bar">
+      <input type="text" id="suiteSearch" class="search-box" placeholder="🔍 Live search across all 64 nodes..." onkeyup="filterSuite()">
+      <div class="nav-tabs-wrapper">
+        <button class="plate-tab-btn active" onclick="switchSuitePlate(1)" id="suiteTab1">Plate 01: THE DOMESTIC CRISI...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(2)" id="suiteTab2">Plate 02: THE DISCLOSED SECR...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(3)" id="suiteTab3">Plate 03: THE CALL TO REPENT...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(4)" id="suiteTab4">Plate 04: THE THREAT OF DIVO...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(5)" id="suiteTab5">Plate 05: PROTECTING THE HOU...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(6)" id="suiteTab6">Plate 06: THE REPENTANCE OF ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(7)" id="suiteTab7">Plate 07: STRIVING AGAINST F...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(8)" id="suiteTab8">Plate 08: PARAGONS OF FAITH:...</button>
+
+      </div>
+    </div>
+
+
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 01: THE DOMESTIC CRISIS & THE OATH OF PROHIBITION</h2>
+        <p>Pillars 01 & 02: Lima Tuharrimu Ma Ahalla Allah, Seeking Wives' Pleasure, Expiation of Oaths Ordained & The Protector</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : DOMESTIC CRISIS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 01: THE DIVINE REPROACH OVER PROHIBITION</h3>
+          <p>Why Prohibit What Allah Made Lawful?, Seeking Pleasure of Spouses & Ghafoorun Raheem</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the gentle divine reproach to the prophet ya ayyuha an-nabiyyu lima tuharrimu ma ahalla allahu lak: why do you prohibit that which allah has made lawful for you?">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>The Gentle Divine Reproach to the Prophet</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ayyuha an-nabiyyu lima tuharrimu ma ahalla Allahu lak: why do you prohibit that which Allah has made lawful for you?</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the incident of the sacred vow the prophet took an oath to abstain from honey (or his concubine mariyah) to placate the jealousy of his wives.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>The Incident of the Sacred Vow</h4>
+            </div>
+            <ul class="card-points">
+              <li>The Prophet took an oath to abstain from honey (or his concubine Mariyah) to placate the jealousy of his wives.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="seeking the pleasure of mortal spouses tabtaghee mardata azwajik: seeking the contentment of your wives at the expense of lawful divine permissions.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>Seeking the Pleasure of Mortal Spouses</h4>
+            </div>
+            <ul class="card-points">
+              <li>Tabtaghee mardata azwajik: seeking the contentment of your wives at the expense of lawful divine permissions.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the reservoir of divine pardon wallahu ghafoorun raheem: and allah is oft-forgiving, most merciful, releasing his messenger from human pressure.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>The Reservoir of Divine Pardon</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wallahu Ghafoorun Raheem: and Allah is Oft-Forgiving, Most Merciful, releasing His Messenger from human pressure.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 02: THE DISSOLUTION OF UNJUST OATHS</h3>
+          <p>Qad Farada Allahu Tahillata Aymanikum, Allah is Your Mawla & The All-Knowing Wise</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the ordained expiation of oaths qad farada allahu lakum tahillata aymanikum: allah has already ordained for you the legal expiation of your oaths.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>The Ordained Expiation of Oaths</h4>
+            </div>
+            <ul class="card-points">
+              <li>Qad farada Allahu lakum tahillata aymanikum: Allah has already ordained for you the legal expiation of your oaths.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="nullifying oaths that prohibit the halal teaching that swearing to forbid what god made permissible is invalid and must be broken via kaffarah.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>Nullifying Oaths That Prohibit the Halal</h4>
+            </div>
+            <ul class="card-points">
+              <li>Teaching that swearing to forbid what God made permissible is invalid and must be broken via Kaffarah.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="allah as supreme guardian (mawla) wallahu mawlakum: and allah is your ultimate protector, guardian, and master in all life affairs.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>Allah as Supreme Guardian (Mawla)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wallahu Mawlakum: and Allah is your ultimate Protector, Guardian, and Master in all life affairs.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="omniscience and wisdom in legislation wa huwa al-'aleemu al-hakeem: and he is the all-knowing of human weakness, the all-wise in social remedies.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>Omniscience and Wisdom in Legislation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa Huwa al-'Aleemu al-Hakeem: and He is the All-Knowing of human weakness, the All-Wise in social remedies.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 02: THE DISCLOSED SECRET & THE CELESTIAL ALLIANCE</h2>
+        <p>Pillars 03 & 04: The Confided Secret Disclosed, Revealing Part & Concealing Part, Who Informed You? & Knower</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : DISCLOSED SECRET]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 03: THE BREACH OF DOMESTIC CONFIDENCE</h3>
+          <p>Asarra an-Nabiyyu ila Ba'di Azwajihi Hadeethan, Disclosed It & Allah Made It Manifest</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the confidential prophetic disclosure when the prophet confided a private matter in strict confidence to one of his wives (hafsah).">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>The Confidential Prophetic Disclosure</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the Prophet confided a private matter in strict confidence to one of his wives (Hafsah).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the disclosure to her co-wife falamma nabba'at bih: but when she breached confidence and informed 'a'ishah of the secret conversation.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>The Disclosure to Her Co-Wife</h4>
+            </div>
+            <ul class="card-points">
+              <li>Falamma nabba'at bih: but when she breached confidence and informed 'A'ishah of the secret conversation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="divine revelation unmasking the breach wa adhhara-hu allahu 'alayh: and allah made the private breach manifest and known to the messenger.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>Divine Revelation Unmasking the Breach</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa adhhara-hu Allahu 'alayh: and Allah made the private breach manifest and known to the Messenger.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="noble prophetic discretion in reproach 'arrafa ba'dahu wa a'rada 'an ba'd: he made known part of what she disclosed and graciously overlooked part.">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>Noble Prophetic Discretion in Reproach</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Arrafa ba'dahu wa a'rada 'an ba'd: he made known part of what she disclosed and graciously overlooked part.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 04: THE OMNISCIENT SOURCE OF PROPHECY</h3>
+          <p>Man Anba'aka Hadha?, Nabba'aniya al-'Aleemu al-Khabeer & The Piercing Insight</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the stunned question of hafsah when the prophet questioned her, she gasped in astonishment: 'who informed you of this private matter?'">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>The Stunned Question of Hafsah</h4>
+            </div>
+            <ul class="card-points">
+              <li>When the Prophet questioned her, she gasped in astonishment: 'Who informed you of this private matter?'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the majestic prophetic reply qala nabba'aniya al-'aleemu al-khabeer: he said: 'i was informed by the all-knowing, the fully acquainted!'">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>The Majestic Prophetic Reply</h4>
+            </div>
+            <ul class="card-points">
+              <li>Qala nabba'aniya al-'Aleemu al-Khabeer: He said: 'I was informed by the All-Knowing, the Fully Acquainted!'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="demonstrating prophetic authenticity proving to the domestic household that divine revelation monitors the most intimate whispers behind curtains.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>Demonstrating Prophetic Authenticity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Proving to the domestic household that divine revelation monitors the most intimate whispers behind curtains.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sacred gravity of trust elevating the confidentiality of marital discourse into a sacred moral trust witnessed by the creator.">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>The Sacred Gravity of Trust</h4>
+            </div>
+            <ul class="card-points">
+              <li>Elevating the confidentiality of marital discourse into a sacred moral trust witnessed by the Creator.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 03: THE CALL TO REPENTANCE & THE CELESTIAL GUARDS</h2>
+        <p>Pillars 05 & 06: In Tatooba ila Allah, Swerving Hearts, Backing Each Other & Allah, Gabriel, Righteous Believers & Angels</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : REPENTANCE & GUARDS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 05: THE ADMONITION FOR SWERVING HEARTS</h3>
+          <p>In Tatooba ilallahi fa-qad Saghat Quloobukuma, Wavering Hearts & The Warning</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the call to sincere heart repentance in tatooba ila allahi fa-qad saghat quloobukuma: if you two wives repent to allah, your hearts have indeed swerved.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>The Call to Sincere Heart Repentance</h4>
+            </div>
+            <ul class="card-points">
+              <li>In tatooba ila Allahi fa-qad saghat quloobukuma: if you two wives repent to Allah, your hearts have indeed swerved.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="addressing the two mothers of the believers a direct, loving yet piercing admonition addressed to 'a'ishah and hafsah regarding domestic factionalism.">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>Addressing the Two Mothers of the Believers</h4>
+            </div>
+            <ul class="card-points">
+              <li>A direct, loving yet piercing admonition addressed to 'A'ishah and Hafsah regarding domestic factionalism.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="acknowledging human frailty in great souls demonstrating that even the most elevated human companions were susceptible to jealousy and required divine correction.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>Acknowledging Human Frailty in Great Souls</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demonstrating that even the most elevated human companions were susceptible to jealousy and required divine correction.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the prerequisite of heart alignment teaching that true love for the prophet demands absolute alignment with his divine mission and peace.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>The Prerequisite of Heart Alignment</h4>
+            </div>
+            <ul class="card-points">
+              <li>Teaching that true love for the Prophet demands absolute alignment with his divine mission and peace.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 06: THE MONUMENTAL CELESTIAL COALITION</h3>
+          <p>Tadhahara 'Alayhi, Allah His Mawla, Jibreel, Salihu al-Mu'mineen & The Angels</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the warning against domestic collusion wa in tadhahara 'alayhi: but if you collaborate and gang up against him to inflict emotional distress...">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>The Warning Against Domestic Collusion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa in tadhahara 'alayhi: but if you collaborate and gang up against him to inflict emotional distress...</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the supreme protector: allah himself fa-inna allaha huwa mawlah: then know that allah himself is his sovereign protector and defender!">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>The Supreme Protector: Allah Himself</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-inna Allaha huwa Mawlah: then know that Allah Himself is his Sovereign Protector and Defender!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the archangel and the righteous vanguard wa jibreelu wa salihu al-mu'mineen: and gabriel and the righteous among the believers stand as his shields.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>The Archangel and the Righteous Vanguard</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa Jibreelu wa salihu al-mu'mineen: and Gabriel and the righteous among the believers stand as his shields.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the angelic armies in battle array wal-mala'ikatu ba'da dhalika dhaheer: and the angels moreover are his resolute, mobilized reinforcements!">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>The Angelic Armies in Battle Array</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wal-mala'ikatu ba'da dhalika dhaheer: and the angels moreover are his resolute, mobilized reinforcements!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 04: THE THREAT OF DIVORCE & THE SIX ATTRIBUTES</h2>
+        <p>Pillars 07 & 08: 'Asa Rabbuhu In Tallaqakunna, Replacement with Better Wives, Muslimat, Mu'minat, Qanitat, Ta'ibat</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : SIX ATTRIBUTES]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 07: THE CONTINGENCY OF REPLACEMENT</h3>
+          <p>'Asa Rabbuhu In Tallaqakunna an Yubdilah, Better Wives & The Humbling of Egos</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the chilling prophetic ultimatum 'asa rabbuhu in tallaqakunna an yubdilahu azwajan khayran minkunna: perhaps his lord, if he divorces you, will replace you!">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>The Chilling Prophetic Ultimatum</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Asa Rabbuhu in tallaqakunna an yubdilahu azwajan khayran minkunna: perhaps his Lord, if he divorces you, will replace you!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="umar's prophetic concordance umar bin al-khattab testified: 'my words coincided with my lord in three matters, including this exact verse.'">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>Umar's Prophetic Concordance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Umar bin al-Khattab testified: 'My words coincided with my Lord in three matters, including this exact verse.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="shattering domestic indispensability reminding the mothers of the believers that their status was a gift of divine honor, not an unassailable right.">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Shattering Domestic Indispensability</h4>
+            </div>
+            <ul class="card-points">
+              <li>Reminding the Mothers of the Believers that their status was a gift of divine honor, not an unassailable right.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="total subordination to the prophetic call establishing that no human relationship, no matter how cherished, can hold the divine mission hostage.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>Total Subordination to the Prophetic Call</h4>
+            </div>
+            <ul class="card-points">
+              <li>Establishing that no human relationship, no matter how cherished, can hold the divine mission hostage.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 08: THE SIX CROWNING SPIRITUAL QUALITIES</h3>
+          <p>Muslimat, Mu'minat, Qanitat, Ta'ibat, 'Abidat, Sa'ihat, Thayyibat & Abkara</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the first triad: islam, iman, and qunoot muslimatin (surrendering to god), mu'minatin (firm in faith), qanitatin (devoutly obedient in worship).">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>The First Triad: Islam, Iman, and Qunoot</h4>
+            </div>
+            <ul class="card-points">
+              <li>Muslimatin (surrendering to God), Mu'minatin (firm in faith), Qanitatin (devoutly obedient in worship).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the second triad: repentance, worship, and fasting ta'ibatin (perpetually penitent), 'abidatin (constant in prayer), sa'ihatin (fasting or emigrating in truth).">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>The Second Triad: Repentance, Worship, and Fasting</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ta'ibatin (perpetually penitent), 'Abidatin (constant in prayer), Sa'ihatin (fasting or emigrating in truth).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the diversity of matrimonial backgrounds thayyibatin wa abkara: whether previously married widows or virgins, united by unshakeable moral excellence.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>The Diversity of Matrimonial Backgrounds</h4>
+            </div>
+            <ul class="card-points">
+              <li>Thayyibatin wa abkara: whether previously married widows or virgins, united by unshakeable moral excellence.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the blueprint for the ideal believing woman providing the timeless quranic standard for spiritual maturity, modesty, and dedicated devotion.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>The Blueprint for the Ideal Believing Woman</h4>
+            </div>
+            <ul class="card-points">
+              <li>Providing the timeless Quranic standard for spiritual maturity, modesty, and dedicated devotion.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 05: PROTECTING THE HOUSEHOLD FROM THE BLAZING FUEL</h2>
+        <p>Pillars 09 & 10: Qoo Anfusakum wa Ahleekum Naran, Fuel of Men and Stones, Fierce Stern Angels & Unquestioning Obedience</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : HOUSEHOLD SANCTUARY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 09: THE MANDATE OF HOUSEHOLD SALVATION</h3>
+          <p>Save Yourselves and Families from Fire, Fuel of Men and Stones & The Great Trust</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the universal paternal and domestic command ya ayyuha alladhina amanoo qoo anfusakum wa ahleekum nara: save yourselves and your families from a fire!">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>The Universal Paternal and Domestic Command</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ayyuha alladhina amanoo qoo anfusakum wa ahleekum nara: save yourselves and your families from a Fire!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the grotesque fuel of the inferno wa qooduha an-nasu wal-hijarah: whose combustion fuel is human beings and sulfurous pagan stones!">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>The Grotesque Fuel of the Inferno</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa qooduha an-nasu wal-hijarah: whose combustion fuel is human beings and sulfurous pagan stones!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="ali's commentary on household protection ali ibn abi talib explained: 'save them by educating them in divine law and disciplining them in good character.'">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>Ali's Commentary on Household Protection</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ali ibn Abi Talib explained: 'Save them by educating them in divine law and disciplining them in good character.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="accountability beyond the self demanding that believers take proactive responsibility for the spiritual and moral cultivation of their homes.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>Accountability Beyond the Self</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demanding that believers take proactive responsibility for the spiritual and moral cultivation of their homes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 10: THE IMMACULATE ANARCHY-FREE GUARDS</h3>
+          <p>'Alayha Mala'ikatun Ghiladhun Shidad, They Disobey Not Allah & Execute All Commands</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the wardens of the inferno 'alayha mala'ikatun ghiladhun shidad: over it are appointed angels fierce, formidable, and immensely strong.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>The Wardens of the Inferno</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Alayha mala'ikatun ghiladhun shidad: over it are appointed angels fierce, formidable, and immensely strong.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="total freedom from defiance la ya'soona allaha ma amarahum: they never disobey allah in whatever he commands them throughout eternity.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Total Freedom from Defiance</h4>
+            </div>
+            <ul class="card-points">
+              <li>La ya'soona Allaha ma amarahum: they never disobey Allah in whatever He commands them throughout eternity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="instantaneous flawless execution wa yaf'aloona ma yu'maroon: and they execute precisely whatever they are commanded without hesitation.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Instantaneous Flawless Execution</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa yaf'aloona ma yu'maroon: and they execute precisely whatever they are commanded without hesitation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="no bribes or emotional pity shattering any fantasy that sinners can negotiate, bribe, or soften the guardians of divine retribution.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>No Bribes or Emotional Pity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Shattering any fantasy that sinners can negotiate, bribe, or soften the guardians of divine retribution.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 06: THE REPENTANCE OF SINCERITY (TAWBAH NASOOHAH)</h2>
+        <p>Pillars 11 & 12: Apologies Refused to Deniers, Tawbatan Nasoohan, Radiant Light on the Bridge & Rabbana Atmim Lana</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : SINCERE REPENTANCE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 11: THE REFUSAL OF POSTHUMOUS EXCUSES</h3>
+          <p>O Disbelievers Make No Excuses Today, Innama Tujzawna Ma Kuntum Ta'maloon</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the rejection of deathbed excuses ya ayyuha alladhina kafaroo la ta'tadhiloo al-yawm: o you who disbelieve, make no excuses this day!">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>The Rejection of Deathbed Excuses</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ayyuha alladhina kafaroo la ta'tadhiloo al-yawm: O you who disbelieve, make no excuses this Day!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="pure reflection of earthly deeds innama tujzawna ma kuntum ta'maloon: you are only being recompensed for the exact reality of what you did.">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Pure Reflection of Earthly Deeds</h4>
+            </div>
+            <ul class="card-points">
+              <li>Innama tujzawna ma kuntum ta'maloon: you are only being recompensed for the exact reality of what you did.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the expiration of the theatre of trial judgment day is the realm of reckoning and consequence; the gate for apologetic rationalization is sealed.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>The Expiration of the Theatre of Trial</h4>
+            </div>
+            <ul class="card-points">
+              <li>Judgment Day is the realm of reckoning and consequence; the gate for apologetic rationalization is sealed.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the urgency of worldly penitence warning humanity to execute sincere repentance now, before the arrival of the day of zero excuses.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>The Urgency of Worldly Penitence</h4>
+            </div>
+            <ul class="card-points">
+              <li>Warning humanity to execute sincere repentance now, before the arrival of the day of zero excuses.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 12: THE SUBLIME CHARTER OF TAWBAH NASOOHAH</h3>
+          <p>Turn to Allah in Sincere Repentance, Expiating Sins & The Radiant Light of Believers</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the call to sincere pure repentance ya ayyuha alladhina amanoo tooboo ila allahi tawbatan nasooha: turn to allah in sincere, unadulterated repentance!">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>The Call to Sincere Pure Repentance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ayyuha alladhina amanoo tooboo ila Allahi tawbatan nasooha: turn to Allah in sincere, unadulterated repentance!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="umar's definition of nasooh repentance repenting from sin with deep remorse and never returning to it, just as milk never returns to the udder.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>Umar's Definition of Nasooh Repentance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Repenting from sin with deep remorse and never returning to it, just as milk never returns to the udder.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the day allah will not disgrace the prophet yawma la yukhzee allahu an-nabiyya walladhina amanoo ma'ah: the day allah will not disgrace the prophet and believers.">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>The Day Allah Will Not Disgrace the Prophet</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yawma la yukhzee Allahu an-nabiyya walladhina amanoo ma'ah: the Day Allah will not disgrace the Prophet and believers.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the supplication for perfected light their light streaming before them, praying: 'rabbana atmim lana noorana waghfir lana innaka 'ala kulli shay'in qadeer!'">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>The Supplication for Perfected Light</h4>
+            </div>
+            <ul class="card-points">
+              <li>Their light streaming before them, praying: 'Rabbana atmim lana noorana waghfir lana innaka 'ala kulli shay'in Qadeer!'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 07: STRIVING AGAINST FOES & THE TREACHEROUS WIVES</h2>
+        <p>Pillars 13 & 14: Jahidi al-Kuffara wal-Munafiqeen, Wife of Noah & Wife of Lot, Betrayal of Prophecy & Fire Destined</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : TREACHEROUS WIVES]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 13: THE RESOLUTE STANCE AGAINST SUBVERSION</h3>
+          <p>Strive Against Disbelievers and Hypocrites, Be Firm with Them & Hell as Destiny</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the sovereign command of firmness ya ayyuha an-nabiyyu jahidi al-kuffara wal-munafiqeen: strive against the disbelievers and the hypocrites!">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>The Sovereign Command of Firmness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya ayyuha an-nabiyyu jahidi al-kuffara wal-munafiqeen: strive against the disbelievers and the hypocrites!</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="uncompromising moral rigor waghludh 'alayhim: and be firm and uncompromising with them in upholding the boundaries of justice.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Uncompromising Moral Rigor</h4>
+            </div>
+            <ul class="card-points">
+              <li>Waghludh 'alayhim: and be firm and uncompromising with them in upholding the boundaries of justice.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="differentiating battle from argumentation confronting external military aggression with arms, and internal hypocritical subversion with piercing argument.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>Differentiating Battle from Argumentation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Confronting external military aggression with arms, and internal hypocritical subversion with piercing argument.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the dreadful final abode wa ma'wahum jahannamu wa bi'sa al-maseer: and their ultimate refuge is hell, and wretched is that destination.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>The Dreadful Final Abode</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa ma'wahum jahannamu wa bi'sa al-maseer: and their ultimate refuge is Hell, and wretched is that destination.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 14: THE PARABLE OF NOAH'S AND LOT'S WIVES</h3>
+          <p>Two Righteous Servants, Betrayed Them & Availing Nothing Against Allah</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the parable of betrayed proximity allah presents a parable for those who disbelieve: the wife of noah and the wife of lot.">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>The Parable of Betrayed Proximity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Allah presents a parable for those who disbelieve: the wife of Noah and the wife of Lot.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="under the care of two righteous prophets kanata tahta 'abdayni min 'ibadina salihayni: they were married to two of our righteous prophetic servants.">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Under the Care of Two Righteous Prophets</h4>
+            </div>
+            <ul class="card-points">
+              <li>Kanata tahta 'abdayni min 'ibadina salihayni: they were married to two of Our righteous prophetic servants.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the treachery of faithlessness fa-khanatahuma: but they betrayed them spiritually—noah's wife mocked his ark, and lot's wife aided sodomites.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>The Treachery of Faithlessness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-khanatahuma: but they betrayed them spiritually—Noah's wife mocked his ark, and Lot's wife aided sodomites.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="holy lineage avails nothing against god their prophetic husbands could not protect them in the least against allah: 'enter the fire with those who enter!'">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>Holy Lineage Avails Nothing Against God</h4>
+            </div>
+            <ul class="card-points">
+              <li>Their prophetic husbands could not protect them in the least against Allah: 'Enter the Fire with those who enter!'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 08: PARAGONS OF FAITH: ASIYA & MARYAM</h2>
+        <p>Pillars 15 & 16: Asiya Wife of Pharaoh, Build Me a House in Paradise, Maryam Bint 'Imran & Pure Obedience</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : ASIYA & MARYAM]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 15: ASIYA: THE TRANSCENDENT QUEEN</h3>
+          <p>Wife of Pharaoh, Build for Me Near You a House in Paradise & Save Me from Tyranny</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the parable of the saintly empress and allah sets forth an example for the believers: the wife of pharaoh (asiya bint muzahim).">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>The Parable of the Saintly Empress</h4>
+            </div>
+            <ul class="card-points">
+              <li>And Allah sets forth an example for the believers: the wife of Pharaoh (Asiya bint Muzahim).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sublime supplication of proximity when she prayed under torture: 'rabbi ibni lee 'indaka baytan fee al-jannah: my lord, build for me near you a house in paradise!'">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>The Sublime Supplication of Proximity</h4>
+            </div>
+            <ul class="card-points">
+              <li>When she prayed under torture: 'Rabbi ibni lee 'indaka baytan fee al-jannah: My Lord, build for me near You a house in Paradise!'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="deliverance from tyranny and evil deeds wa najjinee min fir'awna wa 'amalih: and save me from pharaoh and his corrupt deeds, and deliver me from oppressors.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>Deliverance from Tyranny and Evil Deeds</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa najjinee min Fir'awna wa 'amalih: and save me from Pharaoh and his corrupt deeds, and deliver me from oppressors.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="spiritual autonomy amidst totalitarianism living inside the palace of the greatest tyrant in history, yet preserving pristine monotheism in her heart.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>Spiritual Autonomy Amidst Totalitarianism</h4>
+            </div>
+            <ul class="card-points">
+              <li>Living inside the palace of the greatest tyrant in history, yet preserving pristine monotheism in her heart.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 16: MARYAM: THE MONUMENT OF PURITY</h3>
+          <p>Maryam Bint 'Imran, Guarded Her Chastity, We Breathed of Our Spirit & The Qaniteen</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the archetype of immaculate chastity wa maryama ibnata 'imrana allati ahsanat farjaha: and mary the daughter of 'imran, who guarded her chastity.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>The Archetype of Immaculate Chastity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa Maryama ibnata 'Imrana allati ahsanat farjaha: and Mary the daughter of 'Imran, who guarded her chastity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the divine breathing of the spirit fa-nafakhna feehi min roohina: so we breathed into her body through our created angel gabriel.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>The Divine Breathing of the Spirit</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-nafakhna feehi min roohina: so We breathed into her body through Our created angel Gabriel.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="validating the words of her lord wa saddaqat bi-kalimati rabbiha wa kutubih: and she attested to the truth of the words of her lord and his scriptures.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>Validating the Words of Her Lord</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa saddaqat bi-kalimati Rabbiha wa kutubih: and she attested to the truth of the words of her Lord and His scriptures.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the crown of perpetual devotion wa kanat mina al-qaniteen: and she was of the devoutly obedient, concluding surah at-tahrim in celestial radiance.">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>The Crown of Perpetual Devotion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa kanat mina al-qaniteen: and she was of the devoutly obedient, concluding Surah At-Tahrim in celestial radiance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="modals-panel">
+      <div class="section-heading" style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);"><span>✦</span> DEEP EXEGETICAL FOCUS MONOGRAPHS</div>
+      <div class="modal-triggers-grid">
+
+        <div class="modal-btn" onclick="openModal('m1')">
+          <h5>1. The Domestic Crisis of Prohibition & The Honey Incident (66:1–4)</h5>
+          <p>Lima tuharrimu ma ahalla Allah: the divine defense of lawful marital peace.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m2')">
+          <h5>2. The Monumental Celestial Coalition (66:4)</h5>
+          <p>In tadhahara 'alayhi: when the Archangel and armies mobilize for the Prophet.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m3')">
+          <h5>3. The Four Archetypal Women of History (66:10–12)</h5>
+          <p>Two women in holy homes who perished, and two women in tyrannies who attained Eden.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m4')">
+          <h5>4. The Universal Sanctuary of Tawbah Nasoohah (66:8)</h5>
+          <p>Tooboo ila Allahi tawbatan nasooha: the spiritual alchemy of pure return.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal-backdrop" id="modal-m1">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m1')">&times;</button>
+      <h3>The Domestic Crisis of Prohibition & The Honey Incident (66:1–4)</h3>
+      <p>In Sahih al-Bukhari (4912) and Sahih Muslim (1474), 'A'ishah narrated that the Prophet ﷺ used to spend time with his wife Zaynab bint Jahsh and drink honey at her apartment. 'A'ishah and Hafsah agreed together that whichever of them the Prophet visited first, she would say: 'I smell the odor of Maghafeer (a pungent resin) on you; have you eaten Maghafeer?' When the Prophet heard this from both, he said: 'No, but I drank honey at Zaynab's house, and I swear an oath that I will never drink it again!' He asked them not to mention this to anyone.</p><p>Yet Hafsah disclosed the matter to 'A'ishah. Allah revealed the opening of Surah At-Tahrim, gently reproaching the Prophet for forbidding what God made lawful, ordering him to expiate his oath, and calling both wives to sincere repentance for their domestic intrigue.</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari 4912 • Sahih Muslim 1474 • Sunan an-Nasa'i 3959 • Tafsir Ibn Kathir (8/160)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m2">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m2')">&times;</button>
+      <h3>The Monumental Celestial Coalition (66:4)</h3>
+      <p>Ayah 4 warns the two wives against domestic collusion: 'If you two cooperate against him—then indeed Allah is his protector, and Gabriel and the righteous among the believers and the angels, moreover, are his assistants.'</p><p>Umar ibn al-Khattab narrated in Sahih al-Bukhari (4913) that an Ansari neighbor rushed to his door at night crying: 'A terrible thing has happened!' Umar asked in terror: 'Have the Ghassanids arrived to attack us?' The Ansari said: 'No, worse than that: the Prophet has divorced his wives!' Umar rushed to Medina, confronted his daughter Hafsah who was weeping, and rebuked her. The verse reveals that the emotional and spiritual well-being of the Prophet is a matter of cosmic priority defended by the Lord of the Throne Himself.</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari 4913 • Sahih Muslim 1479 • Tafsir at-Tabari (23/485) • Asbab an-Nuzul (Wahidi p. 290)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m3">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m3')">&times;</button>
+      <h3>The Four Archetypal Women of History (66:10–12)</h3>
+      <p>Surah At-Tahrim concludes with four profound female archetypes that shatter tribal and patriarchal determinism: (1) The wife of Noah (Wahilah) and (2) The wife of Lot (Wa'ilah)—both married to towering prophets, yet their biological proximity availed them nothing before God because they betrayed the monotheistic mission. This served as a chilling warning to the Prophet's wives that holy matrimony is no guarantee of salvation without personal righteousness.</p><p>Conversely, Allah presents: (3) Asiya, the wife of Pharaoh, who lived in the palace of the greatest tyrant on earth, yet prayed under torture: 'My Lord, build for me near You a house in Paradise and save me from Pharaoh!'—and (4) Maryam bint 'Imran, who lived as an ascetic orphan, preserved her chastity, and believed in the words of her Lord. Salvation is strictly an individual moral responsibility.</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari 3411 • Sahih Muslim 2431 • Tafsir Ibn Kathir (8/172) • Al-Bahr al-Muheet</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m4">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m4')">&times;</button>
+      <h3>The Universal Sanctuary of Tawbah Nasoohah (66:8)</h3>
+      <p>Ayah 8 commands: 'O you who have believed, repent to Allah with sincere repentance (Tawbatan Nasoohan). Perhaps your Lord will remove from you your misdeeds and admit you into gardens beneath which rivers flow.' When asked about Nasooh repentance, Umar ibn al-Khattab and Ibn Mas'ud explained: 'It is that a person repents of a bad deed with deep remorse, resolves never to return to it, and does not return to it—just as extracted milk never returns to the teat.'</p><p>The verse paints the radiant scene upon the Sirat where believers, seeing the hypocrites' lights extinguished, pray with trembling hope: 'Our Lord, perfect for us our light and forgive us! Indeed, You are over all things Omnipotent.' Sincere repentance in this life ensures unbroken illumination in the Next.</p>
+      <div class="modal-source">Authorities: Musnad Ahmad • Sunan Ibn Majah • Tafsir at-Tabari (23/495) • Tafsir al-Qurtubi (18/197)</div>
+    </div>
+  </div>
+
+  <script>
+    function switchSuitePlate(page) {
+      document.querySelectorAll('.plate-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      const tab = document.getElementById('suiteTab' + page);
+      const sec = document.getElementById('plateSection' + page);
+      if (tab) tab.classList.add('active');
+      if (sec) sec.classList.add('active');
+    }
+
+    function filterSuite() {
+      const q = document.getElementById('suiteSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.card-item');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+
+    function openModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.remove('open');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>

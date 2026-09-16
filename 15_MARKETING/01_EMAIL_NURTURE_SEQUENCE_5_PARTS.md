@@ -192,7 +192,7 @@ EACH SURAH DELIVERS:
 Regular individual value: ~$25.00 to $35.00.
 With the 10-Surah Custom Pass: just $6.99 (40% OFF).
 
-Protected by our 100% Barakah Guarantee: If this pass does not deepen your understanding and prayer within 30 days, we issue an immediate, cheerful 100% refund.
+Protected by direct ownership: Zero DRM locks. Unlimited personal and family offline use across all your devices.
 
 👉 [Claim Your 10-Surah Custom Pass for $6.99]
 

@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Yusuf — Master Cartography & Interactive Digital Suite | Huurs Studio</title>
+  <style>
+    :root {
+      --navy-deep: #060a12;
+      --navy-card: #0d1422;
+      --navy-elevated: #141e32;
+      --gold: #d4af37;
+      --gold-light: #e8d194;
+      --cyan: #38bdf8;
+      --purple: #a855f7;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --white: #f8fafc;
+      --text-muted: #adc0d4;
+      --border-muted: #29384f;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: var(--navy-deep);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+    }
+    .suite-shell {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    header.suite-header {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-top: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .header-brand span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-left: 1px solid var(--border-muted);
+      padding-left: 12px;
+    }
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-deep);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+    }
+    .btn-outline {
+      background: var(--navy-elevated);
+      color: var(--white);
+      border: 1px solid var(--border-muted);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .controls-bar {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .search-input-wrap {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+    .search-input-wrap input {
+      width: 100%;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 10px 16px 10px 38px;
+      color: var(--white);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input-wrap input:focus {
+      border-color: var(--gold);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+    }
+    .tab-chip {
+      background: var(--navy-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border-muted);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-chip:hover {
+      border-color: var(--gold);
+      color: var(--white);
+    }
+    .tab-chip.active {
+      background: var(--navy-elevated);
+      color: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+    .plate-section {
+      display: none;
+      margin-bottom: 30px;
+    }
+    .plate-section.active {
+      display: block;
+    }
+    .plate-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .plate-title-bar h2 {
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .plate-title-bar p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .plate-badge-box {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .badge-gold {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .pillars-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 980px) {
+      .pillars-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pillar-box {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pillar-bar {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 {
+      font-size: 0.92rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .pillar-bar p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .cards-wrapper {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card-item {
+      background: var(--navy-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 12px 14px;
+      transition: all 0.2s;
+    }
+    .card-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+    .card-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .card-idx {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .card-title-row h4 {
+      font-size: 0.86rem;
+      color: var(--white);
+    }
+    .card-points {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card-points li {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      position: relative;
+      padding-left: 12px;
+    }
+    .card-points li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+    .movement-section {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+    }
+    .movement-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border-muted);
+      padding-bottom: 10px;
+    }
+    .movement-header h3 {
+      font-size: 1.05rem;
+      color: var(--gold);
+    }
+    .movement-header span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .movement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 10px;
+    }
+    .movement-row {
+      background: var(--navy-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .movement-row:hover {
+      border-color: var(--gold);
+      background: #19263e;
+    }
+    .movement-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .movement-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    .movement-title {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .movement-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .movement-tag {
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .modals-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .btn-modal-trigger {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      color: var(--gold-light);
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-modal-trigger:hover {
+      border-color: var(--gold);
+      background: var(--navy-elevated);
+      color: var(--gold);
+    }
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 7, 13, 0.85);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-backdrop.show {
+      display: flex;
+    }
+    .modal-window {
+      background: var(--navy-card);
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--navy-card);
+      z-index: 10;
+    }
+    .modal-header h3 {
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      color: var(--rose);
+    }
+    .modal-body {
+      padding: 24px;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .modal-body h4 {
+      color: var(--gold-light);
+      margin: 18px 0 8px 0;
+      font-size: 1rem;
+    }
+    .modal-body p {
+      margin-bottom: 12px;
+    }
+    .quote-box {
+      background: var(--navy-elevated);
+      border-left: 3px solid var(--gold);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 14px 0;
+      font-style: italic;
+      color: var(--gold-light);
+    }
+  </style>
+</head>
+<body>
+  <div class="suite-shell">
+    <header class="suite-header">
+      <div class="header-brand">
+        <h1>HUURS STUDIO</h1>
+        <span>Surah Yusuf • Master Cartography & Interactive Digital Suite</span>
+      </div>
+      <div class="header-actions">
+        <a href="SURAH_YUSUF_MASTER_COMPENDIUM.pdf" class="btn btn-gold" download>Download Master PDF</a>
+        <a href="../07_MINDMAP/YUSUF_MASTER_MINDMAP.html" class="btn btn-outline" target="_blank">Full Cartography View</a>
+      </div>
+    </header>
+
+    <div class="controls-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="liveSearchInput" placeholder="Search across 64 analytical cards, theological themes, Arabic terminology..." oninput="handleLiveSearch()">
+      </div>
+      <div class="stats-badge" id="statsBadge">
+        Showing <b>8</b> Plates &bull; <b>16</b> Pillars &bull; <b>64</b> Cards &bull; <b>15</b> Lectures &bull; <b>100%</b> Sunni Verified
+      </div>
+    </div>
+
+    <div class="modals-bar">
+      <button class="btn-modal-trigger" onclick="openModal('sabrModal')">
+        <span>📜</span> The Psychology of Sabrun Jameel & False Blood
+      </button>
+      <button class="btn-modal-trigger" onclick="openModal('burhanModal')">
+        <span>🛡️</span> The Sealed Doors & The Burhan of the Lord
+      </button>
+      <button class="btn-modal-trigger" onclick="openModal('grainModal')">
+        <span>🌾</span> The 14-Year Agrarian Master Plan 'Fee Sunbulihi'
+      </button>
+      <button class="btn-modal-trigger" onclick="openModal('pardonModal')">
+        <span>👑</span> The Grand Pardon 'La Tathreeba' & Fulfillment
+      </button>
+    </div>
+
+    <div class="nav-tabs" id="plateTabs">
+      <button class="tab-chip active" onclick="selectPlate(1)">Plate 01: VISION & DISCRETION</button>
+<button class="tab-chip " onclick="selectPlate(2)">Plate 02: THE WELL & SABR</button>
+<button class="tab-chip " onclick="selectPlate(3)">Plate 03: CHASTITY & BURHAN</button>
+<button class="tab-chip " onclick="selectPlate(4)">Plate 04: THE BANQUET & PRISON</button>
+<button class="tab-chip " onclick="selectPlate(5)">Plate 05: DA'WAH & THE DREAM</button>
+<button class="tab-chip " onclick="selectPlate(6)">Plate 06: EXONERATION & POWER</button>
+<button class="tab-chip " onclick="selectPlate(7)">Plate 07: BENJAMIN & YA'QUB</button>
+<button class="tab-chip " onclick="selectPlate(8)">Plate 08: RECONCILIATION & DREAMS</button>
+
+    </div>
+
+    <div id="platesContainer">
+      
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE CELESTIAL DREAM & PATERNAL WISDOM</h2>
+        <p>Pillars 1 & 2: Ahsan al-Qasas, Arabic Scripture, The Vision of Eleven Stars & Paternal Discretion</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : VISION & DISCRETION]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 1: AHSAN AL-QASAS & THE ARABIC QURAN</h3>
+          <p>Supreme Literary Mastery, Prophetic Consolation & The Chosen Lineage</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="alif-lam-ra: the manifest arabic scripture disjointed letters asserting divine provenance and linguistic supremacy. revealed as an arabic qur'an so that human intellect may comprehend and reason. engaging the cognitive faculties through rigorous historical narrative and theology.">
+            <div class="card-title-row">
+              <span class="card-idx">1</span>
+              <h4>Alif-Lam-Ra: The Manifest Arabic Scripture</h4>
+            </div>
+            <ul class="card-points">
+              <li>Disjointed letters asserting divine provenance and linguistic supremacy.</li><li>Revealed as an Arabic Qur'an so that human intellect may comprehend and reason.</li><li>Engaging the cognitive faculties through rigorous historical narrative and theology.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="ahsan al-qasas: the best of all narratives crowned 'the best of stories' combining comprehensive psychological and moral depth. unveiling intricate historical realities previously unknown to mortal minds. engineered as divine medicine for grief during the prophet's year of sorrow.">
+            <div class="card-title-row">
+              <span class="card-idx">2</span>
+              <h4>Ahsan al-Qasas: The Best of All Narratives</h4>
+            </div>
+            <ul class="card-points">
+              <li>Crowned 'the best of stories' combining comprehensive psychological and moral depth.</li><li>Unveiling intricate historical realities previously unknown to mortal minds.</li><li>Engineered as divine medicine for grief during the Prophet's Year of Sorrow.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="prophetic heritage: ibrahim, ishaq & ya'qub locating young yusuf within the golden genealogical chain of abrahamic prophets. continuation of the divine covenant and spiritual blessing bestowed on ancestors. prophethood as a sacred trust of service, sacrifice, and uncompromising tawhid.">
+            <div class="card-title-row">
+              <span class="card-idx">3</span>
+              <h4>Prophetic Heritage: Ibrahim, Ishaq & Ya'qub</h4>
+            </div>
+            <ul class="card-points">
+              <li>Locating young Yusuf within the golden genealogical chain of Abrahamic prophets.</li><li>Continuation of the divine covenant and spiritual blessing bestowed on ancestors.</li><li>Prophethood as a sacred trust of service, sacrifice, and uncompromising Tawhid.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="consolation for grieving hearts in the crucible demonstrating that even god's most beloved elect endure severe betrayal and loss. reassuring the prophet ﷺ that fraternal hostility in makkah will culminate in dawn. transforming personal sorrow into an enduring universal classroom for resilience.">
+            <div class="card-title-row">
+              <span class="card-idx">4</span>
+              <h4>Consolation for Grieving Hearts in the Crucible</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demonstrating that even God's most beloved elect endure severe betrayal and loss.</li><li>Reassuring the Prophet ﷺ that fraternal hostility in Makkah will culminate in dawn.</li><li>Transforming personal sorrow into an enduring universal classroom for resilience.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 2: THE VISION OF ELEVEN STARS & PATERNAL DISCRETION</h3>
+          <p>Eleven Stars, Sun and Moon & Guarding Blessings from Envy</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the celestial vision: eleven stars, sun and moon young yusuf confides in his father: eleven stars, sun, and moon prostrating to him. prostration symbolizing profound honor and future spiritual/temporal elevation. planting an innocent childhood vision realized decades later in imperial egypt.">
+            <div class="card-title-row">
+              <span class="card-idx">5</span>
+              <h4>The Celestial Vision: Eleven Stars, Sun and Moon</h4>
+            </div>
+            <ul class="card-points">
+              <li>Young Yusuf confides in his father: Eleven stars, sun, and moon prostrating to him.</li><li>Prostration symbolizing profound honor and future spiritual/temporal elevation.</li><li>Planting an innocent childhood vision realized decades later in imperial Egypt.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="paternal discernment: the danger of envy ya'qub immediately grasps the momentous weight: 'do not relate your vision to brothers.' recognizing that sibling jealousy can corrupt even sincere hearts when ungrounded. unmasking the metaphysical instigator: 'indeed, shaytan to man is a manifest enemy.'">
+            <div class="card-title-row">
+              <span class="card-idx">6</span>
+              <h4>Paternal Discernment: The Danger of Envy</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ya'qub immediately grasps the momentous weight: 'Do not relate your vision to brothers.'</li><li>Recognizing that sibling jealousy can corrupt even sincere hearts when ungrounded.</li><li>Unmasking the metaphysical instigator: 'Indeed, Shaytan to man is a manifest enemy.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the wisdom of discretion: concealing emerging gifts the psychological law of kitman: concealing blessings until firmly established. prophetic maxim: 'seek assistance in fulfilling needs through quiet discretion.' maturity in communication: not every vision or gift is fit for public exposure.">
+            <div class="card-title-row">
+              <span class="card-idx">7</span>
+              <h4>The Wisdom of Discretion: Concealing Emerging Gifts</h4>
+            </div>
+            <ul class="card-points">
+              <li>The psychological law of Kitman: Concealing blessings until firmly established.</li><li>Prophetic maxim: 'Seek assistance in fulfilling needs through quiet discretion.'</li><li>Maturity in communication: Not every vision or gift is fit for public exposure.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="divine election: interpreting narratives (ta'weel) paternal prophecy: 'your lord will choose you and teach you the interpretation of events.' ta'weel al-ahadith: discerning the ultimate inner reality of dreams and world events. prophetic insight penetrating beneath surfaces into the sovereign tapestry of decree.">
+            <div class="card-title-row">
+              <span class="card-idx">8</span>
+              <h4>Divine Election: Interpreting Narratives (Ta'weel)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Paternal prophecy: 'Your Lord will choose you and teach you the interpretation of events.'</li><li>Ta'weel al-Ahadith: Discerning the ultimate inner reality of dreams and world events.</li><li>Prophetic insight penetrating beneath surfaces into the sovereign tapestry of decree.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>FRATERNAL ENVY, THE WELL & FALSE BLOOD</h2>
+        <p>Pillars 3 & 4: Conspiracy of the Brothers, The Well of Ghayabah, False Blood & Sabrun Jameel</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : THE WELL & SABR]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 3: THE CONSPIRACY OF THE BROTHERS & MONOPOLIZING LOVE</h3>
+          <p>The Pathology of Jealousy, Rationalizing Sin & The Pitiful Compromise</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the pathology of toxic fraternal jealousy resentment of the brothers: 'yusuf and his brother are more beloved than we.' relying on physical utility and collective strength ('usbah) to demand affection. the ego rationalizing malice when spiritual beauty threatens insecure vanity.">
+            <div class="card-title-row">
+              <span class="card-idx">9</span>
+              <h4>The Pathology of Toxic Fraternal Jealousy</h4>
+            </div>
+            <ul class="card-points">
+              <li>Resentment of the brothers: 'Yusuf and his brother are more beloved than we.'</li><li>Relying on physical utility and collective strength ('Usbah) to demand affection.</li><li>The ego rationalizing malice when spiritual beauty threatens insecure vanity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the rationalized sin: kill yusuf and repent later chilling proposal: 'kill yusuf or exile him so father's face may be yours alone.' the classic trap of pre-planned repentance: 'and after that be righteous people!' the absurdity of attempting to purchase parental love through fratricidal crime.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>The Rationalized Sin: Kill Yusuf and Repent Later</h4>
+            </div>
+            <ul class="card-points">
+              <li>Chilling proposal: 'Kill Yusuf or exile him so father's face may be yours alone.'</li><li>The classic trap of pre-planned repentance: 'And after that be righteous people!'</li><li>The absurdity of attempting to purchase parental love through fratricidal crime.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the compromise: casting him into the deep well moderating violence: 'do not kill yusuf, but throw him into the bottom of the well.' hoping passing caravans will enslave him far away; reducing murder to kidnapping. divine decree utilizing their compromise to preserve yusuf's life for egypt.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>The Compromise: Casting Him into the Deep Well</h4>
+            </div>
+            <ul class="card-points">
+              <li>Moderating violence: 'Do not kill Yusuf, but throw him into the bottom of the well.'</li><li>Hoping passing caravans will enslave him far away; reducing murder to kidnapping.</li><li>Divine decree utilizing their compromise to preserve Yusuf's life for Egypt.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the deceptive plea: feigning care for the youth manipulating ya'qub: 'why do you not trust us with yusuf? we are sincere advisers.' pleading to take him to play; ya'qub voices fear: 'i fear a wolf may devour him.' the brothers seizing their father's voiced anxiety to construct their manufactured alibi.">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>The Deceptive Plea: Feigning Care for the Youth</h4>
+            </div>
+            <ul class="card-points">
+              <li>Manipulating Ya'qub: 'Why do you not trust us with Yusuf? We are sincere advisers.'</li><li>Pleading to take him to play; Ya'qub voices fear: 'I fear a wolf may devour him.'</li><li>The brothers seizing their father's voiced anxiety to construct their manufactured alibi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 4: THE WELL OF GHAYABAH, FALSE BLOOD & SABRUN JAMEEL</h3>
+          <p>Divine Reassurance in the Dark, Theatrical Tears & Undamaged Garment</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="abandonment in the well & divine reassurance stripping yusuf's garment and casting the youth into the dark, watery well abyss. divine revelation descends in the dark: 'you will inform them of this while they know not.' imparting absolute certainty: the well is not your grave, but your conduit to power.">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>Abandonment in the Well & Divine Reassurance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Stripping Yusuf's garment and casting the youth into the dark, watery well abyss.</li><li>Divine revelation descends in the dark: 'You will inform them of this while they know not.'</li><li>Imparting absolute certainty: The well is not your grave, but your conduit to power.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="theatrical grief: weeping at nightfall returning at nightfall with manufactured tears: 'wa ja'oo abahum 'ishaa'an yabkoon.' weeping is not proof of innocence; emotional theatrics often mask deep guilt. fabricated claim: 'a wolf consumed him while we were racing; you will not believe us.'">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>Theatrical Grief: Weeping at Nightfall</h4>
+            </div>
+            <ul class="card-points">
+              <li>Returning at nightfall with manufactured tears: 'Wa ja'oo abahum 'ishaa'an yabkoon.'</li><li>Weeping is not proof of innocence; emotional theatrics often mask deep guilt.</li><li>Fabricated claim: 'A wolf consumed him while we were racing; you will not believe us.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="false blood on the undamaged shirt (bi-damin kadhib) presenting the shirt stained with animal blood as fraudulent forensic proof. ya'qub notices the intact garment: 'how merciful was the wolf who forgot to tear the shirt!' crime inevitably leaves flaws; physical deception fails before spiritual discernment.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>False Blood on the Undamaged Shirt (Bi-Damin Kadhib)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Presenting the shirt stained with animal blood as fraudulent forensic proof.</li><li>Ya'qub notices the intact garment: 'How merciful was the wolf who forgot to tear the shirt!'</li><li>Crime inevitably leaves flaws; physical deception fails before spiritual discernment.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the master station: sabrun jameel & al-musta'an immortal manifesto: 'nay, your souls enticed you to an evil deed; so sabrun jameel.' beautiful patience: enduring pain without despair, bitterness, or complaining to creation. anchoring the soul in allah: 'and allah is the one whose help is sought (al-musta'an).'">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>The Master Station: Sabrun Jameel & Al-Musta'an</h4>
+            </div>
+            <ul class="card-points">
+              <li>Immortal manifesto: 'Nay, your souls enticed you to an evil deed; so Sabrun Jameel.'</li><li>Beautiful Patience: Enduring pain without despair, bitterness, or complaining to creation.</li><li>Anchoring the soul in Allah: 'And Allah is the One whose help is sought (Al-Musta'an).'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE CRUCIBLE OF SEDUCTION & THE BURHAN OF THE LORD</h2>
+        <p>Pillars 5 & 6: Egyptian Sanctuary, Shatr al-Husn, Bolted Doors, Ma'adhallah & The Torn Shirt</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : CHASTITY & BURHAN]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 5: THE EGYPTIAN HOUSEHOLD & REACHING MATURITY</h3>
+          <p>Sold for Counted Dirhams, Divine Subtlety (Lutf) & Half of All Beauty</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="extracted from the well: sold for counted dirhams caravan draws the bucket: 'o good news, here is a boy!' sold as a slave for dirhams. ignorance despising what is precious; treating a prophet as cheap merchandise. enduring human trafficking; transitioning from free son to enslaved property.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>Extracted from the Well: Sold for Counted Dirhams</h4>
+            </div>
+            <ul class="card-points">
+              <li>Caravan draws the bucket: 'O good news, here is a boy!' Sold as a slave for dirhams.</li><li>Ignorance despising what is precious; treating a prophet as cheap merchandise.</li><li>Enduring human trafficking; transitioning from free son to enslaved property.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the egyptian sanctuary: household of al-'azeez purchased by egyptian minister instructing wife: 'honor his stay (akrimee mathwah).' divine lutf positioning a slave boy in the administrative palace of the empire. 'and allah is predominant over his affair (ghalibun 'ala amrih), but most know not.'">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>The Egyptian Sanctuary: Household of Al-'Azeez</h4>
+            </div>
+            <ul class="card-points">
+              <li>Purchased by Egyptian minister instructing wife: 'Honor his stay (Akrimee mathwah).'</li><li>Divine Lutf positioning a slave boy in the administrative palace of the empire.</li><li>'And Allah is predominant over His affair (Ghalibun 'ala amrih), but most know not.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="physical radiance & maturity: hukm and 'ilm reaching full maturity (balagha ashuddah): bestowed with wisdom and sacred knowledge. granted half of all human beauty (shatr al-husn), pairing outer light with inner purity. 'and thus do we reward the doers of excellence (al-muhsineen).'">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>Physical Radiance & Maturity: Hukm and 'Ilm</h4>
+            </div>
+            <ul class="card-points">
+              <li>Reaching full maturity (Balagha ashuddah): Bestowed with wisdom and sacred knowledge.</li><li>Granted half of all human beauty (Shatr al-husn), pairing outer light with inner purity.</li><li>'And thus do We reward the doers of excellence (Al-Muhsineen).'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the looming crisis of domestic palace temptation secluded palace luxury exposing yusuf to unprecedented domestic moral pressure. the minister's wife captivated by his radiance, systematically plotting seduction. the vulnerability of an alien slave boy facing the demands of an elite mistress.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>The Looming Crisis of Domestic Palace Temptation</h4>
+            </div>
+            <ul class="card-points">
+              <li>Secluded palace luxury exposing Yusuf to unprecedented domestic moral pressure.</li><li>The minister's wife captivated by his radiance, systematically plotting seduction.</li><li>The vulnerability of an alien slave boy facing the demands of an elite mistress.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 6: LOCKED DOORS, MA'ADHALLAH & THE TORN SHIRT</h3>
+          <p>Hayta Lak, Seeking Refuge in Allah, The Divine Proof & Forensic Tear</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the closed doors & the bold seduction: hayta lak bolting palace doors, demanding: 'hayta lak!' (come, i am ready for you!). total privacy, power imbalance, prime physical youth, zero fear of earthly eyes. the ultimate crucible: solitary temptation where every secular condition favored sin.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>The Closed Doors & The Bold Seduction: Hayta Lak</h4>
+            </div>
+            <ul class="card-points">
+              <li>Bolting palace doors, demanding: 'Hayta lak!' (Come, I am ready for you!).</li><li>Total privacy, power imbalance, prime physical youth, zero fear of earthly eyes.</li><li>The ultimate crucible: Solitary temptation where every secular condition favored sin.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the prophetic fortress: ma'adhallah & ethical duty instant monotheistic reflex: 'ma'adhallah!' (i seek refuge in allah!). ethical loyalty: 'indeed, my master made good my dwelling; wrongdoers never prosper.' conscience remembering obligations of gratitude and divine accountability.">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>The Prophetic Fortress: Ma'adhallah & Ethical Duty</h4>
+            </div>
+            <ul class="card-points">
+              <li>Instant monotheistic reflex: 'Ma'adhallah!' (I seek refuge in Allah!).</li><li>Ethical loyalty: 'Indeed, my master made good my dwelling; wrongdoers never prosper.'</li><li>Conscience remembering obligations of gratitude and divine accountability.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="spiritual climax: seeing the burhan of the lord realism: he felt mortal inclination, but saw the burhan (clear proof) of his lord. the luminous awe of god turning away evil; preserving his status among al-mukhliseen. prophetic infallibility: instinct disciplined by transcendent divine vision.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>Spiritual Climax: Seeing the Burhan of the Lord</h4>
+            </div>
+            <ul class="card-points">
+              <li>Realism: He felt mortal inclination, but saw the Burhan (Clear Proof) of his Lord.</li><li>The luminous awe of God turning away evil; preserving his status among Al-Mukhliseen.</li><li>Prophetic infallibility: Instinct disciplined by transcendent divine vision.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="race to the door & forensic evidence: qudda min dubur fleeing to the door; she grabs his shirt, tearing it from behind (qudda min dubur). confronting the minister; she accuses yusuf: 'imprison him or painful punishment!' wise witness deduces: tear in the back proves flight and unmasks her deceit.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>Race to the Door & Forensic Evidence: Qudda min Dubur</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fleeing to the door; she grabs his shirt, tearing it from behind (Qudda min dubur).</li><li>Confronting the minister; she accuses Yusuf: 'Imprison him or painful punishment!'</li><li>Wise witness deduces: Tear in the back proves flight and unmasks her deceit.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE BANQUET OF KNIVES & CHOOSING PRISON OVER SIN</h2>
+        <p>Pillars 7 & 8: City Gossip, Sliced Hands in Trance, The Heroic Prayer & Prison as Sanctuary</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : THE BANQUET & PRISON]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 7: THE GOSSIP OF THE CITY & THE SLICED HANDS</h3>
+          <p>Scandal of High Society, The Reclining Couches & In Hadha Illa Malak</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the scandal & gossip of the capital's elite city women gossiping: 'the azeez's wife seeks to seduce her slave; love pierced her!' high society hypocrisy: mocking her lack of aristocratic decorum and composure. she constructs an elaborate psychological trap to silence their arrogant rumors.">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>The Scandal & Gossip of the Capital's Elite</h4>
+            </div>
+            <ul class="card-points">
+              <li>City women gossiping: 'The Azeez's wife seeks to seduce her slave; love pierced her!'</li><li>High society hypocrisy: Mocking her lack of aristocratic decorum and composure.</li><li>She constructs an elaborate psychological trap to silence their arrogant rumors.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="luxurious banquet, reclining couches & fruit knives seating the noblewomen upon elegant couches, handing each ripe fruit and sharp knife. commanding yusuf: 'come forth before them!' a calculated theatrical reveal. orchestrating a physical demonstration of yusuf's paralyzing, majestic beauty.">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>Luxurious Banquet, Reclining Couches & Fruit Knives</h4>
+            </div>
+            <ul class="card-points">
+              <li>Seating the noblewomen upon elegant couches, handing each ripe fruit and sharp knife.</li><li>Commanding Yusuf: 'Come forth before them!' A calculated theatrical reveal.</li><li>Orchestrating a physical demonstration of Yusuf's paralyzing, majestic beauty.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="stunned agony: slicing hands in bewildered awe looking upon yusuf, struck with aesthetic shock; slicing fingers without feeling pain. involuntary awe: 'hasha lillah! this is no human! this is none but a noble angel!' physical pain eclipsed by overwhelming cognitive and aesthetic reverence.">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Stunned Agony: Slicing Hands in Bewildered Awe</h4>
+            </div>
+            <ul class="card-points">
+              <li>Looking upon Yusuf, struck with aesthetic shock; slicing fingers without feeling pain.</li><li>Involuntary awe: 'Hasha lillah! This is no human! This is none but a noble angel!'</li><li>Physical pain eclipsed by overwhelming cognitive and aesthetic reverence.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the shameless ultimatum: submission or prison emboldened mistress boasts: 'that is he about whom you blamed me; he saved himself.' public ultimatum: 'if he obeys not my command, he will be imprisoned in humiliation!' the elite assembly joining her predatory pressure against a solitary righteous soul.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>The Shameless Ultimatum: Submission or Prison</h4>
+            </div>
+            <ul class="card-points">
+              <li>Emboldened mistress boasts: 'That is he about whom you blamed me; he saved himself.'</li><li>Public ultimatum: 'If he obeys not my command, he will be imprisoned in humiliation!'</li><li>The elite assembly joining her predatory pressure against a solitary righteous soul.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 8: THE PRAYER FOR PRISON & SPIRITUAL SANCTUARY</h3>
+          <p>As-Sijnu Ahabbu Ilayya, Begging for Divine Shield & Dungeon Integrity</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the heroic supplication: prison over moral sin historic prayer: 'my lord, prison is more beloved to me than what they call me to.' ultimate spiritual hierarchy: physical dungeon is superior to moral captivity. the believer choosing material deprivation over contamination of faith.">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>The Heroic Supplication: Prison Over Moral Sin</h4>
+            </div>
+            <ul class="card-points">
+              <li>Historic prayer: 'My Lord, prison is more beloved to me than what they call me to.'</li><li>Ultimate spiritual hierarchy: Physical dungeon is superior to moral captivity.</li><li>The believer choosing material deprivation over contamination of faith.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="absolute vulnerability: acknowledging human frailty humility: 'unless you turn their plot from me, i will incline and be of the ignorant.' refusing to boast in personal willpower; moral chastity is a gift of divine protection. 'so his lord answered him and turned away their plot; he is hearing, knowing.'">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>Absolute Vulnerability: Acknowledging Human Frailty</h4>
+            </div>
+            <ul class="card-points">
+              <li>Humility: 'Unless You turn their plot from me, I will incline and be of the ignorant.'</li><li>Refusing to boast in personal willpower; moral chastity is a gift of divine protection.</li><li>'So his Lord answered him and turned away their plot; He is Hearing, Knowing.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the injustice of power: incarceration to save face acknowledging his innocence, the regime imprisons him to bury the domestic scandal. the pathology of oligarchies: sacrificing the innocent to preserve elite prestige. yusuf entering the dungeon with a pure heart while the palace festers in guilt.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>The Injustice of Power: Incarceration to Save Face</h4>
+            </div>
+            <ul class="card-points">
+              <li>Acknowledging his innocence, the regime imprisons him to bury the domestic scandal.</li><li>The pathology of oligarchies: Sacrificing the innocent to preserve elite prestige.</li><li>Yusuf entering the dungeon with a pure heart while the palace festers in guilt.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the dungeon as a sacred sanctuary of maturation an apparent defeat serving as a protected divine retreat for spiritual elevation. isolated from court distraction, forging character for future national leadership. divine decree transforming prison walls into the launching pad of salvation.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>The Dungeon as a Sacred Sanctuary of Maturation</h4>
+            </div>
+            <ul class="card-points">
+              <li>An apparent defeat serving as a protected divine retreat for spiritual elevation.</li><li>Isolated from court distraction, forging character for future national leadership.</li><li>Divine decree transforming prison walls into the launching pad of salvation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>PRISON DA'WAH & THE KING'S VISIONARY DREAM</h2>
+        <p>Pillars 9 & 10: Preaching Tawhid to Inmates, Cupbearer's Amnesia, Seven Cows & 14-Year Strategy</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : DA'WAH & THE DREAM]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 9: MONOTHEISM IN INCARCERATION & THE CELLMATES' DREAMS</h3>
+          <p>Reputation of Excellence (Muhsineen), A-Arbabun Mutafarriqoon & Amnesia</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="two royal youths & the reputation of excellence royal cupbearer and baker enter prison; observing yusuf's radiant character. testimony of cellmates: 'indeed, we see you as one of the muhsineen.' moral excellence shines through prison uniforms; integrity cannot be obscured.">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Two Royal Youths & The Reputation of Excellence</h4>
+            </div>
+            <ul class="card-points">
+              <li>Royal cupbearer and baker enter prison; observing Yusuf's radiant character.</li><li>Testimony of cellmates: 'Indeed, we see you as one of the Muhsineen.'</li><li>Moral excellence shines through prison uniforms; integrity cannot be obscured.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the dreams of wine and bread decoded cupbearer dreamt of pressing wine; baker dreamt of birds scavenging bread from head. yusuf promises interpretation before their food arrives, grounding insight in god. emphasizing his wisdom is a divine gift because he rejected polytheism.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>The Dreams of Wine and Bread Decoded</h4>
+            </div>
+            <ul class="card-points">
+              <li>Cupbearer dreamt of pressing wine; baker dreamt of birds scavenging bread from head.</li><li>Yusuf promises interpretation before their food arrives, grounding insight in God.</li><li>Emphasizing his wisdom is a divine gift because he rejected polytheism.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the prison khutbah: the supreme primacy of tawhid teaching moment: 'are separate diverse lords better, or allah, the one, the subduer?' demonstrating the intellectual chaos of polytheism vs. cosmic harmony of tawhid. prophetic duty never pauses; da'wah illuminates dungeons just as it guides palaces.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>The Prison Khutbah: The Supreme Primacy of Tawhid</h4>
+            </div>
+            <ul class="card-points">
+              <li>Teaching moment: 'Are separate diverse lords better, or Allah, the One, the Subduer?'</li><li>Demonstrating the intellectual chaos of polytheism vs. cosmic harmony of Tawhid.</li><li>Prophetic duty never pauses; da'wah illuminates dungeons just as it guides palaces.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="sober interpretation & the cupbearer's amnesia interpretation fulfilled: cupbearer restored to court; baker crucified. yusuf appeals: 'mention me to your master.' but shaytan caused him to forget. yusuf remains forgotten for several years, awaiting the exact divine appointment.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>Sober Interpretation & The Cupbearer's Amnesia</h4>
+            </div>
+            <ul class="card-points">
+              <li>Interpretation fulfilled: Cupbearer restored to court; baker crucified.</li><li>Yusuf appeals: 'Mention me to your master.' But Shaytan caused him to forget.</li><li>Yusuf remains forgotten for several years, awaiting the exact divine appointment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 10: THE SEVEN FAT COWS & THE FOURTEEN-YEAR PLAN</h3>
+          <p>Royal Nightmares, Storing in the Ear (Fee Sunbulihi) & Agrarian Genius</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the king's perplexing dream: seven fat & lean cows king awakens in terror: seven fat cows eaten by seven lean; seven green and dry ears. court sorcerers confess impotence: 'these are muddled nightmares (adghathu ahlam).' human worldly wisdom collapsing before a divinely dispatched prophetic dream.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>The King's Perplexing Dream: Seven Fat & Lean Cows</h4>
+            </div>
+            <ul class="card-points">
+              <li>King awakens in terror: Seven fat cows eaten by seven lean; seven green and dry ears.</li><li>Court sorcerers confess impotence: 'These are muddled nightmares (Adghathu ahlam).'</li><li>Human worldly wisdom collapsing before a divinely dispatched prophetic dream.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="awakening of memory: the cupbearer remembers yusuf years of amnesia shattered: cupbearer recalls the righteous prisoner in the dungeon. rushing to prison: 'yusuf, o truthful one (ayyuhas-siddeeq)! explain to us...' divine timing: remembered at the precise hour when the entire kingdom faced ruin.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Awakening of Memory: The Cupbearer Remembers Yusuf</h4>
+            </div>
+            <ul class="card-points">
+              <li>Years of amnesia shattered: Cupbearer recalls the righteous prisoner in the dungeon.</li><li>Rushing to prison: 'Yusuf, O truthful one (Ayyuhas-Siddeeq)! Explain to us...'</li><li>Divine timing: Remembered at the precise hour when the entire kingdom faced ruin.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="visionary 14-year agrarian plan: fee sunbulihi 7 years of planting: 'leave what you harvest in its ear (fee sunbulihi) except a little.' agrarian foresight: keeping grain in the husk prevents rot, weevils, and moisture loss. followed by 7 years of devastating famine, then a year of abundant rain and pressing.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Visionary 14-Year Agrarian Plan: Fee Sunbulihi</h4>
+            </div>
+            <ul class="card-points">
+              <li>7 years of planting: 'Leave what you harvest in its ear (Fee sunbulihi) except a little.'</li><li>Agrarian foresight: Keeping grain in the husk prevents rot, weevils, and moisture loss.</li><li>Followed by 7 years of devastating famine, then a year of abundant rain and pressing.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the economic architect of middle eastern survival formulating a macroeconomic strategy: strategic reserves, rationing, price controls. sacred 'ilm incorporating technical administrative and economic competence. the king astonished: an imprisoned foreign slave holds the survival of the empire.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>The Economic Architect of Middle Eastern Survival</h4>
+            </div>
+            <ul class="card-points">
+              <li>Formulating a macroeconomic strategy: Strategic reserves, rationing, price controls.</li><li>Sacred 'Ilm incorporating technical administrative and economic competence.</li><li>The king astonished: An imprisoned foreign slave holds the survival of the empire.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>EXONERATION, HIGH OFFICE & THE BROTHERS' ARRIVAL</h2>
+        <p>Pillars 11 & 12: Demanding Clean Name, Al-Haqq Unveiled, Hafeezun 'Aleem & The Brothers at the Gate</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : EXONERATION & POWER]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 11: DEMANDING EXONERATION & AL-HAQQ UNVEILED</h3>
+          <p>Refusing Royal Pardon, Hashasa al-Haqq & Nafs Ammarah bis-Soo'</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="royal pardon rejected: demanding official clearance king orders release: 'bring him to me!' yusuf refuses to leave as a pardoned convict. demanding judicial review: 'ask the king: what was the condition of the women?' guarding moral integrity: refusing to assume office under lingering suspicion.">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>Royal Pardon Rejected: Demanding Official Clearance</h4>
+            </div>
+            <ul class="card-points">
+              <li>King orders release: 'Bring him to me!' Yusuf refuses to leave as a pardoned convict.</li><li>Demanding judicial review: 'Ask the king: What was the condition of the women?'</li><li>Guarding moral integrity: Refusing to assume office under lingering suspicion.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="re-opened judicial inquiry & public confession king interrogates women: 'what was your affair when you sought to seduce yusuf?' noblewomen swear: 'god forbid! we know no evil of him!' the mistress confesses: 'al-ana hashasa al-haqq! i sought to seduce him, and indeed he is of the truthful!'">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Re-Opened Judicial Inquiry & Public Confession</h4>
+            </div>
+            <ul class="card-points">
+              <li>King interrogates women: 'What was your affair when you sought to seduce Yusuf?'</li><li>Noblewomen swear: 'God forbid! We know no evil of him!' The mistress confesses:</li><li>'Al-ana hashasa al-haqq! I sought to seduce him, and indeed he is of the truthful!'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="complete moral vindication & sincerity of yusuf yusuf's honor inscribed in official imperial records; truth buried for years resurfaces. yusuf clarifies: 'so my master knows i betrayed him not in secret; allah guides no plot.' righteous patience compelling even former accusers to testify to his purity.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>Complete Moral Vindication & Sincerity of Yusuf</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yusuf's honor inscribed in official imperial records; truth buried for years resurfaces.</li><li>Yusuf clarifies: 'So my master knows I betrayed him not in secret; Allah guides no plot.'</li><li>Righteous patience compelling even former accusers to testify to his purity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the soul inclined to evil: nafs ammarah bis-soo' spiritual humility: 'i do not acquit myself; the soul persistently commands evil.' nafs ammarah conquered only through divine mercy; rejecting self-righteous pride. prophetic nobility: at the moment of total vindication, the ego is crushed before god.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>The Soul Inclined to Evil: Nafs Ammarah bis-Soo'</h4>
+            </div>
+            <ul class="card-points">
+              <li>Spiritual humility: 'I do not acquit myself; the soul persistently commands evil.'</li><li>Nafs Ammarah conquered only through divine mercy; rejecting self-righteous pride.</li><li>Prophetic nobility: At the moment of total vindication, the ego is crushed before God.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 12: CUSTODIAN OF THE STOREHOUSES & THE FAMINE RELIEF</h3>
+          <p>Makeenun Ameen, Innee Hafeezun 'Aleem & The Unrecognized Sovereign</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="royal elevation: established and trusted (makeen ameen) king meets yusuf: 'you are today established, trusted, and empowered (makeen ameen).' transition of state: from pit, to slave block, to prison, to prime minister of egypt. 'and thus we established yusuf in the land to settle wherever he willed.'">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>Royal Elevation: Established and Trusted (Makeen Ameen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>King meets Yusuf: 'You are today established, trusted, and empowered (Makeen Ameen).'</li><li>Transition of state: From pit, to slave block, to prison, to prime minister of Egypt.</li><li>'And thus We established Yusuf in the land to settle wherever he willed.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="assuming high office: innee hafeezun 'aleem seeking office for service: 'appoint me over storehouses; i am hafeezun 'aleem.' permissibility of seeking office when uniquely qualified to avert national catastrophe. the twin qualifications: incorruptible moral integrity paired with technical expertise.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>Assuming High Office: Innee Hafeezun 'Aleem</h4>
+            </div>
+            <ul class="card-points">
+              <li>Seeking office for service: 'Appoint me over storehouses; I am Hafeezun 'Aleem.'</li><li>Permissibility of seeking office when uniquely qualified to avert national catastrophe.</li><li>The twin qualifications: Incorruptible moral integrity paired with technical expertise.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the great regional famine & equitable grain relief famine strikes the near east; nations migrate to egypt where yusuf manages relief. distributing grain with flawless equity; preventing hoarding and black-market greed. prophetic power deployed exclusively for universal human preservation.">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>The Great Regional Famine & Equitable Grain Relief</h4>
+            </div>
+            <ul class="card-points">
+              <li>Famine strikes the Near East; nations migrate to Egypt where Yusuf manages relief.</li><li>Distributing grain with flawless equity; preventing hoarding and black-market greed.</li><li>Prophetic power deployed exclusively for universal human preservation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the arrival of the ten brothers: recognized unaware starving in canaan, ya'qub sends ten sons to egypt to purchase emergency grain. dramatic encounter: 'yusuf recognized them, but they recognized him not!' seeing an egyptian ruler in robes; never dreaming their sold brother sat on the throne.">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>The Arrival of the Ten Brothers: Recognized Unaware</h4>
+            </div>
+            <ul class="card-points">
+              <li>Starving in Canaan, Ya'qub sends ten sons to Egypt to purchase emergency grain.</li><li>Dramatic encounter: 'Yusuf recognized them, but they recognized him not!'</li><li>Seeing an Egyptian ruler in robes; never dreaming their sold brother sat on the throne.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE STRATAGEM OF BENJAMIN & THE AGONY OF YA'QUB</h2>
+        <p>Pillars 13 & 14: Separate Gates, The Goblet in the Saddlebag, Sibling Guilt & Weeping to Blindness</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : BENJAMIN & YA'QUB]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 13: SEPARATE GATES, THE GOLDEN CUP & SIBLING GUILT</h3>
+          <p>Oath of Ya'qub, Ana Akhook, Royal Goblet in Bag & Accusations</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="condition of return: bringing the younger brother demanding benjamin as proof of honesty; returning their currency secretly in bags. brothers appeal to ya'qub; father's grief: 'can i trust you as i trusted with yusuf?' economic necessity forcing brothers to negotiate under divine orchestration.">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>Condition of Return: Bringing the Younger Brother</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demanding Benjamin as proof of honesty; returning their currency secretly in bags.</li><li>Brothers appeal to Ya'qub; father's grief: 'Can I trust you as I trusted with Yusuf?'</li><li>Economic necessity forcing brothers to negotiate under divine orchestration.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="sacred oath & paternal counsel: separate gates demanding a covenant in allah's name before releasing benjamin. counsel: 'enter not from one gate, but from separate gates (min abwabin mutafarriqah).' protecting against evil eye and suspicion; judgment belongs only to allah.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Sacred Oath & Paternal Counsel: Separate Gates</h4>
+            </div>
+            <ul class="card-points">
+              <li>Demanding a covenant in Allah's Name before releasing Benjamin.</li><li>Counsel: 'Enter not from one gate, but from separate gates (Min abwabin mutafarriqah).'</li><li>Protecting against evil eye and suspicion; judgment belongs only to Allah.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the secret palace reunion: innee ana akhook yusuf brings benjamin privately into chambers: 'indeed, i am your brother!' comforting him: 'grieve not over what they did!' decades of separation dissolve. formulating a strategic divine plan to retain his full brother in egypt.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>The Secret Palace Reunion: Innee Ana Akhook</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yusuf brings Benjamin privately into chambers: 'Indeed, I am your brother!'</li><li>Comforting him: 'Grieve not over what they did!' Decades of separation dissolve.</li><li>Formulating a strategic divine plan to retain his full brother in Egypt.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the royal goblet placed in benjamin's saddlebag placing the king's golden drinking cup (siqayah) in benjamin's luggage. guard halts caravan: 'you are thieves!' penalty under canaanite law: enslavement. searching elder bags first; extracted from benjamin's sack! sibling guilt exposed.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>The Royal Goblet Placed in Benjamin's Saddlebag</h4>
+            </div>
+            <ul class="card-points">
+              <li>Placing the king's golden drinking cup (Siqayah) in Benjamin's luggage.</li><li>Guard halts caravan: 'You are thieves!' Penalty under Canaanite law: Enslavement.</li><li>Searching elder bags first; extracted from Benjamin's sack! Sibling guilt exposed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 14: EYES WHITE WITH GRIEF & COMPLAINING ONLY TO GOD</h3>
+          <p>Lingering Slander, Eldest Brother's Refusal, Baththee wa Huznee & Zero Despair</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="lingering slander: accusing the lost brother deflecting shame: 'if he steals, a brother of his [yusuf] stole before!' decades later, unresolved jealousy persists; projecting crime onto the absent. yusuf conceals his identity: 'you are in a worse position; allah knows what you describe.'">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>Lingering Slander: Accusing the Lost Brother</h4>
+            </div>
+            <ul class="card-points">
+              <li>Deflecting shame: 'If he steals, a brother of his [Yusuf] stole before!'</li><li>Decades later, unresolved jealousy persists; projecting crime onto the absent.</li><li>Yusuf conceals his identity: 'You are in a worse position; Allah knows what you describe.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="eldest brother's refusal to face grieving father facing loss of benjamin and broken oath, the eldest brother refuses to return to canaan. 'i will not leave egypt until father permits or allah decides; he is the best judge.' remembering the crime of the well; sibling guilt reaching catastrophic collapse.">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Eldest Brother's Refusal to Face Grieving Father</h4>
+            </div>
+            <ul class="card-points">
+              <li>Facing loss of Benjamin and broken oath, the eldest brother refuses to return to Canaan.</li><li>'I will not leave Egypt until father permits or Allah decides; He is the best judge.'</li><li>Remembering the crime of the well; sibling guilt reaching catastrophic collapse.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the agony of ya'qub: eyes turned milky white with grief sons return reporting benjamin's loss; ya'qub cries: 'ya asafa 'ala yusuf!' his eyes turned milky white with blindness from chronic weeping (ibyaddat 'aynahu). sons rebuke him: 'you will not stop until fatally ill!' suffering held in suppression.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>The Agony of Ya'qub: Eyes Turned Milky White with Grief</h4>
+            </div>
+            <ul class="card-points">
+              <li>Sons return reporting Benjamin's loss; Ya'qub cries: 'Ya asafa 'ala Yusuf!'</li><li>His eyes turned milky white with blindness from chronic weeping (Ibyaddat 'aynahu).</li><li>Sons rebuke him: 'You will not stop until fatally ill!' Suffering held in suppression.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sublime complaint: baththee wa huznee ila allah defining formula: 'i only complain of my anguish and grief to allah alone!' complaining to creation brings humiliation; pouring grief to god brings healing. prophetic defiance of despair: 'never despair of allah's mercy; only deniers despair.'">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>The Sublime Complaint: Baththee wa Huznee ila Allah</h4>
+            </div>
+            <ul class="card-points">
+              <li>Defining formula: 'I only complain of my anguish and grief to Allah alone!'</li><li>Complaining to creation brings humiliation; pouring grief to God brings healing.</li><li>Prophetic defiance of despair: 'Never despair of Allah's mercy; only deniers despair.'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>THE GRAND RECONCILIATION & REALIZATION OF THE STARS</h2>
+        <p>Pillars 15 & 16: Ana Yusuf, La Tathreeb, Restored Sight, Prostration of Eleven Stars & Tawaffanee Musliman</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : RECONCILIATION & DREAMS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 15: ANA YUSUF, THE SHIRT OF VISION & LA TATHREEB</h3>
+          <p>Brothers Humbled, Grand Revelation, Immortal Pardon & Scent of Yusuf</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the desperate return & begging for imperial charity brothers return to egypt begging: 'adversity has touched our family; be charitable!' the once formidable clan humbled to desperate mendicants before the sold boy. complete reversal of status engineered by sovereign divine decree.">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>The Desperate Return & Begging for Imperial Charity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Brothers return to Egypt begging: 'Adversity has touched our family; be charitable!'</li><li>The once formidable clan humbled to desperate mendicants before the sold boy.</li><li>Complete reversal of status engineered by sovereign divine decree.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the grand revelation: ana yusufu wa hadha akhee yusuf asks: 'do you know what you did with yusuf and brother in ignorance?' brothers recognize his eyes: 'are you indeed yusuf?!' declaration: 'ana yusuf!' 'whoever fears allah and is patient, allah wastes not the reward of the muhsineen.'">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>The Grand Revelation: Ana Yusufu wa Hadha Akhee</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yusuf asks: 'Do you know what you did with Yusuf and brother in ignorance?'</li><li>Brothers recognize his eyes: 'Are you indeed Yusuf?!' Declaration: 'Ana Yusuf!'</li><li>'Whoever fears Allah and is patient, Allah wastes not the reward of the Muhsineen.'</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="immortal prophetic pardon: la tathreeba 'alaykum brothers confess: 'by allah, allah favored you; we were sinners!' supreme pardon: 'la tathreeba 'alaykumul-yawm, yaghfirullahu lakum!' (no blame today!). recited verbatim by prophet muhammad ﷺ upon the historic conquest of mecca.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>Immortal Prophetic Pardon: La Tathreeba 'Alaykum</h4>
+            </div>
+            <ul class="card-points">
+              <li>Brothers confess: 'By Allah, Allah favored you; we were sinners!'</li><li>Supreme pardon: 'La tathreeba 'alaykumul-yawm, yaghfirullahu lakum!' (No blame today!).</li><li>Recited verbatim by Prophet Muhammad ﷺ upon the historic Conquest of Mecca.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the shirt of vision: eyesight miraculously restored 'cast this shirt over my father's face; he will regain sight.' caravan departs. in canaan, ya'qub perceives: 'innee la-ajidu reeha yusuf' (i smell the scent of yusuf!). the shirt that brought false tears now brings miraculous vision and healing.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>The Shirt of Vision: Eyesight Miraculously Restored</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Cast this shirt over my father's face; he will regain sight.' Caravan departs.</li><li>In Canaan, Ya'qub perceives: 'Innee la-ajidu reeha Yusuf' (I smell the scent of Yusuf!).</li><li>The shirt that brought false tears now brings miraculous vision and healing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 16: ELEVATION TO THE THRONE, DREAM REALIZED & FINAL PRAYER</h3>
+          <p>Household Migration, Prostration of Eleven Stars, Divine Lutf & Dying as a Muslim</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="royal welcome into egypt: enter in safety (aamineen) entire household of ya'qub migrates from canaan's famine into lush egypt. royal greeting: 'enter egypt, if allah wills, in safety and security (aamineen).' elevating parents upon imperial throne (rafa'a abawayhi 'alal-'arsh).">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>Royal Welcome into Egypt: Enter in Safety (Aamineen)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Entire household of Ya'qub migrates from Canaan's famine into lush Egypt.</li><li>Royal greeting: 'Enter Egypt, if Allah wills, in safety and security (Aamineen).'</li><li>Elevating parents upon imperial throne (Rafa'a abawayhi 'alal-'arsh).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="fulfillment of celestial vision: ya abati hadha ta'weel eleven brothers and parents fall prostrate in honor before yusuf. tearful awe: 'o father, this is the interpretation of my dream of old; my lord made it real!' decades of slavery and prison culminate in the exact vision of the eleven stars.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>Fulfillment of Celestial Vision: Ya Abati Hadha Ta'weel</h4>
+            </div>
+            <ul class="card-points">
+              <li>Eleven brothers and parents fall prostrate in honor before Yusuf.</li><li>Tearful awe: 'O father, this is the interpretation of my dream of old; my Lord made it real!'</li><li>Decades of slavery and prison culminate in the exact vision of the eleven stars.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the subtle symphony of divine grace (inna rabbee lateef) gracious speech omitting mention of the well to spare brothers' feelings. theological summary: 'indeed, my lord is subtle in fulfilling what he wills (lateef).' divine decree working invisibly through reversals to produce triumphant outcomes.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>The Subtle Symphony of Divine Grace (Inna Rabbee Lateef)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Gracious speech omitting mention of the well to spare brothers' feelings.</li><li>Theological summary: 'Indeed, my Lord is Subtle in fulfilling what He wills (Lateef).'</li><li>Divine decree working invisibly through reversals to produce triumphant outcomes.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="ultimate prophetic aspiration: tawaffanee musliman at the peak of worldly empire, yusuf turns to god: 'you gave me sovereignty...' final prayer: 'cause me to die as a muslim, and join me with the righteous!' mortal power is fleeting; the ultimate victory is dying in pure submission to allah.">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>Ultimate Prophetic Aspiration: Tawaffanee Musliman</h4>
+            </div>
+            <ul class="card-points">
+              <li>At the peak of worldly empire, Yusuf turns to God: 'You gave me sovereignty...'</li><li>Final prayer: 'Cause me to die as a Muslim, and join me with the righteous!'</li><li>Mortal power is fleeting; the ultimate victory is dying in pure submission to Allah.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <section class="movement-section">
+      <div class="movement-header">
+        <h3>EXEGETICAL THEMATIC MOVEMENTS ROADMAPExplorer</h3>
+        <span>15 Lectures &bull; 05h 20m 26s &bull; Click to filter corresponding plates</span>
+      </div>
+      <div class="movement-grid">
+        
+    <div class="movement-row" onclick="filterByMovement('Movement 1')">
+      <div class="movement-meta-left">
+        <span class="movement-num">01</span>
+        <div>
+          <div class="movement-title">Ahsan al-Qasas, Literary Supremacy & The Meccan Consolation</div>
+          <div class="movement-sub">Movement 1</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 1')">
+      <div class="movement-meta-left">
+        <span class="movement-num">02</span>
+        <div>
+          <div class="movement-title">The Celestial Dream of 11 Stars & Paternal Discretion</div>
+          <div class="movement-sub">Movement 1</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 2')">
+      <div class="movement-meta-left">
+        <span class="movement-num">03</span>
+        <div>
+          <div class="movement-title">Fraternal Jealousy & The Conspiracy at the Well</div>
+          <div class="movement-sub">Movement 2</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 2')">
+      <div class="movement-meta-left">
+        <span class="movement-num">04</span>
+        <div>
+          <div class="movement-title">The Well of Ghayabah, False Blood & Sabrun Jameel</div>
+          <div class="movement-sub">Movement 2</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 3')">
+      <div class="movement-meta-left">
+        <span class="movement-num">05</span>
+        <div>
+          <div class="movement-title">Caravanserai to Cairo & The Household of Al-Azeez</div>
+          <div class="movement-sub">Movement 3</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 3')">
+      <div class="movement-meta-left">
+        <span class="movement-num">06</span>
+        <div>
+          <div class="movement-title">The Seduction Crucible, Burhan of the Lord & The Torn Shirt</div>
+          <div class="movement-sub">Movement 3</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 4')">
+      <div class="movement-meta-left">
+        <span class="movement-num">07</span>
+        <div>
+          <div class="movement-title">Elite Gossip, The Banquet of Knives & Choosing Incarceration</div>
+          <div class="movement-sub">Movement 4</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 4')">
+      <div class="movement-meta-left">
+        <span class="movement-num">08</span>
+        <div>
+          <div class="movement-title">Prison Da'wah of Pure Tawhid & Interpreting Inmates' Dreams</div>
+          <div class="movement-sub">Movement 4</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 5')">
+      <div class="movement-meta-left">
+        <span class="movement-num">09</span>
+        <div>
+          <div class="movement-title">The King's Vision, 14-Year Agrarian Plan & Total Exoneration</div>
+          <div class="movement-sub">Movement 5</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 6')">
+      <div class="movement-meta-left">
+        <span class="movement-num">10</span>
+        <div>
+          <div class="movement-title">The Brothers' Return, Moral Testing & The Royal Goblet</div>
+          <div class="movement-sub">Movement 6</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 7')">
+      <div class="movement-meta-left">
+        <span class="movement-num">11</span>
+        <div>
+          <div class="movement-title">Ya'qub's Anguish, Unshakeable Hope & The Great Reveal</div>
+          <div class="movement-sub">Movement 7</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 8')">
+      <div class="movement-meta-left">
+        <span class="movement-num">12</span>
+        <div>
+          <div class="movement-title">La Tathreeb, Prostration of the Stars & The Final Supplication</div>
+          <div class="movement-sub">Movement 8</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Movement 8')">
+      <div class="movement-meta-left">
+        <span class="movement-num">13</span>
+        <div>
+          <div class="movement-title">Prophetic Solace, Historical Solitude & Universal Warning</div>
+          <div class="movement-sub">Movement 8</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Literary Analysis')">
+      <div class="movement-meta-left">
+        <span class="movement-num">14</span>
+        <div>
+          <div class="movement-title">Literary Anatomy Part I: Symmetric Leitmotifs & Rhetorical Depth</div>
+          <div class="movement-sub">Literary Analysis</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+    <div class="movement-row" onclick="filterByMovement('Literary Analysis')">
+      <div class="movement-meta-left">
+        <span class="movement-num">15</span>
+        <div>
+          <div class="movement-title">Literary Anatomy Part II: Divine Lutf & Narrative Foreshadowing</div>
+          <div class="movement-sub">Literary Analysis</div>
+        </div>
+      </div>
+      <span class="movement-tag">Thematic Section</span>
+    </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL 1 -->
+  <div class="modal-backdrop" id="sabrModal" onclick="closeOnBackdrop(event, 'sabrModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>The Psychology of Sabrun Jameel & False Blood</h3>
+        <button class="modal-close" onclick="closeModal('sabrModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="quote-box">
+          "They brought upon his shirt false blood. He said: 'Nay, but your souls have enticed you to something. So patience is most fitting (Sabrun Jameel). And Allah is the one sought for help against that which you describe.'"
+        </div>
+        <h4>The Forensic Failure of Envy</h4>
+        <p>Classical exegetes, notably <strong>Imam Ibn Kathir</strong> and <strong>Al-Qurtubi</strong>, record the profound forensic observation of Prophet Ya'qub: the brothers presented Yusuf's shirt stained with the blood of a slaughtered goat or sheep (*Bi-damin kadhib*), claiming a wolf devoured him. Ya'qub inspected the garment and immediately noted: <em>"How gentle was this wolf that devoured my son without tearing a single seam of his shirt!"</em> Guilt and emotional agitation blinded the conspirators to basic forensic coherence.</p>
+        <h4>The Metaphysical Definition of Sabrun Jameel</h4>
+        <p>In classical Sunni theology and spiritual psychology (elaborated masterfully by <strong>Ibn al-Qayyim</strong> in <em>'Uddat as-Sabireen</em>), <strong>Sabrun Jameel</strong> (beautiful patience) is defined as patience that contains:</p>
+        <ul>
+          <li><strong>Zero complaint to creation:</strong> The heart never petitions sympathy or vindication from fallible humans.</li>
+          <li><strong>Total absence of bitter resentment:</strong> Accepting the decree (*Qadar*) without questioning the wisdom or benevolence of the Creator.</li>
+          <li><strong>Exclusive channel of grief:</strong> Directing the immense volcanic sorrow directly and exclusively to the Almighty: <em>"Innama ashkoo baththee wa huznee ila Allah."</em></li>
+        </ul>
+        <h4>Grief Without Despair</h4>
+        <p>Weeping until physical blindness occurs (*Ibyaddat 'aynahu minal-huzn*) does not contradict prophetic patience. Grief is an innate human reality; the sin lies only in verbal impatience, despairing of God's relief (*Rawchillahi*), or accusing the Divine of injustice. Ya'qub remained absolutely convinced that Allah would reunite the family decades later.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2 -->
+  <div class="modal-backdrop" id="burhanModal" onclick="closeOnBackdrop(event, 'burhanModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>The Sealed Doors & The Burhan of the Lord</h3>
+        <button class="modal-close" onclick="closeModal('burhanModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="quote-box">
+          "And she closed the doors and said, 'Come on, you.' He said, '[I seek] the refuge of Allah. Indeed, he is my master, who has made good my residence. Indeed, wrongdoers will not succeed.' And she certainly desired him, and he would have inclined to her had he not seen the proof of his Lord..."
+        </div>
+        <h4>The Absolute Climax of Temptation</h4>
+        <p>The trial of Yusuf in the Egyptian palace represents the apex of psychological and physical temptation: youthful vigor, isolation behind locked, bolt-fastened doors (*Ghallaqati al-abwab*), social immunity as an unfree youth, and a high-status, beautiful temptress demanding compliance. In the face of this overwhelming pressure, Yusuf’s immediate instinct was metaphysical refuge: <strong>Ma'adhallah</strong> (I seek Allah's absolute protection).</p>
+        <h4>The Exegesis of the Burhan (Proof of the Lord)</h4>
+        <p>Mainstream Sunni scholarship (as emphasized by <strong>Imam at-Tabari</strong>, <strong>Al-Baghawi</strong>, and <strong>Fakhr ad-Din ar-Razi</strong>) preserves the prophetic infallibility (*'Ismah*) of Yusuf. The clause <em>"wa hamma biha lawla an ra'a burhana Rabbih"</em> demonstrates that the potential human impulse was immediately and completely repelled by the divine proof (*Burhan*). The Burhan was the vivid, inescapable illumination of divine consciousness, moral law, and prophetic dignity, instantly arresting any descent into transgression.</p>
+        <h4>The Physical Architecture of Vindication: Qudda min Dubur</h4>
+        <p>When Yusuf fled toward the exit and the temptress pursued him, tearing his shirt from the back (*Qudda min dubur*), divine providence staged a perfect forensic proof. An objective arbiter from her own household recognized the physics of motion: a tear in the back conclusively proved flight from aggression, while a tear in the front would have suggested assault. Truth left an undeniable physical imprint on the woven fabric.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3 -->
+  <div class="modal-backdrop" id="grainModal" onclick="closeOnBackdrop(event, 'grainModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>The 14-Year Agrarian Master Plan 'Fee Sunbulihi'</h3>
+        <button class="modal-close" onclick="closeModal('grainModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="quote-box">
+          "He said: 'You will plant for seven years consecutively; and what you harvest, leave in its ear, except a little from which you will eat. Then will come after that seven severe years which will consume what you saved for them...'"
+        </div>
+        <h4>Macroeconomic Crisis Leadership</h4>
+        <p>When the King of Egypt was baffled by his dream of seven fat cows consumed by seven lean ones, his courtiers dismissed it as confused nightmares (*Adghathu ahlam*). Yusuf did not merely interpret the symbolic meaning from his prison cell; he unilaterally engineered a comprehensive, 14-year countercyclical macroeconomic strategy that saved the civilization of the ancient Near East from catastrophic extinction.</p>
+        <h4>The Agro-Botanical Miracle: Storing in the Ear</h4>
+        <p>Yusuf's instruction to <strong>"leave what you harvest in its ear" (*Fama hasadtum fadhareewhu fee sunbulihi*)</strong> represents an astonishing scientific and logistical insight. In humid grain silos, threshed wheat rapidly ferments, rots, or is decimated by grain weevils and pests. By keeping the kernels encased in their natural husks and sheaves (*Sunbul*), the grain remained biologically viable and pest-resistant across seven long years of super-abundance, ready for distribution during the years of devastating drought.</p>
+        <h4>Moral Integrity Before Political Power</h4>
+        <p>When the King ordered Yusuf's immediate release, Yusuf refused to leave the prison until his name was legally, morally, and publicly cleared: <em>"Return to your lord and ask him what happened with the women who cut their hands."</em> Only after the wife of Al-'Azeez publicly confessed—<em>"Now the truth has become manifest: I enticed him, and he is of the truthful"</em>—did Yusuf accept appointment over the storehouses of the land (*Hafizun 'Aleem*).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4 -->
+  <div class="modal-backdrop" id="pardonModal" onclick="closeOnBackdrop(event, 'pardonModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>The Grand Pardon 'La Tathreeba' & Fulfillment</h3>
+        <button class="modal-close" onclick="closeModal('pardonModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="quote-box">
+          "He said: 'No blame will there be upon you today. Allah will forgive you; and He is the most merciful of the merciful... And he raised his parents upon the throne, and they bowed down to him in prostration. And he said: O my father, this is the explanation of my vision of before. My Lord has made it an actuality.'"
+        </div>
+        <h4>The Zenith of Magnanimity</h4>
+        <p>After decades of separation, enslavement, and wrongful incarceration, Yusuf held total sovereign power over the very brothers who had cast him into the dark well. Instead of executing retribution or extracting humiliating apologies, he uttered the immortal words that echoed down through prophetic history: <strong>"La tathreeba 'alaykumul-yawm, yaghfirullahu lakum"</strong> (No reproach upon you today; Allah will forgive you). The Prophet Muhammad ﷺ quoted these exact words upon the Conquest of Makkah when pardoning his bitterest persecutors.</p>
+        <h4>The Metaphysical Mystery of Divine Lutf</h4>
+        <p>Reflecting upon his life's trajectory from the bottom of the well to the throne of Egypt, Yusuf did not boast of his intellect or virtue; he attributed everything to divine subtlety: <strong>"Inna Rabbee lateefun lima yashaa'"</strong> (Indeed, my Lord is subtle in whatever He wills). <em>Al-Lateef</em> orchestrates grand cosmic victories through hidden, imperceptible means—using malice, false accusations, and iron prison bars as the precise vehicles to elevate His beloved servants.</p>
+        <h4>The Ultimate Supplication of the Believer</h4>
+        <p>At the absolute summit of worldly majesty, surrounded by his parents and brothers prostrating in honor (*Sujood at-tahiyyah*), Yusuf detached completely from transient power. He raised his hands in the ultimate supplication recorded in scripture: <em>"Creator of the heavens and earth, You are my protector in this world and the Hereafter. <strong>Cause me to die as a Muslim and join me with the righteous</strong>" (*Tawaffanee Musliman wa alhiqnee bis-saliheen*)</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function selectPlate(plateNum) {
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-chip').forEach(tab => tab.classList.remove('active'));
+      const targetSec = document.getElementById('plateSection' + plateNum);
+      if (targetSec) targetSec.classList.add('active');
+      const tabs = document.querySelectorAll('.tab-chip');
+      if (tabs[plateNum - 1]) tabs[plateNum - 1].classList.add('active');
+    }
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.remove('show');
+    }
+
+    function closeOnBackdrop(e, id) {
+      if (e.target.classList.contains('modal-backdrop')) {
+        closeModal(id);
+      }
+    }
+
+    function handleLiveSearch() {
+      const query = document.getElementById('liveSearchInput').value.toLowerCase().trim();
+      const plates = document.querySelectorAll('.plate-section');
+      const tabs = document.querySelectorAll('.tab-chip');
+      const statsBadge = document.getElementById('statsBadge');
+
+      if (query === '') {
+        plates.forEach(p => p.classList.remove('active'));
+        document.getElementById('plateSection1').classList.add('active');
+        tabs.forEach(t => t.classList.remove('active'));
+        tabs[0].classList.add('active');
+        document.querySelectorAll('.card-item').forEach(c => c.style.display = 'block');
+        statsBadge.innerHTML = 'Showing <b>8</b> Plates &bull; <b>16</b> Pillars &bull; <b>64</b> Cards &bull; <b>15</b> Lectures &bull; <b>100%</b> Sunni Verified';
+        return;
+      }
+
+      let matchedCount = 0;
+      plates.forEach(plate => {
+        let plateHasMatch = false;
+        const plateCards = plate.querySelectorAll('.card-item');
+        plateCards.forEach(card => {
+          const searchData = card.getAttribute('data-search') || '';
+          if (searchData.includes(query)) {
+            card.style.display = 'block';
+            plateHasMatch = true;
+            matchedCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        if (plateHasMatch) {
+          plate.classList.add('active');
+        } else {
+          plate.classList.remove('active');
+        }
+      });
+
+      statsBadge.innerHTML = 'Found <b>' + matchedCount + ' Matches</b> for "' + query + '"';
+    }
+
+    function filterByMovement(movName) {
+      const mapping = {
+        "Movement 1": 1,
+        "Movement 2": 2,
+        "Movement 3": 3,
+        "Movement 4": 4,
+        "Movement 5": 5,
+        "Movement 6": 6,
+        "Movement 7": 7,
+        "Movement 8": 8,
+        "Literary Analysis": 8
+      };
+      if (mapping[movName]) {
+        selectPlate(mapping[movName]);
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('show'));
+      }
+    });
+  </script>
+</body>
+</html>

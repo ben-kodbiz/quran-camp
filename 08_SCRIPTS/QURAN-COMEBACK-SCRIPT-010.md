@@ -2,11 +2,11 @@
 artifact:
   artifact_id: QURAN-COMEBACK-SCRIPT-010
   artifact_type: script_longform
-  artifact_version: 1.0.0
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN
-  title: "Episode 10 Flagship Script (Finale): 30 Days From Now, You Could Be Different"
-  description: "Production script for the Season 1 Finale of Come Back to the Qur'an, synthesizing the 10-episode journey, the Parable of the Good Tree (14:24-25), and inviting the viewer into a lifelong covenant with revelation."
+  title: "Episode 10 Flagship Script (Season 1 Finale): 30 Days From Now, You Could Be Different"
+  description: "Production script for the Season 1 Finale of Come Back to the Qur'an, synthesizing the 10-episode journey, the Parable of the Good Tree (Surah Ibrahim 14:24-25), and inviting the viewer into a lifelong covenant with revelation through living creation visual metaphors."
   topic: "Season 1 Finale & Lifelong Covenant Video Script"
   language: en-US
   audience: "Campaign followers, returning Muslims, long-term learners, YouTube audience"
@@ -15,13 +15,14 @@ provenance:
   parent_artifacts:
     - "file:///mnt/AI/ag/Campaign/01_RESEARCH/QURAN-COMEBACK-RESEARCH-010.md"
     - "file:///mnt/AI/ag/Campaign/02_VERIFICATION/QURAN-COMEBACK-VERIFY-010.md"
+    - "file:///mnt/AI/ag/Campaign/00_BRAND/PERMANENT_QURANIC_THEMES.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Visual_System.md"
 
 lifecycle:
   status: approved
   created_by: AGENT-07
   created_at: 2026-09-07T17:22:00Z
-  updated_at: 2026-09-07T17:22:00Z
+  updated_at: 2026-09-11T02:35:00Z
 
 verification:
   verification_status: verified
@@ -39,8 +40,9 @@ storage:
 
 **Campaign:** Come Back to the Qur'an  
 **Title:** *"30 Days From Now, You Could Be Different"*  
-**Duration:** ~6 minutes (approx. 760 spoken words)  
+**Duration:** ~5.5 minutes (approx. 720 spoken words)  
 **Tone:** Majestic, deeply emotional, conclusive, inspiring, lifelong invitation  
+**Visual Living Creation Directive:** 100% Living nature, ocean dawn, sprouting seedling, ancient rooted olive tree, hovering hummingbird, and epic mountain waterfalls at sunset. Absolute Zero-Human Mandate.
 
 ---
 
@@ -48,7 +50,7 @@ storage:
 
 ### 00:00 – 00:45 | SECTION 1: LOOKING BACK AT THE JOURNEY
 **[VISUAL]**  
-*A montage of the journey so far: the dawn window light on the Mushaf (Ep 1), the vast ocean horizon (Ep 3), the rain washing the mountain forest (Ep 4), the straight stone path (Ep 6), the quiet oil lamp at night (Ep 7), the sunrise study desk (Ep 8), and the sundial shadow at sunset (Ep 9). Slow, seamless cinematic crossfades accompanied by a low, warm acoustic cello and ambient wind.*
+*A vast, tranquil ocean coastline at golden sunrise, gentle rhythmic pastel blue waves rolling onto clean natural shores, solitary white sea birds gliding effortlessly across an open pastel sky with generous negative space.*
 
 **(VOICEOVER):**  
 "Ten episodes ago, we began with a simple, uncomfortable truth:  
@@ -69,7 +71,7 @@ Or you can make today the day you actually returned."
 
 ### 00:45 – 01:55 | SECTION 2: THE DIVINE PROMISE OF CHANGE
 **[VISUAL]**  
-*Macro shot of an ancient seed resting in fertile dark soil. A tiny green shoot breaks upward through the earth into warm, golden sunlight.*
+*Cinematic macro shot of a vibrant green plant sprout emerging gracefully from rich dark earth, morning dew drops glistening on fresh unfurling leaves under warm golden sunbeams.*
 
 **(VOICEOVER):**  
 "In Surah Ar-Ra'd, Allah makes an unconditional promise:
@@ -99,7 +101,7 @@ He is waiting for you to simply take the first step."
 
 ### 01:55 – 03:30 | SECTION 3: THE PARABLE OF THE GOOD TREE
 **[VISUAL]**  
-*A magnificent, ancient olive or cedar tree standing atop a luminous green hill at sunrise. Its trunk is massive and deeply textured; its roots visibly grip the ancient earth; its canopy spreads wide into a clean, azure sky.*
+*A monumental, ancient olive tree with massive deep roots gripping the earth on a lush green hilltop, vast vibrant green canopy spreading majestically toward an open clear blue sky, warm morning sunlight streaming through leaves.*
 
 **(VOICEOVER):**  
 "In Surah Ibrahim, Allah gives the most beautiful metaphor in the entire Qur'an for what your life looks like when it is anchored in revelation:
@@ -122,7 +124,7 @@ Because your roots are drinking from the eternal words of Allah."
 
 ### 03:30 – 04:45 | SECTION 4: TADABBUR — 30 DAYS FROM NOW
 **[VISUAL]**  
-*A quiet, clean room. A hand holding a pen over a completed reflection journal beside the open Qur'an. Calm, grounded breathing.*
+*High-speed macro slow-motion shot of an iridescent jewel-toned hummingbird hovering gracefully mid-air beside vibrant wild forest flowers, delicate wings beating smoothly in soft morning mist.*
 
 **(VOICEOVER):**  
 "Imagine yourself thirty days from now.
@@ -144,7 +146,7 @@ And for the first time in years, when you stand in prayer, your soul will be pre
 
 ### 04:45 – 06:00 | SECTION 5: THE COVENANT OF RETURN
 **[VISUAL]**  
-*A wide, breathtaking panoramic shot of an ancient stone pathway stretching across a mountain ridge toward the golden sunrise. Negative space above in the calm morning sky.*
+*Ultra-wide panoramic cinematic aerial glide over majestic emerald-green mountain ridges at sunset, dramatic natural waterfalls plunging into crystal clear valley rivers, golden amber light illuminating mist rising from the peaks.*
 
 **(VOICEOVER):**  
 "This was never meant to be just a ten-episode series.  
@@ -155,7 +157,7 @@ If you want to walk through all 114 surahs with us, our comprehensive guided ref
 
 Do not let today pass without touching the Book of Allah.  
 Take the Mushaf into your hands.  
-Kiss it. Open it. Read one verse.
+Open it. Read one verse.
 
 And remember the words that built this entire community:  
 **READ. REFLECT. RETURN.**
@@ -166,4 +168,3 @@ Assalamu alaykum wa rahmatullahi wa barakatuh."
 **HUURS STUDIO**  
 *Read. Reflect. Return.*  
 [Season 1 Complete | Free 7-Day Guide | 114 Surahs Guided Book in Description]
-

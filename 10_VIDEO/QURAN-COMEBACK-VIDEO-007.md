@@ -2,11 +2,11 @@
 artifact:
   artifact_id: QURAN-COMEBACK-VIDEO-007
   artifact_type: video_storyboard_specification
-  artifact_version: 1.0.0
+  artifact_version: 3.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN
   title: "Episode 7 Video Storyboard & Cinematic Shot List Specification"
-  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 7 (Surah Al-Muzzammil 73:4)."
+  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 7 (Surah Al-Muzzammil 73:4), incorporating new mandatory themes: Hourglass in Quiet Study, Full Moon & Stars over Desert Dunes, Arabian Horse Grazing in Desert Oasis, Hummingbird Hovering at Blossom, and Masjid an-Nabawi Sunrise."
   topic: "Video Direction & Cinematic Storyboard"
   language: en-US
   audience: "Video directors, AI video prompt engineers, motion designers, post-production editors"
@@ -14,15 +14,15 @@ artifact:
 provenance:
   parent_artifacts:
     - "file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-007.md"
-    - "file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-007.jpg"
+    - "file:///mnt/AI/ag/Campaign/00_BRAND/PERMANENT_QURANIC_THEMES.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Visual_System.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Campaign.md"
 
 lifecycle:
   status: approved
   created_by: AGENT-10
-  created_at: 2026-09-07T17:30:00Z
-  updated_at: 2026-09-07T17:30:00Z
+  created_at: 2026-09-11T01:54:00Z
+  updated_at: 2026-09-11T01:54:00Z
 
 verification:
   verification_status: verified
@@ -40,138 +40,80 @@ storage:
 
 **Campaign:** Come Back to the Qur'an  
 **Episode 7 Title:** *"Why Does Allah Ask Us to Read Slowly?"*  
-**Focal Scripture:** Surah Al-Muzzammil 73:4  
+**Focal Scripture:** Surah Al-Muzzammil 73:4 (*Wa-rattilil-Qur'āna tartīlā*)  
 **Assigned Agents:** `AGENT-10` (Video Agent) & `AGENT-08` (Visual Director)  
-**Visual Core Equation:** `NATURE + KNOWLEDGE + REFLECTION + TRANQUILITY = HUURS VISUAL LANGUAGE`  
+**Permanent Quranic Themes:** Hourglass in Still Study • Full Moon & Desert Stars • Arabian Horse Grazing • Hummingbird Hovering at Blossom • Masjid an-Nabawi Sunrise Architecture  
+**Theological Mandate:** Strict Traditional Sunni Orthodoxy • Absolute Zero-Human • Strict Zero-Music • 720p Hard Ceiling  
 
 ---
 
-## 1. Executive Cinematic Direction & Visual Rhythm
+## 1. Google Flow 1-Click Multi-Scene Prompt Block
 
-* **Cinematic Philosophy:** Moving contemplation. The camera never rushes; it breathes. Avoid all frantic YouTube tropes (no rapid cuts, no zoomer shakes, no neon graphics, no clickbait arrows).
-* **Aspect Ratio & Resolution:** 16:9 Widescreen (1280 × 720 HD Master, 24.00 fps) — HARD CEILING: 720p PER USER MANDATE.
-* **Color Palette & Atmosphere:** Midnight navy, beeswax gold, walnut wood, raw linen cream (#0B132B, #1C2541, #F4A261, #E76F51).
-* **Assigned Visual Motifs:** Shot E (Book), Shot C (Night / Candlelight), Shot B (Water Droplet), Shot F (Still Room).
-* **Hero Visual Key:** [`09_IMAGE/QURAN-COMEBACK-HERO-007.jpg`](file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-007.jpg)
-* **Default Visual Rhythm:**
-  - `0–3 sec`: Strong visual establishing shot + contemplative question.
-  - `3–10 sec`: Visual expansion and environmental development.
-  - `10–30 sec`: Insight, Ayah typography emergence in negative space.
-  - `30–45 sec`: Emotional and reflective depth.
-  - `45–60 sec+`: Quiet resolution and practical invitation.
+> **Instructions for Google Flow:** Copy and paste the prompts below directly into Google Flow / Veo (16:9, 720p, 24fps):
+
+```text
+=== EP07 SCENE 1 (The Hourglass in Quiet Study — Worldly Rush vs Stillness): ===
+Cinematic close-up of an antique glass and brass hourglass resting on a dark rustic wooden desk, fine pale sand grains trickling down slowly in absolute stillness, soft warm beeswax candlelight glowing in the background, deep contemplative atmosphere, 35mm fine art cinematography, 720p 24fps --ar 16:9 --res 720p --no humans, no hands, no books, no modern tech, unpopulated, no fantasy glow
+
+=== EP07 SCENE 2 (Full Moon & Stars over Desert Dunes — The Night Command): ===
+Wide cinematic shot of a radiant luminous full moon suspended in a deep midnight indigo sky filled with natural crystalline stars, casting soft silvery light across silent undulating desert sand dunes in Saudi Arabia, serene peaceful stillness of the night, 720p 24fps --ar 16:9 --res 720p --no people, no caravans, unpopulated, no neon colors, no fantasy glow
+
+=== EP07 SCENE 3 (Arabian Horse Grazing in Desert Oasis — Unhurried Dignity): ===
+Cinematic slow-motion shot of a magnificent noble dark Arabian horse grazing peacefully in a verdant desert oasis meadow at early sunrise, lush green palms and soft morning mist in the background, warm golden morning light glancing off sleek coat, profound calm and dignified slowness, 720p 24fps --ar 16:9 --res 720p --no humans, no riders, no saddles, no fences, unpopulated, no fantasy glow
+
+=== EP07 SCENE 4 (Hummingbird Hovering at Blossom — Slowness Transforms): ===
+High-speed macro cinematic slow-motion shot of a jewel-toned hummingbird hovering in mid-air beside vibrant mountain blossoms in Taif, rapid wings blurred softly into gentle motion while body remains completely calm and steady, warm morning sunbeams, pristine natural tranquility, 720p 24fps --ar 16:9 --res 720p --no people, no hands, unpopulated, no artificial digital effects
+
+=== EP07 SCENE 5 (Masjid an-Nabawi Sunrise Architecture — Quality Before Quantity): ===
+Majestic architectural telephoto shot of the white marble colonnade and giant courtyard sunshade umbrellas of Masjid an-Nabawi at quiet dawn, soft golden sunrise light sweeping across polished limestone courtyard flags, peaceful spiritual stillness, 720p 24fps --ar 16:9 --res 720p --no humans, no worshippers, no crowds visible, unpopulated, no modern vehicles, no fantasy glow
+```
 
 ---
 
 ## 2. Shot-by-Shot Production Sequence
 
-### Scene 1 (00:00–00:35): The Speed-Reading Illusion
+### Scene 1 (00:00–00:37.5): The Hourglass in Quiet Study (The Obsession with Speed)
+* **File Target:** `EP07_SCENE01.mp4` / `QURAN-COMEBACK-VEO-007-SCENE01.mp4`
+* **Theme Anchor:** Worldly rush vs. intentional slowing down
+* **Visual Framing & Action:** Antique hourglass on dark walnut wood, sand falling steadily, quiet candle flame in background. No book resting on desk.
+* **Camera Movement:** Extremely slow push-in macro tracking on the neck of the hourglass.
+* **Lighting:** Warm 2200K candlelight, deep shadows in background.
 
-* **Shot Primitive:** `Shot E (Book) / Rapid Cuts vs. Stillness`
-* **Visual Framing & Action:** Rapid, blurred montage of digital newsfeeds scrolling at dizzying speed, abruptly cutting to a dead stop: a single candle flame resting beside an open manuscript in absolute silence.
-* **Camera Movement:** Sudden transition from rapid shutter motion blur to an ultra-still, locked-off 24fps contemplative hold.
-* **Lighting & Atmosphere:** Flickering warm beeswax candlelight in an otherwise dark wooden library room.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'WHY ARE WE IN SUCH A RUSH?'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic shot of a single beeswax candle burning quietly next to an open classical manuscript on an antique walnut desk, deep shadow background, serene late-night study --ar 16:9 --no modern tech, excessive smoke`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+### Scene 2 (00:37.5–01:25.5): Full Moon & Stars over Desert Dunes (The Night Command: Wa-Rattil)
+* **File Target:** `EP07_SCENE02.mp4` / `QURAN-COMEBACK-VEO-007-SCENE02.mp4`
+* **Theme Anchor:** Surah Al-Muzzammil 73:1–4 (*Qum al-layla illā qalīlā... Wa rattilil-Qur'āna tartīlā*) & Surah Yunus 10:5
+* **Visual Framing & Action:** Silvery moonlight washing over Arabian desert dunes under a celestial star canopy.
+* **Camera Movement:** Slow horizontal pan revealing the expanse of the starry night sky.
+* **Lighting:** Cool silver moonlight and deep indigo sky.
 
----
+### Scene 3 (01:25.5–02:15.5): Arabian Horse Grazing in Desert Oasis (The Warning of Ibn Mas'ud)
+* **File Target:** `EP07_SCENE03.mp4` / `QURAN-COMEBACK-VEO-007-SCENE03.mp4`
+* **Theme Anchor:** Abdullah ibn Mas'ud's Athar: *"Do not scatter the Qur'an like poor dates tumbling from a tree... Stop at its wonders. Move your hearts with it."* (*As-Sāfināt al-Jiyād* / Surah Sad 38:31)
+* **Visual Framing & Action:** Noble Arabian horse grazing peacefully with graceful slow movement in a green palm oasis. Pure unhurried tranquility.
+* **Camera Movement:** Low eye-level slow tracking shot keeping the horse framed with soft morning light.
+* **Lighting:** Warm golden early morning sun glinting on dew.
 
-### Scene 2 (00:35–01:45): The Night Command: Wa-Rattil
+### Scene 4 (02:15.5–02:55.5): Hummingbird Hovering at Blossom (Why Slowness Heals)
+* **File Target:** `EP07_SCENE04.mp4` / `QURAN-COMEBACK-VEO-007-SCENE04.mp4`
+* **Theme Anchor:** Surah Al-Furqan 25:32 (*Deliberate stages to strengthen your heart*)
+* **Visual Framing & Action:** Jewel-toned hummingbird hovering in mid-air beside purple mountain blossoms in Taif mountain terraces. Stillness in the midst of flight.
+* **Camera Movement:** Macro telephoto locked-off focus with subtle drift.
+* **Lighting:** Warm natural morning daylight, soft bokeh background.
 
-* **Shot Primitive:** `Shot E (Book) / Macro Tartil`
-* **Visual Framing & Action:** Macro lens gliding slowly across the illuminated Arabic letters of Surah Al-Muzzammil verse 4: 'Wa-rattilil-Qur'āna tartīlā.' Every vocalization mark and diacritic is distinct.
-* **Camera Movement:** Extremely slow, measured lateral camera slider movement.
-* **Lighting & Atmosphere:** Warm golden candlelight grazing across the textured parchment surface, revealing fiber details.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'AND RECITE THE QUR'AN WITH MEASURED TARTIL' — 73:4"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Macro cinematography of illuminated Quranic verse 73:4, textured parchment fibers, classical calligraphy, warm golden candlelight grazing the paper, 720p --ar 16:9 --no CGI glow, distortion`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+### Scene 5 (02:55.5–03:36.5): Masjid an-Nabawi Sunrise Architecture (Quality Before Quantity)
+* **File Target:** `EP07_SCENE05.mp4` / `QURAN-COMEBACK-VEO-007-SCENE05.mp4`
+* **Theme Anchor:** Surah Al-Hajj 22:26 & Surah An-Nur 24:36 (*In houses which Allah has permitted to be raised*)
+* **Visual Framing & Action:** Symmetrical white marble colonnades and umbrellas of Masjid an-Nabawi basking in serene sunrise light. Pristine architectural stillness, zero humans visible.
+* **Camera Movement:** Smooth architectural slider move along the clean marble ground line.
+* **Lighting:** Radiant golden dawn rays, soft amber reflections on polished stone.
 
 ---
 
-### Scene 3 (01:45–02:55): Ibn Mas'ud's Warning: Do Not Scatter It Like Sand
+## 3. Assembly Specifications
 
-* **Shot Primitive:** `Shot B (Water Drop) / Ultra Slow Motion`
-* **Visual Framing & Action:** A handful of dry desert sand allowed to slip quickly through fingers, scattering into wind. Cut to contrast: a single water drop falling slowly into dry, fertile soil, being completely absorbed.
-* **Camera Movement:** 120fps high frame rate slowed to 24fps. Sand scattering vs. water nourishing.
-* **Lighting & Atmosphere:** Natural earth tones, crisp texture of soil grains absorbing water.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'DO NOT SCATTER IT LIKE CHEAP DATES. STOP AT ITS WONDERS.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic high-speed photography of a single clear water droplet falling onto rich dark garden soil and soaking deeply into the earth, macro view, life-giving nourishment metaphor --ar 16:9 --no cartoon water, artificial colors`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-### Scene 4 (02:55–04:00): Tadabbur: The Prophet ﷺ Weeping on One Ayah
-
-* **Shot Primitive:** `Shot F (Still Room) / Intimate Framing`
-* **Visual Framing & Action:** A prayer rug laid out in the quiet third of the night. A subtle breeze from an open window moves the hem of the curtain. The night is quiet and sacred.
-* **Camera Movement:** Static, deeply respectful wide framing with spacious negative space above.
-* **Lighting & Atmosphere:** Soft silver moonlight mixing gently with distant amber dawn on the floor.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'HE REPEATED ONE VERSE UNTIL MORNING BROKE'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic still shot of a simple hand-woven prayer rug in a quiet minimalist room at night, soft moonlight on wooden floorboards, tranquil night worship atmosphere --ar 16:9 --no people, ghosts, spooky shadows`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-### Scene 5 (04:00–05:00): Practical Action: Tonight's Experiment
-
-* **Shot Primitive:** `Shot E (Book) / Outro`
-* **Visual Framing & Action:** Hands gently placing a marker on a single verse. The book remains open, breathing with the reader.
-* **Camera Movement:** Slow pull-back leaving the viewer in contemplation.
-* **Lighting & Atmosphere:** Warm, peaceful twilight ambience.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'READ ONLY THREE VERSES TONIGHT. BUT READ THEM SLOWLY.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic shot of an open book on a wooden reading desk, soft night ambience, invitation to deep reflection, high dynamic range --ar 16:9 --no clutter, modern distractions`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-## 3. Post-Production Editing & Master Conformance
-
-* **Transitions:** Only natural cuts on movement, 1.5-second cross-dissolves, or organic fades through light. Glitch, spin, warp, and fast whip transitions are strictly prohibited.
-* **Color Grading LUT:** `HUURS_NATURAL_EARTH_V2` (Soft natural contrast, highlights rolled off at 92 IRE, rich shadows preserved at 5 IRE, zero green tint on skin tones, warm golden dawn tones).
-* **Visual Integrity Audit (`AGENT-16`):**
-  - [x] Zero humanoid depictions of prophets, companions, or angels.
-  - [x] Zero AI fantasy tropes (no neon glowing geometric holograms, no fake Arabic gibberish).
-  - [x] Negative space ratio: Minimum 40% open sky or neutral background across all shots.
-  - [x] Verified authentic Quranic script typography.
-
----
+* **Hardware Acceleration:** NVIDIA GeForce RTX 3060 12GB (h264_nvenc P7).
+* **Audio Track:** `11_AUDIO/EP07_audio.mp3` (EBU R128 `-14.0 LUFS`, Zero Music, 216.52s).
+* **Typography:** Burned-in IBM Plex Serif with subtitle formatting via `libass`.
+* **Trademark Watermark:** `HUURS STUDIO` (`white@0.22`, lower right).
+* **Master Output:** `10_VIDEO/renders/QURAN-COMEBACK-EP07-FULL-MASTER.mp4` (16:9, 720p).
+* **Short Output:** `10_VIDEO/renders/QURAN-COMEBACK-EP07-SHORT-001A.mp4` (9:16, 720x1280).

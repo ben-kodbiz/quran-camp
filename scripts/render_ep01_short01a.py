@@ -46,11 +46,13 @@ Dialogue: 0,0:00:27.60,0:00:30.00,ShortTitle,,0,0,0,,{\\fad(200,400)}Let's come 
 with open(SUBTITLE_FILE, "w", encoding="utf-8") as f:
     f.write(ass_content.strip())
 
+trademark_short = "drawtext=text='HUURS STUDIO':font='IBM Plex Serif':fontsize=14:fontcolor=white@0.22:x=w-tw-30:y=h-th-45"
+
 # Loop 10s video to 30.0s, crop center 9:16 (405x720) and scale to 720x1280
 filter_complex = (
     "[0:v]loop=loop=-1:size=240:start=0,trim=duration=30.0,"
     "crop=405:720:(in_w-405)/2:0,scale=720:1280:flags=lanczos,"
-    f"subtitles={SUBTITLE_FILE},"
+    f"{trademark_short},"
     "fade=t=in:st=0:d=0.5,"
     "fade=t=out:st=29.2:d=0.8,"
     "format=yuv420p[v_out];"
@@ -70,12 +72,10 @@ cmd = [
     "-map", "[v_out]",
     "-map", "[a_out]",
     "-t", "30.0",
-    "-c:v", "h264_nvenc",
-    "-preset", "p7",
-    "-tune", "hq",
-    "-rc", "vbr",
-    "-cq", "18",
-    "-b:v", "5M",
+    "-c:v", "libx264",
+    "-preset", "veryfast",
+    "-crf", "18",
+    "-pix_fmt", "yuv420p",
     "-c:a", "aac",
     "-b:a", "192k",
     "-movflags", "+faststart",

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Huurs Studio — Business Cards & Contemplation Anchor Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #131720;
+      --card-bg: #090c10;
+      --gold: #d4af37;
+      --gold-light: #f7edd0;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      gap: 3rem;
+    }
+
+    .header-bar {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .header-bar h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .header-bar p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .print-btn {
+      margin-top: 1rem;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.6rem;
+      border-radius: 9999px;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      transition: all 0.2s;
+    }
+
+    .print-btn:hover { background: #e5c04b; transform: translateY(-1px); }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      max-width: 900px;
+    }
+
+    /* Standard US Business Card: 3.5in x 2in (ratio 1.75:1) -> 420px x 240px */
+    .card-frame {
+      width: 420px;
+      height: 240px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-gold);
+      border-radius: 6px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .card-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, rgba(14, 18, 26, 0.75) 0%, rgba(9, 12, 16, 0.96) 90%);
+      z-index: 1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    /* Card Details */
+    .studio-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .studio-brand span {
+      color: var(--gold);
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      margin-top: 0.2rem;
+    }
+
+    .person-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    .person-role {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.1rem;
+    }
+
+    .contact-info {
+      font-size: 0.72rem;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-weight: 300;
+    }
+
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Back of Card */
+    .back-center {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 0.6rem;
+    }
+
+    .motto-gold {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      font-weight: 700;
+    }
+
+    .verse-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      max-width: 320px;
+      line-height: 1.4;
+    }
+
+    .verse-ref {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* QR Placeholder */
+    .qr-box {
+      width: 50px;
+      height: 50px;
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      background: rgba(0,0,0,0.5);
+      border-radius: 4px;
+    }
+
+    @media print {
+      body { background: transparent; padding: 0; gap: 1rem; }
+      .header-bar, .print-btn, .card-label { display: none; }
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10mm;
+      }
+      .card-frame {
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-bar">
+  <h1>HUURS STUDIO EXECUTIVE CALLING SUITE</h1>
+  <p>Standard 3.5" × 2.0" Premium Card Stock with Gold Foil Stamping Specifications</p>
+  <button class="print-btn" onclick="window.print()">Print / Export Cards (PDF)</button>
+</div>
+
+<div class="cards-grid">
+
+  <!-- ================= CARD 1: EXECUTIVE CALLING CARD (FRONT) ================= -->
+  <div>
+    <div class="card-label">01. Executive Card — Front</div>
+    <div class="card-frame" style="background-image: url('../assets/night_galaxy.jpg');">
+      <div class="card-content">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div class="studio-brand">
+            HUURS
+            <span>STUDIO</span>
+          </div>
+          <div style="font-size: 0.65rem; color: var(--gold); border: 1px solid var(--border-gold); padding: 0.2rem 0.5rem; border-radius: 9999px;">
+            FOUNDING PARTNER
+          </div>
+        </div>
+
+        <div>
+          <div class="person-name">OFFICE OF THE DIRECTORS</div>
+          <div class="person-role">Strategic Alliances & Waqf Endowments</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+          <div class="contact-info">
+            <div>invest@huurs.com • partner@huurs.com</div>
+            <div>https://huurs.com/portfolio</div>
+            <div>Autonomous Contemplative Media Guild</div>
+          </div>
+          <div class="qr-box">
+            PORTFOLIO
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CARD 1: EXECUTIVE CALLING CARD (BACK) ================= -->
+  <div>
+    <div class="card-label">01. Executive Card — Back (Foil Stamped)</div>
+    <div class="card-frame" style="background-image: url('../assets/masjid_nabawi.jpg');">
+      <div class="card-content">
+        <div class="back-center">
+          <div style="width: 24px; height: 1px; background: var(--gold);"></div>
+          <div class="motto-gold">READ. REFLECT. RETURN.</div>
+          <div class="verse-quote">
+            "And the enduring good deeds are better to your Lord for reward and better for hope."
+          </div>
+          <div class="verse-ref">— Surah Al-Kahf (18:46)</div>
+          <div style="width: 24px; height: 1px; background: var(--gold);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CARD 2: POCKET CONTEMPLATION ANCHOR (FRONT) ================= -->
+  <div>
+    <div class="card-label">02. Pocket Anchor Card — Front</div>
+    <div class="card-frame" style="background-image: url('../assets/stream_source.jpg');">
+      <div class="card-content">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.65rem; color: var(--gold-light); letter-spacing: 0.15em;">DAILY CONTEMPLATION ANCHOR</span>
+          <span style="font-size: 0.65rem; color: var(--text-muted);">HUURS STUDIO</span>
+        </div>
+
+        <div style="text-align: center; margin: 0.5rem 0;">
+          <div style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); margin-bottom: 0.3rem;">
+            RABBI-SHRAH LI SADRI
+          </div>
+          <div class="verse-quote" style="font-size: 0.88rem; max-width: 340px; margin: 0 auto;">
+            "My Lord, expand for me my chest, and ease for me my task, and untie the knot from my tongue."
+          </div>
+          <div class="verse-ref" style="margin-top: 0.2rem;">Surah Ta-Ha (20:25–27)</div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4rem; font-size: 0.68rem; color: #94a3b8; text-align: center;">
+          When worldly pressure constricts your chest: Disconnect for 5 minutes. Return to Him.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CARD 2: POCKET CONTEMPLATION ANCHOR (BACK) ================= -->
+  <div>
+    <div class="card-label">02. Pocket Anchor Card — Back</div>
+    <div class="card-frame" style="background-image: url('../assets/hero_oasis.jpg');">
+      <div class="card-content">
+        <div class="back-center">
+          <div style="font-size: 0.75rem; color: var(--gold); letter-spacing: 0.15em; font-family: 'Cinzel', serif;">
+            OFFLINE CONTEMPLATION AUDIO VAULT
+          </div>
+          <p style="font-size: 0.72rem; color: #cbd5e1; max-width: 300px; line-height: 1.4;">
+            Scan to access all 20 unhurried, broadcast-mastered Quranic audio reflections with zero music.
+          </p>
+          <div class="qr-box" style="width: 55px; height: 55px; font-size: 0.65rem; margin: 0.2rem 0;">
+            SCAN ME
+          </div>
+          <div style="font-size: 0.65rem; color: var(--gold-light);">huurs.com/return</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

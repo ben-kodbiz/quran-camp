@@ -2,11 +2,11 @@
 artifact:
   artifact_id: QURAN-COMEBACK-VIDEO-008
   artifact_type: video_storyboard_specification
-  artifact_version: 1.0.0
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN
   title: "Episode 8 Video Storyboard & Cinematic Shot List Specification"
-  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 8 (Surah Ta-Ha 20:2)."
+  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 8 (Surah Ta-Ha 20:2), integrating permanent themes (Peacock in Courtyard Garden, Taif Mountain Terraces, Honeybees on Honeycomb, Water Droplet Carving Stone, and Hegra in Al-Ula at Sunset)."
   topic: "Video Direction & Cinematic Storyboard"
   language: en-US
   audience: "Video directors, AI video prompt engineers, motion designers, post-production editors"
@@ -14,15 +14,15 @@ artifact:
 provenance:
   parent_artifacts:
     - "file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-008.md"
-    - "file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-008.jpg"
+    - "file:///mnt/AI/ag/Campaign/00_BRAND/PERMANENT_QURANIC_THEMES.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Visual_System.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Campaign.md"
 
 lifecycle:
   status: approved
   created_by: AGENT-10
-  created_at: 2026-09-07T17:30:00Z
-  updated_at: 2026-09-07T17:30:00Z
+  created_at: 2026-09-11T02:08:00Z
+  updated_at: 2026-09-11T02:08:00Z
 
 verification:
   verification_status: verified
@@ -40,138 +40,80 @@ storage:
 
 **Campaign:** Come Back to the Qur'an  
 **Episode 8 Title:** *"A Qur'an Routine for Someone Who Has No Time"*  
-**Focal Scripture:** Surah Ta-Ha 20:2  
+**Focal Scripture:** Surah Ta-Ha 20:2 (*Mā anzalnā 'alayka al-Qur'āna li-tashqā*)  
 **Assigned Agents:** `AGENT-10` (Video Agent) & `AGENT-08` (Visual Director)  
-**Visual Core Equation:** `NATURE + KNOWLEDGE + REFLECTION + TRANQUILITY = HUURS VISUAL LANGUAGE`  
+**Permanent Quranic Themes:** Peacock in Courtyard Garden • Taif Mountain Terraces • Honeybees on Honeycomb • Water Droplet on Stone • Hegra Monumental Facade in Al-Ula  
+**Theological Mandate:** Strict Traditional Sunni Orthodoxy • Absolute Zero-Human • Strict Zero-Music • 720p Hard Ceiling  
 
 ---
 
-## 1. Executive Cinematic Direction & Visual Rhythm
+## 1. Google Flow 1-Click Multi-Scene Prompt Block
 
-* **Cinematic Philosophy:** Moving contemplation. The camera never rushes; it breathes. Avoid all frantic YouTube tropes (no rapid cuts, no zoomer shakes, no neon graphics, no clickbait arrows).
-* **Aspect Ratio & Resolution:** 16:9 Widescreen (1280 × 720 HD Master, 24.00 fps) — HARD CEILING: 720p PER USER MANDATE.
-* **Color Palette & Atmosphere:** Morning terracotta, porcelain white, calm celadon green, warm oak (#F3E9D2, #C6DABF, #88D49E, #1A4314).
-* **Assigned Visual Motifs:** Shot E (Book), Shot F (Morning Room), Shot B (Water Drop on Stone), Shot D (Pathway).
-* **Hero Visual Key:** [`09_IMAGE/QURAN-COMEBACK-HERO-008.jpg`](file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-008.jpg)
-* **Default Visual Rhythm:**
-  - `0–3 sec`: Strong visual establishing shot + contemplative question.
-  - `3–10 sec`: Visual expansion and environmental development.
-  - `10–30 sec`: Insight, Ayah typography emergence in negative space.
-  - `30–45 sec`: Emotional and reflective depth.
-  - `45–60 sec+`: Quiet resolution and practical invitation.
+> **Instructions for Google Flow:** Copy and paste the prompts below directly into Google Flow / Veo (16:9, 720p, 24fps):
+
+```text
+=== EP08 SCENE 1 (Peacock in Courtyard Garden — Breaking the Frantic Rush): ===
+Cinematic slow-motion shot of a magnificent peacock standing in a tranquil stone courtyard garden at early morning, long iridescent sapphire and emerald tail feathers gently trailing over polished limestone flags, warm amber sunrise rays filtering through carved arches, deep majestic stillness, 720p 24fps --ar 16:9 --res 720p --no humans, no crowds, unpopulated, no modern items, no fantasy glow
+
+=== EP08 SCENE 2 (Taif Mountain Terraces at Sunrise — Not Sent for Distress): ===
+Wide aerial slow cinematic glide over lush green terraced mountain ridges and rose fields in Taif, soft morning mist drifting through deep valleys as warm golden dawn sunlight illuminates ancient stone terraces, profound natural relief and serenity, 720p 24fps --ar 16:9 --res 720p --no people, no buildings, unpopulated, no roads, no fantasy glow
+
+=== EP08 SCENE 3 (Honeybees on Honeycomb in Oasis — Consistent Small Habits): ===
+Extreme macro cinematic shot of golden honeybees moving rhythmically and methodically across a natural wax honeycomb inside a hollow tree trunk in a palm oasis, translucent drops of pure amber honey glistening in soft morning sunbeams, divine order and patient labor, 720p 24fps --ar 16:9 --res 720p --no humans, no beekeepers, no artificial hives, unpopulated, no fantasy glow
+
+=== EP08 SCENE 4 (Water Droplet Carving Stone — Persistence Over Power): ===
+Cinematic high-speed macro shot of pure crystal-clear water droplets falling one by one at steady intervals onto a dark ancient river boulder, smooth circular polished hollow carved deep into the stone surface over centuries, delicate water splash ripples, 720p 24fps --ar 16:9 --res 720p --no humans, no hands, unpopulated, no artificial digital effects
+
+=== EP08 SCENE 5 (Hegra Monumental Facade in Al-Ula at Sunset — Standing Firm): ===
+Wide panoramic cinematic telephoto shot of an ancient monumental tomb facade carved into towering golden-red sandstone cliffs of Hegra in Al-Ula, vast silent desert dunes stretching to the horizon, bathed in luminous warm amber sunset light, timeless endurance and steadfast peace, 720p 24fps --ar 16:9 --res 720p --no humans, no tourists, unpopulated, no vehicles, no fantasy glow
+```
 
 ---
 
 ## 2. Shot-by-Shot Production Sequence
 
-### Scene 1 (00:00–00:35): The All-or-Nothing Trap
+### Scene 1 (00:00–00:35): Peacock in Courtyard Garden (The All-or-Nothing Trap)
+* **File Target:** `EP08_SCENE01.mp4` / `QURAN-COMEBACK-VEO-008-SCENE01.mp4`
+* **Theme Anchor:** Breaking the frantic, chaotic cycle with unhurried beauty
+* **Visual Framing & Action:** Magnificent peacock walking slowly across a courtyard garden, tail feathers catching early sunlight.
+* **Camera Movement:** Smooth eye-level tracking shot following the peacock's dignified movement.
+* **Lighting:** Warm early morning sunrise, soft shadows.
 
-* **Shot Primitive:** `Shot F (Morning Desk) / Close-up`
-* **Visual Framing & Action:** An ambitious 30-day Ramadan study chart filled with unchecked boxes, abandoned after day three. A subtle, relatable depiction of burnout and guilt.
-* **Camera Movement:** Slow tilt down from the wall chart to a simple, quiet desk with just one open book and a cup of tea.
-* **Lighting & Atmosphere:** Soft, honest morning daylight.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'HAVE YOU EVER SET A GOAL TO READ AN ENTIRE JUZ... AND GAVE UP?'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic documentary shot of a quiet morning work desk, simple ceramic cup of tea with steam rising, an open notebook, natural light through window, peaceful realism --ar 16:9 --no chaotic messy trash, stylized depression`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+### Scene 2 (00:35–01:45): Taif Terraced Mountains at Sunrise (Not Sent for Distress)
+* **File Target:** `EP08_SCENE02.mp4` / `QURAN-COMEBACK-VEO-008-SCENE02.mp4`
+* **Theme Anchor:** Surah Ta-Ha 20:2 (*We have not sent down to you the Quran that you should be distressed*)
+* **Visual Framing & Action:** Majestic terraced mountain slopes of Taif emerging through morning mist and golden sunlight.
+* **Camera Movement:** Slow sweeping aerial dolly drift.
+* **Lighting:** Warm pastel golden dawn, lush green highlights.
 
----
+### Scene 3 (01:45–03:15): Honeybees on Natural Honeycomb (The 10-Minute Method)
+* **File Target:** `EP08_SCENE03.mp4` / `QURAN-COMEBACK-VEO-008-SCENE03.mp4`
+* **Theme Anchor:** Prophetic Hadith: *"The most beloved deeds to Allah are those that are most consistent, even if small."* (Sahih al-Bukhari) & Surah An-Nahl 16:68–69
+* **Visual Framing & Action:** Macro focus on golden honeybees working harmoniously on natural honeycomb with amber drops of honey.
+* **Camera Movement:** Macro slow rotational pan around the comb cells.
+* **Lighting:** Natural diffuse warm sunlight.
 
-### Scene 2 (00:35–01:45): Not Sent for Your Distress
+### Scene 4 (03:15–04:15): Water Droplet Carving Stone (Tadabbur — Small Consistent Effort)
+* **File Target:** `EP08_SCENE04.mp4` / `QURAN-COMEBACK-VEO-008-SCENE04.mp4`
+* **Theme Anchor:** Surah Al-Baqarah 2:74 (*And indeed, from them are stones from which rivers gush forth*)
+* **Visual Framing & Action:** Rhythmic, patient water droplet falling on ancient carved sandstone hollow.
+* **Camera Movement:** Slow-motion macro shot centered on the point of impact.
+* **Lighting:** Cool morning shadow with crystal water highlights.
 
-* **Shot Primitive:** `Shot E (Book) / Luminous Close-up`
-* **Visual Framing & Action:** Close-up of the opening words of Surah Ta-Ha: 'Mā anzalnā 'alayka al-Qur'āna li-tashqā.' The words feel like a soothing balm on an exhausted soul.
-* **Camera Movement:** Slow gentle rack focus across the text.
-* **Lighting & Atmosphere:** Luminous morning amber light washing over the page.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'WE HAVE NOT SENT DOWN TO YOU THE QUR'AN THAT YOU BE DISTRESSED' — 20:2"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Artistic macro shot of Quranic calligraphy of Surah Ta-Ha 20:2, soft warm sunbeam crossing the words, soothing healing atmosphere, photorealistic --ar 16:9 --no gold glitter explosion, CGI effects`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+### Scene 5 (04:15–05:00): Hegra Monumental Facade in Al-Ula at Sunset (Commitment to King of Kings)
+* **File Target:** `EP08_SCENE05.mp4` / `QURAN-COMEBACK-VEO-008-SCENE05.mp4`
+* **Theme Anchor:** Surah Al-Hijr 15:80 & Surah Ta-Ha 20:14
+* **Visual Framing & Action:** Immovable ancient carved sandstone facade of Hegra in Al-Ula standing in silent majesty as sunset colors the desert sky.
+* **Camera Movement:** Telephoto slow pull-back revealing the scale of the ancient desert cliff.
+* **Lighting:** Deep amber and violet golden hour.
 
 ---
 
-### Scene 3 (01:45–03:15): The 10-Minute Daily Protocol
+## 3. Assembly Specifications
 
-* **Shot Primitive:** `Shot F (Morning Room) / Sequential Splits`
-* **Visual Framing & Action:** Three quiet steps shown with visual elegance: 1) A phone placed inside a wooden drawer that closes softly. 2) Clean water touching wrists in wudu. 3) Opening the book at a designated morning spot.
-* **Camera Movement:** Three clean, unhurried shots linked with soft match-dissolves.
-* **Lighting & Atmosphere:** Fresh, pristine morning daylight throughout.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'TEN MINUTES. EVERY SINGLE DAY. WITHOUT FAIL.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic sequence showing simple morning routine: closing a phone in a wooden drawer, fresh clear water droplets, opening a book at dawn, peaceful habit building --ar 16:9 --no modern brand logos, plastic`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-### Scene 4 (03:15–04:15): Tadabbur: The Water Drop on Granite
-
-* **Shot Primitive:** `Shot B (Water on Stone) / Macro Persistence`
-* **Visual Framing & Action:** A continuous, rhythmic drop of pure water landing on ancient granite rock. Over time, the relentless small drops have carved a smooth, perfect bowl into the stone.
-* **Camera Movement:** Macro lens capturing the rhythmic impact of each drop at 60fps.
-* **Lighting & Atmosphere:** Pristine natural daylight, crystalline droplets.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'SMALL CONSTANT DEEDS ARE MOST BELOVED TO ALLAH'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Macro cinematic shot of water drops falling persistently on an ancient smooth river stone, creating an elegant groove over time, consistency metaphor, documentary style --ar 16:9 --no cartoon water, artificial CGI`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-### Scene 5 (04:15–05:00): Practical Action: Ten Minutes Tomorrow Dawn
-
-* **Shot Primitive:** `Shot D (Pathway) / Wide Outro`
-* **Visual Framing & Action:** A sunlit path through a morning park, dew glittering on fresh grass, empty bench bathed in early sun.
-* **Camera Movement:** Slow camera push forward into the tranquil morning landscape.
-* **Lighting & Atmosphere:** Warm, welcoming sunrise light.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'PROTECT YOUR TEN MINUTES TOMORROW.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Wide scenic shot of a serene garden pathway at dawn, sunlight streaming through morning mist, quiet peaceful day beginning, 8k landscape --ar 16:9 --no people, modern buildings, cars`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-## 3. Post-Production Editing & Master Conformance
-
-* **Transitions:** Only natural cuts on movement, 1.5-second cross-dissolves, or organic fades through light. Glitch, spin, warp, and fast whip transitions are strictly prohibited.
-* **Color Grading LUT:** `HUURS_NATURAL_EARTH_V2` (Soft natural contrast, highlights rolled off at 92 IRE, rich shadows preserved at 5 IRE, zero green tint on skin tones, warm golden dawn tones).
-* **Visual Integrity Audit (`AGENT-16`):**
-  - [x] Zero humanoid depictions of prophets, companions, or angels.
-  - [x] Zero AI fantasy tropes (no neon glowing geometric holograms, no fake Arabic gibberish).
-  - [x] Negative space ratio: Minimum 40% open sky or neutral background across all shots.
-  - [x] Verified authentic Quranic script typography.
-
----
+* **Hardware Acceleration:** NVIDIA GeForce RTX 3060 12GB (h264_nvenc P7).
+* **Audio Track:** `11_AUDIO/EP08_audio.mp3` (EBU R128 `-14.0 LUFS`, Zero Music).
+* **Typography:** Burned-in IBM Plex Serif with subtitle formatting via `libass`.
+* **Trademark Watermark:** `HUURS STUDIO` (`white@0.22`, lower right).
+* **Master Output:** `10_VIDEO/renders/QURAN-COMEBACK-EP08-FULL-MASTER.mp4` (16:9, 720p).
+* **Short Output:** `10_VIDEO/renders/QURAN-COMEBACK-EP08-SHORT-001A.mp4` (9:16, 720x1280).

@@ -2,11 +2,11 @@
 artifact:
   artifact_id: QURAN-COMEBACK-VIDEO-010
   artifact_type: video_storyboard_specification
-  artifact_version: 1.0.0
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN
-  title: "Episode 10 Video Storyboard & Cinematic Shot List Specification"
-  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 10 (Surah Ar-Ra'd 13:11 & Surah Ibrahim 14:24–25)."
+  title: "Episode 10 Video Storyboard & Cinematic Shot List Specification (Season Finale)"
+  description: "Comprehensive visual storyboard, living creation shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Season Finale Episode 10 (Surah Ar-Ra'd 13:11 & Surah Ibrahim 14:24–25)."
   topic: "Video Direction & Cinematic Storyboard"
   language: en-US
   audience: "Video directors, AI video prompt engineers, motion designers, post-production editors"
@@ -14,7 +14,7 @@ artifact:
 provenance:
   parent_artifacts:
     - "file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-010.md"
-    - "file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-010.jpg"
+    - "file:///mnt/AI/ag/Campaign/00_BRAND/PERMANENT_QURANIC_THEMES.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Visual_System.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Campaign.md"
 
@@ -22,7 +22,7 @@ lifecycle:
   status: approved
   created_by: AGENT-10
   created_at: 2026-09-07T17:30:00Z
-  updated_at: 2026-09-07T17:30:00Z
+  updated_at: 2026-09-11T02:35:00Z
 
 verification:
   verification_status: verified
@@ -36,142 +36,97 @@ storage:
   filename: QURAN-COMEBACK-VIDEO-010.md
 ---
 
-# Episode 10 Video Storyboard Specification (`QURAN-COMEBACK-VIDEO-010`)
+# Episode 10 Video Storyboard Specification — Season Finale (`QURAN-COMEBACK-VIDEO-010`)
 
 **Campaign:** Come Back to the Qur'an  
 **Episode 10 Title:** *"30 Days From Now, You Could Be Different"*  
 **Focal Scripture:** Surah Ar-Ra'd 13:11 & Surah Ibrahim 14:24–25  
 **Assigned Agents:** `AGENT-10` (Video Agent) & `AGENT-08` (Visual Director)  
 **Visual Core Equation:** `NATURE + KNOWLEDGE + REFLECTION + TRANQUILITY = HUURS VISUAL LANGUAGE`  
+**Living Creation Directive (Final 50th Clip Milestone):** 100% Living nature, ocean dawn, sprouting seedling, ancient rooted olive tree, hovering hummingbird, and epic mountain waterfalls at sunset. Absolute Zero-Human Mandate.
 
 ---
 
 ## 1. Executive Cinematic Direction & Visual Rhythm
 
-* **Cinematic Philosophy:** Moving contemplation. The camera never rushes; it breathes. Avoid all frantic YouTube tropes (no rapid cuts, no zoomer shakes, no neon graphics, no clickbait arrows).
+* **Cinematic Philosophy:** Conclusive, uplifting, spiritual permanence. Moving contemplation celebrating the beauty of divine creation and the rooted soul.
 * **Aspect Ratio & Resolution:** 16:9 Widescreen (1280 × 720 HD Master, 24.00 fps) — HARD CEILING: 720p PER USER MANDATE.
-* **Color Palette & Atmosphere:** Rich emerald green, deep cedar brown, radiant dawn gold, crystal river blue (#2D6A4F, #1B4332, #D8F3DC, #DDA15E).
-* **Assigned Visual Motifs:** Shot C (The Good Tree), Shot B (River Flow), Shot D (Open Summit Pathway), Shot E (Book).
-* **Hero Visual Key:** [`09_IMAGE/QURAN-COMEBACK-HERO-010.jpg`](file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-010.jpg)
-* **Default Visual Rhythm:**
-  - `0–3 sec`: Strong visual establishing shot + contemplative question.
-  - `3–10 sec`: Visual expansion and environmental development.
-  - `10–30 sec`: Insight, Ayah typography emergence in negative space.
-  - `30–45 sec`: Emotional and reflective depth.
-  - `45–60 sec+`: Quiet resolution and practical invitation.
+* **Color Palette & Atmosphere:** Deep olive emerald, sunlit earth brown, pastel dawn blue, and golden-hour sunset amber.
+* **Assigned Visual Motifs:**
+  - Scene 1: Ocean Coastline & Soaring White Birds (Dawn of Return)
+  - Scene 2: Living Green Plant Sprout Emerging From Dark Earth (Divine Promise of Renewal)
+  - Scene 3: Monumental Ancient Olive Tree with Deep Roots (The Parable of the Good Tree)
+  - Scene 4: Iridescent Jewel Hummingbird Hovering at Forest Blossom (Continuous Delicate Nourishment)
+  - Scene 5: Panoramic Mountain Ridges & Cascading Waterfalls at Sunset (The Covenant of Return)
 
 ---
 
 ## 2. Shot-by-Shot Production Sequence
 
-### Scene 1 (00:00–00:45): The Mountain Summit View
-
-* **Shot Primitive:** `Shot D (Summit Pathway) / Ultra-Wide`
-* **Visual Framing & Action:** Standing at the crest of a high, serene mountain peak at dawn. Looking back across the winding valley path traversed over the previous nine episodes. The air is pure, crisp, and elevated.
-* **Camera Movement:** Slow, breathtaking panoramic sweep across the mountain ridge.
-* **Lighting & Atmosphere:** Full golden sunrise illuminating mist-filled valleys below.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'LOOK HOW FAR YOU HAVE COME.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic ultra-wide shot of a mountain summit at sunrise, panoramic view over sunlit misty valleys below, sense of elevation, journey completed, sublime serenity --ar 16:9 --no hikers, modern gear`
+### Scene 1 (00:00–00:45): Looking Back at the Journey & Ocean Dawn
+* **Shot Primitive:** `Shot A (Ocean Dawn & Birds) / Wide Horizon`
+* **Visual Framing & Action:** Vast tranquil ocean coastline at golden sunrise with gentle pastel waves and solitary white sea birds gliding across a clear morning sky.
+* **Camera Movement:** Smooth, wide horizontal track along the shoreline.
+* **Lighting & Atmosphere:** Gentle pastel morning light, wide calm negative space.
+* **Google Flow (Veo 3.1 720p) Prompt:**
+  > **Prompt:** `Cinematic wide shot of a vast tranquil ocean coastline at golden sunrise, gentle rhythmic pastel blue waves rolling onto clean natural shores, solitary white sea birds gliding effortlessly across an open pastel sky with generous negative space, peaceful dawn of a new life, 35mm fine art landscape, 720p 24fps --ar 16:9 --res 720p --no humans, no boats, no buildings, unpopulated, no text`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 2 (00:45–01:55): The Divine Law of Transformation
-
-* **Shot Primitive:** `Shot B (River) / Flowing Renewal`
-* **Visual Framing & Action:** A powerful, calm, crystal-clear river flowing through a fertile plain, nourishing ancient orchards along its banks. Life flourishes wherever the water reaches.
-* **Camera Movement:** Smooth aerial glide following the river's unhurried curve through green pastures.
-* **Lighting & Atmosphere:** Brilliant morning sunlight reflecting like diamonds on the water surface.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'ALLAH WILL NOT CHANGE THE CONDITION OF A PEOPLE UNTIL THEY CHANGE WHAT IS IN THEMSELVES' — 13:11"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic wide tracking shot of a beautiful winding river through lush green valleys, morning sun sparkling on water, nature flourishing, metaphor of spiritual renewal --ar 16:9 --no industrial dams, pollution`
+### Scene 2 (00:45–01:55): The Divine Promise of Change & Sprouting Seed
+* **Shot Primitive:** `Shot B (Sprouting Seedling) / Macro Vitality`
+* **Visual Framing & Action:** A vibrant green sprout unfurling from rich dark soil in warm morning sunbeams, dewdrops glistening on its fresh leaves.
+* **Camera Movement:** Close macro push-in with shallow depth of field.
+* **Lighting & Atmosphere:** Warm morning sunbeams penetrating the soil surface.
+* **Google Flow (Veo 3.1 720p) Prompt:**
+  > **Prompt:** `Cinematic macro shot of a vibrant green plant sprout emerging gracefully from rich dark earth, morning dew drops glistening on fresh unfurling leaves under warm golden sunbeams, gentle breathing motion of new living growth, BBC Earth documentary cinematography, 720p 24fps --ar 16:9 --res 720p --no humans, no hands, no tools, unpopulated, no text`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 3 (01:55–03:30): The Parable of the Good Tree
-
-* **Shot Primitive:** `Shot C (The Good Tree) / Majestic Wide to Macro`
-* **Visual Framing & Action:** A magnificent ancient cedar or oak tree standing in solitary majesty on a fertile hill. Its massive trunk shows deep bark textures; thick roots dig firmly into dark earth; branches spread wide into the blue sky bearing sweet fruit.
-* **Camera Movement:** Slow crane up from the deep roots in the soil, past the strong trunk, into the sunlit leaves.
-* **Lighting & Atmosphere:** Warm, golden morning light filtering through dense green canopy.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'A GOOD WORD IS LIKE A GOOD TREE — ROOTS FIRM, BRANCHES IN HEAVEN' — 14:24"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Majestic cinematic shot of an ancient grand oak tree in an open green meadow, deep strong roots anchored in soil, wide leafy branches reaching toward heaven, morning sunlight filtering through leaves, hyper-detailed --ar 16:9 --no magical glow, cartoon trees`
+### Scene 3 (01:55–03:30): The Parable of the Good Tree (Shajaratin Tayyibatin)
+* **Shot Primitive:** `Shot C (Ancient Olive Tree) / Grounded Permanence`
+* **Visual Framing & Action:** A monumental ancient olive tree on a lush green hilltop, its massive gnarled roots gripping the earth and its canopy reaching high into a clean blue sky.
+* **Camera Movement:** Low-angle slow tracking shot looking upward through the branches.
+* **Lighting & Atmosphere:** Golden morning sunbeams streaming through emerald olive leaves.
+* **Google Flow (Veo 3.1 720p) Prompt:**
+  > **Prompt:** `Cinematic low-angle tracking shot of a monumental ancient olive tree with massive deep roots gripping the earth on a lush green hilltop, vast vibrant green canopy spreading majestically toward an open clear blue sky, warm morning sunlight streaming through leaves, grounded strength and permanence, National Geographic fine art nature, 720p 24fps --ar 16:9 --res 720p --no humans, no fences, no modern structures, unpopulated, no text`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 4 (03:30–04:45): Tadabbur: 30 Days From Now
-
-* **Shot Primitive:** `Shot E (Book) & Shot F (Study Alcove) / Warm Portrait`
-* **Visual Framing & Action:** A quiet study alcove bathed in warm light. An individual sits with open Qur'an and a personal contemplation journal. They write down a single sincere insight, close the journal, and smile with deep interior peace.
-* **Camera Movement:** Slow, intimate 50mm lens shot at eye level, quiet breathing cadence.
-* **Lighting & Atmosphere:** Soft, warm natural window light; gentle linen textures.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'THIRTY DAYS FROM NOW... YOUR HEART WILL BE ANCHORED.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic intimate shot of an open Qur'an and a linen-bound journal on a rustic wooden table, soft morning window light, feeling of deep lasting transformation and peace --ar 16:9 --no digital gadgets, clutter`
+### Scene 4 (03:30–04:45): Tadabbur — 30 Days From Now & Hummingbird
+* **Shot Primitive:** `Shot D (Hummingbird at Blossom) / Wildlife Macro`
+* **Visual Framing & Action:** An iridescent jewel-toned hummingbird hovering in mid-air beside vibrant wild forest flowers, wings beating in high-speed slow motion in a misty forest.
+* **Camera Movement:** Macro telephoto hold on the hummingbird.
+* **Lighting & Atmosphere:** Soft morning jungle mist, sunbeams filtering through dense foliage.
+* **Google Flow (Veo 3.1 720p) Prompt:**
+  > **Prompt:** `High-speed macro slow-motion shot of an iridescent jewel-toned hummingbird hovering gracefully mid-air beside vibrant wild forest flowers, delicate wings beating smoothly, soft morning mist and warm sunbeams filtering through dense green canopy, BBC Earth wildlife cinematography, 720p 24fps --ar 16:9 --res 720p --no humans, no cages, no feeders, unpopulated, no text`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 5 (04:45–06:00): The Covenant of Return: Season 1 Finale
-
-* **Shot Primitive:** `Shot A (Horizon) & Shot G (Birds in Sky) / Grand Finale`
-* **Visual Framing & Action:** Flock of white birds taking flight into the expansive, luminous morning sky over an open sea horizon. The camera watches them soar freely into the infinite blue.
-* **Camera Movement:** Slow, expansive tilt up into the boundless sky as the birds ascend into the sunlight.
-* **Lighting & Atmosphere:** Pure, brilliant morning light; clean fade to serene white/parchment background.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'READ. REFLECT. LIVE. COME BACK TO THE QUR'AN.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic wide shot of birds flying gracefully across a vast, radiant morning sky over a calm sea, metaphor of spiritual freedom and Tawakkul, National Geographic fine art --ar 16:9 --no jet planes, distorted birds`
+### Scene 5 (04:45–06:00): The Covenant of Return & Mountain Waterfalls
+* **Shot Primitive:** `Shot E (Panoramic Mountain Waterfalls) / Grand Finale`
+* **Visual Framing & Action:** Panoramic aerial glide over majestic emerald-green mountain peaks at sunset, with cascading waterfalls plunging into a crystal river valley below a radiant amber sky.
+* **Camera Movement:** Epic slow panoramic aerial glide.
+* **Lighting & Atmosphere:** Late afternoon golden hour, amber sunbeams bathing mountain ridges.
+* **Google Flow (Veo 3.1 720p) Prompt:**
+  > **Prompt:** `Ultra-wide panoramic cinematic aerial glide over majestic emerald-green mountain ridges at sunset, dramatic natural waterfalls plunging into crystal clear valley rivers, golden amber light illuminating mist rising from the peaks with vast tranquil negative space, fine art National Geographic landscape, 720p 24fps --ar 16:9 --res 720p --no humans, no roads, no buildings, unpopulated, no text`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
 ## 3. Post-Production Editing & Master Conformance
 
-* **Transitions:** Only natural cuts on movement, 1.5-second cross-dissolves, or organic fades through light. Glitch, spin, warp, and fast whip transitions are strictly prohibited.
-* **Color Grading LUT:** `HUURS_NATURAL_EARTH_V2` (Soft natural contrast, highlights rolled off at 92 IRE, rich shadows preserved at 5 IRE, zero green tint on skin tones, warm golden dawn tones).
+* **Transitions:** Only natural cuts on movement, 1.5-second cross-dissolves, or organic fades through light.
+* **Color Grading LUT:** `HUURS_NATURAL_EARTH_V2` (Soft natural contrast, highlights rolled off at 92 IRE, rich shadows preserved at 5 IRE).
 * **Visual Integrity Audit (`AGENT-16`):**
   - [x] Zero humanoid depictions of prophets, companions, or angels.
-  - [x] Zero AI fantasy tropes (no neon glowing geometric holograms, no fake Arabic gibberish).
+  - [x] Absolute Zero-Human Mandate: zero people, faces, silhouettes, or hands across all 5 scenes.
+  - [x] Full Living Creation Mandate compliance: ocean dawn, sprouting seedling, ancient olive tree, hummingbird, and mountain waterfalls.
   - [x] Negative space ratio: Minimum 40% open sky or neutral background across all shots.
-  - [x] Verified authentic Quranic script typography.
+  - [x] 50-Clip Vault Completion: This episode marks the final 5 clips to reach 50/50 clips in the Master B-Roll Vault.
 
 ---

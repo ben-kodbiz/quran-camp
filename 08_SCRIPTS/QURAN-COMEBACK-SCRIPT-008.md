@@ -48,7 +48,7 @@ storage:
 
 ### 00:00 – 00:35 | SECTION 1: THE ALL-OR-NOTHING TRAP
 **[VISUAL]**  
-*Time-lapse of a busy city at dawn transitioning into chaotic morning traffic, commuter trains, and people rushing with coffee cups. Sudden cut to a quiet room: a closed Qur'an gathering a faint film of dust on a shelf.*
+*A magnificent peacock standing gracefully in a quiet sunlit courtyard garden, iridescent emerald and sapphire tail feathers catching the morning light as it moves with unhurried dignity.*
 
 **(VOICEOVER):**  
 "Here is a cycle you might recognize:
@@ -69,7 +69,7 @@ And it is destroying our relationship with the Book of Allah."
 
 ### 00:35 – 01:45 | SECTION 2: THE QUR'AN WAS NOT SENT FOR DISTRESS
 **[VISUAL]**  
-*The morning sun rising slowly over a tranquil cedar forest, casting gentle warm light across an uncluttered wooden work desk.*
+*Lush green terraced mountain ridges of Taif at sunrise, soft morning mist drifting through the valley as warm golden sunlight illuminates ancient stone terraces.*
 
 **(VOICEOVER):**  
 "In Surah Ta-Ha, Allah opens the chapter with words that should soothe every exhausted heart:
@@ -95,7 +95,7 @@ He answered:
 
 ### 01:45 – 03:15 | SECTION 3: THE 10-MINUTE DAILY METHOD
 **[VISUAL]**  
-*A clean, elegant desk: a glass of water, an open Mushaf, a pen, and a simple notebook. A digital timer set to 10:00.*
+*Macro cinematic shot of golden honeybees moving methodically across natural honeycomb inside a hollow trunk in an oasis, amber drops of pure honey glistening in sunlight.*
 
 **(VOICEOVER):**  
 "If you have ten minutes, you have enough time to build an unbreakable relationship with Allah.  
@@ -140,7 +140,7 @@ Ten minutes with Allah is infinite compared to zero."
 
 ### 04:15 – 05:00 | SECTION 5: PRACTICAL ACTION & TODAY'S COMMITMENT
 **[VISUAL]**  
-*A hand closing a daily planner, picking up the Qur'an with deep reverence and peace.*
+*Panoramic telephoto shot of the ancient carved sandstone monumental facade of Hegra in Al-Ula standing timeless in the vast golden desert at sunset.*
 
 **(VOICEOVER):**  
 "Look at your schedule tomorrow morning.  

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Al-Ahzab Master Mindmap • Huurs Studio</title>
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #26354D;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy-deep);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+    }
+    .wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--border-muted);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    header.header h1 {
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    header.header span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .tabs-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      border-color: var(--gold);
+      color: var(--white);
+    }
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--navy-deep);
+      border-color: var(--gold);
+    }
+    .page-container {
+      display: none;
+    }
+    .page-container.active {
+      display: block;
+    }
+    .plate-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .plate-title-bar h2 {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .plate-title-bar p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .plate-badge {
+      background: var(--navy-elevated);
+      color: var(--gold);
+      border: 1px solid var(--border-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+    .pillar {
+      background: var(--navy-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .pillar-header {
+      border-bottom: 1px solid var(--border-muted);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .pillar-header h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .pillar-header.cyan h3 { color: var(--cyan); }
+    .pillar-header.purple h3 { color: var(--purple); }
+    .pillar-header.emerald h3 { color: var(--emerald); }
+    .pillar-header.gold h3 { color: var(--gold); }
+    .pillar-header.rose h3 { color: var(--rose); }
+    .pillar-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .pillar-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 12px 14px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--navy-elevated);
+      color: var(--gold);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-muted);
+    }
+    .card-head h4 {
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+    .card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card li {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    footer.footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h1>HUURS STUDIO</h1>
+      <span>Surah Al-Ahzab Master Mindmap (8 Plates • 16 Pillars • 64 Cards)</span>
+    </header>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="showPage(1)">Plate 01: INTEGRITY OF HEART</button>
+<button class="tab-btn " onclick="showPage(2)">Plate 02: THE SIEGE</button>
+<button class="tab-btn " onclick="showPage(3)">Plate 03: THE PARAGON</button>
+<button class="tab-btn " onclick="showPage(4)">Plate 04: DIVINE TEMPEST</button>
+<button class="tab-btn " onclick="showPage(5)">Plate 05: HOUSEHOLD OF PROPHETS</button>
+<button class="tab-btn " onclick="showPage(6)">Plate 06: SPIRITUAL PARITY</button>
+<button class="tab-btn " onclick="showPage(7)">Plate 07: SEAL OF PROPHETS</button>
+<button class="tab-btn " onclick="showPage(8)">Plate 08: THE COSMIC TRUST</button>
+
+    </div>
+
+    <main>
+      
+    <div id="page-1" class="page-container active">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE INTEGRITY OF HEART & ABOLITION OF ADOPTION</h2>
+          <p>Pillars 1 & 2: Ma Ja'ala Allahu li-Rajulin min Qalbayn, Zihar & Ud'oohum li-Aba'ihim</p>
+        </div>
+        <span class="plate-badge">PLATE 01 : INTEGRITY OF HEART</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 01: THE SINGLE HEART & DISMANTLING FICTION</h3>
+            <p>No Two Hearts, Abolition of Zihar & Undivided Allegiance</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">01</span>
+                <h4>Single Heart in the Chest</h4>
+              </div>
+              <ul><li>Ma ja'ala Allahu li-rajulin min qalbayni fee jawfih: Allah has not made two hearts in any man; rejecting internal hypocrisy.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">02</span>
+                <h4>Abolition of Zihar Falsehood</h4>
+              </div>
+              <ul><li>Repudiating pre-Islamic pagan oaths claiming wives magically become mothers; biological reality cannot be altered by speech.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">03</span>
+                <h4>Undivided Spiritual Allegiance</h4>
+              </div>
+              <ul><li>A single heart cannot harbor sincere divine love while simultaneously serving false gods or worldly vanity.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">04</span>
+                <h4>Divine Law Anchored in Truth</h4>
+              </div>
+              <ul><li>Allah speaks the objective truth and guides to the straight path, cutting through cultural delusions and legal fictions.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 02: ADOPTION REFORM & PROPHETIC PRIMACY</h3>
+            <p>Ud'oohum li-Aba'ihim, Zayd's Lineage & Ummahat al-Mu'mineen</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">05</span>
+                <h4>Ud'oohum li-Aba'ihim: Biological Fathers</h4>
+              </div>
+              <ul><li>Call adopted children by their biological fathers; that is more just in the sight of Allah, restoring Zayd ibn Harithah's true name.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">06</span>
+                <h4>Preserving Lineage & Equity</h4>
+              </div>
+              <ul><li>Protecting true genealogical lineage, inheritance rights, and moral relationships from confusing artificial adoptions.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">07</span>
+                <h4>An-Nabiyyu Awla bil-Mu'mineen</h4>
+              </div>
+              <ul><li>The Prophet is closer and more entitled to the believers than their own souls; his commands transcend all personal desires.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">08</span>
+                <h4>Ummahat al-Mu'mineen: Mothers of Believers</h4>
+              </div>
+              <ul><li>His noble wives are the mothers of the believers in sanctity, honor, deference, and permanent prohibition of marriage.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-2" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE CRUCIBLE OF THE TRENCH: THE SIEGE OF 10,000</h2>
+          <p>Pillars 3 & 4: Ghazwat al-Khandaq, Hearts at Throats & Hypocrisy Unmasked</p>
+        </div>
+        <span class="plate-badge">PLATE 02 : THE SIEGE</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header rose">
+            <h3>PILLAR 03: THE COALITION SIEGE OF MEDINA</h3>
+            <p>The 10,000 Confederate Army, The Trench & Seismic Shaking</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">09</span>
+                <h4>The 10,000 Confederate Coalition</h4>
+              </div>
+              <ul><li>Pagan Quraysh, Ghatafan, and desert tribes marching with 10,000 warriors seeking to permanently eradicate the Muslim community.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">10</span>
+                <h4>Excavation of the Northern Trench</h4>
+              </div>
+              <ul><li>Salman al-Farsi proposing the excavation of a deep ditch across Medina's open front, halting enemy cavalry in freezing winter.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">11</span>
+                <h4>Encircled From Above and Below</h4>
+              </div>
+              <ul><li>Idh ja'ookum min fawqikum wa min asfala minkum: external armies besieging frontlines while Banu Qurayzah conspired from behind.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">12</span>
+                <h4>Hearts Reaching the Throats</h4>
+              </div>
+              <ul><li>Balaghati al-quloobu al-hanajir: physiological terror, near starvation, and freezing nights shaking the believers severely.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 04: HYPOCRISY UNMASKED & COWARDICE</h3>
+            <p>Mocking Prophetic Visions, Inna Buyootana 'Awrah & Desertion</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">13</span>
+                <h4>Mocking the Visions of Victory</h4>
+              </div>
+              <ul><li>When the Prophet struck boulders seeing palaces of Rome and Persia fall, hypocrites sneered: 'We cannot even reach the latrine!'</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">14</span>
+                <h4>Inna Buyootana 'Awrah: False Excuses</h4>
+              </div>
+              <ul><li>Claiming their homes were exposed to sneak away from defense trenches; Allah exposes their true motive as cowardly desertion.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">15</span>
+                <h4>Treachery of Internal Factions</h4>
+              </div>
+              <ul><li>Banu Qurayzah breaking mutual defense treaties, plotting to massacre women and children in Medina while armies besieged trenches.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">16</span>
+                <h4>The Sifting of Conviction</h4>
+              </div>
+              <ul><li>Extreme hardship serving as the divine furnace separating hypocritical pretension from unbreakable monotheistic conviction.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-3" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>USWATUN HASANAH & THE MEN OF COVENANT</h2>
+          <p>Pillars 5 & 6: The Prophetic Exemplar, Anas ibn al-Nadr & Unshakeable Conviction</p>
+        </div>
+        <span class="plate-badge">PLATE 03 : THE PARAGON</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 05: USWATUN HASANAH: PROPHETIC PARAGON</h3>
+            <p>The Master Exemplar, Shared Toil, Courage & Abundant Dhikr</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">17</span>
+                <h4>The Peerless Role Model (Uswah)</h4>
+              </div>
+              <ul><li>Laqad kana lakum fee Rasoolillahi uswatun hasanah: in the Messenger of Allah is the consummate blueprint of leadership and character.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">18</span>
+                <h4>Shared Hardship in the Trenches</h4>
+              </div>
+              <ul><li>Carrying soil, wielding the pickaxe, binding stones to his abdomen against hunger, and sharing every freezing vigil with his companions.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">19</span>
+                <h4>Unshakeable Courage Under Siege</h4>
+              </div>
+              <ul><li>Never retreating a single step; maintaining serene reliance upon Allah while armies massed on the horizon.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">20</span>
+                <h4>Conditioned on Hoping for Allah & Last Day</h4>
+              </div>
+              <ul><li>This exemplary character is accessed by whoever sincerely hopes for Allah's pleasure, fears the Last Day, and remembers Allah often.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 06: MEN WHO FULFILLED THEIR COVENANT</h3>
+            <p>Rijalun Sadaqoo, Anas ibn al-Nadr & Uncompromising Resolve</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">21</span>
+                <h4>Rijalun Sadaqoo: Faithful Men</h4>
+              </div>
+              <ul><li>Mina al-mu'mineena rijalun sadaqoo ma 'ahadoo Allaha 'alayh: men who proved completely true to their solemn covenant with Allah.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">22</span>
+                <h4>Anas ibn al-Nadr: The Scent of Jannah</h4>
+              </div>
+              <ul><li>Sahih al-Bukhari 2805: Plunging into enemy ranks at Uhud, crying: 'I smell the fragrance of Paradise behind Mount Uhud!'</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">23</span>
+                <h4>Minhum Man Qada Nahbah</h4>
+              </div>
+              <ul><li>Of them are those who fulfilled their vow through glorious martyrdom, sealing their faith in blood with steadfast honor.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">24</span>
+                <h4>Minhum Man Yantazir: Patient Vigil</h4>
+              </div>
+              <ul><li>And of them are those who still await their appointed hour, never compromising, wavering, or altering their resolve in the least.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-4" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE FREEZING GALE & INVISIBLE ARMIES</h2>
+          <p>Pillars 7 & 8: Reeh Sarsar, Angelic Hosts & Sovereign Deliverance</p>
+        </div>
+        <span class="plate-badge">PLATE 04 : DIVINE TEMPEST</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 07: THE DIVINE HURRICANE & ANGELIC HOSTS</h3>
+            <p>Freezing Winds, Invisible Legions, Overturned Tents & Panic</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">25</span>
+                <h4>Arsalna 'Alayhim Reehan: Freezing Gale</h4>
+              </div>
+              <ul><li>Allah unleashed a ferocious, freezing northern hurricane upon the confederates, ripping tent pegs and extinguishing campfires.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">26</span>
+                <h4>Junoodan Lam Tarawha: Invisible Hosts</h4>
+              </div>
+              <ul><li>Legions of descending angels casting psychological terror, disarray, and confusion into the heart of the 10,000-man coalition.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">27</span>
+                <h4>Overturned Pots & Blinding Dust</h4>
+              </div>
+              <ul><li>Cauldrons overturned, pack animals panicking, and sand thrown into eyes, rendering military coordination impossible.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">28</span>
+                <h4>Hudhayfah's Midnight Witness</h4>
+              </div>
+              <ul><li>Sahih Muslim 1788: Infiltrating the freezing camp to see Abu Sufyan leaping upon his camel, shouting: 'Depart, for I am leaving!'</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 08: SOVEREIGN ROUT & PURGING TREASON</h3>
+            <p>Turning Back in Rage, Spared From Fighting & Banu Qurayzah</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">29</span>
+                <h4>Routed in Humiliated Rage</h4>
+              </div>
+              <ul><li>Wa radda Allahu alladhina kafaroo bi-ghaydhihim: confederates driven back in bitter frustration having gained zero victory.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">30</span>
+                <h4>Kafa Allahu al-Mu'mineena al-Qital</h4>
+              </div>
+              <ul><li>Allah spared the believers actual armed clash; divine atmospheric intervention routed the superpower alliance effortlessly.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">31</span>
+                <h4>The Reckoning of Banu Qurayzah</h4>
+              </div>
+              <ul><li>Besieging the fortress of internal traitors who plotted massacre; divine judgment enacted according to their own biblical law.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">32</span>
+                <h4>The Inherited Territory</h4>
+              </div>
+              <ul><li>Granting believers security, land, and fortified dwellings they had never before possessed; Medina established as an inviolable sanctuary.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-5" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE MOTHERS OF THE BELIEVERS: AYAT AL-TAKHYIR & PURIFICATION</h2>
+          <p>Pillars 9 & 10: The Verse of Choice, Domestic Sanctity & Ayat al-Tatheer</p>
+        </div>
+        <span class="plate-badge">PLATE 05 : HOUSEHOLD OF PROPHETS</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header purple">
+            <h3>PILLAR 09: AYAT AL-TAKHYIR: THE NOBLE CHOICE</h3>
+            <p>The World vs The Hereafter, 'A'ishah's Precedent & Double Reward</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">33</span>
+                <h4>Ayat al-Takhyir: The Verse of Choice</h4>
+              </div>
+              <ul><li>Offering the Prophet's wives generous divorce if they desired luxury, or immense eternal reward if they chose Allah and His Messenger.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">34</span>
+                <h4>'A'ishah's Immediate Surrender</h4>
+              </div>
+              <ul><li>Sahih al-Bukhari 4785: 'Regarding you do I consult parents? I choose Allah, His Messenger, and the Home of the Hereafter!'</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">35</span>
+                <h4>Unanimous Noble Resolve</h4>
+              </div>
+              <ul><li>Every single wife of the Prophet ﷺ followed 'A'ishah, choosing pious austerity and eternal companionship over fleeting wealth.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">36</span>
+                <h4>Double Recompense for the Righteous</h4>
+              </div>
+              <ul><li>Elevated spiritual proximity conferring higher moral responsibility; righteous deeds rewarded with multiplied divine honor.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 10: DOMESTIC SANCTITY & AYAT AL-TATHEER</h3>
+            <p>Dignified Speech, Home Sanctuary, Shunning Tabarruj & Tatheer</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">37</span>
+                <h4>Dignified and Direct Speech</h4>
+              </div>
+              <ul><li>Fa-la takhda'na bil-qawl: do not speak with flirtatious softness lest the diseased heart lust; speak with firm, dignified clarity.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">38</span>
+                <h4>Wa Qarna fee Buyootikunna</h4>
+              </div>
+              <ul><li>Settle gracefully in your homes as sanctuaries of prayer and remembrance, establishing a peaceful moral stronghold.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">39</span>
+                <h4>Shunning Jahiliyyah Tabarruj</h4>
+              </div>
+              <ul><li>Rejecting the seductive, ostentatious public display of early pagan ignorance; cultivating modesty and inner spiritual beauty.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">40</span>
+                <h4>Ayat al-Tatheer: Complete Purification</h4>
+              </div>
+              <ul><li>Allah intends to remove all spiritual impurity from the household of the Prophet (Ahl al-Bayt) and purify them completely.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-6" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE DECALOGUE OF SPIRITUAL PARITY & DIVINE DECREE</h2>
+          <p>Pillars 11 & 12: Ten Paired Virtues & No Choice Against Divine Decrees</p>
+        </div>
+        <span class="plate-badge">PLATE 06 : SPIRITUAL PARITY</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 11: THE DECALOGUE OF SPIRITUAL PARITY</h3>
+            <p>Ten Paired Virtues for Men and Women, Maghfirah & Great Reward</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">41</span>
+                <h4>Paired Submission and Faith</h4>
+              </div>
+              <ul><li>Muslims and Believers: outward submission to divine law and inward heart conviction affirmed equally for men and women.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">42</span>
+                <h4>Truthfulness, Patience & Humility</h4>
+              </div>
+              <ul><li>As-Sidq, As-Sabr, and Al-Khushu': moral honesty, endurance under trial, and reverent stillness of heart before God.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">43</span>
+                <h4>Charity, Fasting & Chastity</h4>
+              </div>
+              <ul><li>Mutasaddiqeen, Sa'imeen, and guarding chastity: generous wealth distribution, bodily self-restraint, and moral purity.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">44</span>
+                <h4>Abundant Dhikr & Divine Reward</h4>
+              </div>
+              <ul><li>Remembering Allah often: identical divine forgiveness (Maghfirah) and immense eternal reward prepared without gender distinction.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 12: ABSOLUTE SURRENDER TO DIVINE DECREES</h3>
+            <p>No Choice Against Divine Decree, Zaynab's Marriage & Taboo Broken</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">45</span>
+                <h4>No Choice Against Divine Command</h4>
+              </div>
+              <ul><li>Wa ma kana li-mu'minin an yakoona lahumu al-khiyarah: when Allah and His Messenger decide a matter, private preference ceases.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">46</span>
+                <h4>Marriage of Zayd & Zaynab</h4>
+              </div>
+              <ul><li>Divinely commanded marriage of the Prophet to Zaynab bint Jahsh after her divorce, permanently shattering adoption taboos.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">47</span>
+                <h4>Dismantling Pre-Islamic Superstition</h4>
+              </div>
+              <ul><li>Li-kay la yakoona 'ala al-mu'mineena haraj: establishing that wives of former adopted sons are lawful to marry under divine law.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">48</span>
+                <h4>Zaynab's Celestial Honor</h4>
+              </div>
+              <ul><li>Sahih al-Bukhari 7420: Zaynab proudly stating: 'Your families married you to the Messenger, but Allah married me from above seven heavens!'</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-7" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE SEAL OF THE PROPHETS & THE RADIANT BEACON</h2>
+          <p>Pillars 13 & 14: Khatam an-Nabiyyeen, Sirajan Muneera & Abundant Dhikr</p>
+        </div>
+        <span class="plate-badge">PLATE 07 : SEAL OF PROPHETS</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 13: KHATAM AN-NABIYYEEN (FINAL SEAL)</h3>
+            <p>Not Father of Any Men, The Final Seal & Sunni Consensus</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">49</span>
+                <h4>Not Father of Any of Your Men</h4>
+              </div>
+              <ul><li>Ma kana Muhammadun aba ahadin min rijalikum: Muhammad is not the biological father of adult men; Zayd was not his biological son.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">50</span>
+                <h4>Rasool Allahi: Universal Emissary</h4>
+              </div>
+              <ul><li>Sent as the final messenger carrying the comprehensive, preserved divine law for all tribes, nations, and future epochs.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">51</span>
+                <h4>Khatam an-Nabiyyeen: The Final Seal</h4>
+              </div>
+              <ul><li>The definitive seal completing the edifice of divine revelation; the prophetic line is irrevocably culminated.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">52</span>
+                <h4>Unanimous Sunni Consensus on Finality</h4>
+              </div>
+              <ul><li>All classical Sunni authorities affirm that anyone claiming prophethood after Muhammad ﷺ is an absolute impostor.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 14: THE RADIANT BEACON & CONTINUOUS DHIKR</h3>
+            <p>Sirajan Muneera, The Fivefold Mission & Praise Morning/Eve</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">53</span>
+                <h4>The Fivefold Prophetic Mission</h4>
+              </div>
+              <ul><li>Shahidan (witness), Mubashshiran (bringer of glad tidings), Nadheera (warner), and Da'iyan ila Allah (inviter to God).</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">54</span>
+                <h4>Sirajan Muneera: The Illuminating Sun</h4>
+              </div>
+              <ul><li>A radiant celestial beacon illuminating spiritual darkness, cutting through ignorance with crystalline moral clarity.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">55</span>
+                <h4>Command of Abundant Remembrance</h4>
+              </div>
+              <ul><li>Ya ayyuha alladhina amanoo-dh-kuroo Allaha dhikran katheera: continuous remembrance of Allah keeping heart and tongue alive.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">56</span>
+                <h4>Praising at Dawn and Dusk</h4>
+              </div>
+              <ul><li>Wa sabbihoohu bukratan wa aseela: framing the daylight hours with structured morning and evening doxology and praise.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-8" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>SALAT UPON THE PROPHET, JILBAB & THE COSMIC TRUST</h2>
+          <p>Pillars 15 & 16: Salat 'ala an-Nabi, Ayat al-Jilbab & The Weight of Al-Amanah</p>
+        </div>
+        <span class="plate-badge">PLATE 08 : THE COSMIC TRUST</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 15: SALAT 'ALA AN-NABI & THE JILBAB</h3>
+            <p>Divine/Angelic Invocations, Outer Cloak & Words of Truth</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">57</span>
+                <h4>Divine & Angelic Invocations of Grace</h4>
+              </div>
+              <ul><li>Inna Allaha wa mala'ikatahu yusalloona 'ala an-Nabi: Allah elevates His Prophet in the highest assembly; angels ask forgiveness.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">58</span>
+                <h4>The Believers' Mandate of Peace</h4>
+              </div>
+              <ul><li>Ya ayyuha alladhina amanoo salloo 'alayhi wa sallimoo tasleema: commanded to send continuous blessings and peace upon him.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">59</span>
+                <h4>Ayat al-Jilbab: Outer Garment of Honor</h4>
+              </div>
+              <ul><li>Yudneena 'alayhinna min jalabeebihinna: drawing outer cloaks over themselves to be recognized as dignified and protected from harassment.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">60</span>
+                <h4>Qawlan Sadeeda: Words Straight to Truth</h4>
+              </div>
+              <ul><li>Fear Allah and speak words of crystalline honesty; He will rectify your actions and forgive your sins.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 16: AL-AMANAH: THE WEIGHT OF THE TRUST</h3>
+            <p>Heavens and Mountains Shuddering, Man's Bold Undertaking & Mercy</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">61</span>
+                <h4>The Cosmic Offering of the Trust</h4>
+              </div>
+              <ul><li>Inna 'aradna al-amanata 'ala as-samawat: offering moral agency, reason, and divine commandments to the cosmos.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">62</span>
+                <h4>The Shudder of Earth and Mountains</h4>
+              </div>
+              <ul><li>Fa-abayna an yahmilnaha wa ashfaqna minha: granite mountains and celestial galaxies declined to bear it in holy dread of falling short.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">63</span>
+                <h4>Man's Perilous Undertaking</h4>
+              </div>
+              <ul><li>Wa hamalaha al-insan: frail man boldly accepted the covenant, possessing the agency to ascend above angels or sink below beasts.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">64</span>
+                <h4>Zalooman Jahoola vs Ghafoor Raheem</h4>
+              </div>
+              <ul><li>Prone to injustice and ignorance, yet those who fulfill the trust are wrapped in the boundless forgiveness and mercy of Allah.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+    <footer class="footer">
+      <p>Huurs Knowledge Systems • Authentic Sunni Source Discipline • Read. Reflect. Return.</p>
+    </footer>
+  </div>
+
+  <script>
+    function showPage(num) {
+      document.querySelectorAll('.page-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById('page-' + num);
+      if (target) target.classList.add('active');
+      
+      const btns = document.querySelectorAll('.tab-btn');
+      if (btns[num - 1]) btns[num - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

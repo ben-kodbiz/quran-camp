@@ -160,8 +160,8 @@ You do not need hours every day. Follow this exact 15-minute routine:
 * Classical Sunni scholars across all four schools of jurisprudence agree that taking remuneration for publishing, authoring educational guides, cartography, and teaching is completely permissible (*Ja'iz*).
 * Furthermore, by offering **Al-Fatihah, Al-Kahf, and Al-Mulk 100% free forever**, you are providing immense open-access Waqf for the Ummah.
 
-### "What if someone wants a refund?"
-* Honor our **100% Barakah Guarantee**. If anyone asks for a refund within 30 days, immediately issue a full, polite refund without argument. In Islamic business, generosity with buyers attracts divine Barakah.
+### "What if someone has an issue with their files or needs assistance?"
+* Deliver swift, generous customer care. Assist them immediately with file access, alternative formats, or downloading guidance. In Islamic business, generosity, patience, and honoring trust (*Amanah*) attracts divine Barakah.
 
 ---
 

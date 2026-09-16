@@ -1,85 +1,118 @@
 ---
 artifact:
   artifact_id: QURAN-COMEBACK-SCRIPT-020
-  artifact_type: script_youtube_longform
-  artifact_version: 1.0.0
+  artifact_type: script_longform
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN-SEASON-2
-  title: "Episode 20: The Qur'an Was Not Sent to Break You"
-  description: "Flagship 5-8 minute contemplative video script exploring Surah Ta-Ha 20:2–3, 14, 25–28, 44 with classical tafsir and unhurried reflections."
-  topic: "Revelation as mercy rather than misery, Musa at the burning bush, facing Pharaoh with gentle speech, and the prayer for expansion of the chest."
+  title: "Episode 20 Flagship Script: The Qur'an Was Not Sent to Break You"
+  description: "Production script for the Season 2 Finale (Episode 20), exploring Surah Ta-Ha 20:2–3, 25–28, 44, 124, Musa's prayer for the expansion of the chest, and the relief of revelation."
+  topic: "Revelation as Healing, Musa's Dua & Surah Ta-Ha"
   language: en-US
-  target_duration_minutes: 6.5
+  target_duration_minutes: 4.0
 lifecycle:
   status: approved
   created_by: AGENT-07
   created_at: 2026-09-07T15:01:01Z
+  updated_at: 2026-09-11T10:31:00Z
 verification:
   verification_status: verified
   verified_by: AGENT-03
   qa_status: passed
   human_review_status: approved_gate_02
+storage:
+  repository: huurs-studio
+  path: 08_SCRIPTS/
+  filename: QURAN-COMEBACK-SCRIPT-020.md
 ---
 
-# Episode 20: The Qur'an Was Not Sent to Break You
-### *Come Back to the Qur'an — Season 2 (Surah Ta-Ha)*
+# Episode 20 Flagship Script (`QURAN-COMEBACK-SCRIPT-020`)
 
-**Ayah Reference:** Surah Ta-Ha 20:2–3, 14, 25–28, 44  
+**Campaign:** Come Back to the Qur'an (Season 2 Finale)  
+**Title:** *"The Qur'an Was Not Sent to Break You"*  
+**Ayah Reference:** Surah Ta-Ha 20:2–3, 25–28, 44, 124  
+**Duration:** ~3.8 minutes (approx. 495 spoken words)  
 **Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Pacing:** 110–125 words per minute (intentional breathing space between ideas)  
+**Visual Living Creation Directive:** 100% Living nature and coastal elements. Rain on glass with misty pine forest, desert dunes under full moon, jewel hummingbird hovering at blossom, magnificent courtyard peacock, and the meeting of two seas. Absolute Zero-Human Mandate. Zero burned-in subtitles.
 
 ---
 
-## 1. The Hook (00:00 – 00:45)
-*(Atmospheric natural dawn audio. Visual of Shot F (Mountain peak in luminous dawn). Slow push-in.)*
+## PRODUCTION SCRIPT & DIALOGUE
 
-Why do so many Muslims carry a heavy burden of guilt, feeling that religion is an endless list of impossible rules designed to break their spirit?
+### 00:00 – 00:45 | SECTION 1: THE CRIPPLING WEIGHT OF RELIGIOUS BURNOUT
+**[VISUAL]**  
+*Cinematic macro shot of rain trickling down a clear glass pane overlooking a misty pine forest at twilight. Calm rain audio, cool organic gray-green light, spacious negative space, peaceful breathing room.*
 
-We run from podcast to podcast, from book to book, seeking a cure for the restlessness in our chests. But we forget that the One who created this heart sent down a specific manual for its healing.
+**(VOICEOVER):**  
+"Why do so many sincere believers carry an invisible weight of spiritual guilt, feeling as if religion is an impossible list of rules designed to break their spirits?
 
----
+You try your best, but you fall short. You miss a prayer, your heart feels numb during recitation, and a toxic inner voice whispers: You are a hypocrite; Allah does not want you.
 
-## 2. The Ayah (00:45 – 02:00)
-*(Recitation in clear, unadorned Tartil. Text appears on screen with reverence.)*
+So you avoid the Qur'an entirely, because opening it feels like facing your own failures.
 
-Allah says in Surah Ta-Ha 20:2–3, 14, 25–28, 44:
-
-> **مَا أَنزَلْنَا عَلَيْكَ الْقُرْآنَ لِتَشْقَىٰ إِلَّا تَذْكِرَةً لِّمَن يَخْشَىٰ**  
-> *"We did not send down the Qur'an that you be distressed, but only as a reminder for those who fear."*
-
-Listen to how personal these words are. Allah is not addressing an abstract crowd—He is speaking directly into your private reality right now.
+If this is how you feel, listen closely to the very first opening declaration of Surah Ta-Ha."
 
 ---
 
-## 3. What Classical Tafsir Explains (02:00 – 04:00)
-*(Transition to Shot C (Warm flame light in night). Soft sunlight illuminating natural wood and parchment.)*
+### 00:45 – 01:40 | SECTION 2: NOT SENT TO CAUSE DISTRESS
+**[VISUAL]**  
+*A luminous full moon suspended over pristine, wind-rippled desert dunes beneath millions of crystalline stars. Deep cosmic stillness, cool silver luminescence, and peaceful negative space.*
 
-When the great commentators of Islam examined this verse, they uncovered profound wisdom:
+**(VOICEOVER):**  
+"Allah speaks directly to the Prophet Muhammad ﷺ and to every weary soul:
 
-Ibn Kathir explains that when the pagans saw the Prophet standing in long night prayers, they claimed the Qur'an brought distress (*Shaqa'*). Allah rejected this decisively: the Qur'an is peace, clarity, and life for the heart. When sending Musa to the greatest tyrant on earth, Allah commanded gentle speech (*Qawlan Layyina*).
+'Ta-Ha. We have not sent down the Qur'an upon you that you should be distressed, but only as a reminder for those who revere.'
 
-As the Prophet ﷺ affirmed in authentic tradition:
-*Bukhari 39: 'Indeed, this religion is easy, and no one overburdens himself in religion except that it overcomes him. So be steadfast, aim for moderation, and receive good tidings.'*
+Look at the word Allah chose: *Li-tashqa*—that you should suffer, burn out, or be crushed by misery.
 
----
+The Qur'an was not sent as an emotional prison. It was sent as an oxygen tank for a drowning soul.
 
-## 4. The Tadabbur Shift (04:00 – 05:30)
-*(Visual of Shot D (Horizon path). Gentle camera motion, zero digital rush.)*
-
-Take a deep breath and reflect on your own life:
-* Revelation as mercy rather than misery, Musa at the burning bush, facing Pharaoh with gentle speech, and the prayer for expansion of the chest.
-* What would change if you stopped trying to carry this burden entirely on your own shoulders?
-* What happens when you hand the outcome back to Allah?
+It does not demand that you be angelic; it demands that when you stumble in the mud, you turn around and walk back toward the light."
 
 ---
 
-## 5. The Living Action (05:30 – 06:45)
-*(Visual of Shot E (Book in morning sun). Calm horizon closing shot.)*
+### 01:40 – 02:40 | SECTION 3: MUSA'S CHEST EXPANSION
+**[VISUAL]**  
+*Ultra-slow-motion cinematic capture of an emerald and jewel-toned hummingbird hovering weightlessly beside vibrant mountain blossoms in soft morning sunlight. Effortless flight, lightness, ease, and expansive breath.*
 
-Do not leave this video as mere entertainment. Islam is knowledge accompanied by action:
+**(VOICEOVER):**  
+"When Allah commanded Prophet Musa to face Pharaoh—the most brutal tyrant on earth—Musa did not ask for an army, a shield, or weapons of iron.
 
-**The Speech and Chest Expansion Dua: Memorize and recite Musa's prayer (20:25-28: 'Rabbi ishrah lee sadree, wa yassir lee amree') whenever stepping into a difficult meeting, interview, or challenging family conversation.**
+He made a single, desperate plea for his inner state:
 
-Turn off your phone tonight. Open your Mushaf to Surah Ta-Ha. Sit for five unhurried minutes with your Lord.
+'My Lord, expand for me my chest, and ease for me my task, and untie the knot from my tongue, that they may understand my speech.'
 
-*Read it. Reflect upon it. Return to Him.*
+Musa knew that if the chest is constricted with anxiety and dread, even the smallest obstacle feels insurmountable. But when Allah expands your chest (*Sharh as-Sadr*), even the confrontation with an empire becomes light."
+
+---
+
+### 02:40 – 03:30 | SECTION 4: GENTLE STRENGTH & DIGNITY
+**[VISUAL]**  
+*Magnificent peacock stepping calmly across stone courtyard flags, displaying its iridescent emerald and sapphire plumage in soft morning daylight. Dignified, unhurried, untroubled by external noise.*
+
+**(VOICEOVER):**  
+"And what was Allah's instruction to Musa and Harun when facing this tyrant?
+
+'And speak to him with gentle speech, that perhaps he may be reminded or fear.'
+
+Look at the peacock stepping gracefully through the garden. It does not screech to prove its existence. Its beauty and calm presence command reverence without anger.
+
+Gentleness is not weakness; it is the ultimate proof of inner mastery. When your heart is rooted in Allah, you no longer need to scream to be heard."
+
+---
+
+### 03:30 – 04:15 | SECTION 5: THE LIVING COVENANT OF RETURN
+**[VISUAL]**  
+*Dramatic aerial shot of the meeting of two seas (Majma' al-Bahrayn), where turquoise shallows meet deep indigo ocean currents with rolling swells beneath a vast open sky. Boundary of peace, infinite expanse.*
+
+**(VOICEOVER):**  
+"This completes the second season of our journey: Come Back to the Qur'an.
+
+From Surah Hud to Surah Ta-Ha, the message has been one: your Creator never designed you to carry the weight of this world on your own shoulders.
+
+Here is your permanent anchor: Whenever your chest tightens, recite Musa's prayer: *Rabbi-shrah li sadri, wa yassir li amri*.
+
+Do not leave the Qur'an closed on a high shelf. It is your breathing room. It is your home.
+
+Read it. Reflect upon it. Return to Him."
+

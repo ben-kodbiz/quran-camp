@@ -50,8 +50,8 @@ storage:
 
 * **Cinematic Philosophy:** Moving contemplation. The camera never rushes; it breathes. Avoid all frantic YouTube tropes (no rapid cuts, no zoomer shakes, no neon graphics, no clickbait arrows).
 * **Aspect Ratio & Resolution:** 16:9 Widescreen (1280 × 720 HD Master, 24.00 fps) — HARD CEILING: 720p PER USER MANDATE.
-* **Color Palette & Atmosphere:** Earthy ochre, sandstone beige, morning terracotta, muted sage green (#D4A373, #CCD5AE, #E9D8A6).
-* **Assigned Visual Motifs:** Shot D (Pathway), Shot E (Book), Shot C (Forest Light), Shot A (Ocean Horizon).
+* **Color Palette & Atmosphere:** Soft morning slate, rain-washed olive green, sandstone beige, coastal dawn rose, pale golden amber (#CCD5AE, #E9D8A6, #A8DADC, #457B9D).
+* **Assigned Visual Motifs:** Rain on Glass (Mercy & Sanctuary), Mosque Courtyard & Birds (Tawakkul & Worship), Rain on Leaves (Revival of Dead Earth), Ocean Waves & Light Path (Depth & Divine Compass), Birds over Ocean Dawn (Spiritual Return).
 * **Hero Visual Key:** [`09_IMAGE/QURAN-COMEBACK-HERO-002.jpg`](file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-002.jpg)
 * **Default Visual Rhythm:**
   - `0–3 sec`: Strong visual establishing shot + contemplative question.
@@ -64,12 +64,12 @@ storage:
 
 ## 2. Shot-by-Shot Production Sequence
 
-### Scene 1 (00:00–00:30): The Dusty Shelf vs. The Living Map
+### Scene 1 (00:00–00:30): Rain on the Sanctuary Window (The Noise vs. The Stillness)
 
-* **Shot Primitive:** `Shot E (Book) / Medium`
-* **Visual Framing & Action:** A high ornamental bookshelf where a velvet-wrapped book sits in shadows. Slow cinematic transition across room to a rugged wooden field desk where an open study volume lies alongside a compass and travel notes in natural daylight.
-* **Camera Movement:** Slow lateral dolly from dark interior shadows into radiant window light.
-* **Lighting & Atmosphere:** High contrast chiaroscuro transitioning into soft, welcoming morning ambient illumination.
+* **Shot Primitive:** `Motif 7 (Rain) & Motif 14 (Sanctuary Window) / Medium`
+* **Visual Framing & Action:** Looking through an arched stone library window as gentle rain falls softly outside. Individual raindrops slowly trickle down the glass in slow motion, softening the lush green courtyard outside. Inside, soft morning light gently grazes a dark wooden study surface where an open Qur'an rests undisturbed.
+* **Camera Movement:** Slow lateral dolly past the arched stone frame, rack focusing gently from raindrops on the glass to the quiet sanctuary within.
+* **Lighting & Atmosphere:** Soft rain-washed morning daylight; cool rain exterior transitioning into warm amber interior tranquility.
 * **On-Screen Typography:**
   ```text
   Font: Cormorant Garamond / Clean Serif
@@ -77,19 +77,19 @@ storage:
   Text: "'WHAT DID ALLAH SAY THIS BOOK WAS FOR?'"
   Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
   ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic shot of a minimalist wooden desk with an open leather-bound book, soft raking window light, natural wood grain textures, quiet study atmosphere, photorealistic, 720p --ar 16:9 --no clutter, modern tech, fantasy`
+* **AI Generative Video Prompt (Google Flow / Veo 3.1 / Runway Gen-2):**
+  > **Prompt:** `Cinematic shot looking through a tall arched stone window with gentle rain trickling down the glass, soft focus green courtyard outside, slow motion raindrops, warm interior daylight, peaceful contemplative atmosphere, 35mm documentary realism, 720p --ar 16:9 --no heavy storm, disaster, dark gloomy, modern clutter`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
   > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 2 (00:30–01:30): Hudan: The Five Unforgettable Words
+### Scene 2 (00:30–01:30): Mosque Courtyard & Birds (Hudan Lil-Muttaqin)
 
-* **Shot Primitive:** `Shot D (Pathway) / Wide`
-* **Visual Framing & Action:** A vast, sweeping desert landscape at sunrise. In the distance, a clearly defined path winds between undulating sand dunes toward a luminous mountain pass. The air is crystalline.
-* **Camera Movement:** Slow cinematic drone glide, maintaining eye-level perspective over the crest of a ridge.
-* **Lighting & Atmosphere:** Warm golden horizontal sunlight casting long, gentle shadows across pristine dune ripples.
+* **Shot Primitive:** `Motif 16 (Mosque) & Motif 8 (Birds) / Wide Establishing`
+* **Visual Framing & Action:** Vast, serene minimalist stone mosque courtyard at early sunrise. Elegant geometric stone arches frame a pale golden dawn sky. A central marble reflection pool ripples gently. A small flock of birds glides smoothly and peacefully across the wide negative-space sky over the minarets.
+* **Camera Movement:** Slow, dignified backward tracking shot along the courtyard axis, letting the architecture and open heavens breathe.
+* **Lighting & Atmosphere:** Cool indigo dawn shifting into pale morning honey light; golden reflections in the marble water basin.
 * **On-Screen Typography:**
   ```text
   Font: Cormorant Garamond / Clean Serif
@@ -97,19 +97,19 @@ storage:
   Text: "'HUDAN LIL-MUTTAQĪN — GUIDANCE FOR THE MINDFUL'"
   Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
   ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Wide cinematic establishing shot of a quiet winding pathway through sand dunes at golden hour, crisp morning shadows, vast open sky, tranquil spiritual journey, National Geographic photography style --ar 16:9 --res 720p --no neon, distorted dunes`
+* **AI Generative Video Prompt (Google Flow / Veo 3.1 / Runway Gen-2):**
+  > **Prompt:** `Wide cinematic shot of an ancient minimalist mosque courtyard at sunrise, elegant stone arches, marble reflection pool with subtle ripples, a distant flock of birds gliding across a vast tranquil morning sky, National Geographic architectural photography, 720p --ar 16:9 --no people, fantasy neon, distorted domes`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
   > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 3 (01:30–03:00): The Thorny Path of Ubayy & Umar
+### Scene 3 (01:30–03:00): Rain Reviving the Earth (The Mindful Path)
 
-* **Shot Primitive:** `Shot C (Forest Light) / Medium`
-* **Visual Framing & Action:** A rugged mountain path bordered by wild thorny acacia bushes and desert brambles. The camera moves with heightened care, weaving between the thorns without touching them, finding clear footing on smooth stone.
-* **Camera Movement:** Steady, deliberate forward camera push, emulating the mindful steps of someone gathering their cloak.
-* **Lighting & Atmosphere:** Dappled light filtering through rugged desert trees; sharp, crisp textures on thorns and stones.
+* **Shot Primitive:** `Motif 7 (Rain) & Motif 10 (Forest/Foliage) / Macro`
+* **Visual Framing & Action:** Macro tracking shot over deep green wild olive branches and rugged stone pathway as fresh gentle rain falls. Clear water droplets bead on leaves and drip onto rich dry earth, bringing immediate revival, glistening under breaking morning sunlight.
+* **Camera Movement:** Slow deliberate macro push along the rain-washed path, evoking the mindful footsteps of one navigating carefully.
+* **Lighting & Atmosphere:** Volumetric sunbeams breaking through morning rain mist; crystalline water droplets refracting golden light.
 * **On-Screen Typography:**
   ```text
   Font: Cormorant Garamond / Clean Serif
@@ -117,19 +117,19 @@ storage:
   Text: "'TAQWA IS WALKING CAREFULLY ON A THORNY PATH'"
   Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
   ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic shot of a rugged stony mountain path with wild desert shrubs and thorny branches on both sides, morning sunlight cutting through dust, careful deliberate atmosphere, 35mm documentary realism --ar 16:9 --no dramatic monsters, CGI`
+* **AI Generative Video Prompt (Google Flow / Veo 3.1 / Runway Gen-2):**
+  > **Prompt:** `Cinematic macro shot of gentle rain falling onto lush green olive leaves and dark stone pathway, crystal clear water droplets glistening in morning light, slow motion rainfall bringing fresh life to earth, photorealistic 35mm film, 720p --ar 16:9 --no mudslide, storm, saturated neon`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
   > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 4 (03:00–04:15): Tadabbur: Your Daily Compass
+### Scene 4 (03:00–04:15): The Vast Ocean & The Golden Path of Light (Your Living Compass)
 
-* **Shot Primitive:** `Shot E (Book) / Macro`
-* **Visual Framing & Action:** Extreme close-up of fingers turning to Surah Al-Baqarah 2:2. Clean typography overlaid in negative space. Soft reflection of sunlight in a simple glass of water on the table.
-* **Camera Movement:** Subtle circular slider rotation around the open book.
-* **Lighting & Atmosphere:** Warm honey-toned ambient daylight; soft focus background.
+* **Shot Primitive:** `Motif 5.1 (Ocean) & Motif 18 (Light) / Wide`
+* **Visual Framing & Action:** Expansive shot of a tranquil ocean at dawn. Pristine crystalline waves rolling in slow, peaceful cadence onto a smooth pebbled shore. The rising morning sun casts a shimmering, straight golden pathway of light across the sea toward the viewer, symbolizing divine navigation.
+* **Camera Movement:** Grounded eye-level slow tracking alongside the edge of the gentle surf, keeping the horizon locked and serene.
+* **Lighting & Atmosphere:** Warm rose-gold horizon, deep turquoise to royal navy gradient in clear water, radiant tranquil light.
 * **On-Screen Typography:**
   ```text
   Font: Cormorant Garamond / Clean Serif
@@ -137,19 +137,19 @@ storage:
   Text: "'NOT AN ENCYCLOPEDIA. A LIVING COMPASS.'"
   Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
   ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Macro cinematography of open Arabic manuscript page, natural ink on textured parchment, gentle morning light, peaceful study environment, ultra high definition, 720p --ar 16:9 --no fake calligraphy, glowing fonts`
+* **AI Generative Video Prompt (Google Flow / Veo 3.1 / Runway Gen-2):**
+  > **Prompt:** `Cinematic wide shot of a calm turquoise and deep blue ocean at golden dawn, gentle rhythmic waves rolling onto a clean shore, morning sunlight casting a radiant pathway of light across the sea surface, vast serene horizon, 720p --ar 16:9 --no boats, swimmers, tropical resort clutter`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
   > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
 
 ---
 
-### Scene 5 (04:15–05:00): Practical Action: Open the Map
+### Scene 5 (04:15–05:00): Birds over Ocean Dawn with Mosque Silhouette (Spiritual Return)
 
-* **Shot Primitive:** `Shot A (Ocean Horizon) / Ultra-Wide`
-* **Visual Framing & Action:** Expansive view from a high cliff looking over an immense, tranquil ocean horizon at dawn. The horizon line is straight, calm, and infinite.
-* **Camera Movement:** Slow, expansive camera retreat, creating profound sense of space and clarity.
-* **Lighting & Atmosphere:** Graduated sky from soft rose-pink to pale sky blue; pristine glassy sea.
+* **Shot Primitive:** `Motif 8 (Birds), Motif 5.1 (Ocean) & Motif 16 (Mosque Silhouette) / Ultra-Wide`
+* **Visual Framing & Action:** Breathtaking panoramic coastal vista at dawn. In the far misty distance along the shoreline, the elegant silhouette of an ancient stone mosque and minaret stands quietly against the dawn. A small flock of sea birds soars freely across the pastel rose-and-sky-blue expanse, drifting toward the infinite horizon.
+* **Camera Movement:** Slow, expansive crane tilt and pull-back, letting the vast sky (over 60% negative space) convey liberation and peace.
+* **Lighting & Atmosphere:** Soft pastel dawn palette (rose, lavender, pale amber), glassy ocean surface, gentle morning breeze.
 * **On-Screen Typography:**
   ```text
   Font: Cormorant Garamond / Clean Serif
@@ -157,10 +157,10 @@ storage:
   Text: "'OPEN THE MAP TONIGHT.'"
   Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
   ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Ultra-wide panoramic shot of a calm sea at sunrise, gentle tide, vast clear sky, deep serenity, minimalist composition, fine art landscape photography --ar 16:9 --no boats, people, artificial color grading`
+* **AI Generative Video Prompt (Google Flow / Veo 3.1 / Runway Gen-2):**
+  > **Prompt:** `Ultra-wide panoramic cinematic shot of a peaceful ocean horizon at sunrise, subtle distant stone mosque silhouette along the misty coast, solitary birds gliding freely through a luminous pastel morning sky with 60% negative space, deep spiritual serenity, fine art landscape photography, 720p --ar 16:9 --no modern ships, fantasy glow, text`
   > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)`
 
 ---
 

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Al-Muzzammil: Interactive Knowledge Suite | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.2);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy-deep); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; padding-bottom: 60px; }
+    .hero-banner {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 89, 0.12) 0%, rgba(6, 10, 18, 0.95) 70%), var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold); padding: 48px 24px 36px 24px; text-align: center;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 2px; color: var(--gold); background: var(--navy-card); border: 1px solid var(--border-gold);
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+    .hero-subtitle { color: var(--gold-light); font-size: 1.1rem; font-weight: 500; max-width: 800px; margin: 0 auto 20px auto; }
+    .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stat-badge { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 8px; padding: 10px 18px; display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+    .main-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; }
+    .controls-bar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .search-box { width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold); color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-box:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    .nav-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+    .plate-tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.78rem;
+    }
+    .plate-tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .plate-tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-section { display: none; background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+    .plate-section.active { display: block; }
+    .plate-title-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-muted); padding-bottom: 16px; margin-bottom: 20px; }
+    .plate-title-bar h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-bar p { font-size: 0.85rem; color: var(--text-muted); }
+    .plate-badge-box { display: flex; gap: 8px; }
+    .badge-gold { background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); color: var(--emerald); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .pillars-layout { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-bar { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 { font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .cards-wrapper { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-item { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 12px 14px; }
+    .card-item:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .card-idx { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .card-title-row h4 { font-family: 'Cinzel', serif; font-size: 0.86rem; color: var(--white); }
+    .card-points { list-style-type: none; }
+    .card-points li { position: relative; padding-left: 14px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .card-points li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .modals-panel { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-top: 32px; }
+    .modal-triggers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .modal-btn { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; padding: 16px; text-align: left; cursor: pointer; color: var(--white); }
+    .modal-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .modal-btn h5 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 6px; }
+    .modal-btn p { font-size: 0.78rem; color: var(--text-muted); }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 10, 18, 0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-body { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+    .modal-body p { font-size: 0.9rem; color: var(--white); margin-bottom: 14px; line-height: 1.7; }
+    .modal-source { background: var(--navy-elevated); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="hero-banner">
+    <div class="brand-pill">HUURS STUDIO • THE DEEPER THOUGHT SERIES</div>
+    <h1 class="hero-title">SURAH AL-MUZZAMMIL</h1>
+    <div class="hero-subtitle">Interactive Knowledge Suite: 8 Plates • 16 Pillars • 64 Structural Nodes</div>
+    <div class="stats-row">
+      <div class="stat-badge"><span class="stat-val">20</span><span class="stat-lbl">Verses</span></div>
+      <div class="stat-badge"><span class="stat-val">8</span><span class="stat-lbl">Plates</span></div>
+      <div class="stat-badge"><span class="stat-val">16</span><span class="stat-lbl">Pillars</span></div>
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Nodes</span></div>
+      <div class="stat-badge"><span class="stat-val">100%</span><span class="stat-lbl">Sunni Verified</span></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="controls-bar">
+      <input type="text" id="suiteSearch" class="search-box" placeholder="🔍 Live search across all 64 nodes..." onkeyup="filterSuite()">
+      <div class="nav-tabs-wrapper">
+        <button class="plate-tab-btn active" onclick="switchSuitePlate(1)" id="suiteTab1">Plate 01: THE NOCTURNAL VIGI...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(2)" id="suiteTab2">Plate 02: DEVOTIONAL ANCHOR ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(3)" id="suiteTab3">Plate 03: THE HEAVY SHACKLES...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(4)" id="suiteTab4">Plate 04: THE WITNESS OVER Y...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(5)" id="suiteTab5">Plate 05: THE DIVINE MITIGAT...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(6)" id="suiteTab6">Plate 06: THE FOUR PILLARS O...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(7)" id="suiteTab7">Plate 07: SUNNI EXEGESIS & T...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(8)" id="suiteTab8">Plate 08: TADABBUR OF AL-MUZ...</button>
+
+      </div>
+    </div>
+
+
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 01: THE NOCTURNAL VIGIL & THE HEAVY WORD</h2>
+        <p>Pillars 01 & 02: Qumil-Layla Illa Qaleela, Rhythmic Tarteel & The Descent of Qawlan Thaqeela</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : NIGHT VIGIL & TARTEEL]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 01: THE MANDATE OF THE NIGHT PRAYER</h3>
+          <p>Ya Ayyuha al-Muzzammil, Qumil-Layla & Measuring the Night</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the enshrouded one addressed o you wrapped in garments! rise to stand in prayer during the quiet night, except for a little.">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>The Enshrouded One Addressed</h4>
+            </div>
+            <ul class="card-points">
+              <li>O you wrapped in garments! Rise to stand in prayer during the quiet night, except for a little.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="measuring the vigil hours stand for half the night, or subtract from it a little, or add to it according to spiritual capacity.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>Measuring the Vigil Hours</h4>
+            </div>
+            <ul class="card-points">
+              <li>Stand for half the night, or subtract from it a little, or add to it according to spiritual capacity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the sacred solitude of night stepping away from worldly commotion to build deep spiritual resilience in intimate communion with allah.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>The Sacred Solitude of Night</h4>
+            </div>
+            <ul class="card-points">
+              <li>Stepping away from worldly commotion to build deep spiritual resilience in intimate communion with Allah.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the training ground for prophethood the nightly vigil established as the foundational crucible preparing the messenger for the colossal mission.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>The Training Ground for Prophethood</h4>
+            </div>
+            <ul class="card-points">
+              <li>The nightly vigil established as the foundational crucible preparing the Messenger for the colossal mission.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 02: TARTEEL & THE HEAVY WORD</h3>
+          <p>Wa Rattilil-Qur'ana Tarteela & Inna Sa-Nulqee 'Alayka Qawlan Thaqeela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="recite with measured rhythms wa rattili al-qur'ana tarteela: recite the qur'an with slow, distinct, melodious contemplation.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>Recite with Measured Rhythms</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa rattili al-Qur'ana tarteela: recite the Qur'an with slow, distinct, melodious contemplation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the imparting of a weighty word inna sa-nulqee 'alayka qawlan thaqeela: we are about to cast upon you a word of immense cosmic weight.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>The Imparting of a Weighty Word</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna sa-nulqee 'alayka qawlan thaqeela: We are about to cast upon you a word of immense cosmic weight.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the depth of night impress (nashi'atal-layl) the hours of the night produce the deepest psychological impress and most upright focused speech.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>The Depth of Night Impress (Nashi'atal-Layl)</h4>
+            </div>
+            <ul class="card-points">
+              <li>The hours of the night produce the deepest psychological impress and most upright focused speech.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="daytime for protracted occupations truly, by day you have long occupations and worldly duties, so dedicate the night to spiritual fortitude.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>Daytime for Protracted Occupations</h4>
+            </div>
+            <ul class="card-points">
+              <li>Truly, by day you have long occupations and worldly duties, so dedicate the night to spiritual fortitude.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 02: DEVOTIONAL ANCHOR & PATIENCE WITH INSULTS</h2>
+        <p>Pillars 03 & 04: Mentioning the Lord's Name, Tabattala Devotion, Lord of East and West & Beautiful Departure</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : DEVOTION & PATIENCE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 03: TOTAL DEVOTIONAL ABSORPTION (TABATTOOL)</h3>
+          <p>Wadhkur Isma Rabbika wa Tabattal Ilayhi Tabteela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="remembering the name of your lord invoke and remember the holy name of your lord morning and evening, filling the heart with his remembrance.">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>Remembering the Name of Your Lord</h4>
+            </div>
+            <ul class="card-points">
+              <li>Invoke and remember the holy Name of your Lord morning and evening, filling the heart with His remembrance.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="devoting yourself with total surrender wa tabattal ilayhi tabteela: detach yourself completely from transient worldly idols in total devotion.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>Devoting Yourself with Total Surrender</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa tabattal ilayhi tabteela: detach yourself completely from transient worldly idols in total devotion.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="lord of the east and the west rabbu al-mashriqi wal-maghrib: the sole sovereign master of all cosmic horizons; none is worthy of worship but he.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>Lord of the East and the West</h4>
+            </div>
+            <ul class="card-points">
+              <li>Rabbu al-mashriqi wal-maghrib: the sole sovereign Master of all cosmic horizons; none is worthy of worship but He.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="take him as your sole trustee (wakeela) fattakhidh-hu wakeela: entrust all your affairs, vulnerabilities, and defenses entirely into his care.">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>Take Him as Your Sole Trustee (Wakeela)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fattakhidh-hu wakeela: entrust all your affairs, vulnerabilities, and defenses entirely into His care.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 04: GRACEFUL DEPARTURE FROM SLANDERERS</h3>
+          <p>Wasbir 'ala Ma Yaqooloona wahjurhum Hajran Jameela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="patience over what deniers say persevere with dignified endurance against the barbed slanders, mocking poetry, and slurs of meccan chieftains.">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>Patience Over What Deniers Say</h4>
+            </div>
+            <ul class="card-points">
+              <li>Persevere with dignified endurance against the barbed slanders, mocking poetry, and slurs of Meccan chieftains.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="depart with a beautiful evacuation (hajran jameela) withdraw from their gatherings with graceful dignity, avoiding petty retaliation or vindictive rancor.">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>Depart with a Beautiful Evacuation (Hajran Jameela)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Withdraw from their gatherings with graceful dignity, avoiding petty retaliation or vindictive rancor.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="leaving deniers to the almighty leave me alone to deal with those who deny the truth—the affluent masters of earthly luxury.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>Leaving Deniers to the Almighty</h4>
+            </div>
+            <ul class="card-points">
+              <li>Leave Me alone to deal with those who deny the truth—the affluent masters of earthly luxury.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="a little respite before the strike wa mahhilhum qaleela: grant them a brief, transient respite in dunya before divine justice falls.">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>A Little Respite Before the Strike</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa mahhilhum qaleela: grant them a brief, transient respite in Dunya before divine justice falls.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 03: THE HEAVY SHACKLES & THE CONVULSIVE EARTH</h2>
+        <p>Pillars 05 & 06: Ankalan wa Jaheeman, Choking Food, Trembling Earth & The Sand-Dune Mountains</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : SHACKLES & DUNES]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 05: RETRIBUTIVE SHACKLES & CHOKING FOOD</h3>
+          <p>Inna Ladayna Ankalan wa Jaheeman wa Ta'aman Dha Ghussah</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="colossal iron fetters (ankal) inna ladayna ankalan: we possess heavy, unbreakable shackles and an intensely roaring furnace (jaheem).">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>Colossal Iron Fetters (Ankal)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna ladayna ankalan: We possess heavy, unbreakable shackles and an intensely roaring furnace (Jaheem).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="food that chokes in the throat wa ta'aman dha ghussah: thorny, bitter sustenance that lodges painfully in the throat, neither passing nor expelling.">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>Food That Chokes in the Throat</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa ta'aman dha ghussah: thorny, bitter sustenance that lodges painfully in the throat, neither passing nor expelling.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="a painful and humiliating torment an agonizing retribution tailored precisely to dismantle their earthly hedonism and arrogant greed.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>A Painful and Humiliating Torment</h4>
+            </div>
+            <ul class="card-points">
+              <li>An agonizing retribution tailored precisely to dismantle their earthly hedonism and arrogant greed.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the inescapable retributive prison no security guards, wealth reserves, or tribal prestige can breach the iron gates of divine judgment.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>The Inescapable Retributive Prison</h4>
+            </div>
+            <ul class="card-points">
+              <li>No security guards, wealth reserves, or tribal prestige can breach the iron gates of divine judgment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 06: CONVULSIVE EARTH & MELTING MOUNTAINS</h3>
+          <p>Yawma Tarjufu al-Ardu wal-Jibalu wa Kanati al-Jibalu Katheeban Maheela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the day the earth violently quakes yawma tarjufu al-ardu wal-jibal: the day when the terrestrial ground and colossal mountains shake violently.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>The Day the Earth Violently Quakes</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yawma tarjufu al-ardu wal-jibal: the Day when the terrestrial ground and colossal mountains shake violently.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="mountains as sliding sand-dunes (katheeban maheela) mighty solid granite crags dissolved into loose, crumbling, weightless heaps of shifting sand.">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>Mountains as Sliding Sand-Dunes (Katheeban Maheela)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Mighty solid granite crags dissolved into loose, crumbling, weightless heaps of shifting sand.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="terrestrial monuments obliterated all monumental achievements of human civilization flattened beneath the seismic command of god.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>Terrestrial Monuments Obliterated</h4>
+            </div>
+            <ul class="card-points">
+              <li>All monumental achievements of human civilization flattened beneath the seismic command of God.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the fragility of the physical world a vivid reminder that the solid earth beneath our feet is maintained only by temporary divine suspension.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>The Fragility of the Physical World</h4>
+            </div>
+            <ul class="card-points">
+              <li>A vivid reminder that the solid earth beneath our feet is maintained only by temporary divine suspension.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 04: THE WITNESS OVER YOU & PHARAOH'S DOOM</h2>
+        <p>Pillars 07 & 08: Messenger as Witness, Pharaoh's Defiance, Gray-Haired Children & The Broken Sky</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : WITNESS & ESCATON]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 07: THE WITNESS SENT AS TO PHARAOH</h3>
+          <p>Rasoolan Shahidan 'Alaykum kama Arsalna ila Fir'awna Rasoola</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="a messenger sent as a witness over you we have dispatched to you a messenger testifying over your deeds, just as we sent a messenger to pharaoh.">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>A Messenger Sent as a Witness Over You</h4>
+            </div>
+            <ul class="card-points">
+              <li>We have dispatched to you a Messenger testifying over your deeds, just as We sent a messenger to Pharaoh.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="pharaoh's fatal arrogant rebellion fa-'asa fir'awnu ar-rasool: pharaoh defiantly disobeyed the prophet moses, relying upon his empire and armies.">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>Pharaoh's Fatal Arrogant Rebellion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-'asa Fir'awnu ar-Rasool: Pharaoh defiantly disobeyed the prophet Moses, relying upon his empire and armies.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="seized with a crushing grip (wabeela) fa-akhadhnahu akhdhan wabeela: so we seized him with an overwhelming, disastrous, drowning catastrophe.">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Seized with a Crushing Grip (Wabeela)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-akhadhnahu akhdhan wabeela: so We seized him with an overwhelming, disastrous, drowning catastrophe.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="historical analogy as solemn warning if mighty pharaoh could not withstand divine justice, what hope do the meccan chieftains have?">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>Historical Analogy as Solemn Warning</h4>
+            </div>
+            <ul class="card-points">
+              <li>If mighty Pharaoh could not withstand divine justice, what hope do the Meccan chieftains have?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 08: THE DAY THAT TURNS CHILDREN GRAY</h3>
+          <p>Yaj'alu al-Wildana Sheeban & As-Sama'u Munfatirun Bih</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="how will you guard against that day? if you persist in disbelief, how will you protect yourselves against a day of sheer, unfathomable horror?">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>How Will You Guard Against That Day?</h4>
+            </div>
+            <ul class="card-points">
+              <li>If you persist in disbelief, how will you protect yourselves against a Day of sheer, unfathomable horror?</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="children turned gray-haired with terror yaj'alu al-wildana sheeban: a day whose cosmic intensity turns small innocent children prematurely gray with shock.">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>Children Turned Gray-Haired with Terror</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yaj'alu al-wildana sheeban: a Day whose cosmic intensity turns small innocent children prematurely gray with shock.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the heavens rent asunder therein as-sama'u munfatirun bih: the celestial firmament itself split, shattered, and collapsing under divine majesty.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>The Heavens Rent Asunder Therein</h4>
+            </div>
+            <ul class="card-points">
+              <li>As-sama'u munfatirun bih: the celestial firmament itself split, shattered, and collapsing under divine majesty.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="his promise is ever inevitably fulfilled kana wa'duhu maf'oola: his sovereign promise is an accomplished fact that cannot fail to manifest.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>His Promise is Ever Inevitably Fulfilled</h4>
+            </div>
+            <ul class="card-points">
+              <li>Kana wa'duhu maf'oola: His sovereign promise is an accomplished fact that cannot fail to manifest.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 05: THE DIVINE MITIGATION & RECITATION OF EASE</h2>
+        <p>Pillars 09 & 10: Two-Thirds Vigil Known, Sickness and Traveling, Faqra'oo Ma Tayassara & Goodly Loan</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : DIVINE MITIGATION]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 09: THE PROPHET & SAHABAH NIGHT VIGIL</h3>
+          <p>Inna Rabbaka Ya'lamu Annaka Taqoomu Adna min Thuluthayi al-Layl</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="your lord knows your nightly vigil your lord knows that you stand in prayer nearly two-thirds of the night, half of it, or a third of it.">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Your Lord Knows Your Nightly Vigil</h4>
+            </div>
+            <ul class="card-points">
+              <li>Your Lord knows that you stand in prayer nearly two-thirds of the night, half of it, or a third of it.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="a dedicated company of believers wa ta'ifatun minalladhina ma'ak: accompanied by a devoted vanguard of early companions standing alongside you.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>A Dedicated Company of Believers</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa ta'ifatun minalladhina ma'ak: accompanied by a devoted vanguard of early companions standing alongside you.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="allah measures the night and day allah alone precisely measures the alternating rhythms of night and day with perfect calculation.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>Allah Measures the Night and Day</h4>
+            </div>
+            <ul class="card-points">
+              <li>Allah alone precisely measures the alternating rhythms of night and day with perfect calculation.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="knowing you could not persevere forever he knew that human physical frailty could not sustain mandatory midnight standing continuously.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>Knowing You Could Not Persevere Forever</h4>
+            </div>
+            <ul class="card-points">
+              <li>He knew that human physical frailty could not sustain mandatory midnight standing continuously.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 10: RECITE WHAT IS EASY OF THE QUR'AN</h3>
+          <p>Faqra'oo Ma Tayassara, Sickness, Traveling & Striving in the Path</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="so recite whatever is feasible and easy faqra'oo ma tayassara minal-qur'an: recite whatever is easily accessible without severe hardship.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>So Recite Whatever is Feasible and Easy</h4>
+            </div>
+            <ul class="card-points">
+              <li>Faqra'oo ma tayassara minal-Qur'an: recite whatever is easily accessible without severe hardship.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="divine empathy for human sickness he knows there will be among you the sick, battling physical pain and chronic bodily exhaustion.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>Divine Empathy for Human Sickness</h4>
+            </div>
+            <ul class="card-points">
+              <li>He knows there will be among you the sick, battling physical pain and chronic bodily exhaustion.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="travelers seeking divine bounty and others journeying across the earth seeking honest livelihoods and the commercial bounty of allah.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Travelers Seeking Divine Bounty</h4>
+            </div>
+            <ul class="card-points">
+              <li>And others journeying across the earth seeking honest livelihoods and the commercial bounty of Allah.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="and warriors striving for divine defense and others fighting in the cause of allah; so recite of the qur'an what is easy, without spiritual burn-out.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>And Warriors Striving for Divine Defense</h4>
+            </div>
+            <ul class="card-points">
+              <li>And others fighting in the cause of Allah; so recite of the Qur'an what is easy, without spiritual burn-out.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 06: THE FOUR PILLARS OF COMPASSION & PROSPERITY</h2>
+        <p>Pillars 11 & 12: Establishing Salah, Giving Zakah, Loaning Allah a Goodly Loan & Seeking Forgiveness</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : THE PERPETUAL PILLARS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 11: ESTABLISHING PRAYER & CHARITY</h3>
+          <p>Aqeemoo as-Salata, Aatoo az-Zakata & Qardan Hasana</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="establish the obligatory prayers uphold the prescribed five daily prayers with inner mindfulness, physical precision, and communal fidelity.">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>Establish the Obligatory Prayers</h4>
+            </div>
+            <ul class="card-points">
+              <li>Uphold the prescribed five daily prayers with inner mindfulness, physical precision, and communal fidelity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="disburse the purifying zakah give the obligatory social welfare (zakah), purifying personal wealth and elevating the vulnerable.">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Disburse the Purifying Zakah</h4>
+            </div>
+            <ul class="card-points">
+              <li>Give the obligatory social welfare (Zakah), purifying personal wealth and elevating the vulnerable.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="loan allah a goodly loan (qardan hasana) advance additional voluntary charity: spending generously in times of difficulty with absolute sincerity.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>Loan Allah a Goodly Loan (Qardan Hasana)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Advance additional voluntary charity: spending generously in times of difficulty with absolute sincerity.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="dignified economic altruism viewing financial resources as divine trusts to be invested in the eternal welfare of humanity.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>Dignified Economic Altruism</h4>
+            </div>
+            <ul class="card-points">
+              <li>Viewing financial resources as divine trusts to be invested in the eternal welfare of humanity.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 12: ETERNAL RESERVES & SINCERE ISTIGHFAR</h3>
+          <p>Wa Ma Tuqaddimoo li-Anfusikum min Khayrin Tajidoohu 'Indallah</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="whatever good you send forward whatever righteous deed, hidden charity, or patient smile you send forward for your own souls,">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>Whatever Good You Send Forward</h4>
+            </div>
+            <ul class="card-points">
+              <li>Whatever righteous deed, hidden charity, or patient smile you send forward for your own souls,</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="you will find it stored with allah you will discover it preserved with allah, far better and vastly greater in ultimate reward.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>You Will Find It Stored with Allah</h4>
+            </div>
+            <ul class="card-points">
+              <li>You will discover it preserved with Allah, far better and vastly greater in ultimate reward.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="constantly seek divine forgiveness wastaghfiroo allah: seek the pardon of allah continually, recognizing human imperfection in all deeds.">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>Constantly Seek Divine Forgiveness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wastaghfiroo Allah: seek the pardon of Allah continually, recognizing human imperfection in all deeds.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="indeed allah is forgiving, merciful innallaha ghafoorun raheem: truly, allah is perpetually forgiving, overflowing in boundless compassion.">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>Indeed Allah is Forgiving, Merciful</h4>
+            </div>
+            <ul class="card-points">
+              <li>Innallaha Ghafoorun Raheem: truly, Allah is perpetually forgiving, overflowing in boundless compassion.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 07: SUNNI EXEGESIS & THE ONE-YEAR CRUCIBLE</h2>
+        <p>Pillars 13 & 14: Sahih Muslim 746 on Aisha's Testimony, Abrogation of Obligatory Tahajjud & Tarteel Principles</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : HADITH EVIDENCE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 13: AISHA'S ACCOUNT OF THE NIGHTLY CRUCIBLE</h3>
+          <p>Sahih Muslim 746: Standing for Twelve Months Until Feet Swelled</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="twelve months of mandatory night prayer 'a'ishah testified that when 73:1-4 descended, the companions stood in night vigil for a full year.">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>Twelve Months of Mandatory Night Prayer</h4>
+            </div>
+            <ul class="card-points">
+              <li>'A'ishah testified that when 73:1-4 descended, the companions stood in night vigil for a full year.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="swollen feet and physical exhaustion their feet swelled from hours of standing until allah sent down the mitigating mercy of verse 20.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Swollen Feet and Physical Exhaustion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Their feet swelled from hours of standing until Allah sent down the mitigating mercy of verse 20.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="transition from fard to sunnah mu'akkadah tahajjud was relieved of absolute obligation for the ummah while remaining an elite prophetic mandate.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>Transition from Fard to Sunnah Mu'akkadah</h4>
+            </div>
+            <ul class="card-points">
+              <li>Tahajjud was relieved of absolute obligation for the Ummah while remaining an elite Prophetic mandate.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the spiritual foundation of the early sahabah that one year of intense nocturnal training formed the iron spiritual backbone that conquered empires.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>The Spiritual Foundation of the Early Sahabah</h4>
+            </div>
+            <ul class="card-points">
+              <li>That one year of intense nocturnal training formed the iron spiritual backbone that conquered empires.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 14: THE BALAGHAH OF TARTEEL & QAWLAN THAQEELA</h3>
+          <p>Classical Linguistic Analysis of Measured Recitation & Divine Weight</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="linguistic definition of tarteel ali ibn abi talib defined tarteel as: 'tajweed al-huroof wa ma'rifat al-wuqoof' (perfecting letters and knowing pauses).">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>Linguistic Definition of Tarteel</h4>
+            </div>
+            <ul class="card-points">
+              <li>Ali ibn Abi Talib defined Tarteel as: 'Tajweed al-Huroof wa Ma'rifat al-Wuqoof' (perfecting letters and knowing pauses).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="why the qur'an is 'qawlan thaqeela' heavy in its obligations, heavy in its cosmic truth, and physically heavy upon the prophet during descent.">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Why the Qur'an is 'Qawlan Thaqeela'</h4>
+            </div>
+            <ul class="card-points">
+              <li>Heavy in its obligations, heavy in its cosmic truth, and physically heavy upon the Prophet during descent.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="ibn abbas on nashi'at al-layl explained that the hours of midnight quietude synchronize the tongue with the heart far better than daylight.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>Ibn Abbas on Nashi'at al-Layl</h4>
+            </div>
+            <ul class="card-points">
+              <li>Explained that the hours of midnight quietude synchronize the tongue with the heart far better than daylight.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the hermeneutics of faqra'oo ma tayassara jurists derived that reciting short accessible portions with deep presence surpasses marathon speed-reading.">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>The Hermeneutics of Faqra'oo Ma Tayassara</h4>
+            </div>
+            <ul class="card-points">
+              <li>Jurists derived that reciting short accessible portions with deep presence surpasses marathon speed-reading.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 08: TADABBUR OF AL-MUZZAMMIL & MODERN NIGHT PRACTICE</h2>
+        <p>Pillars 15 & 16: Cultivating a Personal Tahajjud Routine, Slow Tarteel Recitation & The Goodly Loan</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : LIVING THE SURAH]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 15: ARCHITECTURING A MODERN NIGHT VIGIL</h3>
+          <p>Practical Steps to Awaken Before Fajr in a Digital Age</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the fifteen-minute tahajjud protocol beginning with fifteen minutes of quiet prayer before fajr, building consistency before expanding duration.">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>The Fifteen-Minute Tahajjud Protocol</h4>
+            </div>
+            <ul class="card-points">
+              <li>Beginning with fifteen minutes of quiet prayer before Fajr, building consistency before expanding duration.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="digital detox before bedtime enacting 'wastaghshaw thiyabahum' by turning off screens early to protect the sanctity of pre-dawn presence.">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>Digital Detox Before Bedtime</h4>
+            </div>
+            <ul class="card-points">
+              <li>Enacting 'Wastaghshaw Thiyabahum' by turning off screens early to protect the sanctity of pre-dawn presence.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="reciting with heartfelt tarteel slowing recitation, pausing at verses of mercy to ask, and pausing at verses of warning to seek refuge.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>Reciting with Heartfelt Tarteel</h4>
+            </div>
+            <ul class="card-points">
+              <li>Slowing recitation, pausing at verses of mercy to ask, and pausing at verses of warning to seek refuge.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the pre-dawn secret confession pouring out silent heartaches during the final third of the night when divine descent of mercy is nearest.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>The Pre-Dawn Secret Confession</h4>
+            </div>
+            <ul class="card-points">
+              <li>Pouring out silent heartaches during the final third of the night when divine descent of mercy is nearest.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 16: FINANCIAL ALTRUISM & SENDING FORWARD</h3>
+          <p>Living Verse 20: Transforming Wealth into Eternal Capital</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="automating daily and monthly charity enacting 'aqeedatu qardan hasana' through regular contributions to relieve community burdens.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>Automating Daily and Monthly Charity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Enacting 'Aqeedatu Qardan Hasana' through regular contributions to relieve community burdens.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="sending forward for the soul remembering that everything left in banks is abandoned to heirs, while charity sent forward is eternally preserved.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>Sending Forward for the Soul</h4>
+            </div>
+            <ul class="card-points">
+              <li>Remembering that everything left in banks is abandoned to heirs, while charity sent forward is eternally preserved.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="balancing ambition with spiritual sanity acknowledging commercial pursuits (yadriboona fil-ard) while refusing to let corporate life crush prayer.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>Balancing Ambition with Spiritual Sanity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Acknowledging commercial pursuits (Yadriboona fil-ard) while refusing to let corporate life crush prayer.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="sealing every day in sincere istighfar concluding every nocturnal cycle with 'wastaghfiroo allah', recognizing that mercy alone admits into eden.">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>Sealing Every Day in Sincere Istighfar</h4>
+            </div>
+            <ul class="card-points">
+              <li>Concluding every nocturnal cycle with 'Wastaghfiroo Allah', recognizing that mercy alone admits into Eden.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="modals-panel">
+      <div class="section-heading" style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);"><span>✦</span> DEEP EXEGETICAL FOCUS MONOGRAPHS</div>
+      <div class="modal-triggers-grid">
+
+        <div class="modal-btn" onclick="openModal('muzzammil-tahajjud-crucible')">
+          <h5>1. The Nightly Crucible: Qumil-Layla Illa Qaleela & The One-Year Mandate (Muslim 746)</h5>
+          <p>The historical training protocol that formed the spiritual backbone of the early Muslim community.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('muzzammil-tarteel-weighty-word')">
+          <h5>2. Tarteel & The Heavy Word: Wa Rattilil-Qur'ana Tarteela</h5>
+          <p>The sacred mechanics of slow recitation and the profound ontological weight of divine speech.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('muzzammil-choking-food')">
+          <h5>3. The Choking Food & Heavy Shackles: Ta'aman Dha Ghussah</h5>
+          <p>The retributive justice of the afterlife dismantling worldly hedonism and arrogance.</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('muzzammil-mitigation-verse20')">
+          <h5>4. The Divine Mitigation: Faqra'oo Ma Tayassara minal-Qur'an</h5>
+          <p>How divine empathy for human biological frailty, illness, and economic travel reshaped the night vigil.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal-backdrop" id="modal-muzzammil-tahajjud-crucible">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('muzzammil-tahajjud-crucible')">&times;</button>
+      <h3>The Nightly Crucible: Qumil-Layla Illa Qaleela & The One-Year Mandate (Muslim 746)</h3>
+      <p>In Sahih Muslim (746), Sa'd ibn Hisham asked 'A'ishah about the night prayer of the Messenger of Allah ﷺ. She replied: 'Did you not recite: Ya Ayyuha al-Muzzammil?' He said: 'Yes.' She said: 'Verily, Allah made standing at night obligatory at the beginning of this Surah.'</p><p>'So the Prophet ﷺ and his companions stood in night vigil for an entire year, until their feet became swollen with fluid, and Allah withheld the concluding verses of the Surah in heaven for twelve months.'</p><p>'Then Allah revealed the mitigation in the final verse: 'Inna Rabbaka ya'lamu annaka taqoomu adna min thuluthayi al-layl...' and thus the night prayer became voluntary (Tatawwu') after having been an absolute obligation.'</p><p>This intense one-year spiritual bootcamp forged the companions' interior depth, anchoring their souls in transcendent presence before the severe political, military, and legal trials of Medina commenced.</p>
+      <div class="modal-source">Authorities: Sahih Muslim 746; Sunan Abi Dawud 1342; Tafsir Ibn Kathir (8/255); Al-Mustadrak 'ala as-Sahihayn.</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-muzzammil-tarteel-weighty-word">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('muzzammil-tarteel-weighty-word')">&times;</button>
+      <h3>Tarteel & The Heavy Word: Wa Rattilil-Qur'ana Tarteela</h3>
+      <p>In Ayah 4, Allah commands: 'And recite the Qur'an with measured recitation [Tarteela].' Ali ibn Abi Talib provided the canonical definition: 'Tarteel is the clear articulation of the letters [Tajweed al-Huroof] and the deep awareness of the stopping places [Ma'rifat al-Wuqoof].'</p><p>Ibn Abbas stated: 'To recite a single short Surah like Al-Zalzalah or Al-Qari'ah with slow, reflective Tarteel is more beloved to me than to speed-read through the entire Qur'an without contemplation.'</p><p>This contemplative discipline prepares the soul for 'Qawlan Thaqeela' (A Heavy Word). The Qur'an is described as heavy because of its legal obligations, its existential truths, and its literal physical impact during descent: in Sahih al-Bukhari, 'A'ishah noted that on freezing winter mornings, sweat dripped from the Prophet's forehead as revelation weighed down upon him.</p><p>Fast, unthinking recitation glides over words; Tarteel allows the celestial weight of the message to shatter complacency and sculpt the human consciousness.</p>
+      <div class="modal-source">Authorities: Sahih al-Bukhari 2; Tafsir at-Tabari (23/678); Tafsir al-Qurtubi (19/37); Al-Burhan fee 'Ulum al-Qur'an.</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-muzzammil-choking-food">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('muzzammil-choking-food')">&times;</button>
+      <h3>The Choking Food & Heavy Shackles: Ta'aman Dha Ghussah</h3>
+      <p>In Ayahs 12–13, Allah describes the destiny of the arrogant oppressors: 'Indeed, with Us are shackles [Ankalan] and a burning fire [Jaheema], and food that chokes [Ta'aman dha ghussah], and a painful torment.'</p><p>Ibn Abbas explained that 'Ta'am dha ghussah' refers to the thorny plant of Dari' and the foul fruit of Zaqqum: when swallowed, its sharp spikes lodge in the esophagus; it neither passes downward into the stomach nor can it be vomited back up.</p><p>When the sinners choke upon this agonizing substance, they scream for water to wash it down—and are provided with boiling liquid like molten brass that scalds their lips and facial skin off before it reaches their throats.</p><p>This retributive imagery was revealed in Mecca to confront affluent pagan magnates who mocked the Prophet while indulging in lavish banquets, reminding them that wealth hoarded without charity culminates in eternal, suffocating entrapment.</p>
+      <div class="modal-source">Authorities: Tafsir at-Tabari (23/685); Tafsir Ibn Kathir (8/259); Al-Jami' li-Ahkam al-Qur'an (19/45).</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-muzzammil-mitigation-verse20">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('muzzammil-mitigation-verse20')">&times;</button>
+      <h3>The Divine Mitigation: Faqra'oo Ma Tayassara minal-Qur'an</h3>
+      <p>Ayah 20 is the longest and most comprehensive verse in the Surah, articulating divine mercy: 'He knows that there will be among you the sick, and others traveling throughout the earth seeking of the bounty of Allah, and others fighting in the cause of Allah. So recite of it what is easy [Faqra'oo ma tayassara minh].'</p><p>Classical scholars note that this verse pairs two essential worldly categories alongside the sacred struggle: the sick battling physical weakness, and the commercial traveler seeking lawful livelihood (Yadriboona fil-ard). This proves that engaging in honest commerce is an honorable station recognized alongside jihad.</p><p>Allah does not desire that religion become an unbearable burden that breaks human physical vitality. By reducing mandatory nocturnal standing to 'what is easy', Islam consecrated consistency over exhaustion.</p><p>The verse concludes by directing believers toward the permanent pillars of communal elevation: establishing prayer, paying zakah, advancing a goodly loan to Allah, and continually seeking divine forgiveness (Wastaghfiroo Allah).</p>
+      <div class="modal-source">Authorities: Tafsir Ibn Kathir (8/261); Tafsir al-Qurtubi (19/52); Ahkam al-Qur'an lil-Jassas; Sahih Muslim.</div>
+    </div>
+  </div>
+
+  <script>
+    function switchSuitePlate(page) {
+      document.querySelectorAll('.plate-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      const tab = document.getElementById('suiteTab' + page);
+      const sec = document.getElementById('plateSection' + page);
+      if (tab) tab.classList.add('active');
+      if (sec) sec.classList.add('active');
+    }
+
+    function filterSuite() {
+      const q = document.getElementById('suiteSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.card-item');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+
+    function openModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.remove('open');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>

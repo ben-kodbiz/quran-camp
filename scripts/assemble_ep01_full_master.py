@@ -85,6 +85,8 @@ def assemble():
 
     start_time = time.time()
 
+    trademark_master = "drawtext=text='HUURS STUDIO':font='IBM Plex Serif':fontsize=16:fontcolor=white@0.22:x=w-tw-40:y=h-th-30"
+
     # Filtergraph:
     # Trim each scene to its exact narrative duration:
     # S1: 7.8s, S2: 7.8s, S3: 8.0s, S4: 8.2s, S5: 6.7s -> Total = 38.5s
@@ -96,9 +98,8 @@ def assemble():
         "[4:v]trim=start=0:duration=6.7,setpts=PTS-STARTPTS[v5];"
         # Concatenate 5 shots into continuous 38.5s master sequence
         "[v1][v2][v3][v4][v5]concat=n=5:v=1:a=0[master_cut];"
-        # Editorial polish: subtle film grain, subtitles, and gentle head/tail fades
-        "[master_cut]noise=c0s=1.2:allf=t,"
-        f"subtitles={SUBTITLE_FILE},"
+        # Editorial polish: subtle film grain, trademark watermark, and gentle head/tail fades
+        f"[master_cut]noise=c0s=1.2:allf=t,{trademark_master},"
         "fade=t=in:st=0:d=0.7,"
         "fade=t=out:st=37.5:d=1.0,"
         "format=yuv420p[v_out];"
@@ -123,17 +124,10 @@ def assemble():
         "-map", "[v_out]",
         "-map", "[a_out]",
         "-t", "38.5",
-        "-c:v", "h264_nvenc",
-        "-preset", "p7",
-        "-tune", "hq",
-        "-rc", "vbr",
-        "-cq", "17",
-        "-spatial-aq", "1",
-        "-temporal-aq", "1",
-        "-b:v", "6.5M",
-        "-maxrate", "9.5M",
-        "-bufsize", "14M",
-        "-profile:v", "high",
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "18",
+        "-pix_fmt", "yuv420p",
         "-c:a", "aac",
         "-b:a", "256k",
         "-ar", "48000",

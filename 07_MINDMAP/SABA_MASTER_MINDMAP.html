@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Saba Master Mindmap • Huurs Studio</title>
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #26354D;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy-deep);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+    }
+    .wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--border-muted);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    header.header h1 {
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    header.header span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .tabs-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      border-color: var(--gold);
+      color: var(--white);
+    }
+    .tab-btn.active {
+      background: var(--navy-elevated);
+      border-color: var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .page-container {
+      display: none;
+    }
+    .page-container.active {
+      display: block;
+    }
+    .plate-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-left: 4px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .plate-title-bar h2 {
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .plate-title-bar p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .plate-badge {
+      background: var(--navy-elevated);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+    .pillar {
+      background: var(--navy-card);
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pillar-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-muted);
+      background: var(--navy-elevated);
+    }
+    .pillar-header.cyan h3 { color: var(--cyan); }
+    .pillar-header.purple h3 { color: var(--purple); }
+    .pillar-header.emerald h3 { color: var(--emerald); }
+    .pillar-header.gold h3 { color: var(--gold); }
+    .pillar-header.rose h3 { color: var(--rose); }
+    .pillar-header h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .pillar-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .pillar-cards {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card {
+      background: var(--navy-elevated);
+      border: 1px solid var(--border-muted);
+      border-radius: 6px;
+      padding: 12px 14px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .card-num {
+      background: var(--navy-card);
+      color: var(--gold);
+      border: 1px solid var(--border-muted);
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .card-head h4 {
+      font-size: 0.88rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+    .card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card li {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    footer.footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--border-muted);
+      padding-top: 16px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div>
+        <h1>SURAH SABA • MASTER MINDMAP ARCHITECTURE</h1>
+        <span>8 Widescreen Plates • 16 Pillars • 64 Detailed Analytical Cards</span>
+      </div>
+      <div>
+        <a href="SABA_MASTER_MINDMAP.pdf" target="_blank" style="background:var(--gold); color:var(--navy-deep); padding:8px 14px; border-radius:6px; font-weight:600; text-decoration:none; font-size:0.82rem;">Download Vector PDF ↗</a>
+      </div>
+    </header>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="showPage(1)">Plate 01: COSMIC OMNISCIENCE</button>
+<button class="tab-btn " onclick="showPage(2)">Plate 02: COSMIC VULNERABILITY</button>
+<button class="tab-btn " onclick="showPage(3)">Plate 03: DAWUD'S IRON</button>
+<button class="tab-btn " onclick="showPage(4)">Plate 04: SULAYMAN'S EMPIRE</button>
+<button class="tab-btn " onclick="showPage(5)">Plate 05: OCCULT DEMOLITION</button>
+<button class="tab-btn " onclick="showPage(6)">Plate 06: COLLAPSE OF SABA</button>
+<button class="tab-btn " onclick="showPage(7)">Plate 07: DISPERSAL OF SABA</button>
+<button class="tab-btn " onclick="showPage(8)">Plate 08: FINAL AWAKENING</button>
+
+    </div>
+
+    
+    <div id="page-1" class="page-container active">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE COSMIC HAMD & THE OMNISCIENCE OF THE ATOM'S WEIGHT</h2>
+          <p>Pillars 1 & 2: Universal Doxology in Creation & Eternity, The Subatomic Scale & Infallible Register</p>
+        </div>
+        <span class="plate-badge">PLATE 01 : COSMIC OMNISCIENCE</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 01: UNIVERSAL PRAISE IN TWO REALMS</h3>
+            <p>Cosmic Ownership, Hereafter Hamd & Four Vectors of Transit</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">01</span>
+                <h4>Universal Hamd in Two Realms</h4>
+              </div>
+              <ul><li>Al-Hamdu lillahi alladhi lahu ma fis-samawati wa ma fil-ard: praise in primordial creation conjoined with eternal praise in the Hereafter.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">02</span>
+                <h4>Entering the Terrestrial Depths</h4>
+              </div>
+              <ul><li>Ma yaliju fil-ard: rainwater penetrating deep aquifers, buried seeds germinating in darkness, and decomposing bodies awaiting rebirth.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">03</span>
+                <h4>Emerging into Living Reality</h4>
+              </div>
+              <ul><li>Ma yakhruju minha: flora bursting into blossom, subterranean springs gushing, and resurrected souls emerging from graves.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">04</span>
+                <h4>Vertical Axis of Transit</h4>
+              </div>
+              <ul><li>Ma yanzilu min as-sama' wa ma ya'ruju feeha: revelation and angels descending while deeds, supplications, and pure souls ascend.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 02: THE SUBATOMIC SCALE & INFALLIBLE REGISTER</h3>
+            <p>Skepticism Over the Hour, Solemn Divine Oath & Mithqala Dharrah</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">05</span>
+                <h4>Cynical Denial of the Hour</h4>
+              </div>
+              <ul><li>La ta'teena as-sa'ah: polytheists scoffing at eschatological judgment, assuming death is total oblivion without moral consequence.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">06</span>
+                <h4>The Solemn Divine Oath</h4>
+              </div>
+              <ul><li>Qul bala wa Rabbi lata'tiyannakum: an unyielding oath by the Knower of the Unseen swearing the Hour will strike with absolute certainty.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">07</span>
+                <h4>The Weight of an Atom</h4>
+              </div>
+              <ul><li>La ya'zubu 'anhu mithqalu dharrah: not an atom's weight escapes His divine knowledge in heavens or earth, refuting all materialist doubt.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">08</span>
+                <h4>The Infallible Cosmic Register</h4>
+              </div>
+              <ul><li>Wa la asgharu min dhalika wa la akbaru illa fee Kitabin Mubeen: nothing smaller or larger exists except inscribed in a clear book.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-2" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE SLANDER OF DELIRIUM & CELESTIAL VULNERABILITY</h2>
+          <p>Pillars 3 & 4: The Psychology of Disintegration Skepticism & Ground-Fissures Beneath Arrogance</p>
+        </div>
+        <span class="plate-badge">PLATE 02 : COSMIC VULNERABILITY</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header rose">
+            <h3>PILLAR 03: DISINTEGRATION SKEPTICISM & SLANDER</h3>
+            <p>The Mocking Banter of Quraysh & The False Dilemma of Madness</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">09</span>
+                <h4>The Mocking Query of Quraysh</h4>
+              </div>
+              <ul><li>Hal nadullukum 'ala rajul: the tribal elite pointing at the Prophet with derision, turning divine warnings into theatrical mockery.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">10</span>
+                <h4>The Riddle of Disintegration</h4>
+              </div>
+              <ul><li>Idha muzziqtum kulla mumazzaq: asserting that reassembling scattered bodily molecules across vast deserts is biologically impossible.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">11</span>
+                <h4>The False Dilemma of Madness</h4>
+              </div>
+              <ul><li>Aftara 'ala Allahi kadhiban am bihi jinnah: falsely claiming the Messenger is either a calculating fraud or afflicted with delirium.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">12</span>
+                <h4>Unmasking the Moral Escape</h4>
+              </div>
+              <ul><li>Balilladheena la yu'minoona bil-akhirati fil-'adhab: exposing skepticism as an excuse to indulge in injustice without accountability.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 04: THE FRAGILE TERRESTRIAL FLOOR</h3>
+            <p>Enveloping Cosmic Canopies, Fissuring Mantle & Signs for the Penitent</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">13</span>
+                <h4>Enveloping Cosmic Canopy</h4>
+              </div>
+              <ul><li>Afa-lam yaraw ila ma bayna aydeehim wa ma khalfahum: humans are enclosed above and below by cosmic architecture held by divine command.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">14</span>
+                <h4>The Latent Ground-Fissure</h4>
+              </div>
+              <ul><li>In nasha' nakhsif bihim al-ard: the fragile geological crust can rupture instantly, swallowing cities that walk upon it with arrogance.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">15</span>
+                <h4>Falling Celestial Fragments</h4>
+              </div>
+              <ul><li>Aw nusqit 'alayhim kisafan min as-sama': the celestial dome is capable of releasing crushing fragments upon ungrateful empires.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">16</span>
+                <h4>Signs for the Penitent Servant</h4>
+              </div>
+              <ul><li>Inna fee dhalika la-ayatan li-kulli 'abdin muneeb: cosmic vulnerability is a compassionate sign for every soul turning back to Allah.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-3" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE DYNASTY OF GRATITUDE: DAWUD'S MOLTEN IRON</h2>
+          <p>Pillars 5 & 6: Cosmic Echoes of Mountains and Birds, Pliable Iron & Defensive Metallurgy</p>
+        </div>
+        <span class="plate-badge">PLATE 03 : DAWUD'S IRON</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 05: SYMPHONIC PRAISE OF NATURE</h3>
+            <p>Divine Grace Bestowed, Singing Granite Peaks & Airborne Flocks</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">17</span>
+                <h4>Divine Favor Upon Dawud</h4>
+              </div>
+              <ul><li>Wa laqad atayna Dawooda minna fadla: electing David with unique spiritual, political, and acoustic blessings unmatched in history.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">18</span>
+                <h4>Symphonic Mountain Echoes</h4>
+              </div>
+              <ul><li>Ya jibalu awwibee ma'ahu: commanding towering stone peaks to resonate with and repeat his rhythmic psalms of glorification.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">19</span>
+                <h4>Flocks of Attuned Birds</h4>
+              </div>
+              <ul><li>Wat-tayr: airborne flocks halting in flight and descending to synchronize their songs with David's melodious praise of the Creator.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">20</span>
+                <h4>Cosmic Sympathy of Matter</h4>
+              </div>
+              <ul><li>The physical universe is intrinsically conscious and worshipping, joining the voice of the human servant whose heart is pure.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 06: PLIABLE IRON & SACRED METALLURGY</h3>
+            <p>Malleable Iron, Defensive Interlocking Armor & Balanced Engineering</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">21</span>
+                <h4>Iron Malleable in Bare Hands</h4>
+              </div>
+              <ul><li>Wa alanna lahu al-hadeed: solid iron rendered soft as wax or clay without forge fire, demonstrating divine mastery over materials.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">22</span>
+                <h4>Defensive Interlocking Armor</h4>
+              </div>
+              <ul><li>An i'mal sabighat: weaving protective chain mail coats to shield human lives rather than forging cruel weapons of imperial conquest.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">23</span>
+                <h4>Precision Engineering of Links</h4>
+              </div>
+              <ul><li>Wa qaddir fis-sard: calibrating the weight and thickness of ring links with balanced precision so defense does not exhaust the bearer.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">24</span>
+                <h4>Sanctity of Manual Labor</h4>
+              </div>
+              <ul><li>Dawud sustained his regal household entirely through manual labor, establishing the supreme spiritual dignity of honest craft.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-4" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE KINGDOM OF SULAYMAN: SUBJUGATED WINDS & COPPER</h2>
+          <p>Pillars 7 & 8: The Monthly Wind, Fluid Brass Spring, Jinn Architecture & Active Gratitude</p>
+        </div>
+        <span class="plate-badge">PLATE 04 : SULAYMAN'S EMPIRE</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 07: SUBJUGATED WINDS & FLUID BRASS</h3>
+            <p>The Monthly Atmospheric Journey, 'Ayn al-Qitr & Conscripted Jinn</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">25</span>
+                <h4>The Subjugated Atmospheric Wind</h4>
+              </div>
+              <ul><li>Ghuduwwuha shahrun wa rawahuha shahr: wind harnessed to traverse a one-month caravan journey between dawn and midday across his realm.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">26</span>
+                <h4>The Spring of Molten Copper</h4>
+              </div>
+              <ul><li>Asalna lahu 'ayn al-qitr: a subterranean fountain of liquid copper flowing like water for three days, supplying metal for construction.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">27</span>
+                <h4>Conscripted Jinn Under Mandate</h4>
+              </div>
+              <ul><li>Wa min al-jinni man ya'malu bayna yadayh: Jinn subjugated to his authority not by occult sorcery, but by the direct permission of his Lord.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">28</span>
+                <h4>Angelic Enforcement of Order</h4>
+              </div>
+              <ul><li>Man yazigh minhum 'an amrina nudhiqhu min 'adhabi as-sa'eer: angels instantly chastising any rebellious spirit deviating from duty.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 08: JINN CRAFT & THE AXIOM OF WORK</h3>
+            <p>Palaces, Feeding Reservoirs, I'maloo Shukra & The Rarity of the Grateful</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">29</span>
+                <h4>Sanctuaries & Monumental Forts</h4>
+              </div>
+              <ul><li>Ya'maloona lahu ma yashaa'u min mahareeb wa tamatheel: constructing soaring fortresses, prayer sanctuaries, and architectural marvels.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">30</span>
+                <h4>Reservoirs & Anchored Cauldrons</h4>
+              </div>
+              <ul><li>Jifan kal-jawab wa qudoor rasiyat: banquet basins broad as cisterns and immovable cauldrons deployed to feed armies and the poor.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">31</span>
+                <h4>The Golden Axiom of Gratitude</h4>
+              </div>
+              <ul><li>I'maloo ala Dawooda shukra: gratitude in Islam is an active imperative verb; deploying every bestowed power in devotional service.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">32</span>
+                <h4>Rarity of the Truly Grateful</h4>
+              </div>
+              <ul><li>Wa qaleelun min 'ibadiya ash-shakoor: divine testimony that while many thank with the tongue, few embody active, systemic gratitude.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-5" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>SULAYMAN'S STAFF & OCCULT DEMOLITION</h2>
+          <p>Pillars 9 & 10: Silent Departure in Prayer, The Wood-Boring Insect & Shattering Jinn Omniscience</p>
+        </div>
+        <span class="plate-badge">PLATE 05 : OCCULT DEMOLITION</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header purple">
+            <h3>PILLAR 09: THE SILENT DEMISE IN PRAYER</h3>
+            <p>Decree of Mortality, Leaning Sentinel & Months of Veiled Transition</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">33</span>
+                <h4>The Universal Decree of Mortality</h4>
+              </div>
+              <ul><li>Falamma qadayna 'alayhi al-mawt: even Solomon, the master of kings and winds, passes away by the unyielding divine decree of death.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">34</span>
+                <h4>Standing Leaned Upon the Staff</h4>
+              </div>
+              <ul><li>His noble soul departs while standing in his prayer chamber, his physical frame supported upright by his wooden staff (Minsa'ah).</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">35</span>
+                <h4>The Agonizing Toil of the Jinn</h4>
+              </div>
+              <ul><li>The Jinn continue sweating in grueling, humiliating labor, terrified by the motionless silhouette of the king watching over them.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">36</span>
+                <h4>Months of Veiled Transition</h4>
+              </div>
+              <ul><li>An extended period transpires wherein the ruler is dead yet his posture of command keeps thousands under strict discipline.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header rose">
+            <h3>PILLAR 10: DEMOLITION OF OCCULT SUPERSTITION</h3>
+            <p>The Termite at the Core, The Collapse & Exposing Jinn Blindness</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">37</span>
+                <h4>The Minute Wood-Boring Insect</h4>
+              </div>
+              <ul><li>Dabbat al-ard ta'kulu minsa'atah: an infinitesimal termite chewing through the wooden fibers of the staff, grain by tiny grain.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">38</span>
+                <h4>The Collapse to the Earth</h4>
+              </div>
+              <ul><li>Falamma kharra: when the hollowed staff snaps, the king's body falls to the floor, instantly dissolving the illusion of presence.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">39</span>
+                <h4>Exposing Jinn Ignorance</h4>
+              </div>
+              <ul><li>Law kanoo ya'lamoona al-ghayb: had the Jinn known the unseen, they would not have remained in humiliating torment serving a corpse.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">40</span>
+                <h4>Demolition of Astrology & Sorcery</h4>
+              </div>
+              <ul><li>A decisive theological blow freeing humanity from fear of the occult; knowledge of the Unseen belongs exclusively to Allah.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-6" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>THE CIVILIZATION OF SABA: THE TWO GARDENS & BURST DAM</h2>
+          <p>Pillars 11 & 12: Hydraulic Paradise of Ma'rib, Baldatun Tayyibah, Sayl al-'Arim & Bitter Scrubland</p>
+        </div>
+        <span class="plate-badge">PLATE 06 : COLLAPSE OF SABA</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header emerald">
+            <h3>PILLAR 11: BALDATUN TAYYIBAH (PARADISE)</h3>
+            <p>The Dam of Ma'rib, Twin Garden Valleys & Effortless Abundance</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">41</span>
+                <h4>The Divine Sign in Ma'rib</h4>
+              </div>
+              <ul><li>Laqad kana li-Saba'in fee maskanihim ayah: a monumental stone dam channeling mountain monsoons into agricultural wonder.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">42</span>
+                <h4>Twin Terraced Garden Valleys</h4>
+              </div>
+              <ul><li>Jannatani 'an yameenin wa shimal: twin flourishing garden valleys flanking the city, producing endless sweet fruits and vines.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">43</span>
+                <h4>A Pure, Disease-Free Realm</h4>
+              </div>
+              <ul><li>Baldatun tayyibah: wholesome soil and pure air so devoid of pests that fruit dropped into baskets carried effortlessly by strollers.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">44</span>
+                <h4>The Simple Mandate of Faith</h4>
+              </div>
+              <ul><li>Kuloo min rizqi Rabbikum washkuroo lah: eat from divine provision, live with modesty, and thank an All-Forgiving Lord.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header rose">
+            <h3>PILLAR 12: SAYL AL-'ARIM (CATACLYSM)</h3>
+            <p>Ingratitude, The Bursting Dam, Ecological Ruin & Recompense</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">45</span>
+                <h4>Civilizational Ingratitude</h4>
+              </div>
+              <ul><li>Fa-a'radoo: turning away from prophets, becoming bored of continuous ease, and attributing hydraulic triumph to human genius.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">46</span>
+                <h4>The Cataclysmic Burst Dam</h4>
+              </div>
+              <ul><li>Fa-arsalna 'alayhim sayla al-'arim: subterranean burrowing undermining the stone masonry; monsoons bursting the dam in a tidal wave.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">47</span>
+                <h4>Desolate Scrubland Replacement</h4>
+              </div>
+              <ul><li>Dhawatay ukulin khamt wa athl wa sidrin qaleel: sweet fruit replaced by bitter desert shrubs, barren tamarisk, and sparse thorns.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">48</span>
+                <h4>The Immutable Penalty of Ingratitude</h4>
+              </div>
+              <ul><li>Dhalika jazaynahum bima kafaroo: divine justice penalizing pride; transforming an agricultural Eden into an arid wilderness.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-7" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>PROXIMITY FATIGUE & THE SCATTERING OF NATIONS</h2>
+          <p>Pillars 13 & 14: Connected Highways, The Arrogant Prayer for Distance, Folklore & Iblis's Bet</p>
+        </div>
+        <span class="plate-badge">PLATE 07 : DISPERSAL OF SABA</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 13: THE SIN OF PROXIMITY FATIGUE</h3>
+            <p>Visible Road Settlements, Seamless Security & Demanding Hardship</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">49</span>
+                <h4>Connected Visible Settlements</h4>
+              </div>
+              <ul><li>Quran zahirah: an unbroken chain of flourishing towns linking Yemen to Syria, allowing merchants to travel without rations.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">50</span>
+                <h4>Measured Security by Night and Day</h4>
+              </div>
+              <ul><li>Qaddarna feeha as-sayr seeroo feeha layaliya wa ayyaman amineen: seamless safety where no traveler feared bandits or thirst.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">51</span>
+                <h4>Arrogant Prayer for Desert Distance</h4>
+              </div>
+              <ul><li>Rabbana ba'id bayna asfarina: merchant oligarchs tired of egalitarian safety, begging for arduous deserts to monopolize trade.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">52</span>
+                <h4>Self-Inflicted Oppression</h4>
+              </div>
+              <ul><li>Wa zalamoo anfusahum: despising widespread comfort and demanding artificial scarcity, sealing their own civilizational doom.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header purple">
+            <h3>PILLAR 14: DISSOLUTION & IBLIS'S BET</h3>
+            <p>Scattered into Folklore Tales, Mazzaqnahum, Sabbar-Shakoor & Satan's Guess</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">53</span>
+                <h4>Reduced to Cautionary Tales</h4>
+              </div>
+              <ul><li>Fa-ja'alnahum ahadeeth: the mighty empire collapsing into campfire folklore and oral proverbs across the Arabian peninsula.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">54</span>
+                <h4>Utter Tribal Dispersal</h4>
+              </div>
+              <ul><li>Wa mazzaqnahum kulla mumazzaq: tribes scattered to the winds; Ghassan to Syria, Aws and Khazraj to Yathrib, Khuza'ah to Mecca.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">55</span>
+                <h4>The Twin Virtues of Reflection</h4>
+              </div>
+              <ul><li>Inna fee dhalika la-ayatin li-kulli sabbarin shakoor: historical rise and fall understood only by those uniting Sabr and Shukr.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">56</span>
+                <h4>The Confirmation of Iblis's Guess</h4>
+              </div>
+              <ul><li>Wa laqad saddaqa 'alayhim Ibleesu zannahu: Satan's cynical bet that mankind would prove ungrateful verified in the ruin of Saba.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page-8" class="page-container ">
+      <div class="plate-title-bar">
+        <div>
+          <h2>ANGELIC AWE, SOLITARY REFLECTION & FINAL PARTITION</h2>
+          <p>Pillars 15 & 16: Quadruple Demolition of Idols, Angelic Terror at Divine Speech & The Solitary Awakening</p>
+        </div>
+        <span class="plate-badge">PLATE 08 : FINAL AWAKENING</span>
+      </div>
+      <div class="pillars-grid">
+        
+        <div class="pillar">
+          <div class="pillar-header gold">
+            <h3>PILLAR 15: DEMOLITION OF SHIRK & ANGELIC AWE</h3>
+            <p>Severing the 4 Roots of Idolatry & Archangels Prostrating in Dread</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">57</span>
+                <h4>Severing False Ownership & Partnership</h4>
+              </div>
+              <ul><li>La yamlikoona mithqala dharrah: idols possess zero atomic ownership in heaven or earth, and share zero percentage of creation.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">58</span>
+                <h4>Zero Divine Need for Assistance</h4>
+              </div>
+              <ul><li>Wa ma lahu minhum min dhaheer: the Sovereign Lord requires no minister, cabinet, or helper among created entities.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">59</span>
+                <h4>The True Boundary of Intercession</h4>
+              </div>
+              <ul><li>Wa la tanfa'u ash-shafa'atu 'indahu illa liman adhina lah: autonomous mediation abolished; intercession operates solely by divine license.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">60</span>
+                <h4>Angelic Dread at Divine Speech</h4>
+              </div>
+              <ul><li>Hatta idha fuzzi'a 'an quloobihim: archangels falling trembling like chains on stone when Allah speaks, declaring His Word Al-Haqq.</li></ul>
+            </div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-header cyan">
+            <h3>PILLAR 16: SOLITARY AWAKENING & THE PARTITION</h3>
+            <p>Universal Mission, Standing Alone Before Allah & The Irreversible Chasm</p>
+          </div>
+          <div class="pillar-cards">
+            
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">61</span>
+                <h4>Universal Prophetic Mission</h4>
+              </div>
+              <ul><li>Wa ma arsalnaka illa kaffatan lin-nasi: the Messenger sent comprehensively to all humanity as bringer of glad tidings and warner.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">62</span>
+                <h4>The Solitary Intellectual Mandate</h4>
+              </div>
+              <ul><li>An taqoomoo lillahi mathna wa furada: step outside the noise of the mob; contemplate alone before Allah and recognize prophetic truth.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">63</span>
+                <h4>Impossibility of Belated Reaching</h4>
+              </div>
+              <ul><li>Wa anna lahumu at-tanawooshu min makanin ba'eed: reaching for faith after judgment has begun is as impossible as grasping across a void.</li></ul>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <span class="card-num">64</span>
+                <h4>The Irreversible Final Partition</h4>
+              </div>
+              <ul><li>Wa heela baynahum wa bayna ma yashtahoon: an impenetrable barrier descends between them and what they desire, sealing doubt forever.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      Huurs Knowledge Systems • Classical Sunni Source Discipline (Tabari, Ibn Kathir, Qurtubi, Razi, Baghawi, Ibn al-Qayyim) • READ. REFLECT. RETURN.
+    </footer>
+  </div>
+
+  <script>
+    function showPage(pnum) {
+      document.querySelectorAll('.page-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById('page-' + pnum);
+      if (target) target.classList.add('active');
+      
+      const btns = document.querySelectorAll('.tab-btn');
+      if (btns[pnum - 1]) btns[pnum - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

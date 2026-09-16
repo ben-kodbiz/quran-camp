@@ -48,7 +48,7 @@ storage:
 
 ### 00:00 – 00:35 | SECTION 1: THE DISAPPEARING CLOCK
 **[VISUAL]**  
-*A solitary ancient stone sundial on an ocean cliff at late afternoon. The shadow crawls silently across the engraved numerals as the golden sun sinks toward a vast, calm ocean horizon.*
+*A boundless cinematic view of an infinite spiral galaxy slowly rotating in deep space amidst glowing cosmic nebulae and crystalline star clusters.*
 
 **(VOICEOVER):**  
 "Have you felt lately like time is moving unnaturally fast?
@@ -67,7 +67,7 @@ Fourteen hundred years ago, in just three short verses, Allah revealed the absol
 
 ### 00:35 – 01:45 | SECTION 2: THE PARABLE OF THE MELTING CAPITAL
 **[VISUAL]**  
-*Tracking shot across open parchment displaying the short, powerful verses of Surah Al-Asr.*
+*Deep ocean underwater shot with brilliant sunbeams penetrating dark azure waters, a shimmering school of silver fish gliding gracefully through the deep blue current.*
 
 **(VOICEOVER):**  
 "Listen to the oath:
@@ -95,7 +95,7 @@ If you do not trade your seconds for eternity, you are guaranteed to end in ruin
 
 ### 01:45 – 03:00 | SECTION 3: THE FOUR CONDITIONS OF SALVATION
 **[VISUAL]**  
-*A majestic lone cedar tree standing firm on a coastal bluff against ocean winds. Roots digging deep into rocky soil.*
+*A vibrant, living underwater coral reef teeming with schools of yellow and turquoise tropical fish weaving through blooming coral branches in crystal clear water.*
 
 **(VOICEOVER):**  
 "Then Allah gives the only exception in verse 3:
@@ -117,7 +117,7 @@ Why? Because it outlines the four non-negotiable anchors:
 
 ### 03:00 – 04:00 | SECTION 4: TADABBUR — WHAT COMPANIONS DID BEFORE SAYING GOODBYE
 **[VISUAL]**  
-*Two travelers in simple linen walking side-by-side on an ancient mountain pathway at sunset, turning toward each other in mutual respect.*
+*An exquisite Bird of Paradise (Cenderawasih) perched in a lush, misty ancient rainforest canopy, slowly spreading its iridescent emerald and golden plumes in the morning light.*
 
 **(VOICEOVER):**  
 "In an authentic narration in At-Tabarani, Abu Madinah ad-Darimi tells us:  
@@ -135,13 +135,13 @@ It was their way of looking each other in the eye and saying:
 
 ### 04:00 – 05:00 | SECTION 5: PRACTICAL ACTION & TODAY'S RESET
 **[VISUAL]**  
-*The sun setting over the calm horizon, leaving behind a tranquil twilight sky filled with deep indigo and amber hues.*
+*Epic panoramic view of towering green mountain peaks draped in mist, with cascading waterfalls catching radiant golden sunset rays.*
 
 **(VOICEOVER):**  
 "Before this day closes:
 
 Look at your screen-time report. Look at how many hours went into scrolling through other people’s lives.  
-Then look at the Qur'an resting on your table.
+Then turn your heart back to the Words of your Creator.
 
 Stop the melting.  
 Take five minutes right now. Read Surah Al-Asr slowly.  

@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huurs Studio — Holy Qur'an Master Visual Cartography & Product Portal (77 Surahs • Juz 1–29)</title>
+  <!-- PWA & Offline App Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#05080f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quran Studio">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" href="icons/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1582,10 +1590,16 @@
       </div>
 
       <div class="header-links">
+        <button id="pwaInstallBtn" class="btn btn-portal btn-sm" style="display:none;" onclick="triggerPwaInstall()">
+          <span>📲</span> Install App
+        </button>
+        <a href="12_PRODUCTS/SACRED_CONCEPTS_EXPLAINED.html" target="_blank" class="btn btn-outline btn-sm" style="border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
+          <span>🌿</span> Ayāt al-Kawn & Terms
+        </a>
         <a href="12_PRODUCTS/reader.html" target="_blank" class="btn btn-outline btn-sm">114 Surahs Reader</a>
         <a href="Portfolio/index.html" target="_blank" class="btn btn-outline btn-sm">Executive Proposal</a>
         <a href="#packagesDownloadCenter" class="btn btn-gold btn-sm">Download Bundles</a>
-        <button class="btn btn-gold btn-sm" onclick="openServerModal()">Local Server Help</button>
+        <button class="btn btn-gold btn-sm" onclick="openOfflineHelpModal()">Quick Start Guide</button>
       </div>
     </div>
   </header>
@@ -2895,7 +2909,7 @@ python3 -m http.server 8181</pre>
         <div class="pm-guarantee-box">
           <span style="font-size: 1.2rem;">🛡️</span>
           <div>
-            <strong>100% Barakah Guarantee:</strong> Unconditional 30-day money-back guarantee. Zero DRM locks. Unlimited personal and family use.
+            Zero DRM locks. Unlimited personal and family use. Instant digital access across all devices.
           </div>
         </div>
 
@@ -2910,6 +2924,72 @@ python3 -m http.server 8181</pre>
       </div>
     </div>
   </div>
+
+  <!-- PWA Service Worker & Install Logic -->
+  <script>
+    // Register Service Worker for offline caching
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('[PWA] ServiceWorker registered with scope:', reg.scope))
+          .catch(err => console.log('[PWA] ServiceWorker registration skipped/failed:', err));
+      });
+    }
+
+    // PWA Installation Trigger
+    let deferredPrompt = null;
+    const pwaBtn = document.getElementById('pwaInstallBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (pwaBtn) pwaBtn.style.display = 'inline-flex';
+    });
+
+    function triggerPwaInstall() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('[PWA] User accepted installation');
+          }
+          deferredPrompt = null;
+          if (pwaBtn) pwaBtn.style.display = 'none';
+        });
+      } else {
+        alert('To install this app on your device:\n\n• Chrome / Edge: Click the install icon in your address bar\n• Safari (iOS/Mac): Tap Share > "Add to Home Screen"\n• Android: Tap Menu > "Install app"');
+      }
+    }
+
+    window.addEventListener('appinstalled', () => {
+      console.log('[PWA] Installed successfully');
+      if (pwaBtn) pwaBtn.style.display = 'none';
+    });
+
+    // Offline Help Modal Controls
+    const offlineHelpModal = document.getElementById('offlineHelpModal');
+    function openOfflineHelpModal() {
+      if (offlineHelpModal) {
+        offlineHelpModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        openServerModal();
+      }
+    }
+    function closeOfflineHelpModal() {
+      if (offlineHelpModal) {
+        offlineHelpModal.classList.remove('active');
+        document.body.style.overflow = '';
+      } else {
+        closeServerModal();
+      }
+    }
+    if (offlineHelpModal) {
+      offlineHelpModal.addEventListener('click', (e) => {
+        if (e.target === offlineHelpModal) closeOfflineHelpModal();
+      });
+    }
+  </script>
 
 </body>
 </html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surah Al-Insan: Interactive Knowledge Suite | Huurs Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #060A12;
+      --navy-card: #0D1422;
+      --navy-elevated: #141E32;
+      --gold: #D4AF59;
+      --gold-light: #E8D194;
+      --gold-glow: rgba(212, 175, 89, 0.2);
+      --cyan: #38BDF8;
+      --purple: #A855F7;
+      --emerald: #10B981;
+      --rose: #F43F5E;
+      --white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-muted: #1E293B;
+      --border-gold: rgba(212, 175, 89, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy-deep); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; padding-bottom: 60px; }
+    .hero-banner {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 89, 0.12) 0%, rgba(6, 10, 18, 0.95) 70%), var(--navy-deep);
+      border-bottom: 1px solid var(--border-gold); padding: 48px 24px 36px 24px; text-align: center;
+    }
+    .brand-pill {
+      display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 2px; color: var(--gold); background: var(--navy-card); border: 1px solid var(--border-gold);
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+    .hero-subtitle { color: var(--gold-light); font-size: 1.1rem; font-weight: 500; max-width: 800px; margin: 0 auto 20px auto; }
+    .stats-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stat-badge { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 8px; padding: 10px 18px; display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+    .main-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; }
+    .controls-bar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    .search-box { width: 100%; background: var(--navy-card); border: 1px solid var(--border-gold); color: var(--white); padding: 14px 20px; border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-box:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    .nav-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+    .plate-tab-btn {
+      background: var(--navy-card); border: 1px solid var(--border-muted); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.78rem;
+    }
+    .plate-tab-btn:hover { background: var(--navy-elevated); color: var(--white); border-color: var(--gold); }
+    .plate-tab-btn.active { background: var(--navy-elevated); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+    .plate-section { display: none; background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+    .plate-section.active { display: block; }
+    .plate-title-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-muted); padding-bottom: 16px; margin-bottom: 20px; }
+    .plate-title-bar h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+    .plate-title-bar p { font-size: 0.85rem; color: var(--text-muted); }
+    .plate-badge-box { display: flex; gap: 8px; }
+    .badge-gold { background: var(--navy-elevated); border: 1px solid var(--border-gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); color: var(--emerald); font-family: 'Cinzel', serif; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; }
+    .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .pillars-layout { grid-template-columns: 1fr; } }
+    .pillar-box { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; overflow: hidden; }
+    .pillar-bar { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); }
+    .pillar-bar.cyan { border-top: 3px solid var(--cyan); }
+    .pillar-bar.purple { border-top: 3px solid var(--purple); }
+    .pillar-bar.emerald { border-top: 3px solid var(--emerald); }
+    .pillar-bar.gold { border-top: 3px solid var(--gold); }
+    .pillar-bar.rose { border-top: 3px solid var(--rose); }
+    .pillar-bar h3 { font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; }
+    .pillar-bar.cyan h3 { color: var(--cyan); }
+    .pillar-bar.purple h3 { color: var(--purple); }
+    .pillar-bar.emerald h3 { color: var(--emerald); }
+    .pillar-bar.gold h3 { color: var(--gold); }
+    .pillar-bar.rose h3 { color: var(--rose); }
+    .pillar-bar p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .cards-wrapper { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .card-item { background: var(--navy-card); border: 1px solid var(--border-muted); border-radius: 6px; padding: 12px 14px; }
+    .card-item:hover { border-color: var(--border-gold); transform: translateY(-2px); }
+    .card-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .card-idx { background: var(--navy-deep); border: 1px solid var(--border-muted); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.72rem; padding: 2px 7px; border-radius: 4px; }
+    .card-title-row h4 { font-family: 'Cinzel', serif; font-size: 0.86rem; color: var(--white); }
+    .card-points { list-style-type: none; }
+    .card-points li { position: relative; padding-left: 14px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .card-points li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+    .modals-panel { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-top: 32px; }
+    .modal-triggers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+    .modal-btn { background: var(--navy-elevated); border: 1px solid var(--border-muted); border-radius: 6px; padding: 16px; text-align: left; cursor: pointer; color: var(--white); }
+    .modal-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .modal-btn h5 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 6px; }
+    .modal-btn p { font-size: 0.78rem; color: var(--text-muted); }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(6, 10, 18, 0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-body { background: var(--navy-card); border: 1px solid var(--border-gold); border-radius: 8px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--white); }
+    .modal-body h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+    .modal-body p { font-size: 0.9rem; color: var(--white); margin-bottom: 14px; line-height: 1.7; }
+    .modal-source { background: var(--navy-elevated); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="hero-banner">
+    <div class="brand-pill">HUURS STUDIO • THE DEEPER THOUGHT SERIES</div>
+    <h1 class="hero-title">SURAH AL-INSAN</h1>
+    <div class="hero-subtitle">Interactive Knowledge Suite: 8 Plates • 16 Pillars • 64 Structural Nodes</div>
+    <div class="stats-row">
+      <div class="stat-badge"><span class="stat-val">31</span><span class="stat-lbl">Verses</span></div>
+      <div class="stat-badge"><span class="stat-val">8</span><span class="stat-lbl">Plates</span></div>
+      <div class="stat-badge"><span class="stat-val">16</span><span class="stat-lbl">Pillars</span></div>
+      <div class="stat-badge"><span class="stat-val">64</span><span class="stat-lbl">Nodes</span></div>
+      <div class="stat-badge"><span class="stat-val">100%</span><span class="stat-lbl">Sunni Verified</span></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="controls-bar">
+      <input type="text" id="suiteSearch" class="search-box" placeholder="🔍 Live search across all 64 nodes..." onkeyup="filterSuite()">
+      <div class="nav-tabs-wrapper">
+        <button class="plate-tab-btn active" onclick="switchSuitePlate(1)" id="suiteTab1">Plate 01: PRIMORDIAL CREATIO...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(2)" id="suiteTab2">Plate 02: THE FETTERS OF DEN...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(3)" id="suiteTab3">Plate 03: SINCERE VOWS & UNC...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(4)" id="suiteTab4">Plate 04: THE SHIELD OF MERC...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(5)" id="suiteTab5">Plate 05: SILVER CHALICES & ...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(6)" id="suiteTab6">Plate 06: IMMORTAL ATTENDANT...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(7)" id="suiteTab7">Plate 07: GRADUAL REVELATION...</button>
+        <button class="plate-tab-btn " onclick="switchSuitePlate(8)" id="suiteTab8">Plate 08: THE MIRAGE OF HAST...</button>
+
+      </div>
+    </div>
+
+
+  <div class="plate-section active" id="plateSection1">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 01: PRIMORDIAL CREATION & THE MORAL COMPASS</h2>
+        <p>Pillars 01 & 02: Hal Ata 'Alal-Insani Heenun Minad-Dahr, Nutfatin Amshaj & The Two Pathways</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 01 : ORIGIN & DUAL PATHWAYS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 01: FROM NON-EXISTENCE TO COGNITION</h3>
+          <p>Hal Ata 'Alal-Insan, Nutfatin Amshajin Nabtaleeh & Hearing and Sight</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the span of unremembered time a profound epoch passed over mankind when he was not a thing even mentioned or remembered in the cosmos.">
+            <div class="card-title-row">
+              <span class="card-idx">01</span>
+              <h4>The Span of Unremembered Time</h4>
+            </div>
+            <ul class="card-points">
+              <li>A profound epoch passed over mankind when he was not a thing even mentioned or remembered in the cosmos.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the coalescence of mingled drops created from an intricate mingled drop (nutfatin amshaj) designed for testing and spiritual trial.">
+            <div class="card-title-row">
+              <span class="card-idx">02</span>
+              <h4>The Coalescence of Mingled Drops</h4>
+            </div>
+            <ul class="card-points">
+              <li>Created from an intricate mingled drop (nutfatin amshaj) designed for testing and spiritual trial.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the endowed faculties of perception endowed with acute perception and cognitive faculties (sami'an baseera) to examine moral and divine signs.">
+            <div class="card-title-row">
+              <span class="card-idx">03</span>
+              <h4>The Endowed Faculties of Perception</h4>
+            </div>
+            <ul class="card-points">
+              <li>Endowed with acute perception and cognitive faculties (sami'an baseera) to examine moral and divine signs.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the ontological humility of humanity remembering our modest inception dispels all human arrogance and anchors perpetual humility.">
+            <div class="card-title-row">
+              <span class="card-idx">04</span>
+              <h4>The Ontological Humility of Humanity</h4>
+            </div>
+            <ul class="card-points">
+              <li>Remembering our modest inception dispels all human arrogance and anchors perpetual humility.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 02: THE MORAL COMPASS & DUAL PATHWAYS</h3>
+          <p>Inna Hadaynahus-Sabeel, Imma Shakiran wa Imma Kafoora</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the clarity of the guided path inna hadaynahu as-sabeela: we unequivocally guided humanity to the luminous highway of truth.">
+            <div class="card-title-row">
+              <span class="card-idx">05</span>
+              <h4>The Clarity of the Guided Path</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna hadaynahu as-sabeela: We unequivocally guided humanity to the luminous highway of truth.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the freedom to choose gratitude imma shakiran: choosing the posture of active thanksgiving, obedience, and divine alignment.">
+            <div class="card-title-row">
+              <span class="card-idx">06</span>
+              <h4>The Freedom to Choose Gratitude</h4>
+            </div>
+            <ul class="card-points">
+              <li>Imma shakiran: choosing the posture of active thanksgiving, obedience, and divine alignment.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the peril of obstinate ingratitude wa imma kafoora: or obstinately choosing rebellious ingratitude, denial, and existential betrayal.">
+            <div class="card-title-row">
+              <span class="card-idx">07</span>
+              <h4>The Peril of Obstinate Ingratitude</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa imma kafoora: or obstinately choosing rebellious ingratitude, denial, and existential betrayal.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the inevitable accountability of agency human consciousness and moral volition establish the bedrock of moral responsibility and judgment.">
+            <div class="card-title-row">
+              <span class="card-idx">08</span>
+              <h4>The Inevitable Accountability of Agency</h4>
+            </div>
+            <ul class="card-points">
+              <li>Human consciousness and moral volition establish the bedrock of moral responsibility and judgment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection2">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 02: THE FETTERS OF DENIAL & THE SPRING OF KAFUR</h2>
+        <p>Pillars 03 & 04: Salasila wa Aghlalan wa Sa'eera & The Camphor Drink of the Righteous</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 02 : RETRIBUTION & THE RIGHTEOUS]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 03: THE FETTERS OF UNYIELDING DENIAL</h3>
+          <p>Inna A'tadna lil-Kafireena Salasila wa Aghlala & Sa'eera</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the chains of self-enslavement for the obstinate deniers are prepared drag-chains (salasila) mirroring their worldly bondages.">
+            <div class="card-title-row">
+              <span class="card-idx">09</span>
+              <h4>The Chains of Self-Enslavement</h4>
+            </div>
+            <ul class="card-points">
+              <li>For the obstinate deniers are prepared drag-chains (salasila) mirroring their worldly bondages.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the choking iron fetters (aghlal) heavy collars that immobilize spiritual rebellion, exposing the agony of rejecting moral truth.">
+            <div class="card-title-row">
+              <span class="card-idx">10</span>
+              <h4>The Choking Iron Fetters (Aghlal)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Heavy collars that immobilize spiritual rebellion, exposing the agony of rejecting moral truth.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the blazing torrent of sa'eer a ferocious inferno prepared for those who consumed divine bounties in willful ingratitude.">
+            <div class="card-title-row">
+              <span class="card-idx">11</span>
+              <h4>The Blazing Torrent of Sa'eer</h4>
+            </div>
+            <ul class="card-points">
+              <li>A ferocious inferno prepared for those who consumed divine bounties in willful ingratitude.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the justice of moral retribution every penalty precisely corresponds to the gravity of deliberate rejection and oppression.">
+            <div class="card-title-row">
+              <span class="card-idx">12</span>
+              <h4>The Justice of Moral Retribution</h4>
+            </div>
+            <ul class="card-points">
+              <li>Every penalty precisely corresponds to the gravity of deliberate rejection and oppression.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 04: THE CELESTIAL CUP INFUSED WITH KAFUR</h3>
+          <p>Innal-Abrara Yashraboona min Ka'sin Kana Mizajuha Kafoora</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the nobility of the devout (al-abrar) the righteous whose inner hearts were purified through faith drink from overflowing celestial chalices.">
+            <div class="card-title-row">
+              <span class="card-idx">13</span>
+              <h4>The Nobility of the Devout (Al-Abrar)</h4>
+            </div>
+            <ul class="card-points">
+              <li>The righteous whose inner hearts were purified through faith drink from overflowing celestial chalices.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the cooling essence of camphor (kafur) infused with kafur, conferring cool serenity, sublime fragrance, and absolute purity without intoxication.">
+            <div class="card-title-row">
+              <span class="card-idx">14</span>
+              <h4>The Cooling Essence of Camphor (Kafur)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Infused with Kafur, conferring cool serenity, sublime fragrance, and absolute purity without intoxication.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="a gushing spring of divine grace a private fountain ('aynan) from which the intimate servants of allah drink copiously at will.">
+            <div class="card-title-row">
+              <span class="card-idx">15</span>
+              <h4>A Gushing Spring of Divine Grace</h4>
+            </div>
+            <ul class="card-points">
+              <li>A private fountain ('aynan) from which the intimate servants of Allah drink copiously at will.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="effortless outpouring (yufajjiroonaha) directing the celestial waters effortlessly to flow wherever their hearts and wishes desire.">
+            <div class="card-title-row">
+              <span class="card-idx">16</span>
+              <h4>Effortless Outpouring (Yufajjiroonaha)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Directing the celestial waters effortlessly to flow wherever their hearts and wishes desire.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection3">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 03: SINCERE VOWS & UNCONDITIONAL CHARITY</h2>
+        <p>Pillars 05 & 06: Yoofoona bin-Nadhri, Feeding the Poor, Orphan, Captive & Pure Divine Intention</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 03 : PURE DEVOTION & ALTRUISM]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 05: FULFILLING VOWS IN AWESOME AWE</h3>
+          <p>Yoofoona bin-Nadhri wa Yakhafoona Yawman Kana Sharruhu Mustateera</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the sanctity of sacred pledges they scrupulously fulfill their vows to allah, demonstrating unswerving integrity in covenant and word.">
+            <div class="card-title-row">
+              <span class="card-idx">17</span>
+              <h4>The Sanctity of Sacred Pledges</h4>
+            </div>
+            <ul class="card-points">
+              <li>They scrupulously fulfill their vows to Allah, demonstrating unswerving integrity in covenant and word.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="fear of the far-spreading day awe of a day whose cataclysmic tribulation spreads far and wide across the entire horizon (mustateera).">
+            <div class="card-title-row">
+              <span class="card-idx">18</span>
+              <h4>Fear of the Far-Spreading Day</h4>
+            </div>
+            <ul class="card-points">
+              <li>Awe of a Day whose cataclysmic tribulation spreads far and wide across the entire horizon (mustateera).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the protective buffer of piety vigilant consciousness of the day of judgment guards them against complacency and petty self-interest.">
+            <div class="card-title-row">
+              <span class="card-idx">19</span>
+              <h4>The Protective Buffer of Piety</h4>
+            </div>
+            <ul class="card-points">
+              <li>Vigilant consciousness of the Day of Judgment guards them against complacency and petty self-interest.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="inner reverence translating to action their reverent trembling before allah blossoms directly into unmatched compassion toward mankind.">
+            <div class="card-title-row">
+              <span class="card-idx">20</span>
+              <h4>Inner Reverence Translating to Action</h4>
+            </div>
+            <ul class="card-points">
+              <li>Their reverent trembling before Allah blossoms directly into unmatched compassion toward mankind.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 06: FEEDING THE VULNERABLE FOR ALLAH ALONE</h3>
+          <p>Wa Yut'imunat-Ta'ama 'ala Hubbihi Miskeenan wa Yateeman wa Aseera</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="giving sustenance despite love of it feeding food out of love for him, or despite their own intense longing and desperate need for it.">
+            <div class="card-title-row">
+              <span class="card-idx">21</span>
+              <h4>Giving Sustenance Despite Love of It</h4>
+            </div>
+            <ul class="card-points">
+              <li>Feeding food out of love for Him, or despite their own intense longing and desperate need for it.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the triad of the helpless serving the destitute poor (miskeen), the unprotected orphan (yateem), and the helpless prisoner (aseer).">
+            <div class="card-title-row">
+              <span class="card-idx">22</span>
+              <h4>The Triad of the Helpless</h4>
+            </div>
+            <ul class="card-points">
+              <li>Serving the destitute poor (miskeen), the unprotected orphan (yateem), and the helpless prisoner (aseer).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the anthem of absolute sincerity 'innama nut'imukum li-wajhillahi': we feed you solely for the countenance of allah.">
+            <div class="card-title-row">
+              <span class="card-idx">23</span>
+              <h4>The Anthem of Absolute Sincerity</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Innama nut'imukum li-wajhillahi': We feed you solely for the Countenance of Allah.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="disdain for reward or gratitude 'la nureedu minkum jazaa'an wa la shukoora': seeking neither earthly compensation nor a whisper of thanks.">
+            <div class="card-title-row">
+              <span class="card-idx">24</span>
+              <h4>Disdain for Reward or Gratitude</h4>
+            </div>
+            <ul class="card-points">
+              <li>'La nureedu minkum jazaa'an wa la shukoora': Seeking neither earthly compensation nor a whisper of thanks.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection4">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 04: THE SHIELD OF MERCY & THE CELESTIAL GROVE</h2>
+        <p>Pillars 07 & 08: Fa-Waqahumullahu Sharra Dhalikal-Yawm & Jannatan wa Hareera</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 04 : DIVINE SHIELD & PARADISE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 07: THE DIVINE SHIELD FROM GRIM DISTRESS</h3>
+          <p>Inna Nakhafu min Rabbina Yawman 'Aboosan Qamrareera</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="confronting the frowning, grim day acknowledging terror of an austere day that contorts faces in overwhelming fright ('aboosan qamrareera).">
+            <div class="card-title-row">
+              <span class="card-idx">25</span>
+              <h4>Confronting the Frowning, Grim Day</h4>
+            </div>
+            <ul class="card-points">
+              <li>Acknowledging terror of an austere Day that contorts faces in overwhelming fright ('aboosan qamrareera).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the merciful divine safeguard fa-waqahumullahu: therefore allah shielded them completely from the terrors and agony of that day.">
+            <div class="card-title-row">
+              <span class="card-idx">26</span>
+              <h4>The Merciful Divine Safeguard</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fa-waqahumullahu: Therefore Allah shielded them completely from the terrors and agony of that Day.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="radiant countenances of delight he met them with luminous inner radiance (nadrah) and boundless jubilation filling their souls (suroora).">
+            <div class="card-title-row">
+              <span class="card-idx">27</span>
+              <h4>Radiant Countenances of Delight</h4>
+            </div>
+            <ul class="card-points">
+              <li>He met them with luminous inner radiance (nadrah) and boundless jubilation filling their souls (suroora).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="recompense for patient endurance reward for their steadfast forbearance through trials with an everlasting garden and robes of pure silk.">
+            <div class="card-title-row">
+              <span class="card-idx">28</span>
+              <h4>Recompense for Patient Endurance</h4>
+            </div>
+            <ul class="card-points">
+              <li>Reward for their steadfast forbearance through trials with an everlasting Garden and robes of pure silk.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 08: THE SHADED GROVES OF EDEN</h3>
+          <p>Muttaki'eena Feeha 'alal-Ara'ik & Daniyatan 'Alayhim Zilaluha</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="reclining upon adorned couches lounging upon splendid thrones (ara'ik), released from worldly fatigue into majestic repose.">
+            <div class="card-title-row">
+              <span class="card-idx">29</span>
+              <h4>Reclining Upon Adorned Couches</h4>
+            </div>
+            <ul class="card-points">
+              <li>Lounging upon splendid thrones (ara'ik), released from worldly fatigue into majestic repose.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="neither scorching sun nor bitter cold experiencing flawless atmospheric equilibrium—no blistering solar heat (shamsan) nor frigid bitter chill (zamhareera).">
+            <div class="card-title-row">
+              <span class="card-idx">30</span>
+              <h4>Neither Scorching Sun Nor Bitter Cold</h4>
+            </div>
+            <ul class="card-points">
+              <li>Experiencing flawless atmospheric equilibrium—no blistering solar heat (shamsan) nor frigid bitter chill (zamhareera).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="canopies of intimate verdant shade canopies of blessed leafy shade hovering close above them, sheltering their blissful assemblies.">
+            <div class="card-title-row">
+              <span class="card-idx">31</span>
+              <h4>Canopies of Intimate Verdant Shade</h4>
+            </div>
+            <ul class="card-points">
+              <li>Canopies of blessed leafy shade hovering close above them, sheltering their blissful assemblies.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="clusters of bounties brought low fruits hanging low within arm's reach (qutoofuha tadleela), yielding instantly to every desire.">
+            <div class="card-title-row">
+              <span class="card-idx">32</span>
+              <h4>Clusters of Bounties Brought Low</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fruits hanging low within arm's reach (qutoofuha tadleela), yielding instantly to every desire.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection5">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 05: SILVER CHALICES & THE GINGER SPRING</h2>
+        <p>Pillars 09 & 10: Anyaatin min Fiddatin wa Akwabin Qawareera & The Fountain of Salsabil</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 05 : CELESTIAL BANQUET & SALSABIL]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 09: THE MIRACLE OF SILVER CRYSTAL</h3>
+          <p>Qawareera min Fiddatin Qaddarooha Taqdeera</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="circulating vessels of pure silver attendants circulate around them carrying polished platters and flagons wrought of luminous silver.">
+            <div class="card-title-row">
+              <span class="card-idx">33</span>
+              <h4>Circulating Vessels of Pure Silver</h4>
+            </div>
+            <ul class="card-points">
+              <li>Attendants circulate around them carrying polished platters and flagons wrought of luminous silver.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="translucent silver goblets qawareera min fiddah: a physical impossibility in this world—silver translucent as the purest crystal.">
+            <div class="card-title-row">
+              <span class="card-idx">34</span>
+              <h4>Translucent Silver Goblets</h4>
+            </div>
+            <ul class="card-points">
+              <li>Qawareera min fiddah: a physical impossibility in this world—silver translucent as the purest crystal.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="precision of measure (taqdeera) proportioned with absolute mathematical perfection to satisfy thirst to the exact drop.">
+            <div class="card-title-row">
+              <span class="card-idx">35</span>
+              <h4>Precision of Measure (Taqdeera)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Proportioned with absolute mathematical perfection to satisfy thirst to the exact drop.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the aesthetics of celestial banquet every detail of dining elevated to transcendent art, reflecting divine honor upon the redeemed.">
+            <div class="card-title-row">
+              <span class="card-idx">36</span>
+              <h4>The Aesthetics of Celestial Banquet</h4>
+            </div>
+            <ul class="card-points">
+              <li>Every detail of dining elevated to transcendent art, reflecting divine honor upon the redeemed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 10: THE GINGER SPRING OF SALSABIL</h3>
+          <p>Wa Yusqawna Feeha Ka'san Kana Mizajuha Zanjabeela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the warming zest of zanjabeel served cups infused with exotic ginger, imparting comforting warmth after the coolness of camphor.">
+            <div class="card-title-row">
+              <span class="card-idx">37</span>
+              <h4>The Warming Zest of Zanjabeel</h4>
+            </div>
+            <ul class="card-points">
+              <li>Served cups infused with exotic ginger, imparting comforting warmth after the coolness of camphor.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the name salsabil derived from a spring named salsabil, flowing effortlessly, sweet and smooth to swallow.">
+            <div class="card-title-row">
+              <span class="card-idx">38</span>
+              <h4>The Name Salsabil</h4>
+            </div>
+            <ul class="card-points">
+              <li>Derived from a spring named Salsabil, flowing effortlessly, sweet and smooth to swallow.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="harmonious complementarity of drinks a rhythmic alternation between the soothing chill of kafur and the invigorating warmth of zanjabeel.">
+            <div class="card-title-row">
+              <span class="card-idx">39</span>
+              <h4>Harmonious Complementarity of Drinks</h4>
+            </div>
+            <ul class="card-points">
+              <li>A rhythmic alternation between the soothing chill of Kafur and the invigorating warmth of Zanjabeel.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="spiritual vitality through pure nectar physical nourishment transfigured into spiritual elevation and ecstatic praise.">
+            <div class="card-title-row">
+              <span class="card-idx">40</span>
+              <h4>Spiritual Vitality Through Pure Nectar</h4>
+            </div>
+            <ul class="card-points">
+              <li>Physical nourishment transfigured into spiritual elevation and ecstatic praise.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection6">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 06: IMMORTAL ATTENDANTS & THE SOVEREIGN DOMAIN</h2>
+        <p>Pillars 11 & 12: Wildanun Mukhalladoon, Lu'lu'an Manthoora & Mulkan Kabeera</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 06 : IMMORTAL YOUTHS & MAJESTY]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar purple">
+          <h3>PILLAR 11: THE PEARLS OF CELESTIAL YOUTH</h3>
+          <p>Ya-toofu 'Alayhim Wildanun Mukhalladoon, Lu'lu'an Manthoora</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="ageless, ever-youthful attendants circulating among them are graceful youths endowed with perpetual freshness, untouched by time.">
+            <div class="card-title-row">
+              <span class="card-idx">41</span>
+              <h4>Ageless, Ever-Youthful Attendants</h4>
+            </div>
+            <ul class="card-points">
+              <li>Circulating among them are graceful youths endowed with perpetual freshness, untouched by time.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="like scattered lustrous pearls when you gaze upon them, you would deem them lustrous scattered pearls (lu'lu'an manthoora).">
+            <div class="card-title-row">
+              <span class="card-idx">42</span>
+              <h4>Like Scattered Lustrous Pearls</h4>
+            </div>
+            <ul class="card-points">
+              <li>When you gaze upon them, you would deem them lustrous scattered pearls (lu'lu'an manthoora).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="radiant activity in holy peace effortless, dignified service that enhances the serene majesty of the heavenly court.">
+            <div class="card-title-row">
+              <span class="card-idx">43</span>
+              <h4>Radiant Activity in Holy Peace</h4>
+            </div>
+            <ul class="card-points">
+              <li>Effortless, dignified service that enhances the serene majesty of the heavenly court.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the abundance of celestial retinue countless pure souls attending the righteous, celebrating their triumph in the abode of peace.">
+            <div class="card-title-row">
+              <span class="card-idx">44</span>
+              <h4>The Abundance of Celestial Retinue</h4>
+            </div>
+            <ul class="card-points">
+              <li>Countless pure souls attending the righteous, celebrating their triumph in the abode of peace.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 12: THE VAST DOMAIN & DIVINE LIBATION</h3>
+          <p>Wa Idha Ra'ayta Thamma Ra'ayta Na'eeman wa Mulkan Kabeera & Sharaban Tahoora</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the ineffable imperial dominion wherever your sight turns, you behold supreme felicity and a magnificent kingdom (mulkan kabeera).">
+            <div class="card-title-row">
+              <span class="card-idx">45</span>
+              <h4>The Ineffable Imperial Dominion</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wherever your sight turns, you behold supreme felicity and a magnificent kingdom (mulkan kabeera).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="robes of sundus and istabraq adorned in garments of fine green silk and heavy shimmering brocade, crowned with bracelets of silver.">
+            <div class="card-title-row">
+              <span class="card-idx">46</span>
+              <h4>Robes of Sundus and Istabraq</h4>
+            </div>
+            <ul class="card-points">
+              <li>Adorned in garments of fine green silk and heavy shimmering brocade, crowned with bracelets of silver.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the libation of purest wine wa saqahum rabbuhum sharaban tahoora: and their lord himself gives them a drink supremely purifying.">
+            <div class="card-title-row">
+              <span class="card-idx">47</span>
+              <h4>The Libation of Purest Wine</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa saqahum Rabbuhum sharaban tahoora: And their Lord Himself gives them a drink supremely purifying.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the divine commendation 'truly, this is your glorious reward, and your striving was gratefully accepted!'">
+            <div class="card-title-row">
+              <span class="card-idx">48</span>
+              <h4>The Divine Commendation</h4>
+            </div>
+            <ul class="card-points">
+              <li>'Truly, this is your glorious reward, and your striving was gratefully accepted!'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection7">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 07: GRADUAL REVELATION & RHYTHMIC REMEMBRANCE</h2>
+        <p>Pillars 13 & 14: Inna Nahnu Nazzalna 'Alaykal-Qur'ana Tanzeela, Sabr & Morning/Evening Dhikr</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 07 : REVELATION & PATIENCE]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar cyan">
+          <h3>PILLAR 13: PROGRESSIVE DESCENT & STEADFAST PATIENCE</h3>
+          <p>Tanzeelal-Qur'an, Fasbir li-Hukmi Rabbika & La Tuti' Minhum Athiman</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the phased descent of wisdom inna nahnu nazzalna 'alayka al-qur'ana tanzeela: we have sent down the qur'an upon you progressively.">
+            <div class="card-title-row">
+              <span class="card-idx">49</span>
+              <h4>The Phased Descent of Wisdom</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna nahnu nazzalna 'alayka al-Qur'ana tanzeela: We have sent down the Qur'an upon you progressively.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="patience with the divine decree fasbir li-hukmi rabbika: persevere steadfastly for the command and wisdom of your lord.">
+            <div class="card-title-row">
+              <span class="card-idx">50</span>
+              <h4>Patience with the Divine Decree</h4>
+            </div>
+            <ul class="card-points">
+              <li>Fasbir li-hukmi rabbika: Persevere steadfastly for the command and wisdom of your Lord.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="unyielding rejection of wickedness yield not to any sinful transgressor (athim) or stubborn ingrate (kafoor) who demands compromise.">
+            <div class="card-title-row">
+              <span class="card-idx">51</span>
+              <h4>Unyielding Rejection of Wickedness</h4>
+            </div>
+            <ul class="card-points">
+              <li>Yield not to any sinful transgressor (athim) or stubborn ingrate (kafoor) who demands compromise.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the inviolability of sacred mission prophetic mission cannot be diluted to placate corrupt worldly authorities.">
+            <div class="card-title-row">
+              <span class="card-idx">52</span>
+              <h4>The Inviolability of Sacred Mission</h4>
+            </div>
+            <ul class="card-points">
+              <li>Prophetic mission cannot be diluted to placate corrupt worldly authorities.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar gold">
+          <h3>PILLAR 14: RHYTHMIC DAWN, DUSK & NOCTURNAL PROSTRATION</h3>
+          <p>Wadhkurisma Rabbika Bukratan wa Aseela & Laylan Taweela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="morning invocations (bukratan) remember the sacred name of your lord in the pure hours of dawn as life awakens.">
+            <div class="card-title-row">
+              <span class="card-idx">53</span>
+              <h4>Morning Invocations (Bukratan)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Remember the Sacred Name of your Lord in the pure hours of dawn as life awakens.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="evening contemplation (aseela) anchor the soul in divine remembrance as shadows lengthen and the working day concludes.">
+            <div class="card-title-row">
+              <span class="card-idx">54</span>
+              <h4>Evening Contemplation (Aseela)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Anchor the soul in divine remembrance as shadows lengthen and the working day concludes.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="nocturnal prostration (fa-sjud lahu) and during the night, fall in humble prostration before the lord of majesty.">
+            <div class="card-title-row">
+              <span class="card-idx">55</span>
+              <h4>Nocturnal Prostration (Fa-Sjud Lahu)</h4>
+            </div>
+            <ul class="card-points">
+              <li>And during the night, fall in humble prostration before the Lord of Majesty.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the extended vigil (laylan taweela) glorify him through prolonged hours of the night to fortify your spirit against all tribulation.">
+            <div class="card-title-row">
+              <span class="card-idx">56</span>
+              <h4>The Extended Vigil (Laylan Taweela)</h4>
+            </div>
+            <ul class="card-points">
+              <li>Glorify Him through prolonged hours of the night to fortify your spirit against all tribulation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plate-section " id="plateSection8">
+    <div class="plate-title-bar">
+      <div>
+        <h2>Plate 08: THE MIRAGE OF HASTE & THE SOVEREIGN WILL</h2>
+        <p>Pillars 15 & 16: Yuhibboonal-'Ajilah, Khalqahum wa Shaddana Asrahum & Masha'allah</p>
+      </div>
+      <div class="plate-badge-box">
+        <span class="badge-gold">[PLATE 08 : TRANSIENCE & DIVINE WILL]</span>
+        <span class="badge-emerald">100% SUNNI VERIFIED</span>
+      </div>
+    </div>
+    <div class="pillars-layout">
+      
+      <div class="pillar-box">
+        <div class="pillar-bar rose">
+          <h3>PILLAR 15: THE FOLLY OF WORLDLY OBSESSION</h3>
+          <p>Inna Ha'ula'i Yuhibboonal-'Ajilata wa Yadharoona Wara'ahum Yawman Thaqeela</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="infatuation with the fleeting now behold! these deniers obsessively crave the immediate ephemeral pleasures of this worldly life.">
+            <div class="card-title-row">
+              <span class="card-idx">57</span>
+              <h4>Infatuation with the Fleeting Now</h4>
+            </div>
+            <ul class="card-points">
+              <li>Behold! These deniers obsessively crave the immediate ephemeral pleasures of this worldly life.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="neglect of the heavy tomorrow and they cast carelessly behind their backs the awareness of an unimaginably heavy day (yawman thaqeela).">
+            <div class="card-title-row">
+              <span class="card-idx">58</span>
+              <h4>Neglect of the Heavy Tomorrow</h4>
+            </div>
+            <ul class="card-points">
+              <li>And they cast carelessly behind their backs the awareness of an unimaginably heavy Day (yawman thaqeela).</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the master of their knitted sinews nahnu khalaqnahum wa shaddana asrahum: we created them and firmly bound their joints and physical frame.">
+            <div class="card-title-row">
+              <span class="card-idx">59</span>
+              <h4>The Master of Their Knitted Sinews</h4>
+            </div>
+            <ul class="card-points">
+              <li>Nahnu khalaqnahum wa shaddana asrahum: We created them and firmly bound their joints and physical frame.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="effortless divine replacement if we so will, we could instantly replace them with their like, ending their insolence without strain.">
+            <div class="card-title-row">
+              <span class="card-idx">60</span>
+              <h4>Effortless Divine Replacement</h4>
+            </div>
+            <ul class="card-points">
+              <li>If We so will, We could instantly replace them with their like, ending their insolence without strain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pillar-box">
+        <div class="pillar-bar emerald">
+          <h3>PILLAR 16: THE SOVEREIGN WILL & THE GATE OF MERCY</h3>
+          <p>Inna Hadhihi Tadhkirah, Wa Ma Tasha'oona Illa an Yasha'allah & Rahmatihi</p>
+        </div>
+        <div class="cards-wrapper">
+          
+          <div class="card-item" data-search="the qur'an as universal reminder inna hadhihi tadhkirah: truly, this revelation is an awakened reminder for all receptive hearts.">
+            <div class="card-title-row">
+              <span class="card-idx">61</span>
+              <h4>The Qur'an as Universal Reminder</h4>
+            </div>
+            <ul class="card-points">
+              <li>Inna hadhihi tadhkirah: Truly, this Revelation is an awakened reminder for all receptive hearts.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="the choice of taking a pathway whoever wills, let him take an authentic highway leading directly to his lord.">
+            <div class="card-title-row">
+              <span class="card-idx">62</span>
+              <h4>The Choice of Taking a Pathway</h4>
+            </div>
+            <ul class="card-points">
+              <li>Whoever wills, let him take an authentic highway leading directly to his Lord.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="human will encompassed by sovereignty wa ma tasha'oona illa an yasha'allah: yet your will operates only within the sovereign will of allah, all-knowing and wise.">
+            <div class="card-title-row">
+              <span class="card-idx">63</span>
+              <h4>Human Will Encompassed by Sovereignty</h4>
+            </div>
+            <ul class="card-points">
+              <li>Wa ma tasha'oona illa an yasha'allah: Yet your will operates only within the sovereign will of Allah, All-Knowing and Wise.</li>
+            </ul>
+          </div>
+          <div class="card-item" data-search="admission into everlasting mercy he admits whomever seeks guidance into his embrace of mercy, while the oppressors face painful chastisement.">
+            <div class="card-title-row">
+              <span class="card-idx">64</span>
+              <h4>Admission into Everlasting Mercy</h4>
+            </div>
+            <ul class="card-points">
+              <li>He admits whomever seeks guidance into His embrace of Mercy, while the oppressors face painful chastisement.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="modals-panel">
+      <div class="section-heading" style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);"><span>✦</span> DEEP EXEGETICAL FOCUS MONOGRAPHS</div>
+      <div class="modal-triggers-grid">
+
+        <div class="modal-btn" onclick="openModal('m_insan_1')">
+          <h5>1. The Vow of the Righteous & Feeding the Captive</h5>
+          <p>Historical Exegesis on 76:8 and Pure Altruistic Service</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m_insan_2')">
+          <h5>2. The Celestial Springs of Eden: Kafur and Zanjabeel</h5>
+          <p>The Esoteric and Aesthetic Dynamics of Kafur and Salsabil</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m_insan_3')">
+          <h5>3. The Patient Descent of the Qur'an (Tanzeel)</h5>
+          <p>Prophetic Fortitude and Nocturnal Liturgies against Compromise</p>
+        </div>
+        <div class="modal-btn" onclick="openModal('m_insan_4')">
+          <h5>4. The Sovereign Enclosure of Human Volition</h5>
+          <p>Harmonizing Free Agency and Divine Will (Masha'allah)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal-backdrop" id="modal-m_insan_1">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_insan_1')">&times;</button>
+      <h3>The Vow of the Righteous & Feeding the Captive</h3>
+      <p>Verse 8 of Surah Al-Insan ('Wa yut'imunat-ta'ama 'ala hubbihi miskeenan wa yateeman wa aseera') encapsulates the highest echelon of Islamic altruism (ithar). The phrase 'ala hubbihi' carries two interrelated exegetical nuances across classical Sunni scholarship: either giving food out of deep love for Allah, or giving it despite their own intense love, hunger, and physical longing for that sustenance.</p><p>Classical commentators, including Ibn Kathir and Al-Qurtubi, cite narrations regarding the righteous household who fasted three consecutive days and on each evening surrendered their only bread to a needy person (miskeen), an orphan (yateem), and a captive of war (aseer). In the early Islamic polity, captives were often non-Muslim combatants captured in battle; thus, offering one's own nourishment to a prisoner of war demonstrates that Islamic compassion and human dignity transcend religious borders.</p><p>The crowning glory of this virtue is articulated in their inner declaration: 'Innama nut'imukum li-wajhillahi la nureedu minkum jazaa'an wa la shukoora' (We feed you solely for the Countenance of Allah; we desire from you neither reward nor thanks). They sought neither fame, social prestige, political influence, nor even verbal gratitude, embodying unconditional sincerity (ikhlas).</p>
+      <div class="modal-source">Authorities: Tafsir Ibn Kathir 76:8, Tafsir al-Qurtubi, Jami' al-Bayan (Tabari)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m_insan_2">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_insan_2')">&times;</button>
+      <h3>The Celestial Springs of Eden: Kafur and Zanjabeel</h3>
+      <p>Surah Al-Insan presents a breathtaking olfactory and sensory landscape of Paradise through two contrasting yet complementary springs: Kafur (Camphor) in verse 5 and Zanjabeel (Ginger) in verse 17. Classical Arabic lexicography and exegetical authorities like Fakhr ad-Din ar-Razi observe that in the worldly experience, camphor possesses cooling properties, a pure white color, and a soothing fragrance, while ginger provides invigorating aromatic warmth.</p><p>In the celestial realm, these springs are purified of all earthly defects. As Ibn Abbas stated: 'There is nothing in Paradise resembling what is in this world except the names.' The spring of Kafur confers absolute purity, refreshing coolness, and profound tranquility without any bitterness. Conversely, the cup infused with Zanjabeel provides comforting warmth and vitality, derived from a celestial fountain named Salsabil, meaning water that flows effortlessly and sweetly down the throat.</p><p>Furthermore, the vessels themselves present an aesthetic miracle: 'Qawareera min fiddah' (Goblets of silver). In the physical universe, silver is completely opaque and glass/crystal is fragile; yet in Paradise, vessels possess the luminous brilliance of silver combined with the crystal-clear translucency of fine glass, proportioned with exact perfection to quench the soul's desire.</p>
+      <div class="modal-source">Authorities: Tafsir al-Qurtubi 76:5-18, Tafsir ar-Razi, Sahih al-Bukhari</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m_insan_3">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_insan_3')">&times;</button>
+      <h3>The Patient Descent of the Qur'an (Tanzeel)</h3>
+      <p>Verses 23–26 mark the strategic transition in Surah Al-Insan from heavenly rewards to the immediate earthly crucible of Prophethood: 'Inna nahnu nazzalna 'alayka al-Qur'ana tanzeela, fasbir li-hukmi rabbika...' (Indeed, We have sent down the Qur'an upon you progressively, so be patient for the judgment of your Lord). The intensive noun 'tanzeel' denotes gradual, phased revelation, designed to fortify the Prophet's heart amid continuous societal rejection.</p><p>The divine directive commands the Messenger not to yield to the 'athim' (the sinful transgressor, often identified by exegetes as Utbah ibn Rabi'ah) or the 'kafoor' (the obstinate ingrate, identified as Al-Walid ibn al-Mughirah), both of whom repeatedly offered immense wealth, status, and tribal alliances if the Prophet would compromise his theological and social message.</p><p>To withstand this relentless pressure, Allah prescribed an unshakeable spiritual regimen: rhythmic morning and evening remembrance ('Wadhkurisma rabbika bukratan wa aseela') and nocturnal prostration with prolonged glorification ('Wa minal-layli fa-sjud lahu wa sabbihhu laylan taweela'). Spiritual depth built during the quiet vigil of night is the sole engine capable of resisting corrupt worldly inducements.</p>
+      <div class="modal-source">Authorities: Tafsir Ibn Kathir 76:23-26, Zad al-Masir (Ibn al-Jawzi)</div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="modal-m_insan_4">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal('m_insan_4')">&times;</button>
+      <h3>The Sovereign Enclosure of Human Volition</h3>
+      <p>Verses 29–30 articulate one of the most profound theological statements on human moral responsibility and divine sovereignty in the Qur'an: 'Inna hadhihi tadhkiratun fa-man sha'attakhadha ila rabbihi sabeela. Wa ma tasha'oona illa an yasha'allah, inna Allaha kana 'aleeman hakeema' (Indeed, this is a reminder, so whoever wills may take a way to his Lord. And you do not will except that Allah wills; indeed, Allah is ever Knowing and Wise).</p><p>Classical Ahl as-Sunnah theologians, such as Imam at-Tahawi and Fakhr ad-Din ar-Razi, demonstrate that this passage simultaneously refutes two opposing theological extremes: the Qadariyyah/Mu'tazilah (who claimed human will operates completely independently of God) and the Jabriyyah (who denied human volition entirely, viewing man as a puppet).</p><p>The Qur'an first affirms authentic human choice and moral agency ('fa-man sha'a' — whoever wills), establishing accountability and praise or blame. It immediately grounds this agency within divine transcendence ('wa ma tasha'oona illa an yasha'allah'), reminding humanity that human volition is a created capacity that operates only within the cosmic domain and permission of Allah, which is governed not by arbitrariness, but by absolute knowledge ('aleeman) and infinite wisdom (hakeema).</p>
+      <div class="modal-source">Authorities: Sharh al-'Aqidah at-Tahawiyyah, Mafatih al-Ghayb (Razi), Ibn Kathir 76:30</div>
+    </div>
+  </div>
+
+  <script>
+    function switchSuitePlate(page) {
+      document.querySelectorAll('.plate-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.plate-section').forEach(sec => sec.classList.remove('active'));
+      const tab = document.getElementById('suiteTab' + page);
+      const sec = document.getElementById('plateSection' + page);
+      if (tab) tab.classList.add('active');
+      if (sec) sec.classList.add('active');
+    }
+
+    function filterSuite() {
+      const q = document.getElementById('suiteSearch').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.card-item');
+      if (!q) { allCards.forEach(c => c.style.display = 'block'); return; }
+      allCards.forEach(c => {
+        const text = c.getAttribute('data-search') || '';
+        if (text.includes(q)) c.style.display = 'block';
+        else c.style.display = 'none';
+      });
+    }
+
+    function openModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById('modal-' + id);
+      if (m) m.classList.remove('open');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-backdrop')) {
+        event.target.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>

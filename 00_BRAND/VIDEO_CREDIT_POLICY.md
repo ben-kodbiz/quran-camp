@@ -82,3 +82,13 @@ All agents, subagents, prompt pipelines, and rendering scripts operating within 
 * **Post-Production Upscaling:** Upscaling beyond 720p is strictly disallowed.
 
 ---
+
+## 4. Monthly Budget & B-Roll Vault Repurposing Mandate
+
+* **Monthly Credit Allowance:** Strictly **1,000 credits/month** (Hard Ceiling).
+* **Episodes 1–10 (The Vault Phase):** Fresh video generation in Google Flow to build the master 50-clip B-roll vault across all core semantic motifs (Oceans, Mosques, Birds, Waterfalls, Rain, Mountains, Olive Groves, Courtyards, Skies). Consumes the Phase 1 generation budget.
+* **Episodes 11–20 (The Credit Preservation Phase):** **STRICT CREDIT FREEZE.** Zero new video generations allowed. All videos for Episodes 11 through 20 must intelligently remix, re-grade, and re-sequence clips from the 50-clip Master Vault using horizontal flips (`hflip`), subtle Ken Burns framing (`zoompan`), and semantic emotion matching.
+* **Episode 21+ (Next Season):** Resume fresh video generation once the monthly credit cycle replenishes.
+* **Discreet Trademark Watermark:** Every assembled master video and short cut must carry the subtle, low-opacity `HUURS STUDIO` watermark (`white@0.22`, IBM Plex Serif, lower-right corner) to prevent viewer distraction while protecting brand ownership.
+
+---

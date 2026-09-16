@@ -139,7 +139,7 @@ Knowledge married to action. Sincerity married to truth."
 
 ### 04:00 – 05:00 | SECTION 5: PRACTICAL ACTION & CALL TO PRAYER
 **[VISUAL]**  
-*A person standing in quiet prayer in a minimalist room, head bowed in humble concentration.*
+*A traditional wooden dhow gliding calmly across deep ocean waters toward a sunlit dawn horizon, steady purposeful journey, unpopulated, zero humans.*
 
 **(VOICEOVER):**  
 "In a few hours, the call to prayer will echo for your next salah.  

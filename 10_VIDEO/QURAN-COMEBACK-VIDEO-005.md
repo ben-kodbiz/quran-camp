@@ -2,11 +2,11 @@
 artifact:
   artifact_id: QURAN-COMEBACK-VIDEO-005
   artifact_type: video_storyboard_specification
-  artifact_version: 1.0.0
+  artifact_version: 2.0.0
   project_id: HUURS-QURAN
   campaign_id: COME-BACK-TO-QURAN
   title: "Episode 5 Video Storyboard & Cinematic Shot List Specification"
-  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 5 (Surah Ash-Sharh 94:1–8)."
+  description: "Comprehensive visual storyboard, shot primitives, camera directions, lighting parameters, text overlays, and generative video prompts for Flagship Episode 5 (Surah Ash-Sharh 94:1–8), integrating permanent Quranic themes (Winter Mountain Frost, The Honeybee, Ancient Olive Grove, Desert Night Sky with Stars, and Golden Sand Dunes)."
   topic: "Video Direction & Cinematic Storyboard"
   language: en-US
   audience: "Video directors, AI video prompt engineers, motion designers, post-production editors"
@@ -14,15 +14,15 @@ artifact:
 provenance:
   parent_artifacts:
     - "file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-005.md"
-    - "file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-005.jpg"
+    - "file:///mnt/AI/ag/Campaign/00_BRAND/PERMANENT_QURANIC_THEMES.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Visual_System.md"
     - "file:///mnt/AI/ag/Campaign/Brand_Campaign.md"
 
 lifecycle:
   status: approved
   created_by: AGENT-10
-  created_at: 2026-09-07T17:30:00Z
-  updated_at: 2026-09-07T17:30:00Z
+  created_at: 2026-09-11T01:20:00Z
+  updated_at: 2026-09-11T01:20:00Z
 
 verification:
   verification_status: verified
@@ -42,136 +42,78 @@ storage:
 **Episode 5 Title:** *"When Life Becomes Heavy"*  
 **Focal Scripture:** Surah Ash-Sharh 94:1–8  
 **Assigned Agents:** `AGENT-10` (Video Agent) & `AGENT-08` (Visual Director)  
-**Visual Core Equation:** `NATURE + KNOWLEDGE + REFLECTION + TRANQUILITY = HUURS VISUAL LANGUAGE`  
+**Permanent Quranic Themes:** Winter Mountain Frost • The Honeybee • Ancient Olive Grove • Desert Night Stars • Golden Sand Dunes  
+**Theological Mandate:** Strict Traditional Sunni Orthodoxy • Absolute Zero-Human • Strict Zero-Music • 720p Hard Ceiling  
 
 ---
 
-## 1. Executive Cinematic Direction & Visual Rhythm
+## 1. Google Flow 1-Click Multi-Scene Prompt Block
 
-* **Cinematic Philosophy:** Moving contemplation. The camera never rushes; it breathes. Avoid all frantic YouTube tropes (no rapid cuts, no zoomer shakes, no neon graphics, no clickbait arrows).
-* **Aspect Ratio & Resolution:** 16:9 Widescreen (1280 × 720 HD Master, 24.00 fps) — HARD CEILING: 720p PER USER MANDATE.
-* **Color Palette & Atmosphere:** Storm cloud charcoal, silver rain mist, warm golden sunbeam, soft olive (#2B2D42, #8D99AE, #EDF2F4, #E9C46A).
-* **Assigned Visual Motifs:** Shot B (Water Flow), Shot C (Forest Light), Shot E (Book), Shot F (Courtyard).
-* **Hero Visual Key:** [`09_IMAGE/QURAN-COMEBACK-HERO-005.jpg`](file:///mnt/AI/ag/Campaign/09_IMAGE/QURAN-COMEBACK-HERO-005.jpg)
-* **Default Visual Rhythm:**
-  - `0–3 sec`: Strong visual establishing shot + contemplative question.
-  - `3–10 sec`: Visual expansion and environmental development.
-  - `10–30 sec`: Insight, Ayah typography emergence in negative space.
-  - `30–45 sec`: Emotional and reflective depth.
-  - `45–60 sec+`: Quiet resolution and practical invitation.
+> **Instructions for Google Flow:** Copy and paste the prompts below directly into Google Flow / Veo (16:9, 720p, 24fps):
+
+```text
+=== EP05 SCENE 1 (Winter Mountain Frost — The Burden): ===
+Cinematic slow pan across rugged granite mountain peaks coated in crisp winter frost, misty cold mountain air rising from dark stone, evergreen pine needles frosted white, silent stillness, contemplative documentary realism, soft cool pale daylight, 720p 24fps --ar 16:9 --res 720p --no humans, no faces, no silhouettes, no people, unpopulated, no fantasy glow, no neon
+
+=== EP05 SCENE 2 (The Honeybee on Mountain Blossom — Alam Nashrah): ===
+Cinematic macro shot of a single golden honeybee resting gently on a vibrant wild mountain blossom, delicate transparent wings catching warm morning sunbeams, shallow depth of field, soft natural garden background, macro documentary realism, peaceful gentle movement, 720p 24fps --ar 16:9 --res 720p --no humans, no hands, no cartoon, no neon, no distortion
+
+=== EP05 SCENE 3 (Ancient Olive Grove in Gentle Breeze — With Hardship Comes Ease): ===
+Cinematic shot of an ancient gnarled olive tree on a quiet stone terrace, silvery-green leaves rustling gently in a warm breeze, golden late-afternoon sunlight filtering through branches, peaceful rooted strength, 35mm fine art cinematography, 720p 24fps --ar 16:9 --res 720p --no humans, no people, no modern structures, no fantasy glow
+
+=== EP05 SCENE 4 (Desert Night Sky with Stars — Return From Burnout): ===
+Cinematic wide shot of a vast crystalline desert night sky filled with brilliant natural stars and subtle milky way band, silent still sand dunes below reflecting gentle starlight, deep celestial tranquility, authentic night photography, 720p 24fps --ar 16:9 --res 720p --no humans, no silhouettes, no neon lasers, no sci-fi auroras
+
+=== EP05 SCENE 5 (Golden Rippled Sand Dunes at Sunrise — Practical Return): ===
+Ultra-wide cinematic panoramic shot of endless golden desert sand dunes with intricate wind-swept ripples at early dawn, soft pastel sky with generous negative space, gentle morning light warming the ridge lines, profound peaceful silence, National Geographic landscape photography, 720p 24fps --ar 16:9 --res 720p --no humans, no footprints, no camels, no modern vehicles, no text
+```
 
 ---
 
 ## 2. Shot-by-Shot Production Sequence
 
-### Scene 1 (00:00–00:35): The Burden That Weighed Down Your Back
+### Scene 1 (00:00–00:35): Winter Mountain Frost (The Burden & Constriction)
+* **File Target:** `EP05_SCENE01.mp4` / `QURAN-COMEBACK-VEO-005-SCENE01.mp4`
+* **Theme Anchor:** Surah Quraysh 106:2 (*Rihlat ash-Shitā'*) & Surah Ash-Sharh 94:2–3
+* **Visual Framing & Action:** High mountain peaks wrapped in crisp winter frost. Cold mist drifts through dark granite crevices and evergreen pine needles. Atmospheric stillness reflecting the physical heaviness of fatigue before relief.
+* **Camera Movement:** Slow, grounded horizontal pan across frosted rock edges.
+* **Lighting:** Cool pale morning light, soft atmospheric diffusion.
 
-* **Shot Primitive:** `Shot C (Forest) / Low Angle`
-* **Visual Framing & Action:** Dense, heavy forest under dark gray storm clouds. Ancient trees bend under strong gusts of wind. The atmosphere feels physically heavy, pressing down on the soil.
-* **Camera Movement:** Slow, grounded tracking shot through fallen wet leaves and rugged tree roots.
-* **Lighting & Atmosphere:** Moody charcoal gray and deep slate shadows.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'WHEN YOUR CHEST FEELS CONSTRICTED'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic moody forest shot under heavy storm clouds, ancient tall pine trees in wind, deep earthy tones, tangible physical weight, atmospheric drama without horror --ar 16:9 --no monsters, lightning bolts`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+### Scene 2 (00:35–01:45): The Honeybee on Mountain Blossom (Alam Nashrah — Expansion of the Chest)
+* **File Target:** `EP05_SCENE02.mp4` / `QURAN-COMEBACK-VEO-005-SCENE02.mp4`
+* **Theme Anchor:** Surah An-Nahl 16:68–69 (*An-Nahl*) & Surah Ash-Sharh 94:1
+* **Visual Framing & Action:** Warm morning sunlight sweeps across a rugged terrace. A golden honeybee gently settles on a fresh mountain blossom. Transparent wings glinting in the light; divine design and natural healing (*Shifā'*).
+* **Camera Movement:** Macro telephoto tracking shot, shallow depth of field.
+* **Lighting:** Warm golden hour backlighting, soft natural bokeh.
 
----
+### Scene 3 (01:45–02:50): Ancient Olive Grove in Gentle Breeze (Inna Ma'al-'Usri Yusrā)
+* **File Target:** `EP05_SCENE03.mp4` / `QURAN-COMEBACK-VEO-005-SCENE03.mp4`
+* **Theme Anchor:** Surah An-Nūr 24:35 (*Az-Zaytūn*) & Surah Ash-Sharh 94:5–6
+* **Visual Framing & Action:** An ancient gnarled olive tree rooted deep in rocky Mediterranean soil. Silvery-green leaves rustle smoothly in a warm mountain breeze. A symbol of enduring strength and ease embedded within struggle.
+* **Camera Movement:** Slow tracking arc around the ancient trunk.
+* **Lighting:** Late afternoon warm amber sunlight, dappled shadows.
 
-### Scene 2 (00:35–01:45): The Expansion of the Chest
+### Scene 4 (02:50–04:00): Desert Night Sky with Crystalline Stars (Farghab — Turn Your Longing)
+* **File Target:** `EP05_SCENE04.mp4` / `QURAN-COMEBACK-VEO-005-SCENE04.mp4`
+* **Theme Anchor:** Surah An-Nahl 16:16 (*An-Nujūm*) & Surah Ash-Sharh 94:7–8
+* **Visual Framing & Action:** Boundless crystalline desert night sky packed with billions of natural stars. Total silence and solitude; ripples on sand dunes bathed in soft starlight. Connecting with night prayer and quiet return.
+* **Camera Movement:** Slow, stable locked-off upward gaze with subtle horizontal drift.
+* **Lighting:** Deep indigo and sapphire night sky, natural starlight, zero artificial glow.
 
-* **Shot Primitive:** `Shot C (Forest Light) / Upward Reveal`
-* **Visual Framing & Action:** The wind suddenly drops. A rift opens in the dark canopy above, and a dramatic, warm ray of sun illuminates a single young sapling emerging from the earth.
-* **Camera Movement:** Slow camera tilt upward from the forest floor into the radiant opening of sky.
-* **Lighting & Atmosphere:** Dramatic contrast: dark surrounding woods vs. brilliant warm golden sunbeam.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'DID WE NOT EXPAND FOR YOU YOUR CHEST?' — 94:1"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Cinematic shot of golden sunlight breaking through dense dark forest canopy, illuminating the forest floor and green ferns, emotional spiritual breakthrough, 720p --ar 16:9 --no fantasy flares, fake glow`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
+### Scene 5 (04:00–05:00): Golden Rippled Sand Dunes at Sunrise (Sit With Surah 94)
+* **File Target:** `EP05_SCENE05.mp4` / `QURAN-COMEBACK-VEO-005-SCENE05.mp4`
+* **Theme Anchor:** Surah Al-Ahqāf 46:21 & Surah Ash-Sharh 94:8
+* **Visual Framing & Action:** Endless golden sand dunes sculpted by wind ripples at first light. Gentle dawn colors (soft rose, gold, pale lavender) filling the upper 60% negative space. Profound stillness and renewal.
+* **Camera Movement:** Ultra-wide slow forward push over the crest of a pristine dune.
+* **Lighting:** Soft pastel dawn illumination, warm golden grazing light.
 
 ---
 
-### Scene 3 (01:45–02:50): The Linguistic Miracle: 'With', Not 'After'
+## 3. Assembly Specifications
 
-* **Shot Primitive:** `Shot B (Water Flow) / Macro`
-* **Visual Framing & Action:** A small, steady stream cutting through dense, dark rock. Even within the hardest granite, the cool water flows smoothly, finding its path effortlessly.
-* **Camera Movement:** Macro close-up tracking the water's edge as it caresses the rough stone.
-* **Lighting & Atmosphere:** Silky water reflections, soft natural daylight.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'WITH HARDSHIP COMES EASE — NOT AFTER'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Macro shot of clear mountain water flowing smoothly through a narrow cleft in rough dark granite rock, resilience and ease metaphor, high frame rate slow motion --ar 16:9 --no speed blur, cartoon water`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-### Scene 4 (02:50–04:00): Tadabbur: One Hardship Cannot Defeat Two Eases
-
-* **Shot Primitive:** `Shot F (Courtyard) / Wide`
-* **Visual Framing & Action:** Sunlight completely disperses the storm clouds over an open courtyard. Courtyard stone drying rapidly under gentle breeze; reflections shimmer in drying puddles.
-* **Camera Movement:** Slow, peaceful crane shot across the wide stone courtyard.
-* **Lighting & Atmosphere:** Warm, tranquil morning light, pristine clarity.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'ONE HARDSHIP CANNOT OVERCOME TWO EASES'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Wide shot of an ancient stone courtyard after rain, wet flagstones reflecting clearing skies, warm morning sun, peace after trial, architectural photography --ar 16:9 --no people, puddles with weird reflections`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-### Scene 5 (04:00–05:00): Practical Action: Sit With Surah 94
-
-* **Shot Primitive:** `Shot E (Book) / Medium Intimate`
-* **Visual Framing & Action:** An open copy of the Qur'an on a simple reading stand. The eight brief verses of Surah 94 are clearly visible. A hand rests peacefully beside the book.
-* **Camera Movement:** Slow locked-off hold, gentle breathing cadence in frame.
-* **Lighting & Atmosphere:** Warm, intimate, tranquil interior lighting.
-* **On-Screen Typography:**
-  ```text
-  Font: Cormorant Garamond / Clean Serif
-  Placement: Lower third / Negative space
-  Text: "'READ ALL EIGHT VERSES SLOWLY TONIGHT.'"
-  Animation: Subtle 1.2s dissolve in, 0.8s hold, 1.0s dissolve out
-  ```
-* **AI Generative Video Prompt (Runway Gen-2 / Sora / Luma Dream Machine):**
-  > **Prompt:** `Artistic shot of an open Qur'an in a serene minimalist room, soft natural morning window light, feeling of profound relief and stillness, 720p --ar 16:9 --no text clutter, modern gadgets`
-  > **Negative Prompt:** `no neon lights, no fantasy sci-fi glowing effects, no distorted Arabic calligraphy, no fake religious symbols, no humanoid depictions of prophets or angels, no fast jerky camera movement, no glitch transitions, no oversaturated digital colors, no modern clutter`
-  > **Motion Control:** Pan/Dolly: +1.2, Zoom: 0.0, FPS: 24 (conformed from 60fps slow-motion)
-
----
-
-## 3. Post-Production Editing & Master Conformance
-
-* **Transitions:** Only natural cuts on movement, 1.5-second cross-dissolves, or organic fades through light. Glitch, spin, warp, and fast whip transitions are strictly prohibited.
-* **Color Grading LUT:** `HUURS_NATURAL_EARTH_V2` (Soft natural contrast, highlights rolled off at 92 IRE, rich shadows preserved at 5 IRE, zero green tint on skin tones, warm golden dawn tones).
-* **Visual Integrity Audit (`AGENT-16`):**
-  - [x] Zero humanoid depictions of prophets, companions, or angels.
-  - [x] Zero AI fantasy tropes (no neon glowing geometric holograms, no fake Arabic gibberish).
-  - [x] Negative space ratio: Minimum 40% open sky or neutral background across all shots.
-  - [x] Verified authentic Quranic script typography.
-
----
+* **Hardware Acceleration:** NVIDIA GeForce RTX 3060 12GB (h264_nvenc P7).
+* **Audio Track:** `11_AUDIO/EP05_audio.mp3` (EBU R128 `-14.5 LUFS`, Zero Music).
+* **Typography:** Burned-in IBM Plex Serif with subtitle formatting via `libass`.
+* **Trademark Watermark:** `HUURS STUDIO` (`white@0.22`, lower right).
+* **Master Output:** `10_VIDEO/renders/QURAN-COMEBACK-EP05-FULL-MASTER.mp4` (16:9, 720p).
+* **Short Output:** `10_VIDEO/renders/QURAN-COMEBACK-EP05-SHORT-001A.mp4` (9:16, 720x1280).
