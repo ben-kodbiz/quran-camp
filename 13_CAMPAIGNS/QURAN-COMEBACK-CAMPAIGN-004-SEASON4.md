@@ -85,7 +85,7 @@ Every episode strictly implements:
 |:---|:---|:---|:---|:---|:---|:---|
 | **26** | Surah Ash-Shu'ara | *The Sound Heart* | 26:63, 78–82, 88–89, 217 | `10_VIDEO/renders/QURAN-COMEBACK-EP26-FULL-MASTER.mp4` | `11_AUDIO/EP26_audio.mp3` | **PACKAGED & VERIFIED** |
 | **27** | Surah An-Naml | *The Praise of All Creation* | 27:16–19, 60, 62, 88, 93 | `10_VIDEO/renders/QURAN-COMEBACK-EP27-FULL-MASTER.mp4` | `11_AUDIO/EP27_audio.mp3` | **PACKAGED & VERIFIED** |
-| **28** | Surah Al-Qasas | *The Well of Madyan* | 28:7, 24, 77 | Section 40D Curated | Planned | Curation Plan Locked |
+| **28** | Surah Al-Qasas | *The Unfolding Promise* | 28:7, 24, 30, 76–77, 88 | `10_VIDEO/renders/QURAN-COMEBACK-EP28-FULL-MASTER.mp4` | `11_AUDIO/EP28_audio.mp3` | **PACKAGED & VERIFIED** |
 | **29** | Surah Al-Ankabut | *The Fragile Shelter* | 29:41, 45, 69 | Section 40D Curated | Planned | Curation Plan Locked |
 | **30** | Surah Ar-Rum | *The Living Horizon* | 30:21, 24, 48 | Section 40D Curated | Planned | Curation Plan Locked |
 
@@ -109,3 +109,10 @@ Every episode strictly implements:
 - **Episode 27 Script:** [`08_SCRIPTS/QURAN-COMEBACK-SCRIPT-027.md`](file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-027.md)
 - **Episode 27 Storyboard:** [`10_VIDEO/QURAN-COMEBACK-VIDEO-027.md`](file:///mnt/AI/ag/Campaign/10_VIDEO/QURAN-COMEBACK-VIDEO-027.md)
 - **Episode 27 Product Manifest:** [`12_PRODUCTS/SURAH-AN-NAML-PRODUCT-MANIFEST.md`](file:///mnt/AI/ag/Campaign/12_PRODUCTS/SURAH-AN-NAML-PRODUCT-MANIFEST.md)
+- **Episode 28 Full Master (16:9):** `10_VIDEO/renders/QURAN-COMEBACK-EP28-FULL-MASTER.mp4` (270.9s, 1280x720, 24fps, 80.2 MB)
+- **Episode 28 Vertical Short (9:16):** `10_VIDEO/renders/QURAN-COMEBACK-EP28-SHORT-001A.mp4` (62.9s, 720x1280, 24fps, 12.7 MB)
+- **Episode 28 Studio Audio:** `11_AUDIO/EP28_audio.mp3` & `11_AUDIO/EP28_audio_timings.json` (-14 LUFS, 48kHz, Zero Music)
+- **Episode 28 Audio Specification:** [`11_AUDIO/QURAN-COMEBACK-AUDIO-028.md`](file:///mnt/AI/ag/Campaign/11_AUDIO/QURAN-COMEBACK-AUDIO-028.md)
+- **Episode 28 Script:** [`08_SCRIPTS/QURAN-COMEBACK-SCRIPT-028.md`](file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-028.md)
+- **Episode 28 Storyboard:** [`10_VIDEO/QURAN-COMEBACK-VIDEO-028.md`](file:///mnt/AI/ag/Campaign/10_VIDEO/QURAN-COMEBACK-VIDEO-028.md)
+- **Episode 28 Product Manifest:** [`12_PRODUCTS/SURAH-AL-QASAS-PRODUCT-MANIFEST.md`](file:///mnt/AI/ag/Campaign/12_PRODUCTS/SURAH-AL-QASAS-PRODUCT-MANIFEST.md)
