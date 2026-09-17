@@ -56,6 +56,12 @@ The entire thematic architecture is structured across 8 widescreen content plate
 | **Tadabbur Contemplation Guide** | Markdown | Reflective Protocol | 6 structured contemplative stations separating classical tafsir from personal application | `06_TADABBUR/DEEPER-THOUGHT-TADABBUR-AN-NAML.md` |
 | **Claim Verification Audit** | Markdown | Claim-Level Certification | 24-point claim-level verification matrix audited against classical Sunni sources | `02_VERIFICATION/DEEPER-THOUGHT-VERIFY-AN-NAML.md` |
 | **Primary Research Dossier** | Markdown | Research Synthesis | Foundation research blueprint detailing macro-structural context and thematic movements | `01_RESEARCH/DEEPER-THOUGHT-RESEARCH-AN-NAML.md` |
+| **Flagship Video Master** | MP4 (H.264/AAC) | ~48.0 MB | Full 720p HD Master (1280x720, 24fps) with Section 40D curated living creation slow-mo, discrete trademark watermark, zero burned subtitles. | `10_VIDEO/renders/QURAN-COMEBACK-EP27-FULL-MASTER.mp4` |
+| **Vertical Short (Cut A)** | MP4 (H.264/AAC) | ~10.0 MB | 9:16 Vertical Cut (720x1280, 24fps) for YouTube Shorts & Instagram Reels. | `10_VIDEO/renders/QURAN-COMEBACK-EP27-SHORT-001A.mp4` |
+| **Studio Audio Master** | MP3 (192kbps) | ~4.5 MB | Mastered to -14 LUFS broadcast standard, Zero Music Policy with organic nature foley. | `11_AUDIO/EP27_audio.mp3` |
+| **Audio Narration Specification** | Markdown | 1.8 KB | Master acoustic staging, vocal cadence, and engineering directives. | `11_AUDIO/QURAN-COMEBACK-AUDIO-027.md` |
+| **Production Script** | Markdown | 6.8 KB | 5-section production script with Section 40D Surah scene mapping. | `08_SCRIPTS/QURAN-COMEBACK-SCRIPT-027.md` |
+| **Video Storyboard** | Markdown | 7.2 KB | 5-scene cinematic storyboard with Section 40D curated clip mapping. | `10_VIDEO/QURAN-COMEBACK-VIDEO-027.md` |
 
 ---
 
