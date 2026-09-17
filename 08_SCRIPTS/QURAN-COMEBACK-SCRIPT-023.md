@@ -10,6 +10,8 @@ artifact:
   topic: "Surah Al-Mu'minun, Khushu' & The Anchored Soul"
   language: en-US
   target_duration_minutes: 4.0
+  resolution_standard: "720p HD (1280x720) — Strict credit control ceiling"
+  surah_audio_source: "Surah Al-Mu'minun (23:1-11, 20) Murattal Recitation"
 lifecycle:
   status: approved
   created_by: AGENT-07
@@ -29,17 +31,18 @@ storage:
 
 **Campaign:** Come Back to the Qur'an (Season 3)  
 **Title:** *"The Architecture of a Quiet Heart"*  
-**Ayah Reference:** Surah Al-Mu'minun 23:1–2, 23:20  
-**Duration:** ~3.8 minutes (approx. 490 spoken words)  
-**Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Visual Motif Mapping:** Autumn wind scattering dead leaves, ancient rooted olive tree on mountain ridge, golden virgin olive oil pouring macro, glass-like still forest pool with falling leaf, peaceful woven prayer mat on morning stone porch. Absolute Zero-Human Mandate.
+**Surah Examined:** Surah Al-Mu'minun (23:1–2, 23:20)  
+**What the Surah Conveys:** Definition of ultimate success through prayerful stillness (Khushu'); the ancient anchored olive tree of Sinai producing uncorrupted oil; the inner quiet required to reflect divine truth.  
+**Audio Architecture:** Authentic Murattal recitation of Surah Al-Mu'minun (23:1–11, 20) + Spoken Tadabbur + Mountain wind & olive foliage foley (Zero Music).  
+**Resolution Mandate:** `1280x720 HD Master` (Strict 720p Ceiling per User Mandate to prevent extra charges).  
+**Visual Classification System:** Tier 1 literal scene mapping where describable; Tier 2 generic contemplative nature fallback where abstract/unseen.
 
 ---
 
 ## PRODUCTION SCRIPT & DIALOGUE
 
 ### 00:00 – 00:45 | SECTION 1: THE EPIDEMIC OF THE SCATTERED MIND
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Metaphorical Reality in Nature (720p HD)]**  
 *Autumn wind violently scattering dried brown leaves across a dark slate stone pathway. Rapid, chaotic motion, moody natural lighting, raw elemental tension.*
 
 **(VOICEOVER):**  
@@ -56,7 +59,7 @@ Listen to the foundational architecture revealed in the opening words of Surah A
 ---
 
 ### 00:45 – 01:45 | SECTION 2: THE ANCHOR OF KHUSHU'
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Botanical Reality in Surah (720p HD)]**  
 *Sudden shift to deep silence. A majestic, ancient gnarled olive tree rooted deep into fractured mountain stone, heavy with green fruit under a calm, peaceful blue sky.*
 
 **(VOICEOVER):**  
@@ -73,7 +76,7 @@ It is the inner anchor that prevents you from swaying when the worldly storm blo
 ---
 
 ### 01:45 – 02:45 | SECTION 3: THE BLESSED TREE OF SINAI
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Physical Craft & Liquid in Surah (720p HD)]**  
 *Macro shot of pure, luminous green-gold virgin olive oil pouring smoothly from a clay spout into a stone dish, viscous and unbroken in warm daylight.*
 
 **(VOICEOVER):**  
@@ -90,7 +93,7 @@ A believer anchored in Salah is like the olive tree: quiet, rooted, producing en
 ---
 
 ### 02:45 – 03:20 | SECTION 4: THE STILL WATERS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Physical Phenomenon Illustrating Khushu' (720p HD)]**  
 *Slow-motion footage of a crystal-clear, mirror-like forest pool. A single green olive leaf falls softly and rests upon the water surface without a splash.*
 
 **(VOICEOVER):**  
@@ -103,7 +106,7 @@ You need the daily pause. You need to step away from the noise and stand before 
 ---
 
 ### 03:20 – 03:50 | SECTION 5: THE LIVING RETURN
-**[VISUAL]**  
+**[VISUAL — TIER 2: Generic Contemplative Nature Fallback — Shot E/D: Prayer Mat at Dawn (720p HD)]**  
 *A simple natural woven palm prayer mat unrolled upon cool stone flagstones of an open veranda, overlooking a serene dawn horizon filled with golden morning mist.*
 
 **(VOICEOVER):**  

@@ -10,6 +10,8 @@ artifact:
   topic: "Surah Al-Furqan, The Criterion & Walking with Dignity"
   language: en-US
   target_duration_minutes: 4.0
+  resolution_standard: "720p HD (1280x720) — Strict credit control ceiling"
+  surah_audio_source: "Surah Al-Furqan (25:45-54, 63) Murattal Recitation"
 lifecycle:
   status: approved
   created_by: AGENT-07
@@ -29,17 +31,18 @@ storage:
 
 **Campaign:** Come Back to the Qur'an (Season 3)  
 **Title:** *"Walking Gently on the Earth"*  
-**Ayah Reference:** Surah Al-Furqan 25:45, 25:53, 25:63  
-**Duration:** ~3.8 minutes (approx. 490 spoken words)  
-**Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Visual Motif Mapping:** Storm waves crashing violently against dark sea cliffs, aerial drone view of freshwater river meeting cobalt ocean separated by distinct natural boundary, smooth stone path through morning dewy pine forest, long shadows stretching over sunset hills, open scripture by window facing sunset sea. Absolute Zero-Human Mandate.
+**Surah Examined:** Surah Al-Furqan (25:45, 25:53, 25:63)  
+**What the Surah Conveys:** The cosmic rhythm of extending shadows; the natural barrier between two seas; the noble posture of Ibad ar-Rahman walking with humility and greeting hostility with peace.  
+**Audio Architecture:** Authentic Murattal recitation of Surah Al-Furqan (25:45–54, 63) + Spoken Tadabbur + River, ocean & forest wind foley (Zero Music).  
+**Resolution Mandate:** `1280x720 HD Master` (Strict 720p Ceiling per User Mandate to prevent extra charges).  
+**Visual Classification System:** Tier 1 literal scene mapping where describable; Tier 2 generic contemplative nature fallback where abstract/unseen.
 
 ---
 
 ## PRODUCTION SCRIPT & DIALOGUE
 
 ### 00:00 – 00:45 | SECTION 1: THE CULTURE OF HARSHNESS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Elemental Contrast in Nature (720p HD)]**  
 *Powerful stormy ocean breakers smashing violently against dark jagged sea cliffs at twilight. Exploding white spray in cold air, turbulent, abrasive natural force.*
 
 **(VOICEOVER):**  
@@ -56,7 +59,7 @@ Surah Al-Furqan gives us the portrait of those whom Allah calls His own."
 ---
 
 ### 00:45 – 01:45 | SECTION 2: THE CONFLUENCE OF TWO SEAS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Natural Phenomenon in Surah (720p HD)]**  
 *High aerial drone shot looking straight down where a crystal-clear turquoise freshwater river empties into the deep navy ocean, separated by a pristine, visible boundary line.*
 
 **(VOICEOVER):**  
@@ -73,7 +76,7 @@ A true believer possesses that same inner boundary: firm in principle, but entir
 ---
 
 ### 01:45 – 02:45 | SECTION 3: WALKING WITH HUMILITY
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Natural Setting Illustrating the Ayah (720p HD)]**  
 *Smooth low tracking shot gliding along a peaceful stone path winding through a misty pine forest at sunrise. Dewdrops undisturbed on mossy rocks beside the trail.*
 
 **(VOICEOVER):**  
@@ -88,7 +91,7 @@ They do not stomp across the earth with arrogance. They do not need to prove the
 ---
 
 ### 02:45 – 03:20 | SECTION 4: THE LESSON OF THE SHADOWS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Astronomical & Planetary Phenomenon in Surah (720p HD)]**  
 *Time-lapse of golden hour on rolling hills. The long, elegant shadows of ancient cypress trees stretch slowly and peacefully across the amber fields as evening settles.*
 
 **(VOICEOVER):**  
@@ -103,7 +106,7 @@ When you surrender your ego to Allah, you stop fighting life. You walk through t
 ---
 
 ### 03:20 – 03:50 | SECTION 5: THE LIVING RETURN
-**[VISUAL]**  
+**[VISUAL — TIER 2: Generic Contemplative Nature Fallback — Shot E: Sunset Scripture (720p HD)]**  
 *An open Qur'an on a carved wooden rihal beside an arched stone window overlooking the sea at sunset. A calm evening breeze turns a single page into the twilight.*
 
 **(VOICEOVER):**  

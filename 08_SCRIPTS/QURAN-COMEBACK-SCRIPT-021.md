@@ -10,6 +10,8 @@ artifact:
   topic: "Surah Al-Anbiya, Deliverance from Despair & The Water of Life"
   language: en-US
   target_duration_minutes: 4.0
+  resolution_standard: "720p HD (1280x720) — Strict credit control ceiling"
+  surah_audio_source: "Surah Al-Anbiya (21:30, 87-88) Murattal Recitation"
 lifecycle:
   status: approved
   created_by: AGENT-07
@@ -29,18 +31,19 @@ storage:
 
 **Campaign:** Come Back to the Qur'an (Season 3 Premiere)  
 **Title:** *"Light in the Deepest Dark"*  
-**Ayah Reference:** Surah Al-Anbiya 21:30, 87–88  
-**Duration:** ~3.8 minutes (approx. 490 spoken words)  
-**Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Visual Motif Mapping:** Submerged midnight ocean moonlight shaft, cosmic starfield descending into mountain rain, green sprout in granite fissure, crystal mountain stream, open Qur'an on walnut rihal at dawn. Absolute Zero-Human Mandate.
+**Surah Examined:** Surah Al-Anbiya (21:30, 21:87–88)  
+**What the Surah Conveys:** Creation of all life from water; deliverance of Yunus from the suffocating triple darkness through humble prayer; unbreakable promise of relief for every believer.  
+**Audio Architecture:** Authentic Murattal recitation of Surah Al-Anbiya (21:30, 87–88) + Spoken Tadabbur + Halal Ocean/Stream Foley (Zero Music).  
+**Resolution Mandate:** `1280x720 HD Master` (Strict 720p Ceiling per User Mandate to prevent extra charges).  
+**Visual Classification System:** Tier 1 literal scene mapping where describable; Tier 2 generic contemplative nature fallback where abstract/unseen.
 
 ---
 
 ## PRODUCTION SCRIPT & DIALOGUE
 
 ### 00:00 – 00:45 | SECTION 1: THE WEIGHT OF THE TRIPLE DARKNESS
-**[VISUAL]**  
-*Submerged camera skimming beneath dark midnight ocean swells. Deep indigo shadows, solitary pale moonlight shaft penetrating downward into the abyss. Pure contemplative silence.*
+**[VISUAL — TIER 1: Literal Describable Phenomenon in Surah (720p HD)]**  
+*Submerged camera skimming 2 meters beneath dark midnight ocean swells. Deep indigo shadows, solitary pale moonlight shaft penetrating downward into the abyss. Represents Yunus trapped in the triple darkness of night, ocean, and whale (21:87). Pure contemplative silence.*
 
 **(VOICEOVER):**  
 "Have you ever felt trapped in a situation so suffocating that no amount of human advice could reach you?

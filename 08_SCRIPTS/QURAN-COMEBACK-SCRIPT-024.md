@@ -10,6 +10,8 @@ artifact:
   topic: "Surah An-Nur, Ayat an-Nur & The Illumination of the Heart"
   language: en-US
   target_duration_minutes: 4.0
+  resolution_standard: "720p HD (1280x720) — Strict credit control ceiling"
+  surah_audio_source: "Surah An-Nur (24:35, 39-41) Murattal Recitation"
 lifecycle:
   status: approved
   created_by: AGENT-07
@@ -29,17 +31,18 @@ storage:
 
 **Campaign:** Come Back to the Qur'an (Season 3)  
 **Title:** *"The Niche of Divine Light"*  
-**Ayah Reference:** Surah An-Nur 24:35, 24:40–41  
-**Duration:** ~3.8 minutes (approx. 490 spoken words)  
-**Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Visual Motif Mapping:** Stormy midnight ocean swells in total darkness, ancient carved stone niche with glowing glass oil lamp, volumetric morning sunbeams streaming through stone mashrabiya, white doves gliding across sky, room flooded with golden dawn light. Absolute Zero-Human Mandate.
+**Surah Examined:** Surah An-Nur (24:35, 24:39–41)  
+**What the Surah Conveys:** Cosmic reality of divine light; darkness of misguidance like oceanic depths; the parable of the lamp in the niche; the glorification of birds with wings outspread.  
+**Audio Architecture:** Authentic Murattal recitation of Surah An-Nur (24:35, 39–41) + Spoken Tadabbur + Ocean waves & doves birdsong foley (Zero Music).  
+**Resolution Mandate:** `1280x720 HD Master` (Strict 720p Ceiling per User Mandate to prevent extra charges).  
+**Visual Classification System:** Tier 1 literal scene mapping where describable; Tier 2 generic contemplative nature fallback where abstract/unseen.
 
 ---
 
 ## PRODUCTION SCRIPT & DIALOGUE
 
 ### 00:00 – 00:45 | SECTION 1: THE BLINDNESS OF THE VOID
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Phenomenon in Surah (720p HD)]**  
 *Dark turbulent ocean waves at midnight in a heavy storm. Deep black water swells crashing over deep layers, cold monochrome navy shadows, absolute visceral darkness.*
 
 **(VOICEOVER):**  
@@ -58,7 +61,7 @@ When humanity cuts itself off from divine revelation, even the sharpest intellec
 ---
 
 ### 00:45 – 01:45 | SECTION 2: THE PARABLE OF LIGHT
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Sacred Parable in Surah (720p HD)]**  
 *Sudden transition into an ancient stone sanctuary. A carved limestone wall niche holding a clear glass lamp glowing with radiant golden amber warmth like a sparkling planet.*
 
 **(VOICEOVER):**  
@@ -73,7 +76,7 @@ Classical scholars of tafsir explain: The niche is your chest. The glass is your
 ---
 
 ### 01:45 – 02:45 | SECTION 3: THE OIL THAT ALMOST GLOWS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Describable Illumination in Sacred Architecture (720p HD)]**  
 *Volumetric morning sunbeams streaming through a high stone geometric mashrabiya, casting sharp tessellations of light and shadow across a cool white marble floor.*
 
 **(VOICEOVER):**  
@@ -94,7 +97,7 @@ Everything suddenly makes sense. The fog lifts. You know who you are, where you 
 ---
 
 ### 02:45 – 03:20 | SECTION 4: THE PRAISE OF THE BIRDS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Living Creation in Surah (720p HD)]**  
 *Slow-motion footage of a flock of pure white doves gliding gracefully across a pristine morning sky above ancient stone arches, wings catching golden rim light.*
 
 **(VOICEOVER):**  
@@ -109,7 +112,7 @@ Every single creature knows its prayer and its praise. Creation is not silent; i
 ---
 
 ### 03:20 – 03:50 | SECTION 5: THE LIVING RETURN
-**[VISUAL]**  
+**[VISUAL — TIER 2: Generic Contemplative Nature Fallback — Shot C/F: Morning Light Flooding Alcove (720p HD)]**  
 *Atmospheric wide shot of the stone alcove, flooded with warm golden dawn sunlight that dissolves all shadows. A serene, quiet peace fills the space.*
 
 **(VOICEOVER):**  

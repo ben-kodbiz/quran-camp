@@ -10,6 +10,8 @@ artifact:
   topic: "Surah Al-Hajj, Spiritual Revival & The Sovereign Call"
   language: en-US
   target_duration_minutes: 4.0
+  resolution_standard: "720p HD (1280x720) — Strict credit control ceiling"
+  surah_audio_source: "Surah Al-Hajj (22:5, 27, 73) Murattal Recitation"
 lifecycle:
   status: approved
   created_by: AGENT-07
@@ -29,17 +31,18 @@ storage:
 
 **Campaign:** Come Back to the Qur'an (Season 3)  
 **Title:** *"Reviving What Was Dead"*  
-**Ayah Reference:** Surah Al-Hajj 22:5, 22:27  
-**Duration:** ~3.8 minutes (approx. 485 spoken words)  
-**Tone:** Unhurried, deeply contemplative, compassionate, authentic, restorative  
-**Visual Motif Mapping:** Cracked arid clay desert ground, slow-motion raindrops impacting soil, ancient winding mountain canyon road, lush flowering wild meadow, stone fountain courtyard at dawn. Absolute Zero-Human Mandate.
+**Surah Examined:** Surah Al-Hajj (22:5, 22:27, 22:73)  
+**What the Surah Conveys:** Proof of resurrection through barren earth quivering with life after rain; universal call across ancient mountain ravines; divine challenge through the parable of the fly.  
+**Audio Architecture:** Authentic Murattal recitation of Surah Al-Hajj (22:5, 27) + Spoken Tadabbur + Desert wind & rain foley (Zero Music).  
+**Resolution Mandate:** `1280x720 HD Master` (Strict 720p Ceiling per User Mandate to prevent extra charges).  
+**Visual Classification System:** Tier 1 literal scene mapping where describable; Tier 2 generic contemplative nature fallback where abstract/unseen.
 
 ---
 
 ## PRODUCTION SCRIPT & DIALOGUE
 
 ### 00:00 – 00:45 | SECTION 1: THE CRACKED SOIL OF THE HEART
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Phenomenon in Surah (720p HD)]**  
 *Low-angle macro shot of sun-baked cracked clay soil in an arid desert. Shimmering heat haze, dry dust motes, total stillness and desolation.*
 
 **(VOICEOVER):**  
@@ -54,7 +57,7 @@ Surah Al-Hajj gives you the answer not through abstract philosophy, but through 
 ---
 
 ### 00:45 – 01:45 | SECTION 2: THE QUIVERING EARTH
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Phenomenon in Surah (720p HD)]**  
 *Ultra slow-motion close-up of heavy rain drops impacting cracked earth. Moisture blooming into rich dark soil, dormant seeds beginning to stir.*
 
 **(VOICEOVER):**  
@@ -73,7 +76,7 @@ Your heart is no different. You do not have to generate the faith yourself—you
 ---
 
 ### 01:45 – 02:45 | SECTION 3: THE CALL ACROSS THE MOUNTAINS
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Describable Geographical Setting in Surah (720p HD)]**  
 *Wide cinematic aerial shot of ancient winding stone caravan trail passing through vast sandstone canyons and mountain gorges at sunrise.*
 
 **(VOICEOVER):**  
@@ -92,7 +95,7 @@ When Allah decrees that something shall live, neither distance nor stone nor cen
 ---
 
 ### 02:45 – 03:20 | SECTION 4: THE MEADOW OF RETURN
-**[VISUAL]**  
+**[VISUAL — TIER 1: Literal Botanical Growth Described in Surah (720p HD)]**  
 *Smooth tracking shot skimming over a lush green meadow of wild clover and grass swaying in a fresh morning wind, dew droplets glistening in golden light.*
 
 **(VOICEOVER):**  
@@ -105,7 +108,7 @@ Do not despair of the One who resurrects whole landscapes with a single cloud."
 ---
 
 ### 03:20 – 03:50 | SECTION 5: THE LIVING RETURN
-**[VISUAL]**  
+**[VISUAL — TIER 2: Generic Contemplative Nature Fallback — Shot F: Mosque Courtyard Basin (720p HD)]**  
 *A quiet stone fountain basin overflowing gently with clear water, reflecting a peach and gold sunrise sky in an empty tranquil courtyard.*
 
 **(VOICEOVER):**  
