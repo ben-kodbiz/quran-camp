@@ -56,6 +56,9 @@ The entire thematic architecture is structured across 8 widescreen content plate
 | **Tadabbur Contemplation Guide** | Markdown | Reflective Protocol | 6 structured contemplative stations separating classical tafsir from personal application | `06_TADABBUR/DEEPER-THOUGHT-TADABBUR-AL-ANKABUT.md` |
 | **Claim Verification Audit** | Markdown | Claim-Level Certification | 24-point claim-level verification matrix audited against classical Sunni sources | `02_VERIFICATION/DEEPER-THOUGHT-VERIFY-AL-ANKABUT.md` |
 | **Primary Research Dossier** | Markdown | Research Synthesis | Foundation research blueprint detailing macro-structural context and thematic movements | `01_RESEARCH/DEEPER-THOUGHT-RESEARCH-AL-ANKABUT.md` |
+| **Flagship Video Master** | MP4 (H.264/AAC) | ~70.0 MB | Full 720p HD Master (1280x720, 24fps) with Section 40D curated living creation slow-mo, discrete trademark watermark, zero burned subtitles. | `10_VIDEO/renders/QURAN-COMEBACK-EP29-FULL-MASTER.mp4` |
+| **Vertical Short (Cut A)** | MP4 (H.264/AAC) | ~12.0 MB | 9:16 Vertical Cut (720x1280, 24fps) for YouTube Shorts & Instagram Reels. | `10_VIDEO/renders/QURAN-COMEBACK-EP29-SHORT-001A.mp4` |
+| **Studio Master Audio** | MP3 (192 kbps) | ~6.0 MB | Broadcast narration mastered to -14 LUFS (EBU R128), 48kHz, Zero Music Policy with Halal nature foley beds. | `11_AUDIO/EP29_audio.mp3` |
 
 ---
 
