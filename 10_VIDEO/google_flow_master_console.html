@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huurs Studio — Google Flow Master 1-Click Prompt Console</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #05080f;
+      --bg-base: #070c16;
+      --bg-surface: #0e1626;
+      --bg-surface-elevated: #152035;
+      
+      --gold: #d4af59;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 89, 0.25);
+      --gold-border: rgba(212, 175, 89, 0.32);
+      
+      --emerald: #10b981;
+      --emerald-bg: rgba(16, 185, 129, 0.12);
+      
+      --cyan: #38bdf8;
+      --cyan-bg: rgba(56, 189, 248, 0.12);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --border-card: rgba(255, 255, 255, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--bg-deep);
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(212, 175, 89, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(16, 185, 129, 0.05) 0%, transparent 45%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      line-height: 1.65;
+      padding-bottom: 90px;
+    }
+
+    header {
+      background: rgba(5, 8, 15, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--gold-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-badge {
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-global-copy {
+      background: linear-gradient(135deg, #d4af59 0%, #b88e36 100%);
+      color: #05080f;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 15px var(--gold-glow);
+      transition: all 0.2s ease;
+    }
+
+    .btn-global-copy:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 25px rgba(212, 175, 89, 0.5);
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 32px 32px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(14, 22, 38, 0.4) 100%);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 28px 36px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--emerald), var(--cyan));
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 1000px;
+      margin-bottom: 16px;
+    }
+
+    .policy-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+    }
+
+    .pill.pill-gold {
+      background: rgba(212, 175, 89, 0.12);
+      border-color: var(--gold-border);
+      color: var(--gold-light);
+    }
+
+    .pill.pill-emerald {
+      background: var(--emerald-bg);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #34d399;
+    }
+
+    .pill.pill-cyan {
+      background: var(--cyan-bg);
+      border-color: rgba(56, 189, 248, 0.3);
+      color: #7dd3fc;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(14, 22, 38, 0.6);
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-card);
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cat-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cat-btn:hover {
+      border-color: var(--gold-border);
+      color: var(--text-main);
+    }
+
+    .cat-btn.active {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .search-box {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-card);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      min-width: 280px;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold-border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .card-badges {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .badge-ep {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(212, 175, 89, 0.15);
+      border: 1px solid var(--gold-border);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-tier {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-tier1 {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-tier2 {
+      background: rgba(56, 189, 248, 0.15);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      background: rgba(0,0,0,0.25);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--gold);
+    }
+
+    .prompt-box {
+      background: #04060a;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      max-height: 140px;
+      overflow-y: auto;
+      user-select: all;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .res-tag {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .btn-copy {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-light);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: var(--gold);
+      color: #05080f;
+    }
+
+    .btn-copy.copied {
+      background: var(--emerald);
+      color: #05080f;
+      border-color: var(--emerald);
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--gold);
+      color: #05080f;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">
+      <span>HUURS STUDIO</span>
+      <span class="header-badge">Google Flow 1-Click Master Console</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-global-copy" onclick="copyNegativePrompt()">
+        📋 Copy Negative Prompt Block
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <div class="hero-banner">
+      <h1 class="hero-title">1-Click Google Flow Video Generation Console</h1>
+      <p class="hero-subtitle">
+        Centralized prompt command center for Huurs Studio. Every scene prompt below is pre-calibrated for single-click copying directly into Google Flow / Veo 3.1. Zero text highlighting or manual editing required.
+      </p>
+      <div class="policy-pill-group">
+        <span class="pill pill-gold">⚡ 720p HD Ceiling (1280x720) — Zero Extra Charges</span>
+        <span class="pill pill-emerald">🌿 Zero-Human Mandate (100% Nature & Creation)</span>
+        <span class="pill pill-cyan">📖 Section 40B Compliant: Literal Ayah Scenes & Nature Fallbacks</span>
+        <span class="pill">🔇 Zero-Music Policy (Halal Organic Foley)</span>
+      </div>
+    </div>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="category-tabs" id="catTabs">
+        <button class="cat-btn active" onclick="filterCategory('all')">All Prompts (36)</button>
+        <button class="cat-btn" onclick="filterCategory('season_3')">Season 3: Ep 21–25 (25)</button>
+        <button class="cat-btn" onclick="filterCategory('ep21')">Ep 21: Al-Anbiya</button>
+        <button class="cat-btn" onclick="filterCategory('ep22')">Ep 22: Al-Hajj</button>
+        <button class="cat-btn" onclick="filterCategory('ep23')">Ep 23: Al-Mu'minun</button>
+        <button class="cat-btn" onclick="filterCategory('ep24')">Ep 24: An-Nur</button>
+        <button class="cat-btn" onclick="filterCategory('ep25')">Ep 25: Al-Furqan</button>
+        <button class="cat-btn" onclick="filterCategory('ayat_kawn')">Ayāt al-Kawn (11 Signs)</button>
+      </div>
+      <input type="text" id="searchInput" class="search-box" placeholder="Search prompts, Surahs, motifs..." oninput="handleSearch()">
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid" id="promptGrid">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </div>
+
+  <div id="toast">Prompt copied to clipboard!</div>
+
+  <script>
+    const sections = [
+  {
+    "id": "season_3",
+    "label": "Season 3: Episodes 21\u201325",
+    "desc": "Surahs 21 to 25. High-definition Surah scene mapping with generic nature fallbacks under strict 720p HD credit control.",
+    "episodes": [
+      {
+        "season": "Season 3",
+        "ep": "21",
+        "surah": "Surah Al-Anbiya",
+        "ayah": "21:30, 47, 87\u201388, 107",
+        "title": "Light in the Deepest Dark",
+        "theme": "Deliverance of Yunus from the triple darkness; water as source of all life; cosmic cleaving.",
+        "scenes": [
+          {
+            "scene": "Scene 1 (00:00\u201300:45)",
+            "title": "The Triple Darkness of Yunus",
+            "tier": "Tier 1: Literal Physical Phenomenon",
+            "ayah_ref": "21:87",
+            "prompt": "Cinematic underwater shot in deep midnight ocean, solitary pale moonlight beam cutting through dark turbulent sea water, deep indigo and charcoal shadows, natural water caustics, photorealistic 720p documentary style, quiet mysterious stillness --ar 16:9 --no people, monsters, cartoon, neon glowing effects, fantasy",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Midnight deep ocean column representing the suffocating belly of the whale and deep sea."
+          },
+          {
+            "scene": "Scene 2 (00:45\u201302:00)",
+            "title": "Cleaving Heavens & Earth",
+            "tier": "Tier 1: Literal Cosmic & Terrestrial Sign",
+            "ayah_ref": "21:30",
+            "prompt": "Wide cinematic shot transitioning from starry cosmic night sky down to rugged mountain ridge, heavy gentle rain falling on ancient mountain cliffs, dramatic natural atmosphere, 720p resolution, realistic National Geographic cinematography --ar 16:9 --no fantasy magic, spaceships, text, glowing auras",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Cosmic cleaving and water descending onto rugged stone as life origin."
+          },
+          {
+            "scene": "Scene 3 (02:00\u201304:00)",
+            "title": "The Journey of the Mustard Seed",
+            "tier": "Tier 2: Generic Nature Fallback (Shot D)",
+            "ayah_ref": "21:47",
+            "prompt": "Cinematic low tracking shot gliding along a solitary stone pathway in a dewy pine forest, morning mist filtering sunlight through tall trees, mossy forest floor, 720p resolution, meditative journey, National Geographic realism --ar 16:9 --no people, animals, footprints, modern objects",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Day of Judgment scales are Unseen (Al-Ghayb). Falls back to solitary contemplative stone path."
+          },
+          {
+            "scene": "Scene 4 (04:00\u201305:30)",
+            "title": "Life Emerging from the Rock",
+            "tier": "Tier 1: Literal Botanical Sign",
+            "ayah_ref": "21:88",
+            "prompt": "Macro cinematic close-up of a small vibrant green plant sprout growing through a narrow crack in ancient dark granite rock, clear mountain stream flowing in soft focus background, morning mist, 720p master, lifelike botanical realism, hope and resilience --ar 16:9 --no people, artificial colors, distortion",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Tiny green seedling thriving in granite fissure beside mountain stream."
+          },
+          {
+            "scene": "Scene 5 (05:30\u201306:45)",
+            "title": "Universal Mercy",
+            "tier": "Tier 2: Generic Nature Fallback (Shot E)",
+            "ayah_ref": "21:107",
+            "prompt": "Atmospheric cinematic wide shot of an open Qur'an on a carved wooden book stand inside a stone archway, soft morning sunlight washing over tranquil olive groves outside, 720p resolution, peaceful contemplative sacred atmosphere --ar 16:9 --no people, modern items, distortion",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Prophet \ufdfa cannot be drawn. Falls back to open scripture on wooden rihal facing dawn olive groves."
+          }
+        ]
+      },
+      {
+        "season": "Season 3",
+        "ep": "22",
+        "surah": "Surah Al-Hajj",
+        "ayah": "22:5, 27, 73",
+        "title": "Reviving What Was Dead",
+        "theme": "Proof of resurrection in quivering soil; universal proclamation; biological impossibility of creating a fly.",
+        "scenes": [
+          {
+            "scene": "Scene 1 (00:00\u201300:45)",
+            "title": "The Parched Dead Ground",
+            "tier": "Tier 1: Literal Physical State",
+            "ayah_ref": "22:5",
+            "prompt": "Cinematic low-angle macro shot of dry cracked clay desert ground, heat haze shimmer, extreme ground texture, warm dusty earth tones, photorealistic 720p documentary style, stillness and silence --ar 16:9 --no people, skulls, fantasy effects, saturated colors",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Parched clay desert soil with heat shimmer conveying spiritual drought."
+          },
+          {
+            "scene": "Scene 2 (00:45\u201302:00)",
+            "title": "The Quivering, Swelling Soil",
+            "tier": "Tier 1: Literal Natural Phenomenon",
+            "ayah_ref": "22:5",
+            "prompt": "Ultra slow-motion close-up of heavy rain drops hitting dry cracked soil, moisture blooming into rich dark earth, tiny green grass blades beginning to stir, 720p master, National Geographic biology documentary, organic revival --ar 16:9 --no people, CGI cartoon, distortion",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Rain drops hitting dry cracked clay, moisture blooming into rich dark soil."
+          },
+          {
+            "scene": "Scene 3 (02:00\u201304:00)",
+            "title": "The Ancient Mountain Passes",
+            "tier": "Tier 1: Literal Geographical Setting",
+            "ayah_ref": "22:27",
+            "prompt": "Wide cinematic aerial shot of an ancient stone pathway winding through rugged sandstone mountain canyons, early morning soft desert light, vast landscape, 720p resolution, realistic natural beauty, timeless journey --ar 16:9 --no people, cars, modern structures",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Ancient stone pathway winding through deep sandstone canyons in Hejaz desert."
+          },
+          {
+            "scene": "Scene 4 (04:00\u201305:30)",
+            "title": "The Parable of the Fly",
+            "tier": "Tier 1: Literal Permissible Fauna",
+            "ayah_ref": "22:73",
+            "prompt": "Macro cinematic close-up of a common fly resting on a natural stone surface in sunlight, detailed iridescent eyes, delicate transparent wing veins, photorealistic 720p documentary, BBC Planet Earth macro biology --ar 16:9 --no people, hands, cartoon, distortion",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "100mm macro shot of fly anatomy, compound eyes, and translucent wings."
+          },
+          {
+            "scene": "Scene 5 (05:30\u201306:45)",
+            "title": "The Quiet Sanctuary",
+            "tier": "Tier 2: Generic Nature Fallback (Shot F)",
+            "ayah_ref": "22:27\u201328",
+            "prompt": "Atmospheric cinematic shot of a peaceful stone fountain basin with gentle water ripples, reflecting an early dawn pastel sky, serene courtyard architecture, 720p resolution, quiet contemplative morning --ar 16:9 --no people, modern items, text",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Stone fountain basin overflowing quietly at dawn in empty tranquil courtyard."
+          }
+        ]
+      },
+      {
+        "season": "Season 3",
+        "ep": "23",
+        "surah": "Surah Al-Mu'minun",
+        "ayah": "23:1\u20132, 20",
+        "title": "The Architecture of a Quiet Heart",
+        "theme": "Inner stillness (Khushu') in prayer; rooted olive tree of Sinai; pure uncorrupted oil.",
+        "scenes": [
+          {
+            "scene": "Scene 1 (00:00\u201300:45)",
+            "title": "The Scattered Worldly Mind",
+            "tier": "Tier 1: Literal Metaphor in Nature",
+            "ayah_ref": "23:1\u20132",
+            "prompt": "Cinematic shot of autumn wind violently blowing dry leaves across dark slate stone ground, turbulent motion, moody dark natural lighting, photorealistic 720p documentary style, raw elemental tension --ar 16:9 --no people, trash, modern objects, cartoon",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Autumn gale sweeping leaves across stone pathway representing fragmented attention."
+          },
+          {
+            "scene": "Scene 2 (00:45\u201302:00)",
+            "title": "The Mountain Olive of Sinai",
+            "tier": "Tier 1: Literal Botanical Sign",
+            "ayah_ref": "23:20",
+            "prompt": "Wide cinematic shot of an ancient gnarled olive tree rooted into rocky mountain ridge, calm clear sky, warm soft sunlight, deep peaceful stability, 720p master, National Geographic landscape realism --ar 16:9 --no people, glowing magic, saturated colors",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Majestic ancient olive tree rooted into rock on Mount Sinai ridge."
+          },
+          {
+            "scene": "Scene 3 (02:00\u201304:00)",
+            "title": "Pure Viscous Fuel",
+            "tier": "Tier 1: Literal Physical Craft & Liquid",
+            "ayah_ref": "23:20",
+            "prompt": "Macro cinematic shot of golden olive oil pouring smoothly into an ancient stone bowl, rich green-gold liquid texture, warm natural window light, 720p resolution, tactile documentary realism, quiet beauty --ar 16:9 --no hands, artificial shine, neon",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Virgin olive oil pouring with unbroken viscosity from clay spout into stone dish."
+          },
+          {
+            "scene": "Scene 4 (04:00\u201305:30)",
+            "title": "The Still Waters of Khushu'",
+            "tier": "Tier 1: Literal Physical Sign of Khushu'",
+            "ayah_ref": "23:2",
+            "prompt": "Slow-motion macro shot of a single green olive leaf landing gently on the calm glass-like surface of clear spring water, subtle micro-ripples, mirror reflection of trees and sky, 720p documentary, serene meditative stillness --ar 16:9 --no people, distortion, text",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Mirror-like forest pool; olive leaf resting gently on water tension without a splash."
+          },
+          {
+            "scene": "Scene 5 (05:30\u201306:45)",
+            "title": "The Quiet Station of Prayer",
+            "tier": "Tier 2: Generic Nature Fallback (Shot E/D)",
+            "ayah_ref": "23:1\u20132, 11",
+            "prompt": "Cinematic shot of a natural woven prayer mat on a stone porch overlooking a misty dawn landscape, warm morning sunlight streaming in, peaceful spiritual sanctuary, 720p resolution, timeless simplicity --ar 16:9 --no people, modern items, distortion",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Woven palm mat on cool stone porch overlooking misty dawn valley."
+          }
+        ]
+      },
+      {
+        "season": "Season 3",
+        "ep": "24",
+        "surah": "Surah An-Nur",
+        "ayah": "24:35, 39\u201341",
+        "title": "The Niche of Divine Light",
+        "theme": "Cosmic reality of divine light; layered ocean darkness of misguidance; desert mirage; birds in praise.",
+        "scenes": [
+          {
+            "scene": "Scene 1 (00:00\u201300:45)",
+            "title": "The Ocean of Layered Darkness",
+            "tier": "Tier 1: Literal Physical Phenomenon",
+            "ayah_ref": "24:40",
+            "prompt": "Cinematic shot of dark turbulent ocean waves at stormy midnight, heavy black clouds, deep sea swells, atmospheric mist, moody monochrome navy and black tones, photorealistic 720p documentary, visceral cold darkness --ar 16:9 --no people, ships, lightning bolts, fantasy effects",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Deep sea darkness with waves upon waves under heavy clouds at midnight."
+          },
+          {
+            "scene": "Scene 2 (00:45\u201302:00)",
+            "title": "The Mirage of the Thirsty Soul",
+            "tier": "Tier 1: Literal Desert Phenomenon",
+            "ayah_ref": "24:39",
+            "prompt": "Cinematic telephoto shot of a shimmering blue water mirage on vast white salt flats in desert, extreme heat haze distortion, blinding midday sun, photorealistic 720p documentary, dry cracked salt ground --ar 16:9 --no people, animals, vehicles, cartoon",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Telephoto view across white salt flats revealing shimmering mirage that dissolves."
+          },
+          {
+            "scene": "Scene 3 (02:00\u201304:00)",
+            "title": "The Crystal Niche",
+            "tier": "Tier 1: Literal Sacred Parable",
+            "ayah_ref": "24:35",
+            "prompt": "Cinematic macro shot of an ancient glass oil lantern glowing inside a carved stone wall niche, warm golden amber flame, realistic glass refractions, peaceful sacred interior, 720p master, Rembrandt lighting, quiet reverent beauty --ar 16:9 --no hands, artificial neon glow, fantasy sparkles",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Hand-carved limestone niche holding clear glass lamp glowing like brilliant star."
+          },
+          {
+            "scene": "Scene 4 (04:00\u201305:30)",
+            "title": "The Birds Outspread",
+            "tier": "Tier 1: Literal Living Creation",
+            "ayah_ref": "24:41",
+            "prompt": "Slow-motion cinematic telephoto shot of white doves gliding across a clear morning sky above stone mosque arches, wings catching golden morning sunlight, 100fps, peaceful graceful flight, 720p documentary realism --ar 16:9 --no people, hunter guns, cartoon look",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "White doves soaring with wings outspread in morning sky above ancient arches."
+          },
+          {
+            "scene": "Scene 5 (05:30\u201306:45)",
+            "title": "Light upon Light",
+            "tier": "Tier 2: Generic Nature Fallback (Shot C/F)",
+            "ayah_ref": "24:35",
+            "prompt": "Atmospheric wide shot of a peaceful stone sanctuary flooded with warm golden dawn sunlight, a small quiet oil lamp resting on an alcove shelf, serene spiritual tranquility, 720p resolution, timeless sacred quietude --ar 16:9 --no people, clutter, text",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Golden dawn sunlight dissolving all shadows in peaceful stone sanctuary."
+          }
+        ]
+      },
+      {
+        "season": "Season 3",
+        "ep": "25",
+        "surah": "Surah Al-Furqan",
+        "ayah": "25:45\u201346, 53, 63",
+        "title": "Walking Gently on the Earth",
+        "theme": "Confluence of two seas with barrier; cosmic elongation of shadows; gentleness of 'Ibad ar-Rahman.",
+        "scenes": [
+          {
+            "scene": "Scene 1 (00:00\u201300:45)",
+            "title": "The Clashing Ocean Breakers",
+            "tier": "Tier 1: Literal Contrast in Nature",
+            "ayah_ref": "25:45",
+            "prompt": "Cinematic shot of powerful stormy ocean waves crashing violently against dark jagged sea cliffs, white spray exploding in cold twilight air, moody atmospheric ocean power, 720p documentary realism, dramatic natural force --ar 16:9 --no people, ships, lighthouses, cartoon",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Violent storm breakers clashing against sea cliffs illustrating worldly friction."
+          },
+          {
+            "scene": "Scene 2 (00:45\u201302:00)",
+            "title": "The Meeting of the Two Seas",
+            "tier": "Tier 1: Literal Natural Phenomenon",
+            "ayah_ref": "25:53",
+            "prompt": "Cinematic aerial drone shot looking down at the meeting of two bodies of water, turquoise fresh river water flowing into deep navy ocean water, visible serene boundary line between colors, calm surface, 720p master, BBC Planet Earth quality --ar 16:9 --no boats, people, artificial lines, text",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Aerial drone shot looking straight down where fresh river meets navy ocean with clear barrier."
+          },
+          {
+            "scene": "Scene 3 (02:00\u201304:00)",
+            "title": "The Elongation of Shadows",
+            "tier": "Tier 1: Literal Astronomical Sign",
+            "ayah_ref": "25:45\u201346",
+            "prompt": "Cinematic time-lapse shot of long peaceful shadows stretching across golden grass hills at sunset, cypress trees casting long shadows, warm amber and violet evening sky, 720p documentary, serene cosmic rhythm --ar 16:9 --no people, cars, modern structures",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Time-lapse of cypress tree shadows extending across golden hills at twilight."
+          },
+          {
+            "scene": "Scene 4 (04:00\u201305:30)",
+            "title": "The Pathway of Gentleness",
+            "tier": "Tier 1: Literal Natural Setting",
+            "ayah_ref": "25:63",
+            "prompt": "Cinematic low tracking shot gliding along a peaceful stone pathway in a dewy pine forest, morning mist filtering sunlight through tall trees, mossy forest floor, 720p resolution, meditative gentle journey, National Geographic realism --ar 16:9 --no people, animals, footprints, modern objects",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Smooth stone path winding through dewy pine forest at dawn illustrating gentleness."
+          },
+          {
+            "scene": "Scene 5 (05:30\u201306:45)",
+            "title": "Chambers of Peace",
+            "tier": "Tier 2: Generic Nature Fallback (Shot E)",
+            "ayah_ref": "25:63, 75",
+            "prompt": "Atmospheric cinematic shot from a quiet stone window with an open book on a wooden stand, looking out toward a calm sunset sea horizon, soft violet and amber twilight, peaceful sacred solitude, 720p resolution, timeless stillness --ar 16:9 --no people, modern items, text",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Open scripture on wooden stand by arched window overlooking calm sunset sea horizon."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ayat_kawn",
+    "label": "Ay\u0101t al-Kawn (11 Cosmic Signs)",
+    "desc": "11 master contemplative scenes translating cosmic, biological, and terrestrial wonders into Google Flow prompts.",
+    "episodes": [
+      {
+        "season": "Cosmic Signs",
+        "ep": "Kawn",
+        "surah": "Ay\u0101t al-Kawniyyah",
+        "ayah": "Universe as Living Sign",
+        "title": "The 11 Cosmic & Natural Sceneries",
+        "theme": "Awe-inspiring natural and biological creation invoking contemplation and remembrance.",
+        "scenes": [
+          {
+            "scene": "Ayah Sign 01",
+            "title": "Sunset at Ocean Horizon",
+            "tier": "Ay\u0101t al-Kawn: Cosmic / Horizon Sign",
+            "ayah_ref": "Surah Al-Inshiqaq (84:16)",
+            "prompt": "cinematic extreme wide shot, hyper-realistic, tranquil ocean coastline at sunset twilight, an immense glowing golden-amber sun slowly descending beneath a horizon of soft purple and indigo stratus clouds, gentle calm ocean swells washing rhythmically over smooth wet dark basalt pebbles on the shore, mirror reflections of warm amber and magenta light shimmering across the wet sand, deep atmospheric haze, 35mm lens, ARRI Alexa 65, photorealistic 8k, slow natural motion, peaceful meditative rhythm, serene negative space, BBC Earth documentary cinematography --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Twilight glow over ocean coastline; obedience to divine decree."
+          },
+          {
+            "scene": "Ayah Sign 02",
+            "title": "Dawn Awakening in Mountain Valley",
+            "tier": "Ay\u0101t al-Kawn: Atmospheric Sign",
+            "ayah_ref": "Surah At-Takwir (81:18)",
+            "prompt": "cinematic slow aerial tracking shot, hyper-detailed, morning dawn breaking over rugged mist-shrouded mountain peaks, the first golden sunbeams piercing through a cool cobalt blue mountain gap, sweeping through undulating layers of thick morning fog resting in the valley below, dew-covered pine needles catching golden backlight, soft atmospheric god rays illuminating drifting vapor, 24mm anamorphic lens, 8k resolution, serene, majestic, natural documentary realism, National Geographic style --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Dawn when it breathes; living proof that darkness has an appointed end."
+          },
+          {
+            "scene": "Ayah Sign 03",
+            "title": "Emerald Butterfly in Botanical Garden",
+            "tier": "Ay\u0101t al-Kawn: Biological Sign",
+            "ayah_ref": "Surah Al-Hajj (22:5)",
+            "prompt": "cinematic macro shot, hyper-detailed, a stunning vibrant emerald swallowtail butterfly resting upon a deep purple wildflower in a lush tranquil botanical garden, the butterfly rhythmically opening and closing its patterned velvet wings in the morning warmth, tiny crystalline dew droplets clinging to delicate flower petals, soft morning sunbeams creating warm bokeh balls in the soft-focus green leaf background, 85mm macro prime lens, 60fps slow motion, razor-sharp focus on wing scales, pure organic beauty, natural lighting --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Delicate living order and joyous growth in nature."
+          },
+          {
+            "scene": "Ayah Sign 04",
+            "title": "Mountain Waterfall into Basalt Pool",
+            "tier": "Ay\u0101t al-Kawn: Hydrological Sign",
+            "ayah_ref": "Surah Al-Baqarah (2:74)",
+            "prompt": "cinematic low-angle shot, majestic mountain waterfall cascading powerfully down ancient dark columnar basalt rock formations, crystalline turquoise glacial water plummeting into a deep tranquil mountain pool, misty white water spray rising gently through shafts of soft morning sunlight creating a faint natural rainbow mist, lush emerald moss clinging to wet stone, 100fps high-speed slow motion capturing individual water droplets, 28mm cine lens, National Geographic realism, pristine nature --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Rocks splitting and water bursting forth in humble submission."
+          },
+          {
+            "scene": "Ayah Sign 05",
+            "title": "Rapid Plant Germination & Sprouting",
+            "tier": "Ay\u0101t al-Kawn: Botanical Sign",
+            "ayah_ref": "Surah Al-An'am (6:95)",
+            "prompt": "cinematic botanical time-lapse shot, hyper-detailed macro, a dormant seed buried in dark moist organic soil swelling and cracking open, a pale vibrant green sprout pushing dynamically upward through rich dark loam, unfurling two delicate emerald cotyledon leaves toward a soft beam of golden sunlight, tiny root hairs branching delicately through the soil beneath, high-definition time-lapse cinematography, BBC Planet Earth botany documentary, miracle of living growth --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Splitting of the grain and the seed; bringing life from death."
+          },
+          {
+            "scene": "Ayah Sign 06",
+            "title": "Ants Working Together on Cedar Bark",
+            "tier": "Ay\u0101t al-Kawn: Social Fauna Sign",
+            "ayah_ref": "Surah An-Naml (27:18)",
+            "prompt": "cinematic extreme macro tracking shot, hyper-detailed, a disciplined line of sleek red wood ants collaborating to carry a single fragrant pine needle across rough weathered cedar tree bark, intricate biological detail of delicate antennae, legs, and mandibles moving in purposeful synchronization, soft natural dappled forest sunlight filtering through leaves, 100mm macro probe lens, razor-thin depth of field, National Geographic micro-fauna documentary, awe-inspiring natural order --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Cooperative communication and purposeful natural order."
+          },
+          {
+            "scene": "Ayah Sign 07",
+            "title": "Baby Sea Turtles Journeying to Ocean",
+            "tier": "Ay\u0101t al-Kawn: Guidance / Instinct Sign",
+            "ayah_ref": "Surah Al-A'la (87:2\u20133)",
+            "prompt": "cinematic ground-skimming tracking shot, dawn twilight on a remote tropical beach, a newly hatched olive ridley sea turtle instinctively crawling purposefully across soft golden sand toward the incoming white ocean foam, tiny flippers leaving delicate tracks in the damp sand, a warm pink and amber sunrise glowing over the ocean horizon in the background, gentle shallow wave lapping over the turtle as it enters the sea, 50mm lens, BBC Blue Planet documentary realism, pure instinct and resilience --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "He who proportions and guides every creature to its course."
+          },
+          {
+            "scene": "Ayah Sign 08",
+            "title": "Birds Departing in Morning Provision",
+            "tier": "Ay\u0101t al-Kawn: Reliance / Flight Sign",
+            "ayah_ref": "Surah Al-Mulk (67:19)",
+            "prompt": "cinematic telephoto shot, golden hour sunrise over a calm misty wetland lagoon, a flock of pure white egrets lifting gracefully into flight in silhouette against a gigantic glowing pastel orange morning sun, slow elegant wingbeats rippling the calm golden water surface below, birds gliding with outspread wings in perfect airborne harmony, 200mm telephoto lens, 60fps slow motion, peaceful spiritual tranquility, BBC Earth avian cinematography --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Birds soaring with wings outspread, none sustaining them but the Merciful."
+          },
+          {
+            "scene": "Ayah Sign 09",
+            "title": "Cosmic Clusters of Spiral Galaxies",
+            "tier": "Ay\u0101t al-Kawn: Cosmic Expanse Sign",
+            "ayah_ref": "Surah Adh-Dhariyat (51:47)",
+            "prompt": "cinematic deep-space astronomical visualization, hyper-realistic, vast majestic grand-design spiral galaxies slowly rotating amid luminous clusters of billions of stars, intricate cosmic dust filaments glowing in deep amethyst, sapphire, and radiant amber hues, distant galaxy clusters scattered across the infinite black velvety expanse of space, photorealistic James Webb Space Telescope optical fidelity, slow contemplative camera push through stellar gas clouds, awe-inspiring cosmic scale --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Heavens constructed with power and ever expanding."
+          },
+          {
+            "scene": "Ayah Sign 10",
+            "title": "Heritage Rooster Crowing at Dawn",
+            "tier": "Ay\u0101t al-Kawn: Prophetic Hadith Sign",
+            "ayah_ref": "Sahih al-Bukhari 3303",
+            "prompt": "cinematic profile medium close-up shot, a magnificent heritage rooster with iridescent emerald and copper plumage perched proudly on a rustic weathered wooden fence post at first dawn light, the rooster puffing its chest and crowing into the crisp morning air, visible warm breath vapor curling into the cool blue twilight, soft golden dawn light catching the edges of its comb and feathers, 85mm portrait prime lens, 60fps slow motion, quiet rustic farm awakening, natural authentic morning --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "When you hear the crow of a rooster, ask of Allah's bounty, for it has seen an angel."
+          },
+          {
+            "scene": "Ayah Sign 11",
+            "title": "Malaysian Emerald Paddy Terraces",
+            "tier": "Ay\u0101t al-Kawn: Sustenance / Agro Sign",
+            "ayah_ref": "Surah Az-Zumar (39:21)",
+            "prompt": "cinematic low-altitude drone glide, sweeping smoothly over boundless vibrant emerald-green rice paddy fields in rural Kedah Malaysia at sunrise, the sun emerging behind distant blue limestone karsts, mirror-like water between young rice stalks reflecting the pastel peach and lavender morning sky, gentle morning breeze creating subtle waves across the emerald rice leaves, rustic wooden gazebo in the distance, pristine agricultural landscape, National Geographic travel cinematography --ar 16:9 --res 720p",
+            "aspect": "16:9 Landscape (1280x720)",
+            "notes": "Water driven into subterranean paths to bring forth crops of diverse colors."
+          }
+        ]
+      }
+    ]
+  }
+];
+    const NEGATIVE_PROMPT = "humans, people, faces, silhouettes, hands, man, woman, child, religious figures, cartoon, anime, 3d render, CGI look, fantasy art, glowing magical auras, neon laser beams, floating pseudo-Arabic text, distorted geometry, jitter, morphing artifacts, fast whip pans, motion blur smearing, oversaturated chromatic aberration, horror, dark dystopia";
+
+    let activeFilter = 'all';
+    let query = '';
+
+    function render() {
+      const grid = document.getElementById('promptGrid');
+      grid.innerHTML = '';
+
+      sections.forEach(sec => {
+        sec.episodes.forEach(ep => {
+          const epKey = 'ep' + ep.ep.toLowerCase();
+          
+          if (activeFilter === 'all') {
+            // show all
+          } else if (activeFilter === 'season_3' && sec.id !== 'season_3') {
+            return;
+          } else if (activeFilter === 'ayat_kawn' && sec.id !== 'ayat_kawn') {
+            return;
+          } else if (activeFilter.startsWith('ep') && epKey !== activeFilter) {
+            return;
+          }
+
+          ep.scenes.forEach((scene, sIdx) => {
+            const searchIndex = (sec.label + ' ' + ep.surah + ' ' + ep.title + ' ' + scene.title + ' ' + scene.prompt + ' ' + scene.notes).toLowerCase();
+            if (query && !searchIndex.includes(query.toLowerCase())) return;
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            const isTier1 = scene.tier.includes('Tier 1') || scene.tier.includes('Sign');
+            const tierClass = isTier1 ? 'badge-tier1' : 'badge-tier2';
+            const promptId = 'p-' + ep.ep + '-' + sIdx;
+
+            card.innerHTML = `
+              <div class="card-top">
+                <div class="card-badges">
+                  <span class="badge-ep">${ep.ep === 'Kawn' ? 'Ayah Sign' : 'Episode ' + ep.ep} • ${scene.scene.split(' ')[0]}</span>
+                  <span class="badge-tier ${tierClass}">${scene.tier.split(':')[0]}</span>
+                </div>
+                <h3 class="card-title">${scene.title}</h3>
+                <div class="card-subtitle">${ep.surah} (${scene.ayah_ref})</div>
+                <div class="card-desc">${scene.notes}</div>
+                <div class="prompt-box" id="${promptId}">${scene.prompt}</div>
+              </div>
+              <div class="card-footer">
+                <span class="res-tag">🔒 1280x720 HD Master</span>
+                <button class="btn-copy" onclick="copyPrompt('${promptId}', this)">
+                  <span>📋 Copy to Google Flow</span>
+                </button>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        });
+      });
+    }
+
+    function filterCategory(cat) {
+      activeFilter = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      render();
+    }
+
+    function handleSearch() {
+      query = document.getElementById('searchInput').value;
+      render();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function copyPrompt(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('✅ Copied! Ready to paste into Google Flow');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<span>✅ Copied!</span>';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    }
+
+    function copyNegativePrompt() {
+      navigator.clipboard.writeText(NEGATIVE_PROMPT).then(() => {
+        showToast('✅ Universal Negative Prompt copied!');
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
