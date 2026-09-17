@@ -21,6 +21,12 @@ target_directory: "12_PRODUCTS/"
 derivatives:
   master_pdf: "12_PRODUCTS/SURAH_ANBIYA_MASTER_COMPENDIUM.pdf"
   interactive_suite: "12_PRODUCTS/SURAH_ANBIYA_INTERACTIVE_SUITE.html"
+  master_video: "10_VIDEO/renders/QURAN-COMEBACK-EP21-FULL-MASTER.mp4"
+  short_video: "10_VIDEO/renders/QURAN-COMEBACK-EP21-SHORT-001A.mp4"
+  master_audio: "11_AUDIO/EP21_audio.mp3"
+  audio_spec: "11_AUDIO/QURAN-COMEBACK-AUDIO-021.md"
+  flagship_script: "08_SCRIPTS/QURAN-COMEBACK-SCRIPT-021.md"
+  storyboard: "10_VIDEO/QURAN-COMEBACK-STORYBOARD-021.md"
   previews:
     cover: "12_PRODUCTS/previews/anbiya_compendium_cover.png"
     toc: "12_PRODUCTS/previews/anbiya_compendium_toc.png"
@@ -72,6 +78,12 @@ Where Surah Ta-Ha explored the intimate fire of Tuwa and Musa's confrontation wi
 | **Compendium Cover Preview** | PNG (150 DPI) | 136 KB | High-resolution preview of Plate 01 (Compendium Cover). | `12_PRODUCTS/previews/anbiya_compendium_cover.png` |
 | **Compendium TOC Preview** | PNG (150 DPI) | 215 KB | High-resolution preview of Plate 02 (Table of Contents & Navigation Map). | `12_PRODUCTS/previews/anbiya_compendium_toc.png` |
 | **Plates 01–08 PNG Previews** | PNG (150 DPI) | ~1.5 MB | 8 full-width widescreen PNG renders of the mindmap plates. | `/home/ben/.gemini/antigravity/brain/.../anbiya_page-*.png` |
+| **Flagship Video Master** | MP4 (H.264/AAC) | 43.8 MB | Full 720p HD Master (1280x720, 24fps) with continuous living creation slow-mo and discrete trademark watermark. | `10_VIDEO/renders/QURAN-COMEBACK-EP21-FULL-MASTER.mp4` |
+| **Vertical Short (Cut A)** | MP4 (H.264/AAC) | 9.2 MB | 9:16 Vertical Cut (720x1280, 24fps) for YouTube Shorts & Instagram Reels. | `10_VIDEO/renders/QURAN-COMEBACK-EP21-SHORT-001A.mp4` |
+| **Studio Audio Master** | MP3 (192kbps) | 4.0 MB | Mastered to -14 LUFS broadcast standard, Zero Music Policy with natural nature foley. | `11_AUDIO/EP21_audio.mp3` |
+| **Audio Specification** | Markdown | 1.2 KB | Production acoustic staging, vocal cadence, and engineering directives. | `11_AUDIO/QURAN-COMEBACK-AUDIO-021.md` |
+| **Production Script** | Markdown | 5.6 KB | 5-section production script with Section 40B Surah scene mapping. | `08_SCRIPTS/QURAN-COMEBACK-SCRIPT-021.md` |
+| **Video Storyboard** | Markdown | 6.5 KB | 5-scene cinematic storyboard with 720p prompts and motion directions. | `10_VIDEO/QURAN-COMEBACK-STORYBOARD-021.md` |
 
 
 

@@ -16,6 +16,12 @@ review_agents:
   - "AGENT-17 (Content QA Auditor)"
 master_compendium_pdf: "SURAH_HAJJ_MASTER_COMPENDIUM.pdf"
 interactive_suite_html: "SURAH_HAJJ_INTERACTIVE_SUITE.html"
+master_video: "10_VIDEO/renders/QURAN-COMEBACK-EP22-FULL-MASTER.mp4"
+short_video: "10_VIDEO/renders/QURAN-COMEBACK-EP22-SHORT-001A.mp4"
+master_audio: "11_AUDIO/EP22_audio.mp3"
+audio_spec: "11_AUDIO/QURAN-COMEBACK-AUDIO-022.md"
+flagship_script: "08_SCRIPTS/QURAN-COMEBACK-SCRIPT-022.md"
+storyboard: "10_VIDEO/QURAN-COMEBACK-STORYBOARD-022.md"
 mindmap_pdf: "07_MINDMAP/HAJJ_MASTER_MINDMAP.pdf"
 mindmap_html: "07_MINDMAP/HAJJ_MASTER_MINDMAP.html"
 mindmap_markdown: "07_MINDMAP/HAJJ_MASTER_MINDMAP.md"
@@ -57,6 +63,12 @@ Surah Al-Hajj represents a sublime bridge within the Qur'anic revelation, harmon
 | **Compendium Cover Preview** | PNG (150 DPI) | ~140 KB | High-resolution preview of Plate 01 (Compendium Cover). | `/home/ben/.gemini/antigravity/brain/.../hajj_compendium_cover.png` |
 | **Compendium TOC Preview** | PNG (150 DPI) | ~215 KB | High-resolution preview of Plate 02 (Table of Contents & Navigation Map). | `/home/ben/.gemini/antigravity/brain/.../hajj_compendium_toc.png` |
 | **Plates 01–08 PNG Previews** | PNG (150 DPI) | ~1.6 MB | 8 full-width widescreen PNG renders of the mindmap plates. | `/home/ben/.gemini/antigravity/brain/.../hajj_page-*.png` |
+| **Flagship Video Master** | MP4 (H.264/AAC) | 38.4 MB | Full 720p HD Master (1280x720, 24fps) with continuous living creation slow-mo and discrete trademark watermark. | `10_VIDEO/renders/QURAN-COMEBACK-EP22-FULL-MASTER.mp4` |
+| **Vertical Short (Cut A)** | MP4 (H.264/AAC) | 7.3 MB | 9:16 Vertical Cut (720x1280, 24fps) for YouTube Shorts & Instagram Reels. | `10_VIDEO/renders/QURAN-COMEBACK-EP22-SHORT-001A.mp4` |
+| **Studio Audio Master** | MP3 (192kbps) | 3.9 MB | Mastered to -14 LUFS broadcast standard, Zero Music Policy with natural nature foley. | `11_AUDIO/EP22_audio.mp3` |
+| **Audio Specification** | Markdown | 1.2 KB | Production acoustic staging, vocal cadence, and engineering directives. | `11_AUDIO/QURAN-COMEBACK-AUDIO-022.md` |
+| **Production Script** | Markdown | 5.6 KB | 5-section production script with Section 40B Surah scene mapping. | `08_SCRIPTS/QURAN-COMEBACK-SCRIPT-022.md` |
+| **Video Storyboard** | Markdown | 6.5 KB | 5-scene cinematic storyboard with 720p prompts and motion directions. | `10_VIDEO/QURAN-COMEBACK-STORYBOARD-022.md` |
 
 
 
