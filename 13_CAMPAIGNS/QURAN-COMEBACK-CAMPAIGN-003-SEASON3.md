@@ -81,35 +81,47 @@ Every episode strictly implements:
 | **22** | Surah Al-Hajj | *When Dead Earth Quivers* | 22:5, 27, 73 | `10_VIDEO/renders/QURAN-COMEBACK-EP22-FULL-MASTER.mp4` | `11_AUDIO/EP22_audio.mp3` | **PACKAGED & VERIFIED** |
 | **23** | Surah Al-Mu'minun | *The Architecture of a Quiet Heart* | 23:1–11, 20, 115 | `10_VIDEO/renders/QURAN-COMEBACK-EP23-FULL-MASTER.mp4` | `11_AUDIO/EP23_audio.mp3` | **PACKAGED & VERIFIED** |
 | **24** | Surah An-Nur | *The Niche of Divine Light* | 24:35, 39–41 | `10_VIDEO/renders/QURAN-COMEBACK-EP24-FULL-MASTER.mp4` | `11_AUDIO/EP24_audio.mp3` | **PACKAGED & VERIFIED** |
-| **25** | Surah Al-Furqan | *The Criterion in the Noise* | 25:1, 48, 63–77 | `10_VIDEO/QURAN-COMEBACK-STORYBOARD-025.md` | In Pre-Production | Storyboard & Prompts Deployed |
+| **25** | Surah Al-Furqan | *The Criterion in the Noise* | 25:1, 48, 63–77 | `10_VIDEO/renders/QURAN-COMEBACK-EP25-FULL-MASTER.mp4` | `11_AUDIO/EP25_audio.mp3` | **PACKAGED & VERIFIED** |
 
 ---
 
 ## 3. Season 3 Production Deliverables Summary
 
 - **1-Click Prompt Console:** [`10_VIDEO/google_flow_master_console.html`](file:///mnt/AI/ag/Campaign/10_VIDEO/google_flow_master_console.html)
-- **Episodes 21, 22, 23 & 24 Full Masters (720p HD):**
+- **Episodes 21–25 Full Masters (720p HD):**
   - `10_VIDEO/renders/QURAN-COMEBACK-EP21-FULL-MASTER.mp4` (167.3s, 1280x720, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP22-FULL-MASTER.mp4` (163.1s, 1280x720, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP23-FULL-MASTER.mp4` (171.8s, 1280x720, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP24-FULL-MASTER.mp4` (198.5s, 1280x720, 24fps)
-- **Episodes 21, 22, 23 & 24 9:16 Vertical Cuts (Shorts):**
+  - `10_VIDEO/renders/QURAN-COMEBACK-EP25-FULL-MASTER.mp4` (178.6s, 1280x720, 24fps)
+- **Episodes 21–25 9:16 Vertical Cuts (Shorts):**
   - `10_VIDEO/renders/QURAN-COMEBACK-EP21-SHORT-001A.mp4` (41.2s, 720x1280, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP22-SHORT-001A.mp4` (35.4s, 720x1280, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP23-SHORT-001A.mp4` (42.1s, 720x1280, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP24-SHORT-001A.mp4` (54.7s, 720x1280, 24fps)
+  - `10_VIDEO/renders/QURAN-COMEBACK-EP25-SHORT-001A.mp4` (40.9s, 720x1280, 24fps)
 - **Audio Assets (EBU R128 -14 LUFS, Zero Music):**
   - `11_AUDIO/EP21_audio.mp3` & `11_AUDIO/EP21_audio_timings.json`
   - `11_AUDIO/EP22_audio.mp3` & `11_AUDIO/EP22_audio_timings.json`
   - `11_AUDIO/EP23_audio.mp3` & `11_AUDIO/EP23_audio_timings.json`
   - `11_AUDIO/EP24_audio.mp3` & `11_AUDIO/EP24_audio_timings.json`
+  - `11_AUDIO/EP25_audio.mp3` & `11_AUDIO/EP25_audio_timings.json`
   - `11_AUDIO/QURAN-COMEBACK-AUDIO-021.md`
   - `11_AUDIO/QURAN-COMEBACK-AUDIO-022.md`
   - `11_AUDIO/QURAN-COMEBACK-AUDIO-023.md`
   - `11_AUDIO/QURAN-COMEBACK-AUDIO-024.md`
+  - `11_AUDIO/QURAN-COMEBACK-AUDIO-025.md`
 - **Product Manifests:**
   - `12_PRODUCTS/SURAH-ANBIYA-PRODUCT-MANIFEST.md`
   - `12_PRODUCTS/SURAH-HAJJ-PRODUCT-MANIFEST.md`
   - `12_PRODUCTS/SURAH-MUMINUN-PRODUCT-MANIFEST.md`
   - `12_PRODUCTS/SURAH-NUR-PRODUCT-MANIFEST.md`
+  - `12_PRODUCTS/SURAH-AL-FURQAN-PRODUCT-MANIFEST.md`
+
+## 4. Season 3 Completion Sign-Off
+- **Status:** **100% COMPLETE & VERIFIED**
+- **Episodes:** 5 of 5 Fully Packaged (Episodes 21, 22, 23, 24, 25)
+- **Visuals:** 100% Curated and Rendered to 720p HD Master Standard
+- **Audio:** 100% EBU R128 (-14 LUFS) Studio Mastered with Zero Music Policy
+- **QA:** Passed Tier-1 Islamic QA, Visual Brand DNA QA, Content Integrity QA
 
