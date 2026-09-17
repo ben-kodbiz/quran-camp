@@ -79,7 +79,7 @@ Every episode strictly implements:
 |:---|:---|:---|:---|:---|:---|:---|
 | **21** | Surah Al-Anbiya | *Light in the Deepest Dark* | 21:30, 87–88 | `10_VIDEO/renders/QURAN-COMEBACK-EP21-FULL-MASTER.mp4` | `11_AUDIO/EP21_audio.mp3` | **PACKAGED & VERIFIED** |
 | **22** | Surah Al-Hajj | *When Dead Earth Quivers* | 22:5, 27, 73 | `10_VIDEO/renders/QURAN-COMEBACK-EP22-FULL-MASTER.mp4` | `11_AUDIO/EP22_audio.mp3` | **PACKAGED & VERIFIED** |
-| **23** | Surah Al-Mu'minun | *The Architecture of Inner Peace* | 23:1–11, 115 | `10_VIDEO/QURAN-COMEBACK-STORYBOARD-023.md` | In Pre-Production | Storyboard & Prompts Deployed |
+| **23** | Surah Al-Mu'minun | *The Architecture of a Quiet Heart* | 23:1–11, 20, 115 | `10_VIDEO/renders/QURAN-COMEBACK-EP23-FULL-MASTER.mp4` | `11_AUDIO/EP23_audio.mp3` | **PACKAGED & VERIFIED** |
 | **24** | Surah An-Nur | *Light Upon Light* | 24:35, 40 | `10_VIDEO/QURAN-COMEBACK-STORYBOARD-024.md` | In Pre-Production | Storyboard & Prompts Deployed |
 | **25** | Surah Al-Furqan | *The Criterion in the Noise* | 25:1, 48, 63–77 | `10_VIDEO/QURAN-COMEBACK-STORYBOARD-025.md` | In Pre-Production | Storyboard & Prompts Deployed |
 
@@ -88,17 +88,23 @@ Every episode strictly implements:
 ## 3. Season 3 Production Deliverables Summary
 
 - **1-Click Prompt Console:** [`10_VIDEO/google_flow_master_console.html`](file:///mnt/AI/ag/Campaign/10_VIDEO/google_flow_master_console.html)
-- **Episodes 21 & 22 Full Masters (720p HD):**
+- **Episodes 21, 22 & 23 Full Masters (720p HD):**
   - `10_VIDEO/renders/QURAN-COMEBACK-EP21-FULL-MASTER.mp4` (167.3s, 1280x720, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP22-FULL-MASTER.mp4` (163.1s, 1280x720, 24fps)
-- **Episodes 21 & 22 9:16 Vertical Cuts (Shorts):**
+  - `10_VIDEO/renders/QURAN-COMEBACK-EP23-FULL-MASTER.mp4` (171.8s, 1280x720, 24fps)
+- **Episodes 21, 22 & 23 9:16 Vertical Cuts (Shorts):**
   - `10_VIDEO/renders/QURAN-COMEBACK-EP21-SHORT-001A.mp4` (41.2s, 720x1280, 24fps)
   - `10_VIDEO/renders/QURAN-COMEBACK-EP22-SHORT-001A.mp4` (35.4s, 720x1280, 24fps)
+  - `10_VIDEO/renders/QURAN-COMEBACK-EP23-SHORT-001A.mp4` (42.1s, 720x1280, 24fps)
 - **Audio Assets (EBU R128 -14 LUFS, Zero Music):**
   - `11_AUDIO/EP21_audio.mp3` & `11_AUDIO/EP21_audio_timings.json`
   - `11_AUDIO/EP22_audio.mp3` & `11_AUDIO/EP22_audio_timings.json`
-  - `11_AUDIO/QURAN-COMEBACK-AUDIO-021.md` & `11_AUDIO/QURAN-COMEBACK-AUDIO-022.md`
+  - `11_AUDIO/EP23_audio.mp3` & `11_AUDIO/EP23_audio_timings.json`
+  - `11_AUDIO/QURAN-COMEBACK-AUDIO-021.md`
+  - `11_AUDIO/QURAN-COMEBACK-AUDIO-022.md`
+  - `11_AUDIO/QURAN-COMEBACK-AUDIO-023.md`
 - **Product Manifests:**
   - `12_PRODUCTS/SURAH-ANBIYA-PRODUCT-MANIFEST.md`
   - `12_PRODUCTS/SURAH-HAJJ-PRODUCT-MANIFEST.md`
+  - `12_PRODUCTS/SURAH-MUMINUN-PRODUCT-MANIFEST.md`
 
