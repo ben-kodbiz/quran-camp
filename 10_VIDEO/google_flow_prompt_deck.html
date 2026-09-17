@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Flow Prompt Deck — Ayāt al-Kawn Scenes (Huurs Studio)</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #05080f;
+      --bg-base: #070c16;
+      --bg-surface: #0e1626;
+      --bg-surface-elevated: #152035;
+      
+      --gold: #d4af59;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 89, 0.25);
+      --gold-border: rgba(212, 175, 89, 0.32);
+      
+      --emerald: #10b981;
+      --emerald-bg: rgba(16, 185, 129, 0.12);
+      
+      --cyan: #38bdf8;
+      --cyan-bg: rgba(56, 189, 248, 0.12);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --border-card: rgba(255, 255, 255, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--bg-deep);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(212, 175, 89, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 45%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      line-height: 1.65;
+      padding-bottom: 90px;
+    }
+
+    header {
+      background: rgba(5, 8, 15, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+    }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand-crest {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--gold);
+      border-radius: 6px;
+      background: var(--bg-surface);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 50px 0 30px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* Negative prompt banner */
+    .neg-banner {
+      background: rgba(14, 22, 38, 0.9);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+      padding: 22px 26px;
+      margin: 30px 0 45px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .neg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .neg-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .neg-code {
+      background: #05080f;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: #fca5a5;
+      line-height: 1.6;
+      word-break: break-all;
+    }
+
+    /* Scene Grid */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+      gap: 26px;
+    }
+    .scene-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      transition: all 0.25s ease;
+    }
+    .scene-card:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px -12px rgba(0,0,0,0.6);
+    }
+    .scene-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .scene-number {
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--gold);
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(212, 175, 89, 0.12);
+      border: 1px solid var(--gold-border);
+    }
+    .scene-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--emerald-bg);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .scene-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .theology-badge {
+      background: rgba(5, 8, 15, 0.7);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: var(--gold-light);
+    }
+    .theology-badge strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+    }
+    .prompt-box {
+      background: #05080f;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.74rem;
+      color: var(--text-dim);
+    }
+    .tech-pill {
+      background: var(--bg-surface-elevated);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-card);
+    }
+    .action-btns {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, #b8933b 100%);
+      color: #05080f;
+      border: none;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold-border);
+    }
+    .btn-outline:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--gold);
+    }
+    .btn-copy-success {
+      background: #10b981 !important;
+      color: #05080f !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-group">
+        <div class="brand-crest">H</div>
+        <div>
+          <div class="brand-title">HUURS STUDIO</div>
+          <div class="brand-subtitle">Google Flow Prompt Deck</div>
+        </div>
+      </a>
+      <div>
+        <a href="../12_PRODUCTS/SACRED_CONCEPTS_EXPLAINED.html" target="_blank" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem;">
+          🌿 Ayāt al-Kawn Guide
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <section class="hero">
+      <div class="hero-badge">✦ GOOGLE FLOW & VEO PRODUCTION DECK ✦</div>
+      <h1 class="hero-title">11 MASTER SCENES: <span>AYĀT AL-KAWN</span></h1>
+      <p class="hero-sub">
+        High-fidelity, documentary-grade text scenes crafted for Google Flow, Google Veo 3.1, and Vertex AI. 
+        Each prompt adheres strictly to Sunni source discipline: 100% human-free, zero music, and pure natural awe.
+      </p>
+    </section>
+
+    <!-- Universal Negative Banner -->
+    <div class="neg-banner">
+      <div class="neg-header">
+        <div class="neg-title">🛡️ Universal Negative Prompt (Mandatory for Brand Visual Alignment)</div>
+        <button class="btn btn-outline" style="flex:0 0 auto; padding:6px 16px;" onclick="copyText('negText', this)">
+          📋 Copy Negative Prompt
+        </button>
+      </div>
+      <div id="negText" class="neg-code">humans, people, faces, silhouettes, hands, man, woman, child, religious figures, cartoon, anime, 3d render, CGI look, fantasy art, glowing magical auras, neon laser beams, floating pseudo-Arabic text, distorted geometry, jitter, morphing artifacts, fast whip pans, motion blur smearing, oversaturated chromatic aberration, horror, dark dystopia</div>
+    </div>
+
+    <!-- 11 Scenes Grid -->
+    <div class="scenes-grid">
+
+      <!-- Scene 1: Sunset -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 01</span>
+            <span class="scene-tag">Cosmos & Light</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Sunset at Ocean Horizon</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Al-Inshiqaq (84:16) — «Fa-la uqsimu bish-shafaq» (So I swear by the twilight glow)
+          </div>
+          <div id="p1" class="prompt-box">cinematic extreme wide shot, hyper-realistic, tranquil ocean coastline at sunset twilight, an immense glowing golden-amber sun slowly descending beneath a horizon of soft purple and indigo stratus clouds, gentle calm ocean swells washing rhythmically over smooth wet dark basalt pebbles on the shore, mirror reflections of warm amber and magenta light shimmering across the wet sand, deep atmospheric haze, 35mm lens, ARRI Alexa 65, photorealistic 8k, slow natural motion, peaceful meditative rhythm, serene negative space, BBC Earth documentary cinematography</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">35mm Prime</span>
+            <span class="tech-pill">f/5.6</span>
+            <span class="tech-pill">Static Low-Angle</span>
+            <span class="tech-pill">24 FPS</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p1', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p1', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 2: Dawn -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 02</span>
+            <span class="scene-tag">Atmosphere</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Dawn Awakening over Peaks</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah At-Takwir (81:18) — «Was-subhi idha tanaffas» (And by the dawn when it breathes)
+          </div>
+          <div id="p2" class="prompt-box">cinematic slow aerial tracking shot, hyper-detailed, morning dawn breaking over rugged mist-shrouded mountain peaks, the first golden sunbeams piercing through a cool cobalt blue mountain gap, sweeping through undulating layers of thick morning fog resting in the valley below, dew-covered pine needles catching golden backlight, soft atmospheric god rays illuminating drifting vapor, 24mm anamorphic lens, 8k resolution, serene, majestic, natural documentary realism, National Geographic style</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">24mm Anamorphic</span>
+            <span class="tech-pill">Valley Glide</span>
+            <span class="tech-pill">Volumetric Rays</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p2', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p2', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 3: Butterfly -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 03</span>
+            <span class="scene-tag">Living Fauna</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Emerald Butterfly in Garden</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Al-Hajj (22:5) — Botanical balance and the revival of soil
+          </div>
+          <div id="p3" class="prompt-box">cinematic macro shot, hyper-detailed, a stunning vibrant emerald swallowtail butterfly resting upon a deep purple wildflower in a lush tranquil botanical garden, the butterfly rhythmically opening and closing its patterned velvet wings in the morning warmth, tiny crystalline dew droplets clinging to delicate flower petals, soft morning sunbeams creating warm bokeh balls in the soft-focus green leaf background, 85mm macro prime lens, 60fps slow motion, razor-sharp focus on wing scales, pure organic beauty, natural lighting</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">85mm Macro</span>
+            <span class="tech-pill">f/2.8</span>
+            <span class="tech-pill">60fps Slow-Mo</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p3', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p3', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 4: Waterfall -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 04</span>
+            <span class="scene-tag">Living Waters</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Mountain Waterfall Plunge</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Al-Baqarah (2:74) — Stones that fall in humility before Allah
+          </div>
+          <div id="p4" class="prompt-box">cinematic slow-motion shot, breathtaking mountain waterfall cascading gracefully down ancient black basalt rocks covered in emerald green moss, water plunging into a crystal-clear turquoise natural plunge pool below, fine mist clouds rising and catching gentle golden sunlight, dancing caustic patterns of light reflecting on submerged river stones, 100fps high-speed capture, pristine clarity, untouched nature sanctuary, 50mm lens, photorealistic, awe-inspiring tranquility</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">50mm Prime</span>
+            <span class="tech-pill">100fps Slow-Mo</span>
+            <span class="tech-pill">Vertical Tilt-Up</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p4', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p4', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 5: Plant Growth -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 05</span>
+            <span class="scene-tag">Vegetation</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Rapid Plant Germination</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Al-An'am (6:95) — «Inna Allāha fāliqu al-habbi wan-nawā» (The Cleaver of Seeds)
+          </div>
+          <div id="p5" class="prompt-box">cinematic botanical time-lapse shot, hyper-detailed macro, a healthy plant seed splitting open in rich dark moist earth, a vigorous pale root driving downward while a vibrant bright-green seedling stem pushes upward through soil crumbs, shedding its seed shell, two fresh cotyledon leaves unfurling with delicate precision toward ambient natural sunlight, earth particles shifting organically, soft golden rim lighting, 100mm macro lens, documentary realism, BBC Planet Earth quality</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">100mm Macro</span>
+            <span class="tech-pill">Time-Lapse</span>
+            <span class="tech-pill">Soil Dynamics</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p5', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p5', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 6: Ants -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 06</span>
+            <span class="scene-tag">Micro-Society</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Ants Working in Cohesion</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah An-Naml (27:18) — The awareness and engineering of the ants
+          </div>
+          <div id="p6" class="prompt-box">cinematic ultra-macro tracking shot, a line of industrious wood ants collaborating across the textured mossy bark of a fallen ancient cedar trunk, two ants working together to balance and carry a slender golden pine needle, twitching sensitive antennae in social communication, glistening black chitin carapaces, shallow depth of field, dappled warm sunlight filtering through the deep forest canopy, 105mm macro lens, 48fps slow motion, stunning microscopic clarity, naturalistic behavior</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">105mm Macro</span>
+            <span class="tech-pill">Lateral Track</span>
+            <span class="tech-pill">Bark Texture</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p6', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p6', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 7: Baby Turtles -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 07</span>
+            <span class="scene-tag">Marine Life</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Baby Sea Turtle to the Ocean</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Al-A'la (87:3) — «Walladhī qaddara fahadā» (Who destined and guided)
+          </div>
+          <div id="p7" class="prompt-box">cinematic low-angle ground tracking shot, a tiny newborn olive ridley sea turtle hatchling vigorously paddling across damp packed beach sand toward the foaming ocean surf at early dawn, leaving tiny patterned tread marks in the sand, cool coastal sunrise sky with soft peach and periwinkle tones, a gentle incoming white frothy sea wave rolls over the turtle, submerging it into pristine turquoise sea water, 35mm lens, 60fps slow motion, documentary realism, emotionally evocative, heroic struggle of nature</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">35mm Ground Cam</span>
+            <span class="tech-pill">10cm Height</span>
+            <span class="tech-pill">Incoming Surf</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p7', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p7', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 8: Birds Flight -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 08</span>
+            <span class="scene-tag">Aviation</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Birds in Morning Provision Flight</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Al-Mulk (67:19) & Hadith on Tawakkul (Departing empty, returning full)
+          </div>
+          <div id="p8" class="prompt-box">cinematic slow-motion telephoto shot, a flock of pristine white egrets and wild geese taking flight in unison from calm misty wetland waters at sunrise, wings spreading wide and beating gracefully against the cool dawn air, water droplets showering down from their feet creating circular ripples on the glass-like water mirror, flying upward toward a luminous golden horizon, 200mm telephoto lens, 120fps ultra slow motion, breathtaking grace, natural majesty, photorealistic BBC Earth cinematography</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">200mm Telephoto</span>
+            <span class="tech-pill">120fps</span>
+            <span class="tech-pill">Ascending Pan</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p8', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p8', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 9: Galaxies -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 09</span>
+            <span class="scene-tag">Cosmic Vastness</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Deep-Space Galaxy Clusters</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Adh-Dhariyat (51:47) — «Was-samā'a banaynāhā bi-aydin wa innā lamūsi'ūn»
+          </div>
+          <div id="p9" class="prompt-box">cinematic cosmic deep-space exploration shot, hyper-realistic astrophotography, majestic grand-design spiral galaxy floating in the vast silent velvet darkness of space, brilliant glowing amber-gold galactic nucleus surrounded by sweeping indigo and cyan spiral arms containing billions of luminous pinprick stars and dark cosmic dust filaments, neighboring distant galaxy clusters glowing faintly in the deep background, slow continuous cinematic push forward into interstellar majesty, photorealistic, James Webb Space Telescope optical fidelity, profound silence, sacred awe</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">JWST Optics</span>
+            <span class="tech-pill">Cosmic Drift</span>
+            <span class="tech-pill">Spiral Arms</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p9', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p9', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 10: Rooster -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 10</span>
+            <span class="scene-tag">Dawn Herald</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Heritage Rooster Crowing at Dawn</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Sahih al-Bukhari 3303 — The rooster sees angels descending with dawn mercy
+          </div>
+          <div id="p10" class="prompt-box">cinematic medium close-up shot, a magnificent heritage rooster with shimmering iridescent copper, emerald-green, and deep crimson plumage perched on a weathered mossy wooden garden fence at dawn, soft orange morning light catching the edge of its feathers, the rooster proudly puffing its chest and crowing with natural vigor, visible warm breath vapor curling into the crisp cold morning air, soft focus morning dew and drifting fog in the rustic countryside background, 85mm portrait prime lens, 60fps slow motion, documentary realism</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">85mm Portrait</span>
+            <span class="tech-pill">Breath Vapor</span>
+            <span class="tech-pill">60fps</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p10', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p10', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 11: Malaysian Paddy -->
+      <div class="scene-card">
+        <div>
+          <div class="scene-top">
+            <span class="scene-number">SCENE 11</span>
+            <span class="scene-tag">Sustenance (Rizq)</span>
+          </div>
+          <h2 class="scene-title" style="margin: 10px 0;">Malaysian Paddy Fields at Dawn</h2>
+          <div class="theology-badge" style="margin-bottom: 14px;">
+            <strong>Theological Anchor</strong>
+            Surah Az-Zumar (39:21) — Rain flowing into springs to sprout crops of varying colors
+          </div>
+          <div id="p11" class="prompt-box">cinematic smooth low-altitude drone tracking shot, breathtaking vast emerald-green paddy fields in Kedah Malaysia at sunrise, endless geometric rice terraces stretching toward distant limestone karst mountains enveloped in morning mist, mirror-like flooded irrigation canals reflecting the pastel pink and golden dawn sky, a gentle warm breeze sending cascading ripple waves across the sea of lush rice stalks, a solitary rustic traditional wooden gazebo with thatched nipah roof resting beside the canal, 28mm wide cine lens, 8k resolution, documentary realism, tranquil Southeast Asian rural majesty</div>
+        </div>
+        <div>
+          <div class="tech-row" style="margin-bottom: 12px;">
+            <span class="tech-pill">28mm Wide Drone</span>
+            <span class="tech-pill">Kedah Karst Hills</span>
+            <span class="tech-pill">Water Mirror</span>
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-gold" onclick="copyPrompt('p11', '16:9', this)">Copy 16:9</button>
+            <button class="btn btn-outline" onclick="copyPrompt('p11', '9:16', this)">Copy 9:16 (Shorts)</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function copyText(elementId, btn) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Copied!';
+        btn.classList.add('btn-copy-success');
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.classList.remove('btn-copy-success');
+        }, 1800);
+      });
+    }
+
+    function copyPrompt(promptId, ratio, btn) {
+      let prompt = document.getElementById(promptId).innerText;
+      if (ratio === '9:16') {
+        prompt = 'cinematic vertical 9:16 composition, centered subject framing with generous upper negative space for contemplative focus, ' + prompt;
+      }
+      navigator.clipboard.writeText(prompt).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✓ Copied ' + ratio;
+        btn.classList.add('btn-copy-success');
+        setTimeout(() => {
+          btn.innerText = orig;
+          btn.classList.remove('btn-copy-success');
+        }, 1800);
+      });
+    }
+  </script>
+
+</body>
+</html>
