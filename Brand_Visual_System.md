@@ -1245,6 +1245,58 @@ Use for:
 
 ---
 
+# 40B. Mandatory Surah & Ayah Scene Mapping Directive (With Generic Nature Fallback)
+
+Every video generated to supplement a Surah or Ayah must adhere to this two-tier visual determination protocol:
+
+```text
+EVALUATE SURAH & AYAH CONTENT
+             │
+             ├── Can what is happening be permissibly & realistically visualized?
+             │         │
+             │         ├── YES ──► TIER 1: Faithful Physical & Natural Depiction
+             │         │           (Directly portray the tangible sign, creature, landscape, or event)
+             │         │
+             │         └── NO  ──► TIER 2: Generic Contemplative Nature Fallback
+             │                     (Abstract, Unseen, Legal, Sacred Person ──► Use Approved Shot Library)
+```
+
+### Tier 1: Literal & Thematic Surah Scene Depiction (Mandatory when Describable)
+Before generating any visual prompt, storyboard, or video scene, the director and agents must rigorously examine:
+1. **What is happening in this specific Surah and Ayah?**
+2. **What natural phenomenon, living creature, historical setting, or sensory metaphor is Allah describing?**
+
+If the text describes a tangible physical reality that is permissible to depict under Islamic law and Huurs visual guidelines, the video scene **must directly describe and visualize what is happening in that Surah**:
+* *Example (Surah An-Nahl 16:68–69):* Must depict honeybees taking flight, gathering nectar from blossoms, and returning to cells within the honeycomb.
+* *Example (Surah Al-Hajj 22:5):* Must depict cracked barren soil quivering with life as heavy rain soaks it and green shoots emerge.
+* *Example (Surah Al-Furqan 25:53):* Must depict the visible water boundary where a freshwater river meets the saltwater sea.
+* *Example (Surah Al-Mulk 67:19):* Must depict birds in flight with wings outstretched and folded over wetlands.
+* *Example (Surah At-Takwir 81:18):* Must depict mountain mist and the first breath of dawn light.
+
+### Tier 2: The "Undescribable / Prohibited / Abstract" Fallback (Generic Contemplative Primitives)
+If the Ayah or Surah passage conveys:
+1. **The Unseen (*Al-Ghayb*):** Allah ﷻ, the Angels, the Jinn, the Day of Judgment, the Grave (*Barzakh*), Paradise (*Jannah*), or Hellfire (*Jahannam*).
+2. **Sacred Persons:** The Prophets (peace be upon them), the Sahabah, or human figures (strictly governed by the **Zero-Human Mandate**).
+3. **Abstract & Jurisprudential Content:** Detailed inheritance laws, commercial contracts, divorce procedures, or ethical maxims with no physical subject.
+4. **Any theme where physical depiction risks theological distortion or cheap CGI fantasy tropes:**
+
+**The Mandatory Fallback Rule:**
+> **Never invent fantasy visuals, cartoon CGI, or speculative spiritual imagery.**  
+> When a scene cannot or must not be described literally, the generator **MUST fall back to our approved Generic Contemplative Primitives**:
+> * **Shot A (Ocean Horizon):** Vast calm waters representing divine knowledge, depth, and peace.
+> * **Shot B (Crystalline Stream):** Water flowing over dark pebbles representing purification, mercy, and renewal.
+> * **Shot C (Forest Light):** Sunbeams filtering through cedar/pine canopy representing guidance and hope.
+> * **Shot D (Winding Stone Path):** Solitary pathway through nature representing the human journey, repentance, and purpose.
+> * **Shot E (Sacred Book):** Open Qur'an on a wooden rihal in natural morning light representing learning and revelation.
+> * **Shot F (Mosque Courtyard at Dawn):** Tranquil empty sacred architecture with water fountain basin representing worship and beginning.
+
+### Tier 3: Audio & Spoken Narrative Alignment
+* **Respective Surah Audio Requirement:** The audio bed must feature the authentic recitation and spoken translation of the **respective Surah** being examined.
+* **Text Narrative Requirement:** On-screen or voiceover narrative must clearly explain *what the Surah is conveying* in plain, relatable language with everyday analogies, demystifying any abstract concepts for non-technical users.
+* **Pure Acoustic Ambience:** The soundscape must feature organic nature foley directly corresponding to the scene (rain, stream, waves, birdsong, breeze) under our strict **Zero-Music Mandate**.
+
+---
+
 # 41. Transition System
 
 Preferred:

@@ -435,13 +435,20 @@ Continuous flowing water, mist, rocks, natural forest.
 Wide natural landscapes, birds in flight, calm movement.
 
 ### Books
-Hands opening a book, pages turning, light across pages.
+Open Qur'an manuscript resting on a hand-carved wooden rihal, pages turning in natural breeze, morning light across pages. (Strictly no human hands).
 
 ### Mosque
 Exterior/interior architecture, dawn/dusk, empty peaceful prayer spaces.
 
 ### Nature
 Leaves moving, rain, clouds, mountains, rivers.
+
+### Mandatory Surah Context Mapping & Undescribable Scene Fallback Policy
+Every video that supplements a Surah must directly visualize what is happening in that Surah:
+1. **Examine Surah & Ayah Context First:** The generator must determine what tangible phenomenon, living creature, landscape, or event Allah is conveying (e.g. rain reviving soil, bees in honeycomb, ships on sea, dawn breaking, mountain pegs, birds in flight).
+2. **Literal & Thematic Depiction (When Permissible):** If the sign is physical and permissible to visualize, the video scene must faithfully depict that exact reality happening in the Surah.
+3. **Generic Contemplative Scene Fallback (When Undescribable):** If the Ayah describes the Unseen (*Al-Ghayb* — Allah, Angels, Jinn, Day of Judgment, Heaven/Hell), sacred persons (Prophets, Sahabah), abstract legal rulings, or anything that cannot/must not be physically visualized: **Fall back immediately to approved generic contemplative nature primitives** (Ocean Horizon, Mountain Water Stream, Forest Sunbeams, Stone Path, Open Qur'an at Dawn, Empty Courtyard Basin). Zero fantasy CGI or speculative spiritual imagery.
+4. **Respective Surah Audio & Text Narrative:** The audio bed must feature the authentic recitation and spoken translation of the respective Surah, paired with clear text narrative explaining what the Surah is conveying in plain, relatable language.
 
 ### Human presence (Prohibited)
 
