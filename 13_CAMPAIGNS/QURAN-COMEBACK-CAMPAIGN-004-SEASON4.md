@@ -54,7 +54,7 @@ storage:
 **Project:** Huurs / Huur Studio  
 **Tagline:** *Read it. Understand it. Live it.*  
 **North Star:** **READ. REFLECT. RETURN.**  
-**Status:** Season 4 Production Packaging Active  
+**Status:** Season 4 100% Packaged, Mastered & Verified (Episodes 26–30 Complete)  
 **Mandatory Visual Standard:** Section 40D Curated Semantic Archive Engine (100% Zero-Cost Local Clips)  
 **Strict Resolution Ceiling:** `1280 × 720 HD Master (24.00 fps)` / `720 × 1280 (9:16 Shorts)`  
 **Audio Architecture:** Spoken Tadabbur + Halal Nature Foley (Zero Music Policy, -14 LUFS Broadcast Standard)  
@@ -87,7 +87,7 @@ Every episode strictly implements:
 | **27** | Surah An-Naml | *The Praise of All Creation* | 27:16–19, 60, 62, 88, 93 | `10_VIDEO/renders/QURAN-COMEBACK-EP27-FULL-MASTER.mp4` | `11_AUDIO/EP27_audio.mp3` | **PACKAGED & VERIFIED** |
 | **28** | Surah Al-Qasas | *The Unfolding Promise* | 28:7, 24, 30, 76–77, 88 | `10_VIDEO/renders/QURAN-COMEBACK-EP28-FULL-MASTER.mp4` | `11_AUDIO/EP28_audio.mp3` | **PACKAGED & VERIFIED** |
 | **29** | Surah Al-Ankabut | *The Fragile Shelter* | 29:2, 41, 60, 69, 45 | `10_VIDEO/renders/QURAN-COMEBACK-EP29-FULL-MASTER.mp4` | `11_AUDIO/EP29_audio.mp3` | **PACKAGED & VERIFIED** |
-| **30** | Surah Ar-Rum | *The Living Horizon* | 30:21, 24, 48 | Section 40D Curated | Planned | Curation Plan Locked |
+| **30** | Surah Ar-Rum | *The Living Horizon* | 30:41, 22, 24, 46, 30 | `10_VIDEO/renders/QURAN-COMEBACK-EP30-FULL-MASTER.mp4` | `11_AUDIO/EP30_audio.mp3` | **PACKAGED & VERIFIED** |
 
 ---
 
@@ -123,3 +123,10 @@ Every episode strictly implements:
 - **Episode 29 Script:** [`08_SCRIPTS/QURAN-COMEBACK-SCRIPT-029.md`](file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-029.md)
 - **Episode 29 Storyboard:** [`10_VIDEO/QURAN-COMEBACK-VIDEO-029.md`](file:///mnt/AI/ag/Campaign/10_VIDEO/QURAN-COMEBACK-VIDEO-029.md)
 - **Episode 29 Product Manifest:** [`12_PRODUCTS/SURAH-AL-ANKABUT-PRODUCT-MANIFEST.md`](file:///mnt/AI/ag/Campaign/12_PRODUCTS/SURAH-AL-ANKABUT-PRODUCT-MANIFEST.md)
+- **Episode 30 Full Master (16:9):** `10_VIDEO/renders/QURAN-COMEBACK-EP30-FULL-MASTER.mp4` (291.0s, 1280x720, 24fps, 70.4 MB)
+- **Episode 30 Vertical Short (9:16):** `10_VIDEO/renders/QURAN-COMEBACK-EP30-SHORT-001A.mp4` (62.8s, 720x1280, 24fps, 13.1 MB)
+- **Episode 30 Studio Audio:** `11_AUDIO/EP30_audio.mp3` & `11_AUDIO/EP30_audio_timings.json` (-14 LUFS, 48kHz, Zero Music)
+- **Episode 30 Audio Specification:** [`11_AUDIO/QURAN-COMEBACK-AUDIO-030.md`](file:///mnt/AI/ag/Campaign/11_AUDIO/QURAN-COMEBACK-AUDIO-030.md)
+- **Episode 30 Script:** [`08_SCRIPTS/QURAN-COMEBACK-SCRIPT-030.md`](file:///mnt/AI/ag/Campaign/08_SCRIPTS/QURAN-COMEBACK-SCRIPT-030.md)
+- **Episode 30 Storyboard:** [`10_VIDEO/QURAN-COMEBACK-VIDEO-030.md`](file:///mnt/AI/ag/Campaign/10_VIDEO/QURAN-COMEBACK-VIDEO-030.md)
+- **Episode 30 Product Manifest:** [`12_PRODUCTS/SURAH-AR-RUM-PRODUCT-MANIFEST.md`](file:///mnt/AI/ag/Campaign/12_PRODUCTS/SURAH-AR-RUM-PRODUCT-MANIFEST.md)
